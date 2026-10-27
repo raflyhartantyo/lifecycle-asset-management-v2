@@ -11,7 +11,7 @@ Redesign Lifecycle Asset Management V2 as a simple, consistent, Zurich-branded a
 - Platform baseline: Canvas App, Power Automate, SharePoint and Power BI. Final environment/licensing and backend authorization decisions remain open.
 - Hierarchy: Organization → Function → assets. Every function belongs to one organization.
 - Session context: select entity then function once; use gblEntity and gblFunction consistently.
-- Roles: one row per (email, entity, function), allowing multiple function assignments per user.
+- Ordinary business roles use one row per (email, entity, function), allowing multiple assignments. Global User is entity-wide across functions; Super User is application-wide across entities/functions (D013). Physical storage of these broader grants is a Phase 2 design decision.
 - Retain direct asset disposal. Retire only the separate disposal-request/approval process; other approvals remain in scope.
 - Zurich Design System rules govern visual design and accessibility.
 - Delivery uses a private GitHub repository with Power Apps, Power Automate and Others, complete files and per-unit implementation/validation/rollback handovers.
@@ -45,12 +45,18 @@ Redesign Lifecycle Asset Management V2 as a simple, consistent, Zurich-branded a
 
 See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemented.
 
-## Round 3 — proposed responsibility mapping awaiting owner response
+## Round 3 — owner responses recorded
 
-1. Map retained stock-coordination and reconciliation responsibilities to Asset Manager; detailed direct-disposal, export and master-data permissions are still explicit decisions.
-2. Define Business Owner as accountability for assigned assets/business area and authority only for designated approval tasks. Whether it is the same identity as the existing asset Business Owner field needs clarification before data design.
-3. Keep Superuser administration within explicitly assigned organization/function pairs unless the owner approves a separate global administration exception.
-4. Treat Respondent as request-specific participation rather than a permanent broad role, preserving D010 and explicit organization/function scope.
+- Business Owner is the accountable owner identified on particular assets. Operational management belongs to Asset Manager; approval authority is explicit. Business Owner also has reporting oversight, including monitoring relevant request progress/status (D014).
+- Respondent is task-specific participation. Users can read historical assigned processes, including closed ones; edit permissions remain limited to assigned open response steps.
+- Global User maintains one assigned entity across all its functions. Super User maintains the whole application across entities/functions. These are explicit exceptions to ordinary pair-scoped access, not a change to record entity/function integrity.
+- Permanent roles: Viewer, Asset Operator, Inventory Operator, Asset Manager, Business Owner, Global User and Super User. Exact action permissions and privileged-role assignment authority remain open.
+
+## Round 4 — proposed decisions awaiting owner response
+
+1. Asset Operator handles registration/movement; Asset Manager additionally runs stock verification and accounting reconciliation and performs direct disposal in authorized scope.
+2. Business Owner reporting covers requests involving their business-owned assets, including requests initiated by others. Only relevant records/details are exposed within authorized scope; report exports and edit/follow-up actions are separate decisions.
+3. Global User can administer ordinary role assignments within its entity; granting/revoking Global User or Super User is reserved for Super User. This is a proposal, not an approved restriction.
 
 ## Later decisions and evidence
 

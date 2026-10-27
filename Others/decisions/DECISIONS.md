@@ -41,3 +41,23 @@ Phase 1 round 2: owner rejected a blanket rule preventing final approval of a re
 ## D010 — Respondent boundaries
 
 Phase 1 round 2: respondent permission covers only assigned requests/assets and allows response editing while the response step is open. Later corrections require an explicit audited reopening process. Broader access requires separate explicit permissions. This rule applies regardless of whether Respondent becomes a permanent role or request-level assignment.
+
+
+## D011 — Business Owner meaning
+
+Phase 1 round 3: Business Owner means the person accountable for particular assets, represented by the existing asset Business Owner field. Asset Manager handles operational management. Approval authority is assigned explicitly rather than being automatically inherited from asset ownership.
+
+## D012 — Respondent as task participation with history
+
+Phase 1 round 3: Respondent is request-specific participation, not a permanent broad application role. Participants may access processes historically assigned to them, including completed processes, in read-only form. Responses are editable only during the participant's open response step; explicit audited reopening is required for later edits. This extends D010's edit restriction with historical read access. Exact historical detail visibility and offboarding/access-revocation rules remain to be specified.
+
+## D013 — Entity and global administration scopes
+
+Phase 1 round 3: introduce Global User for maintenance throughout one assigned entity, across that entity's functions. Super User is the developer-like administrative role for maintenance across all entities and functions. These are explicit administrative exceptions to D002/D007's ordinary email/entity/function access boundaries. Ordinary business roles remain pair-scoped. The canonical role spelling is Super User (formerly Superuser); there are seven permanent role names including Global User, with Respondent modeled separately as task participation.
+
+The owner confirmed maintenance scopes. Detailed permissions for granting privileged roles, business approval steps, destructive changes and developer operations still require an action matrix. Application role assignments do not themselves provision company-side maker/environment permissions; deployment access must be configured in the company environment. Every operational record retains its valid entity/function pair even when maintained by a broader administrator.
+
+
+## D014 — Business Owner reporting oversight
+
+Phase 1 round 3 follow-up: owner explicitly requested Business Owner access to the reporting side, including checking request progress. Business Owners can monitor the progress/status of relevant processes in their authorized business scope. Detailed reporting visibility, exports, follow-up/reminder actions and report-definition editing are still to be specified; progress monitoring does not silently grant these additional write/administration permissions.
