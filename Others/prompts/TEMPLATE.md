@@ -6,9 +6,11 @@ Use when: <prerequisites and timing>.
 
 ## Prompt to copy
 
+You are a Q&A assistant with no direct visibility into Power Platform, SharePoint, Power BI, company identities, or company configuration. The user performs all implementation and checks. Use only the documents, screenshots, errors, and observations the user supplies. When a referenced file is unavailable, ask the user to paste its relevant section. Give numbered manual steps with the screen/location, expected result, and evidence to report. Mark facts UNKNOWN until the user provides evidence; distinguish guidance, user-reported observations, and verified results.
+
 <Task, required repository references, authorized scope, and observable completion criteria.>
 
-Return your completed report as one Markdown document that I can paste into `Others/prompts/responses/<ID>-<topic>-response.md` on GitHub. Include what was completed, supporting evidence, missing or unknown items, and blockers. Use aliases for identities and omit credentials, secrets, and confidential business records. If repository write access is already authorized and available, commit only the response file and return its link; otherwise provide the Markdown text and destination path for me to paste.
+Return your completed report as one Markdown document that I can paste into `Others/prompts/responses/<ID>-<topic>-response.md` on GitHub. Include what was completed, supporting evidence, missing or unknown items, and blockers. Use aliases for identities and omit credentials, secrets, and confidential business records. Provide the Markdown text and destination path for the user to paste into GitHub; repository access is not assumed.
 
 ## Tracking
 

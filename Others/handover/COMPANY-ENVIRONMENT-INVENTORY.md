@@ -1,4 +1,6 @@
-# Company Claude task — read-only environment inventory
+# Manual task with Claude Q&A — read-only environment inventory
+
+Operating model: the user performs every company-system check. Claude explains the steps and summarizes only evidence supplied by the user. Claude has no company-system visibility; repository access is not assumed. Request relevant document excerpts when needed.
 
 Purpose: supply facts needed for Phase 1 requirements and Phase 2 architecture. Work within the operator's company authorization and tools. This task makes no app/list/flow/configuration changes and executes no business workflows. If your tools cannot inspect a fact, give the operator precise read-only steps and mark it UNKNOWN until evidence is returned.
 
