@@ -189,3 +189,16 @@ Owner direction, 2026-10-27: approvals will use Microsoft Approvals. Design the 
 Existing rules continue: outgoing and receiving Business Owner capacities for asset scope/owner changes; one explicit response when the same authorized person holds both capacities; rejection leaves the asset unchanged; stock result Business Owner sign-off; configured Accounting and Governance reconciliation sign-off; authorized explicit correction application afterward. LAM retains workflow progress, assigned-task context and historical evidence. Microsoft service access does not replace LAM scope authorization.
 
 See `../architecture/MICROSOFT-APPROVALS-RESEARCH.md` for verified platform facts and `../architecture/APPROVALS-INTEGRATION-DESIGN.md` for the proposed integration and open implementation checks. No company approval flow was deployed or tested by this decision.
+
+
+## D043 — Asset identifiers and accounting-code registration
+
+Owner confirmations, 2026-10-27: LAM generates Asset Tags; their format/numbering scheme is explicitly deferred. The proposed LAM-000001 format is not approved. Accounting Asset Code is unique across the entire company and available at registration. Duplicate serial numbers are allowed. Accounting-code requiredness is a business validation rule for registration; do not permit duplicates or overwrite existing assets through registration. Exact canonicalization, case/whitespace handling, inactive-record reuse and safe tag allocation are forthcoming data-contract details, not settled here.
+
+## D044 — Required fields controlled by the application
+
+Owner confirmations, 2026-10-27: an Available asset can have no assigned custodian; In Use requires a custodian. Purchase date and purchase cost are mandatory business inputs. For all mandatory business fields, enforce requiredness through the Power Apps experience rather than SharePoint's Required column setting. Configure editable business columns as optional in SharePoint, including Title where configurable. Platform-managed fields and intrinsic storage types are not redefined by this preference.
+
+This supersedes the Required=Yes settings in the first V2 foundation proposal. Keep business-required metadata separate from storage-required metadata. Uniqueness, types, indexes, access control and parent relationships remain separate integrity requirements. Applying the same business validations at flow/import mutation boundaries is an engineering recommendation to avoid alternate-entry inconsistency, not a new company approval policy. Direct SharePoint maintenance can produce incomplete rows; business operations must recognize them and guide correction rather than silently treat them as valid. Blank account codes do not satisfy registration even if storage permits them.
+
+Lifecycle status labels/transitions remain under discussion. Available/In Use already distinguish stock-verification scope; this decision does not approve additional states or a maintenance module.

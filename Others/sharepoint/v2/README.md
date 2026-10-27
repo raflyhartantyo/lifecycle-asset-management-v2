@@ -9,3 +9,7 @@ Scope: SITE-A; dedicated empty V2 lists named LAM2_Organizations and LAM2_Functi
 Only approved site maintainers should write these reference lists during setup. Operational role assignments, task history, exports and data access will be implemented separately. Confirm permissions on the completed SITE-A before adding records or connecting the app. Creation of these lists alone does not enforce entity/function isolation.
 
 Company observations: [ENVIRONMENT-FACTS.md](../../handover/ENVIRONMENT-FACTS.md).
+
+## Application-controlled mandatory fields
+
+D044 supersedes the original Required=Yes storage flags. FOUNDATION-COLUMNS.csv now separates SharePointRequired from BusinessRequired. Configure editable business fields as optional in SharePoint; the later application requires valid names/codes/parent organization. Keep the unique constraints, lookup relationship and indexes. Empty list creation does not implement any application validation; keep these lists empty until master-data entry is delivered.
