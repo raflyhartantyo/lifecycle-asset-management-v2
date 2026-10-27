@@ -10,3 +10,5 @@
 
 - `requirements/`: consolidated Phase 1 review, decisions-derived permissions/processes, acceptance, assumptions and backlog.
 - `testing/`: individual UAT setup, approved persona bindings, logical fixtures, concrete cases/results/defect templates and unit mapping.
+
+- `prompts/`: ready-to-copy company Claude prompts with explicit handover status.
