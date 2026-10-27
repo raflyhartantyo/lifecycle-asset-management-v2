@@ -100,3 +100,16 @@ Phase 1 round 6: Asset Manager, Global User and Super User may reassign responde
 ## D023 — Historical preservation and routine record removal
 
 Phase 1 round 6: normal application actions archive, retire or cancel records with retained history rather than permanently deleting historical/audit evidence. Permanent removal of historical/audit records is a separately controlled maintenance operation governed by company retention requirements. No retention duration is assumed. Direct disposal removes the asset from the active register while preserving disposal/history records.
+
+
+## D024 — Bulk registration with valid-row confirmation
+
+Phase 1 round 7: validate the spreadsheet first and preview valid/invalid rows. The operator may confirm importing only valid rows; invalid rows remain unimported with a downloadable error report. Preserve row-level outcomes. Detailed mandatory fields, duplicate rules, retry safety and partial-write recovery remain to be designed and verified.
+
+## D025 — Cross-function/entity transfer approvals
+
+Phase 1 round 7: support transfers between functions and entities with approval from both the outgoing and receiving Business Owners. Preserve asset identity and traceable history and validate source/destination authority. The confirmed business approval requirement means the transfer is applied only after both required approvals; request status and final transfer completion are separate. Scope transfer does not grant unrelated destination-data access. Approval routing order, same-person handling, rejection/resubmission and within-scope Business Owner changes remain to be settled.
+
+## D026 — BAU asset transactions have no mandatory remarks/reason
+
+Phase 1 round 7: routine asset transactions are business-as-usual and require no remarks or reason entry. Do not introduce an extra mandatory justification step for ordinary asset registration/movement/status/ownership transactions. Capture actor, time and previous/new values automatically for history. This supersedes the proposed mandatory movement-reason requirement. D021/D022's required reasons for exceptional reopening and respondent reassignment remain unchanged.

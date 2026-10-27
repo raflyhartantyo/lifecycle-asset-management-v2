@@ -70,9 +70,17 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D022: those same roles may reassign respondent tasks in scope with a reason, audit and notifications. Previous respondents retain read-only historical visibility; replacements receive explicit task access.
 - D023: normal app actions archive/retire/cancel while preserving history. Permanent historical/audit deletion is separately controlled under company retention requirements. Direct disposal preserves an inactive/history record while removing the active record.
 
-## Round 7 — asset process decisions awaiting owner response
+## Round 7 — owner responses recorded
 
-See BUSINESS-PROCESSES.md. Proposed decisions: bulk registration previews all row-level validation results and imports only valid rows explicitly confirmed by the operator; cross-function/entity transfers are supported with explicit source/destination authorization and retained history; ownership/location/status changes require a recorded movement reason. These are proposals, not implemented behavior.
+- D024: validate and preview spreadsheet rows; import only valid rows the operator confirms. Invalid rows remain unimported with a downloadable error report.
+- D025: cross-function/entity transfers require approval from both outgoing and receiving Business Owners, retaining identity/history and source/destination authorization.
+- D026: no mandatory remarks/reason entry for BAU asset transactions. Record change history automatically. Existing exceptional reopening/reassignment reason requirements remain.
+
+## Round 8 — transfer policy proposals awaiting owner response
+
+1. If the outgoing and receiving Business Owner are the same person, one explicit approval can satisfy both capacities, with both capacities recorded.
+2. Either Business Owner rejecting the request ends that transfer request without changing the asset. A corrected request can be submitted with the earlier history retained.
+3. Changing Business Owner within the same entity/function also requires outgoing/receiving Business Owner approval; location, asset-custodian and status changes that do not change entity/function/Business Owner remain BAU subject to ordinary permissions.
 
 ## Company-side fact collection task
 

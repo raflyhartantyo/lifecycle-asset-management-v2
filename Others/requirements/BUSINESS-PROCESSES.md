@@ -1,6 +1,6 @@
 # Business process requirements — working draft
 
-Status: asset lifecycle discovery, owner proposals pending. Confirmed role/scope requirements are in PERMISSION-MATRIX.md and ../decisions/DECISIONS.md. No new app/flow behavior is implemented by this document.
+Status: registration/transfer/reason policies partly confirmed; further process decisions remain open. Confirmed role/scope requirements are in PERMISSION-MATRIX.md and ../decisions/DECISIONS.md. No new app/flow behavior is implemented by this document.
 
 ## Process coverage
 
@@ -19,13 +19,28 @@ Separate disposal request/approval remains retired. Reopening/reassignment/histo
 - Current implementation contains individual registration, a bulk parsing flow, movement form handling and direct disposal archive/audit/history/active-record removal. Static findings are documented in ../architecture/IMPLEMENTATION-FINDINGS.md.
 - Preserve traceability of existing asset identities across migration and subsequent changes. Validate current identity quality rather than silently rewriting historical references. Whether accounting codes or serials may be duplicated is a business/data-contract question; neither is assumed to be the system key.
 
-## Round 7 proposals — awaiting owner response
+## Round 7 — confirmed asset process rules
 
-| ID | Decision | Proposed behavior | Details deferred until the decision is settled |
-|---|---|---|---|
-| P7-01 | Bulk-registration error handling | Validate all rows first, show row-level errors and allow the operator to confirm importing only valid rows; invalid rows remain unimported with a downloadable error report | Mandatory fields, duplicate rules, import identifiers, retry/concurrency behavior and partial-write recovery |
-| P7-02 | Transfers across functions/entities | Support explicit transfers with source/destination authorization, traceable scope changes and retained asset history | Whether transfer is immediate or requires acceptance/approval; accounting-code/ownership consequences; history/report visibility after transfer |
-| P7-03 | Movement reason | Ownership, location and status changes require a recorded reason, retained with actor/time and old/new values | Reason categories, mandatory-field changes by asset type, correction versus movement distinction |
+| Decision | Confirmed behavior | Remaining design detail |
+|---|---|---|
+| D024 — bulk registration | Validate every row, preview results and let the operator confirm importing only valid rows. Keep invalid rows unimported with a downloadable error report. | Required fields, duplicate matching, import identifiers, row outcomes and safe retries after partial failure |
+| D025 — cross-function/entity transfers | Both outgoing and receiving Business Owners approve; preserve asset identity/history and validate source/destination authority. Apply the transfer only after both approvals. | Same-person handling, route order, rejection/resubmission, field locking/versioning and accounting consequences |
+| D026 — routine transactions | No mandatory remarks/reason for BAU asset transactions; actor/time/old-new values are captured automatically. | Field-specific validation and automated event formats; reasons remain required for reopening/reassignment exceptions |
+
+## Round 8 — proposed transfer policies, not approved
+
+| ID | Decision | Recommendation |
+|---|---|---|
+| P8-01 | Same person is both Business Owners | One explicit approval may satisfy both capacities; record both source and destination capacities, rather than silently auto-approving. No blanket self-approval ban applies (D009). |
+| P8-02 | Either Business Owner rejects | End the transfer request as rejected and leave the asset unchanged. Permit a corrected new request with prior history retained. |
+| P8-03 | Change Business Owner without changing entity/function | Require outgoing/receiving Business Owner approval too. Changes to location, asset custodian or status that change none of entity/function/Business Owner remain BAU with ordinary permissions. |
+
+## Requirement-level acceptance examples for confirmed rules
+
+- A spreadsheet containing valid and invalid rows is fully validated before confirmation. Only explicitly confirmed valid rows are attempted; invalid rows appear in an error report and never silently become assets.
+- A cross-function/entity transfer is not applied with only one required approval or before both eligible Business Owners approve. Unauthorized requests cannot bypass this through a direct flow call.
+- Successful transfer preserves the asset identity and source/destination history. Request approval is not reported as completed asset movement if applying the change fails.
+- BAU asset changes save without entering remarks/reason. Automated change history still records actor/time/old-new values. Reopening/reassignment without the required exceptional reason remains rejected.
 
 ## Asset registration acceptance criteria still to define
 
@@ -33,4 +48,4 @@ Required fields by asset type, accounting-code uniqueness scope, serial-number a
 
 ## Remaining process work
 
-Resolve selected asset proposals, then define direct-disposal fields and confirmation, quantity inventory transfer rules, stock-verification participants/statuses/deadlines, reconciliation matching/discrepancies/approvals and reporting scope. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+Resolve transfer policy and registration validation details, then define direct-disposal fields and confirmation, quantity inventory transfer rules, stock-verification participants/statuses/deadlines, reconciliation matching/discrepancies/approvals and reporting scope. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.

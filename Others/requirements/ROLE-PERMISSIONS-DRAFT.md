@@ -37,6 +37,10 @@ D018 confirms Viewer read-only access and Inventory Operator registration/transf
 
 D021 permits Asset Manager/Global User/Super User to reopen closed processes in scope with required reason/audit, preserving earlier answers/decisions. Business Owner can request reopening. D022 permits those same roles to reassign respondent tasks with a reason, audit and notifications; previous assignees retain read-only assigned history. D023 preserves historical/audit records through routine archive/retire/cancel actions; permanent removal is a separately controlled maintenance operation under company retention requirements.
 
+## Confirmed asset process overlays
+
+D025 assigns cross-function/entity transfer approvals to outgoing and receiving Business Owners. Transfer execution waits for both approvals and remains subject to source/destination authority. D026 removes mandatory BAU transaction remarks/reasons while retaining automatic history and exceptional reopening/reassignment reasons. Detailed same-person and within-scope ownership-transfer policies remain proposed in BUSINESS-PROCESSES.md.
+
 ## Current planning status
 
 The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Next owner round addresses asset business processes in BUSINESS-PROCESSES.md.
