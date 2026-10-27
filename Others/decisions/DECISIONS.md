@@ -273,3 +273,10 @@ Accounting categories remain the fixed KO/NK/PL classification from D047; this d
 Owner agreed, 2026-10-27: Global User maintains Asset Types within its assigned entity; Super User maintains Asset Types across entities. Other roles select existing types during registration and do not independently grant type-catalogue maintenance. Role combinations retain their explicit authorized privileges; a pair-scoped Asset Manager role does not implicitly grant entity-wide reference maintenance.
 
 Maintain the entity parent and valid Category lookup on every type. This decision settles the type-maintainer question in D055, not the authority to change Accounting's fixed categories or global shared buildings. Deactivation/reclassification safeguards and destination-type mapping for cross-entity transfers remain design details. Enforce maintenance scope in the backend as well as in the UI.
+
+
+## D057 — Cross-entity destination Asset Type mapping
+
+Owner agreed, 2026-10-27: a cross-entity asset transfer specifies a valid receiving-entity Asset Type before requesting approval. The destination type must use the same Accounting Category (KO/NK/PL) as the source. If no suitable type exists, the receiving entity's Global User creates it first; Super User's cross-entity catalogue maintenance authority under D056 remains available.
+
+The transfer preserves asset identity and the company-wide Accounting Asset Code, with prior/new type references in history. Both required Business Owner capacities approve under D025/D027–D029 and D042; mapping does not bypass those decisions. Rejection leaves the asset unchanged. Selecting receiving-catalogue reference data does not grant access to unrelated destination assets or maintenance privileges. Revalidate destination type/entity/category and reviewed asset/request versions before applying the approved transfer.
