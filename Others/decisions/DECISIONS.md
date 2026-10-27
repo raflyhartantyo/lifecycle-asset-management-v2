@@ -154,3 +154,16 @@ Phase 1 round 10: respondents record asset presence, condition and ownership/loc
 ## D035 — Stock verification sign-off and exception-aware completion
 
 Phase 1 round 10: relevant Business Owners sign off their asset results. Every asset has either a verified outcome or an explicitly recorded unresolved exception. A cycle may close with acknowledged exceptions; unanswered or unresolved assets remain visibly unverified and never count as successfully verified. Preserve prior respondent/history/reminder/reopening rules. Exact states and exception implementation are specified during design.
+
+
+## D036 — Reconciliation comparison preview and provenance
+
+Phase 1 round 11: an uploaded accounting ledger produces a review of matched assets, records missing on either side, value/quantity differences and disposed-asset exceptions before register changes. Retain accounting period, source-file reference and reconciliation-run history. Exact matching/grouping and data-field definitions are validated against the baseline and company-side data contract during architecture/design.
+
+## D037 — Accounting and Governance reconciliation sign-off
+
+Phase 1 round 11: final reconciliation sign-off goes to configured Accounting and Governance approvers for the relevant entity/function through explicit workflow assignments. These responsibilities do not require additional permanent application roles. Assigned-task visibility and D009's absence of a blanket self-approval ban remain applicable. Configuration, routing order and substitutions remain design details for review.
+
+## D038 — Explicit application of reconciliation corrections
+
+Phase 1 round 11: after sign-off, an authorized Asset Manager explicitly reviews and applies proposed register corrections with a change preview and audit history. Upload/comparison alone does not automatically create/dispose assets or alter ownership/scope. Existing registration, disposal, transfer and field-edit authority requirements still apply. Approval and successful correction application are separate outcomes; preserve traceability of accepted versus actually applied changes.

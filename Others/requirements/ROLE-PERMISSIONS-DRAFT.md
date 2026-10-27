@@ -43,9 +43,13 @@ D033–D035 derive stock-verification scope from the access matrix/session, assi
 
 D025 assigns cross-function/entity transfer approvals to outgoing and receiving Business Owners. Transfer execution waits for both approvals and remains subject to source/destination authority. D026 removes mandatory BAU transaction remarks/reasons while retaining automatic history and exceptional reopening/reassignment reasons. D027–D029 confirm same-person approval in both recorded capacities, rejected transfers leaving assets unchanged, and dual-capacity approval for Business Owner changes within the same entity/function. See BUSINESS-PROCESSES.md for the confirmed overview.
 
+## Confirmed reconciliation responsibilities
+
+D036–D038 require preview/provenance, explicit scoped Accounting/Governance workflow sign-off and explicit authorized Asset Manager correction application with history. These approver responsibilities are task assignments, not additional permanent role names. Existing action permissions and transfer approvals continue to apply.
+
 ## Current planning status
 
-The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Stock-verification scope/discrepancy/sign-off rules are confirmed in D033–D035. Next focused rounds cover accounting reconciliation and launch acceptance; see PHASE-1-REVIEW-PLAN.md.
+The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Stock-verification scope/discrepancy/sign-off rules are confirmed in D033–D035. Accounting/Governance reconciliation sign-off and explicit Asset Manager correction application are confirmed in D036–D038. Only launch acceptance/device/ownership questions remain in the planned interview; see PHASE-1-REVIEW-PLAN.md.
 
 ## Later decisions
 

@@ -94,15 +94,21 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D034: respondents provide presence/condition/discrepancy evidence; Asset Manager reviews differences and authorized processes apply master-record corrections.
 - D035: Business Owners sign off relevant results. A cycle may close with explicitly acknowledged unresolved exceptions, which remain visibly unverified.
 
-## Round 11 — reconciliation proposals awaiting owner response
+## Round 11 — reconciliation owner responses recorded
 
-1. Upload the accounting ledger within authorized scope and preview matched assets, missing-on-either-side records, value/quantity differences and disposed-asset exceptions before any register update.
-2. Route final reconciliation sign-off to configured Accounting and Governance approvers for the relevant entity/function, as explicit workflow assignments. Permanent application roles need not be expanded solely to name these approver responsibilities.
-3. After sign-off, an authorized Asset Manager explicitly reviews/applies any proposed register corrections with history. Upload/comparison alone does not automatically create/dispose assets or rewrite ownership/scope.
+- D036: comparison preview includes matches, missing records on either side, value/quantity differences and disposal exceptions; retain accounting period/file/run history.
+- D037: configured Accounting and Governance approvers sign off in entity/function scope through explicit workflow assignments; no new permanent role names are required.
+- D038: after sign-off, authorized Asset Manager explicitly reviews/applies proposed corrections with preview/audit. Uploading/comparing alone does not create/dispose assets or change ownership/scope; existing action approvals remain applicable.
+
+## Round 12 — final planned acceptance and rollout questions
+
+1. Proposed device priorities: full operational/administration experience on desktop/laptop; responsive tablet support; mobile-friendly assigned responses, approvals and progress viewing.
+2. Proposed acceptance gate: retained workflows pass representative UAT; scope isolation, audit/history and assigned-data exports are verified; Zurich branding/accessibility requirements pass; no unresolved critical/high defects. See ACCEPTANCE-CRITERIA.md for draft evidence-based checks. Performance targets are labeled proposals/evidence dependencies rather than invented measured outcomes.
+3. Confirm final business acceptance coordinator/representatives, post-launch functional/technical support ownership and any fixed go-live deadline. Role labels are sufficient initially; no personal details are needed in repository planning documents.
 
 ## Guided review remaining
 
-Two planned short rounds remain: accounting reconciliation, then acceptance/rollout constraints. Consolidate routine implementation details and traceable baseline rules into a review draft. Company-side facts may expose material blockers; unanswered facts remain explicit dependencies, not reasons to restart field-by-field interviews.
+One planned short round remains: acceptance/rollout constraints. Then prepare one consolidated requirements/process/permission/acceptance/backlog package for owner review. Routine implementation details use engineering judgment with labeled assumptions. Company-side facts may expose material blockers; they remain explicit dependencies.
 
 ## Company-side fact collection task
 

@@ -60,6 +60,12 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 - D034: Respondent supplies verification evidence; Asset Manager reviews discrepancies. Any master-record change still needs its authorized business action and applicable transfer approval.
 - D035: relevant Business Owners sign off their asset results; acknowledged unresolved exceptions may remain on a closed cycle and are never reported as successfully verified.
 
+## Reconciliation overlays
+
+- D036: ledger comparison is preview/reporting work and does not itself authorize master-data mutation.
+- D037: Accounting and Governance sign-off is explicit scoped workflow participation; it does not introduce a permanent application role or unrestricted data access.
+- D038: authorized Asset Manager explicitly previews/applies eligible corrections after required sign-off. Other action rights and approvals remain in force; outcomes are audited.
+
 ## Acceptance examples for confirmed decisions
 
 - Asset Operator can register/move an in-scope asset; direct disposal through that role alone is rejected, including calls bypassing the UI.

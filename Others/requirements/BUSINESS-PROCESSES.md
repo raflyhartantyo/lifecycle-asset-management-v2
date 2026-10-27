@@ -73,15 +73,28 @@ The dual Business Owner approval rules D025/D027/D028/D029 govern individually t
 
 Respondent task/history/export access, reminder authority, audited reopening and participant reassignment continue to apply. Available and In Use are asset-set filters; a unified interface does not imply identical verification evidence or matching rules. Exact status vocabulary remains a design contract.
 
-## Accounting reconciliation — round 11 proposals, not approved
+## Accounting reconciliation — round 11 confirmed
 
-The source contains accounting and IT Governance summaries and an approval-request flow; these are evidence for the target review, not confirmation of live configuration or target approver assignments.
+The source contains accounting and IT Governance summaries and an approval-request flow; actual target approvers/configuration must be verified in the company environment.
 
-| ID | Decision | Proposal |
+| Decision | Confirmed behavior | Remaining design/review detail |
 |---|---|---|
-| P11-01 | Comparison results | Compare uploaded ledger against authorized operational data and preview matched, missing-on-either-side, value/quantity differences and disposed-asset exceptions before any register update. Retain period/file/run provenance. |
-| P11-02 | Sign-off responsibilities | Use configured Accounting and Governance approvers for the relevant entity/function, assigned to explicit workflow steps. Preserve D009 and assigned-task visibility; exact routing/configuration is designed after acceptance. |
-| P11-03 | Applying corrections | After sign-off, an authorized Asset Manager explicitly reviews/applies proposed master-register corrections with history. Comparison does not automatically create/dispose assets or rewrite ownership/scope; transfer/disposal/registration authority and approvals remain applicable. |
+| D036 | Review matches, records missing on either side, value/quantity differences and disposal exceptions before register changes; retain period/file/run provenance. | Baseline matching/grouping validation, field semantics and input schema. |
+| D037 | Configured Accounting and Governance approvers sign off for the relevant entity/function through explicit task assignments, without adding permanent application roles. | Routing order, configuration source, substitutions and exact task-level access. |
+| D038 | Authorized Asset Manager previews and explicitly applies proposed corrections after sign-off, with audit. Comparison does not automatically create/dispose assets or alter ownership/scope. | Correction eligibility, affected fields, partial failures and retry/concurrency behavior; existing action/approval rules remain applicable. |
+
+### Reconciliation overview
+
+```mermaid
+flowchart LR
+    A[Upload ledger within authorized scope] --> B[Validate and compare; retain file, period and run]
+    B --> C[Review matches, differences and exceptions]
+    C --> D[Configured Accounting and Governance sign-off]
+    D --> E[Asset Manager previews authorized corrections]
+    E --> F[Explicitly apply corrections; record outcomes and history]
+```
+
+The diagram shows the successful business path; it does not prescribe sequential approval order or omit the need for rejected/failed/cancelled states in implementation. Successful approval does not imply every proposed correction has been applied. Registration/disposal/transfer rules still govern those actions.
 
 ## Requirement-level acceptance examples for confirmed rules
 
@@ -102,10 +115,18 @@ The source contains accounting and IT Governance summaries and an approval-reque
 - Respondent discrepancies are retained for review and do not silently alter the master owner/location/scope.
 - Closed cycles with acknowledged exceptions still report missing/unresolved assets as unverified; completeness and verification success are distinct measures.
 
+## Reconciliation acceptance examples
+
+- Upload/comparison leaves operational master records unchanged and preserves the source period/file/run reference.
+- Configured eligible Accounting/Governance participants can decide assigned steps; unrelated users cannot access or approve the run.
+- No correction is applied before required sign-off and explicit authorized Asset Manager action.
+- A correction changing Business Owner or scope still requires the applicable transfer approval; reconciliation sign-off does not bypass it.
+- Applied/rejected/failed correction outcomes remain distinguishable with audit/history and recovery evidence.
+
 ## Remaining registration design detail
 
 Required fields by asset type, accounting-code uniqueness scope, serial-number applicability, initial statuses, owner/location defaults, record validation, exact duplicate matching and safe bulk retry behavior. Business choices D024/D030 are already confirmed. Existing YAML provides evidence for review but does not automatically approve every current rule as the V2 requirement.
 
 ## Remaining process work
 
-Prioritize accounting reconciliation discrepancies/approvals/correction behavior and acceptance/rollout constraints. Stock-verification rules D033–D035 are confirmed; remaining evidence/prefill/configuration details are reviewed as labeled design assumptions. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+The main accounting reconciliation behavior is confirmed in D036–D038. Finish acceptance/rollout constraints, then consolidate field/routing details and technical assumptions for review. Stock-verification rules D033–D035 are confirmed; remaining evidence/prefill/configuration details are reviewed as labeled design assumptions. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
