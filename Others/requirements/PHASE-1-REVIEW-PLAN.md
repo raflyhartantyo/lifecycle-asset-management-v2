@@ -1,6 +1,6 @@
 # Phase 1 — remaining guided review
 
-Current progress: round 11 completed; one planned short business-decision round remains (12), followed by one consolidated requirements review. Original planning estimate after round 9 was three remaining rounds. Additional questioning should be limited to material new blockers, not routine implementation details. This plan is an estimate, not an owner-approved requirement or fixed deadline.
+Current progress: all twelve planned business-decision rounds are complete. The consolidated package is PHASE-1-REVIEW-PACKAGE.md. Ready for owner review; company-side environment facts, runtime tests and any formal company promotion approval remain separate prerequisites. Further interview rounds are not planned for routine details; ask only for material unresolved business blockers.
 
 ## Covered in rounds 1–9
 
@@ -12,7 +12,7 @@ Production replacement scope and pilot; ordinary/entity/application-wide roles; 
 |---|---|---|
 | 10 — complete | Stock verification | D033–D035 confirm access-matrix/session scope, Available/In Use filtering, configurable default due date, discrepancy review and Business Owner sign-off with visible unresolved exceptions. |
 | 11 — complete | Accounting reconciliation | D036–D038 confirm preview/provenance, configured Accounting/Governance sign-off and explicit Asset Manager correction application with existing action rules preserved. |
-| 12 | Acceptance and rollout constraints | Success measures, priority user/device needs, business acceptance/support owners, any deadline and rollout constraints. Use returned company inventory for technical facts rather than asking the owner to guess. |
+| 12 — complete | Acceptance and individual testing | D039–D041 confirm device priorities, acceptance gates, developer-authored cases and the project owner as sole human UAT tester. Support ownership and any fixed go-live date remain unspecified. |
 
 ## Reduce interview overhead
 

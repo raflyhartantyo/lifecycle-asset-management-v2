@@ -49,7 +49,7 @@ D036–D038 require preview/provenance, explicit scoped Accounting/Governance wo
 
 ## Current planning status
 
-The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Stock-verification scope/discrepancy/sign-off rules are confirmed in D033–D035. Accounting/Governance reconciliation sign-off and explicit Asset Manager correction application are confirmed in D036–D038. Only launch acceptance/device/ownership questions remain in the planned interview; see PHASE-1-REVIEW-PLAN.md.
+The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Stock-verification scope/discrepancy/sign-off rules are confirmed in D033–D035. Accounting/Governance reconciliation sign-off and explicit Asset Manager correction application are confirmed in D036–D038. D039–D041 confirm device/acceptance priorities and sole-human-tester ownership. All planned interview rounds are complete; see PHASE-1-REVIEW-PACKAGE.md and ../testing/SOLO-UAT-RUNBOOK.md.
 
 ## Later decisions
 

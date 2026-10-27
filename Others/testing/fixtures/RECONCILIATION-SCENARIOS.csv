@@ -1,0 +1,5 @@
+Row_Key,Accounting_Asset_Code,Ledger_Value,Scenario,Expected_Comparison
+L1,UAT-ACC-A001,700,matches fixture,Matched under confirmed mapping
+L2,UAT-ACC-A002,900,value difference,100 difference versus seeded 1000
+L3,UAT-ACC-UNKNOWN,200,ledger only,Missing from operational register
+L4,UAT-ACC-A008,100,disposed asset in ledger,Disposed-asset exception; no auto-reactivation

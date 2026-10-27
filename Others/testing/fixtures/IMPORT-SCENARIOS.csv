@@ -1,0 +1,5 @@
+Row_Key,Scenario,Accounting_Asset_Code,Asset_Name,Serial_Number,Expected_Logical_Result
+R1,valid new,UAT-NEW-001,Synthetic new asset,UAT-NEW-SERIAL-001,Eligible for confirmed create
+R2,missing required name,UAT-NEW-002,,UAT-NEW-SERIAL-002,Invalid; report; no create
+R3,identified duplicate seeded asset,UAT-ACC-A001,Overwrite attempt,UAT-SERIAL-A001,Report duplicate; no overwrite
+R4,valid but not selected,UAT-NEW-004,Synthetic unselected asset,UAT-NEW-SERIAL-004,No create unless selected/confirmed

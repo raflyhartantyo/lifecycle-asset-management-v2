@@ -100,15 +100,15 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D037: configured Accounting and Governance approvers sign off in entity/function scope through explicit workflow assignments; no new permanent role names are required.
 - D038: after sign-off, authorized Asset Manager explicitly reviews/applies proposed corrections with preview/audit. Uploading/comparing alone does not create/dispose assets or change ownership/scope; existing action approvals remain applicable.
 
-## Round 12 — final planned acceptance and rollout questions
+## Round 12 — owner responses recorded
 
-1. Proposed device priorities: full operational/administration experience on desktop/laptop; responsive tablet support; mobile-friendly assigned responses, approvals and progress viewing.
-2. Proposed acceptance gate: retained workflows pass representative UAT; scope isolation, audit/history and assigned-data exports are verified; Zurich branding/accessibility requirements pass; no unresolved critical/high defects. See ACCEPTANCE-CRITERIA.md for draft evidence-based checks. Performance targets are labeled proposals/evidence dependencies rather than invented measured outcomes.
-3. Confirm final business acceptance coordinator/representatives, post-launch functional/technical support ownership and any fixed go-live deadline. Role labels are sufficient initially; no personal details are needed in repository planning documents.
+- D039: desktop/laptop primary; responsive tablet support; mobile-friendly responses, approvals and progress viewing.
+- D040: acceptance gate confirmed; main developer supplies concrete test cases/setup/expected results, and company-side execution supplies evidence.
+- D041: project owner is the sole human UAT tester. Provide sequential individual-testing sessions using approved identities/personas; company Claude can assist setup. Post-launch support ownership and fixed go-live date remain unspecified, not assumed.
 
-## Guided review remaining
+## Guided interview status
 
-One planned short round remains: acceptance/rollout constraints. Then prepare one consolidated requirements/process/permission/acceptance/backlog package for owner review. Routine implementation details use engineering judgment with labeled assumptions. Company-side facts may expose material blockers; they remain explicit dependencies.
+All twelve planned business-decision rounds are complete. The consolidated review package is PHASE-1-REVIEW-PACKAGE.md, with process maps, permissions, acceptance criteria, assumptions/dependencies and a prioritized backlog. This is ready for owner review, not a claim of company runtime/deployment readiness or formal requirements sign-off. Routine engineering details are recorded as labeled assumptions; material company facts remain explicit dependencies.
 
 ## Company-side fact collection task
 
@@ -116,9 +116,9 @@ Give company Claude `../handover/COMPANY-ENVIRONMENT-INVENTORY.md`. This read-on
 
 ## Later decisions and evidence
 
-- Business owner, operational users, approvers, support owner and acceptance authority.
-- Measurable success criteria, MVP/release boundaries, priorities and any external deadline.
-- Role/action matrix including read/edit/approve/export/admin rights and exceptional cases.
+- Post-launch support/promotion authority and company-specific operational ownership; UAT execution is assigned to the project owner (D041).
+- Company-side evidence for acceptance targets, numerical performance benchmarks and any fixed go-live deadline; release capability scope is already confirmed.
+- Process-specific permission/field/routing details in the assumptions register; the confirmed role/action matrix remains authoritative.
 - Expected devices, user volumes, data growth, concurrent usage and performance targets.
 - Detailed process rules, canonical statuses and lifecycle state transitions.
 - Migration retention, historical data reconciliation and cutover expectations.

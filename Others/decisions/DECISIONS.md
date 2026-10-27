@@ -167,3 +167,16 @@ Phase 1 round 11: final reconciliation sign-off goes to configured Accounting an
 ## D038 — Explicit application of reconciliation corrections
 
 Phase 1 round 11: after sign-off, an authorized Asset Manager explicitly reviews and applies proposed register corrections with a change preview and audit history. Upload/comparison alone does not automatically create/dispose assets or alter ownership/scope. Existing registration, disposal, transfer and field-edit authority requirements still apply. Approval and successful correction application are separate outcomes; preserve traceability of accepted versus actually applied changes.
+
+
+## D039 — Supported device priorities
+
+Phase 1 round 12: full operational/administration experience is primarily desktop/laptop, with responsive tablet support and mobile-friendly assigned responses, approvals and progress viewing. Validate exact supported browsers/device configurations in the company environment rather than claiming universal compatibility.
+
+## D040 — Acceptance gate and developer-authored test cases
+
+Phase 1 round 12: retained workflows must pass representative UAT, access isolation/audit/history/export permissions must be verified, Zurich brand/accessibility checks must pass and no unresolved critical/high defects remain. The main developer supplies the actual test cases, expected results, setup guidance and evidence/result templates. Company-side execution establishes outcomes; local artifact validation is not a runtime UAT pass.
+
+## D041 — Sole human UAT tester
+
+Phase 1 round 12: the project owner will personally conduct testing rather than assigning separate business-representative testers. Provide an individual-testing setup and staged runbook. Company Claude may assist permitted setup/implementation and the main developer supplies fixes/cases; neither substitutes for the owner's observed results. One test operator may use multiple company-approved test identities/personas sequentially. Unavailable independent identities/platform access leave the affected authorization/approval cases BLOCKED or NOT RUN; a UI role switch or one unrestricted account is not evidence that backend isolation passed. Post-launch support ownership and a fixed go-live date were not supplied and remain explicit dependencies.

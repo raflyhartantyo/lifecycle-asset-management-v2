@@ -9,6 +9,10 @@ Reference implementation and versioned implementation handovers for the company 
 3. Give company Claude [START-HERE](Others/handover/START-HERE.md), then the selected app/flow handover.
 4. Return the completed [implementation result](Others/handover/IMPLEMENTATION-RESULT-TEMPLATE.md) for the next delivery.
 
+## Current planning and testing
+
+The twelve-round requirements interview is complete. Review the [Phase 1 package](Others/requirements/PHASE-1-REVIEW-PACKAGE.md), [implementation backlog](Others/requirements/IMPLEMENTATION-BACKLOG.md) and [single-operator UAT kit](Others/testing/README.md). These are specifications/test plans, not rebuilt or deployed V2 features.
+
 ## Three main folders
 
 - [Power Apps](Power%20Apps/README.md): one app folder, original screen/App-object YAML, per-screen guides, app implementation, validation and rollback.
@@ -27,6 +31,7 @@ Python 3.10+ and PyYAML are needed for the existing YAML validator:
 
 ```bash
 python3 Others/tools/validate_delivery.py
+python3 Others/tools/validate_uat_kit.py
 python3 Others/tools/check_yaml.py "Power Apps/Lifecycle Asset Management V2/screens"
 ```
 

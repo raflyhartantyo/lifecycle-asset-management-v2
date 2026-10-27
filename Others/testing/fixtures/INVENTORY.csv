@@ -1,0 +1,3 @@
+Fixture_Key,Entity_Key,Function_Key,Item_Name,Quantity,Unit
+I001,UAT-ORG-A,UAT-FNC-A1,Synthetic cables,10,each
+I002,UAT-ORG-A,UAT-FNC-A2,Synthetic cables,0,each

@@ -1,0 +1,15 @@
+Logical_Fixture_Field,Target_List,Target_Internal_Column,Confirmed_Type,Transformation_or_Lookup,Verified
+Accounting_Asset_Code,,,,,NO
+Asset_ID,,,,,NO
+Asset_Name,,,,,NO
+Asset_Owner_Alias,,,,,NO
+Asset_Status,,,,,NO
+Asset_Type_Alias,,,,,NO
+Book_Value,,,,,NO
+Business_Owner_Alias,,,,,NO
+Condition,,,,,NO
+Entity_Key,,,,,NO
+Fixture_Key,,,,,NO
+Function_Key,,,,,NO
+Location_Alias,,,,,NO
+Serial_Number,,,,,NO

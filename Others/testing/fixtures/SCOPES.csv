@@ -1,0 +1,4 @@
+Entity_Key,Function_Key,Label
+UAT-ORG-A,UAT-FNC-A1,Primary test scope
+UAT-ORG-A,UAT-FNC-A2,Other function same entity
+UAT-ORG-B,UAT-FNC-B1,Other entity

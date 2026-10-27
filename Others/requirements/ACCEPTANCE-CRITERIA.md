@@ -1,6 +1,6 @@
 # Acceptance criteria — consolidated review draft
 
-Status: scenario translations of confirmed requirements plus clearly labeled pending release/device criteria. These are acceptance targets, not completed tests or a deployment claim. Company UAT evidence is still required.
+Status: confirmed business acceptance requirements translated into scenarios; company runtime evidence and certain technical facts remain pending. These are acceptance targets, not completed tests or a deployment claim. Company UAT evidence is still required.
 
 ## Traceable functional and authorization checks
 
@@ -27,11 +27,11 @@ Status: scenario translations of confirmed requirements plus clearly labeled pen
 
 Use the supplied Zurich guidelines as the design acceptance reference: palette/type/logo/icons/components, visible focus, keyboard operation, labels, required contrast, 200% zoom and reduced motion. Verify primary workflows in the supported company environment; valid YAML alone is insufficient. Document missing approved brand assets as dependencies.
 
-## Round 12 proposals — awaiting owner response
+## Confirmed device, release and testing requirements
 
-- Device priority: full desktop/laptop operational/administration use, responsive tablet support, and mobile-friendly assigned responses, approvals and progress viewing.
-- Release gate: retained workflows pass representative business UAT; authorization/scope, history/audit and export checks pass; Zurich/accessibility checks pass; no unresolved critical/high defects. Define severity by business impact during the review and do not assume technical checks are already passed.
-- Acceptance/support ownership and any fixed launch deadline are to be confirmed by the owner. Proposed structure: project owner coordinates, relevant business representatives accept their workflows, Global User provides functional support and Super User technical support.
+D039 confirms desktop/laptop primary, responsive tablet and mobile-friendly assigned responses/approvals/progress. D040 confirms retained-workflow UAT, authorization/history/export and Zurich/accessibility checks, no unresolved critical/high defects, and developer-provided concrete test cases. D041 assigns human UAT execution to the project owner alone. Separate business-representative testers are not required by this plan.
+
+Use ../testing/README.md, TEST-CASES.csv, SOLO-UAT-RUNBOOK.md and result templates. Multiple personas are exercised sequentially by the same operator using company-approved identities/access. Cases needing a missing identity/environment capability remain BLOCKED, not passed by simulation. Fixed launch date and post-launch support ownership remain unspecified.
 
 ## Performance and operational evidence
 
