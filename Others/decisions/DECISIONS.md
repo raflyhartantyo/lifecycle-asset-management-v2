@@ -231,3 +231,8 @@ Perangkat Lunak represents internal software enhancements budgeted/capitalized a
 Owner confirmed, 2026-10-27: locations are reusable by multiple functions and multiple entities; most represent shared buildings. Use shared location reference records rather than making each location exclusively owned by an organization/function or duplicating the same building per entity. Asset organization/function remains the authority scope; a common location does not grant cross-scope asset, inventory, report or task access.
 
 Location granularity (building alone versus building/floor/room), finer location relationships, site codes, deactivation rules and location-maintainer authority remain to be designed. Shared physical buildings do not automatically imply a shared custodian, Business Owner, respondent or approver. See `../architecture/LOCATION-DESIGN.md`.
+
+
+## D050 — Building-only location granularity
+
+Owner confirmed, 2026-10-27: track location at building level only. Floor and room documentation is too burdensome based on prior operational experience. Do not add optional or mandatory floor/room fields or a building/floor/room hierarchy to the V2 registration or movement experience. This settles the granularity question left open by D049; buildings remain shared across functions and entities without granting cross-scope data access. Location codes, deactivation and shared-reference maintainer authority remain open.
