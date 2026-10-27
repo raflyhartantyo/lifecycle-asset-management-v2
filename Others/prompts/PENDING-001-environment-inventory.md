@@ -25,6 +25,8 @@ Return:
 2. Missing or unknown prerequisites and who needs to resolve each one, if known.
 3. A preparation readiness summary, explicitly identifying testing that remains blocked.
 
+Return your completed report as one Markdown document that I can paste into `Others/prompts/responses/001-environment-inventory-response.md` on GitHub. Use aliases for identities and omit credentials, secrets, and confidential business records. If repository write access is already authorized and available, commit only the response file and return its link; otherwise provide the Markdown text and destination path for me to paste.
+
 Stop after reporting. Fixture creation and test execution require a later implementation/testing instruction.
 
 ## Tracking

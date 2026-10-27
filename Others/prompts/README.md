@@ -7,3 +7,9 @@ Copy the linked prompt into company Claude when indicated. Status tracks handove
 | 001 | **PENDING** | Now: read-only preparation | [Company environment inventory](PENDING-001-environment-inventory.md) |
 
 Mark a prompt complete only after its returned output has been reviewed by the user/main developer.
+
+## Creating future prompts
+
+Use [TEMPLATE.md](TEMPLATE.md) for every new company Claude prompt. Include the response instructions inside the copyable prompt and replace the response path with that prompt's ID and topic.
+
+To return output manually: open this folder on GitHub, choose **Add file → Create new file**, enter `responses/<ID>-<topic>-response.md`, paste Claude's Markdown report, and commit. Send the file link to the main developer for review. A photo sent in chat is also accepted when text transfer is difficult.
