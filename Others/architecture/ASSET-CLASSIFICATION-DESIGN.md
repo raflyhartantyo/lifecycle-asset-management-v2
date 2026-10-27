@@ -1,10 +1,10 @@
 # Asset classification
 
-Status: confirmed business direction D047/D048; physical reference-list contracts and implementation to follow. No lists, app formulas or runtime tests were created by this document.
+Status: confirmed business direction D047/D048/D055; physical reference-list contracts and implementation to follow. No lists, app formulas or runtime tests were created by this document.
 
 ## Confirmed hierarchy
 
-Category ← Asset Type ← Asset. Each Asset Type has a foreign-key lookup to its Category. The three categories are fixed by Accounting:
+Category ← Asset Type ← Asset. Each Asset Type has a foreign-key lookup to its Category and belongs to one entity (D055). Maintain distinct Asset Type catalogues per entity. An identical display label in two entities represents separate type records, not one globally shared type. Validate the type's entity against the asset's entity at registration and other mutations. The three categories are fixed by Accounting:
 
 | Category | Supplied abbreviation |
 | --- | --- |
@@ -23,8 +23,8 @@ PL describes internal software enhancements budgeted and documented as assets. I
 - If Category is changed in the form, clear an incompatible type and require a new compatible selection before saving. Mutation/import paths should validate the same relationship. This is an engineering recommendation, not a new business role permission.
 - Treat the three categories as a centrally controlled reference set, not a freely editable operational taxonomy. Do not grant ordinary type maintainers permission to add accounting categories merely because they can maintain types. Final authorized maintainer roles remain open.
 - Preserve historical classification evidence. Restrict deletion of referenced category/type rows and define a reviewed deactivation/reclassification path; do not cascade-delete assets. Reclassification of a type already used by assets needs an explicit design because it could change the inferred accounting category of existing records.
-- Global versus entity-specific Asset Type availability, type uniqueness, exact names and type/category reclassification rules remain open. Do not infer them from the category being a shared accounting concept.
+- Asset Type catalogues are entity-specific, confirmed D055. Type uniqueness within an entity, exact names, availability across that entity's functions and type/category reclassification rules remain open. Do not infer them from the category being a shared accounting concept. Cross-entity asset transfers need explicit destination type mapping/reselection consistent with the final category/accounting rules; do not apply a source-entity type record to the destination merely because names match.
 
 ## Next data-model dependency
 
-Location scope and operational Asset Type catalogue remain to be defined. Shared registration fields for PL do not authorize silent removal of already agreed mandatory fields; field representation and any actual exceptions need explicit confirmation if they arise.
+Location scope is globally shared, building-only under D049/D050. Operational type names, catalogue-maintainer roles and destination-type handling for entity transfers remain to be defined. Shared registration fields for PL do not authorize silent removal of already agreed mandatory fields; field representation and any actual exceptions need explicit confirmation if they arise.

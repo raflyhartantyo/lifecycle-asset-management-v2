@@ -259,3 +259,10 @@ Owner selected and reaffirmed, 2026-10-27: use one Condition dropdown containing
 Owner confirmed, 2026-10-27: do not allow direct registration as In Use. New assets enter as Available; application registration must not expose an editable initial status that allows bypassing this rule. Default Condition to Good, using the single dropdown from D053. Good is a default, not an instruction to replace an explicitly selected permitted condition.
 
 Moving a registered asset to In Use is a separate authorized update under existing BAU/transfer rules, with the custodian requirement and Custodian-only pending-registration option preserved. Available assets retain the confirmed optional custodian rule; this decision does not require an initial custodian or require it to be blank. Registration remains create-only and Accounting Asset Code uniqueness remains company-wide. Bulk/API registration validation should follow the same initial-state rule; a post-create assignment must not be silently bundled into registration to defeat it.
+
+
+## D055 — Entity-specific Asset Type catalogues
+
+Owner confirmed, 2026-10-27: maintain Asset Types separately for each entity. Each type belongs to an entity and retains the Category lookup from D048. The same display label may describe separate records in different entity catalogues; do not merge them into a single global type merely because their labels match. Registration must validate that the selected type belongs to the asset's entity.
+
+Accounting categories remain the fixed KO/NK/PL classification from D047; this decision does not make categories independently editable by entity. Locations remain shared across entities/functions under D049/D050. Type-maintainer roles, duplicate rules within one entity, availability across functions, and transfer handling where the destination entity uses a different type record remain to be designed. Entity-scoped maintenance must be enforced at the mutation boundary, not only by a filtered picker.
