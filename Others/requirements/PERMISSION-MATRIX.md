@@ -44,7 +44,8 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 ## Asset process overlays
 
 - D024: spreadsheet registration supports a validation preview and operator confirmation of valid rows; invalid rows are reported without import.
-- D025: cross-function/entity transfers require both outgoing/receiving Business Owner approvals before the asset's scope is changed. Registration/movement permissions do not bypass the required workflow approvals. Detailed same-person/rejection/within-scope Business Owner rules remain proposed.
+- D025: cross-function/entity transfers require both outgoing/receiving Business Owner approvals before the asset's scope is changed. Registration/movement permissions do not bypass the required workflow approvals. D027–D029 confirm one explicit approval when the same person holds both capacities, rejection without an asset change, and approval for Business Owner changes within the same pair.
+- D027–D029: changing Business Owner within a pair also requires both capacities to approve. Other location/custodian/status-only changes remain BAU if entity/function/Business Owner are unchanged.
 - D026: routine asset transactions do not require remarks/reasons. Automatic change history is retained; reopening/reassignment reasons under D021/D022 still apply.
 
 ## Acceptance examples for confirmed decisions

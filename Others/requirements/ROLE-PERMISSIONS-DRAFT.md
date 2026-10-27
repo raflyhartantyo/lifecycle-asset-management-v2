@@ -39,7 +39,7 @@ D021 permits Asset Manager/Global User/Super User to reopen closed processes in 
 
 ## Confirmed asset process overlays
 
-D025 assigns cross-function/entity transfer approvals to outgoing and receiving Business Owners. Transfer execution waits for both approvals and remains subject to source/destination authority. D026 removes mandatory BAU transaction remarks/reasons while retaining automatic history and exceptional reopening/reassignment reasons. Detailed same-person and within-scope ownership-transfer policies remain proposed in BUSINESS-PROCESSES.md.
+D025 assigns cross-function/entity transfer approvals to outgoing and receiving Business Owners. Transfer execution waits for both approvals and remains subject to source/destination authority. D026 removes mandatory BAU transaction remarks/reasons while retaining automatic history and exceptional reopening/reassignment reasons. D027–D029 confirm same-person approval in both recorded capacities, rejected transfers leaving assets unchanged, and dual-capacity approval for Business Owner changes within the same entity/function. See BUSINESS-PROCESSES.md for the confirmed overview.
 
 ## Current planning status
 

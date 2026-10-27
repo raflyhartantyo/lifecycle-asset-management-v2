@@ -24,21 +24,49 @@ Separate disposal request/approval remains retired. Reopening/reassignment/histo
 | Decision | Confirmed behavior | Remaining design detail |
 |---|---|---|
 | D024 — bulk registration | Validate every row, preview results and let the operator confirm importing only valid rows. Keep invalid rows unimported with a downloadable error report. | Required fields, duplicate matching, import identifiers, row outcomes and safe retries after partial failure |
-| D025 — cross-function/entity transfers | Both outgoing and receiving Business Owners approve; preserve asset identity/history and validate source/destination authority. Apply the transfer only after both approvals. | Same-person handling, route order, rejection/resubmission, field locking/versioning and accounting consequences |
+| D025 — cross-function/entity transfers | Both outgoing and receiving Business Owners approve; preserve asset identity/history and validate source/destination authority. Apply the transfer only after both approvals. | D027–D029 settle same-person/rejection/ownership-change rules; route order, concurrency/versioning and accounting consequences remain |
 | D026 — routine transactions | No mandatory remarks/reason for BAU asset transactions; actor/time/old-new values are captured automatically. | Field-specific validation and automated event formats; reasons remain required for reopening/reassignment exceptions |
 
-## Round 8 — proposed transfer policies, not approved
+## Round 8 — confirmed transfer policies
 
-| ID | Decision | Recommendation |
+| Decision | Confirmed behavior |
+|---|---|
+| D027 — same person is both owners | One explicit approval satisfies both recorded capacities; approval is not automatic. |
+| D028 — rejection | Either required owner's rejection ends the request as rejected with the asset unchanged; a corrected request preserves prior request history. |
+| D029 — Business Owner change | Approval by outgoing/receiving Business Owners is required even within one entity/function. Location/custodian/status changes leaving entity/function/Business Owner unchanged remain BAU under ordinary permissions. |
+
+## Confirmed transfer overview
+
+```mermaid
+flowchart TD
+    A[Proposed asset change] --> B{Entity, function or Business Owner changes?}
+    B -- No --> C[Apply authorized BAU change and retain automatic history]
+    B -- Yes --> D[Create transfer request for outgoing and receiving Business Owners]
+    D --> E{Same person in both capacities?}
+    E -- Yes --> F[One explicit approval, both capacities recorded]
+    E -- No --> G[Collect both owner approvals]
+    F --> H{Required approval outcome}
+    G --> H
+    H -- Either rejects --> I[Request rejected; asset unchanged; history retained]
+    H -- All required capacities approve --> J[Apply authorized transfer; preserve asset identity and history]
+```
+
+This is a business-flow overview, not a deployed flow or fixed canonical status vocabulary. Final transfer application must still validate authorization and current record state; approval success and application success are separate outcomes.
+
+## Round 9 proposals — not yet approved
+
+| ID | Decision | Proposed behavior |
 |---|---|---|
-| P8-01 | Same person is both Business Owners | One explicit approval may satisfy both capacities; record both source and destination capacities, rather than silently auto-approving. No blanket self-approval ban applies (D009). |
-| P8-02 | Either Business Owner rejects | End the transfer request as rejected and leave the asset unchanged. Permit a corrected new request with prior history retained. |
-| P8-03 | Change Business Owner without changing entity/function | Require outgoing/receiving Business Owner approval too. Changes to location, asset custodian or status that change none of entity/function/Business Owner remain BAU with ordinary permissions. |
+| P9-01 | Registration versus update | Registration/import creates new assets only. Identified duplicates are reported without silently overwriting existing records; changes use authorized edit/movement processes. Exact matching keys and retry outcomes still need definition. |
+| P9-02 | Sale/non-sale disposal | Support both sales and non-sale retirement. Disposal date required; buyer/selling-price details apply to sales. No mandatory BAU remarks/reason. Method labels and any reference/document fields remain to be specified. |
+| P9-03 | Cross-scope quantity-inventory transfer | Apply outgoing/receiving Business Owner approval to cross-function/entity inventory transfers too. Same-scope BAU transfers use ordinary inventory permissions. Source schemas do not contain an inventory Business Owner field; the target relationship must be defined if approved. |
 
 ## Requirement-level acceptance examples for confirmed rules
 
 - A spreadsheet containing valid and invalid rows is fully validated before confirmation. Only explicitly confirmed valid rows are attempted; invalid rows appear in an error report and never silently become assets.
 - A cross-function/entity transfer is not applied with only one required approval or before both eligible Business Owners approve. Unauthorized requests cannot bypass this through a direct flow call.
+- When the same eligible person is both owners, one explicit decision is recorded for both capacities; merely holding those capacities does not auto-approve.
+- Either required owner rejecting leaves the asset unchanged and retains rejected-request history. A Business Owner change within one entity/function follows the same approval requirement.
 - Successful transfer preserves the asset identity and source/destination history. Request approval is not reported as completed asset movement if applying the change fails.
 - BAU asset changes save without entering remarks/reason. Automated change history still records actor/time/old-new values. Reopening/reassignment without the required exceptional reason remains rejected.
 
@@ -48,4 +76,4 @@ Required fields by asset type, accounting-code uniqueness scope, serial-number a
 
 ## Remaining process work
 
-Resolve transfer policy and registration validation details, then define direct-disposal fields and confirmation, quantity inventory transfer rules, stock-verification participants/statuses/deadlines, reconciliation matching/discrepancies/approvals and reporting scope. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+Resolve registration duplicate/validation and sale/non-sale disposal details, then define remaining direct-disposal fields/confirmation, quantity inventory transfer rules, stock-verification participants/statuses/deadlines, reconciliation matching/discrepancies/approvals and reporting scope. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.

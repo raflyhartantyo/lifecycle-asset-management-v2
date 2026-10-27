@@ -76,11 +76,17 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D025: cross-function/entity transfers require approval from both outgoing and receiving Business Owners, retaining identity/history and source/destination authorization.
 - D026: no mandatory remarks/reason entry for BAU asset transactions. Record change history automatically. Existing exceptional reopening/reassignment reason requirements remain.
 
-## Round 8 — transfer policy proposals awaiting owner response
+## Round 8 — owner responses recorded
 
-1. If the outgoing and receiving Business Owner are the same person, one explicit approval can satisfy both capacities, with both capacities recorded.
-2. Either Business Owner rejecting the request ends that transfer request without changing the asset. A corrected request can be submitted with the earlier history retained.
-3. Changing Business Owner within the same entity/function also requires outgoing/receiving Business Owner approval; location, asset-custodian and status changes that do not change entity/function/Business Owner remain BAU subject to ordinary permissions.
+- D027: the same person acting as both Business Owners gives one explicit approval, recorded in both capacities.
+- D028: either owner's rejection ends the transfer request as rejected without changing the asset. Corrected requests preserve prior request history.
+- D029: Business Owner changes require both approvals even within one entity/function. Location/custodian/status changes that change none of entity/function/Business Owner remain BAU under permissions.
+
+## Round 9 — next asset/inventory proposals awaiting owner response
+
+1. Registration imports create new assets only; identified duplicates appear in the error/results report without silently updating existing assets. Use authorized edit/movement processes for changes.
+2. Direct disposal supports sales and non-sale retirement; disposal date is required, buyer/selling-price details apply when the disposal is a sale, with no mandatory remarks/reason for BAU.
+3. Cross-function/entity quantity-inventory transfers follow the same outgoing/receiving Business Owner approval policy as assets; scope-local BAU transfers remain subject to ordinary permissions. Inventory Business Owner relationships need a defined target data contract if this proposal is accepted.
 
 ## Company-side fact collection task
 

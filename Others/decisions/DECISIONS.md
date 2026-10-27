@@ -113,3 +113,16 @@ Phase 1 round 7: support transfers between functions and entities with approval 
 ## D026 — BAU asset transactions have no mandatory remarks/reason
 
 Phase 1 round 7: routine asset transactions are business-as-usual and require no remarks or reason entry. Do not introduce an extra mandatory justification step for ordinary asset registration/movement/status/ownership transactions. Capture actor, time and previous/new values automatically for history. This supersedes the proposed mandatory movement-reason requirement. D021/D022's required reasons for exceptional reopening and respondent reassignment remain unchanged.
+
+
+## D027 — Same-person transfer approval
+
+Phase 1 round 8: if the outgoing and receiving Business Owner are the same person, one explicit approval satisfies both capacities. Record both capacities and the decision; no silent automatic approval is introduced. D009's absence of a blanket self-approval ban remains applicable.
+
+## D028 — Rejected transfers and corrected resubmission
+
+Phase 1 round 8: rejection by either required Business Owner ends the transfer request as rejected and leaves the asset unchanged. A corrected request may be submitted while preserving the previous request's history. Exact status labels and pending sibling-approval cleanup are implementation design details.
+
+## D029 — Business Owner changes within a scope
+
+Phase 1 round 8: changing Business Owner requires outgoing and receiving Business Owner approval even when organization/function stay the same. Location, asset-custodian or status changes that leave organization, function and Business Owner unchanged remain BAU under ordinary permissions. Preserve asset identity/history and D026's absence of mandatory BAU remarks/reasons.
