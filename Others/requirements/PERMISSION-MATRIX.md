@@ -29,13 +29,17 @@ Status: mixed confirmed decisions and open proposals, labeled below. This docume
 
 Source: D018–D020 and earlier role decisions. Exported rows/fields never exceed authorized read visibility. Exact formats, field lists, assignment semantics for Viewer and historical detail rules remain to be specified. Not-granted entries mean this role/participation alone supplies no such permission; another explicit role may supply it.
 
-## Round 6 proposals — require owner response
+## Confirmed exception controls
 
-| ID | Proposal | Boundaries |
-|---|---|---|
-| P6-01 | Asset Manager, Global User and Super User may reopen closed work within their authority; Business Owner may request reopening | Reason and audit required; old answers/decisions remain historical; exact reset/reapproval consequences are designed per workflow |
-| P6-02 | Asset Manager, Global User and Super User may reassign participants within their scope | Record reason, audit and notify affected users; former assignees retain read-only history of their assigned work, not permission to edit later work; replacement gets explicit task access |
-| P6-03 | Routine app actions archive/retire/cancel with retained history | Permanent removal of historical/audit records only through separately controlled maintenance under company retention requirements; duration and legal requirements come from company owners |
+| Action | Authorized role / participation | Required boundary | Decision |
+|---|---|---|---|
+| Reopen closed process | Asset Manager, Global User, Super User | Their respective scope; required reason/audit; prior answers/decisions preserved; workflow-specific reapproval effects still to be defined | D021 |
+| Request reopening | Business Owner | Relevant business-owned work; does not itself reopen/change status | D021 |
+| Reassign respondent task | Asset Manager, Global User, Super User | Their respective scope; reason/audit/notifications; former assignee retains read-only assigned history; replacement receives explicit task access | D022 |
+| Archive/retire/cancel | Roles authorized for the specific business action | History preserved; this preservation rule does not grant every role a cancellation permission | D023 |
+| Permanently remove historical/audit records | Separately controlled maintenance | Company retention requirements and maintenance authority must be established; no assumed retention duration | D023 |
+
+Final-approver reassignment/delegation and per-workflow reapproval/cancellation consequences are still open; respondent reassignment is not a grant to alter arbitrary approval routes.
 
 ## Acceptance examples for confirmed decisions
 
@@ -49,5 +53,9 @@ Source: D018–D020 and earlier role decisions. Exported rows/fields never excee
 - Global User can administer ordinary roles within its entity; requests granting privileged roles or changing another entity's assignments are rejected.
 - Super User may grant/revoke Global User and Super User with attribution recorded.
 - An assigned authorized approver is not blocked solely because they initiated the request; an unassigned/unauthorized user remains blocked.
+
+- Reopening without a reason or outside scope is rejected; a permitted reopening preserves the prior response/decision record.
+- Reassignment records former/new assignees and the reason; former respondents cannot edit later work and replacement respondents see only their explicit tasks.
+- Routine disposal/cancellation preserves historical evidence; business-data access alone cannot permanently erase audit history.
 
 These are requirement-level acceptance examples. Detailed test data, status names, API contracts, audit fields and deployment evidence are specified in later phases.

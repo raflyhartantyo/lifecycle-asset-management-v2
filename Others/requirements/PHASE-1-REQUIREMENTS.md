@@ -64,11 +64,15 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D019: Viewer and Respondent can export data assigned to them. All other proposed module/ownership/entity/application export scopes remain, with rows/fields filtered to authorized visibility. Historical exports do not exceed historical read access.
 - D020: both Business Owner and Asset Manager may send standard reminders for pending relevant response tasks. Reminders do not change response/status or reopen work.
 
-## Round 6 — proposed exception controls awaiting owner response
+## Round 6 — owner responses recorded
 
-1. Asset Manager, Global User and Super User may reopen closed work within their authority with a required reason and audit; Business Owner may request reopening but does not reopen through that role alone.
-2. Asset Manager, Global User and Super User may reassign participants in their authorized scope with an explicit recorded reason and notification. Prior assignees retain read-only historical visibility of their assigned work; replacement assignees receive explicit scoped tasks.
-3. Routine app actions archive/retire/cancel with reasons and retained history. Permanent removal of historical/audit records is reserved for separately controlled maintenance under the company's retention requirements; no retention duration is assumed.
+- D021: Asset Manager, Global User and Super User may reopen closed work in scope with a required reason/audit; Business Owner may request reopening. Preserve prior answers/decisions.
+- D022: those same roles may reassign respondent tasks in scope with a reason, audit and notifications. Previous respondents retain read-only historical visibility; replacements receive explicit task access.
+- D023: normal app actions archive/retire/cancel while preserving history. Permanent historical/audit deletion is separately controlled under company retention requirements. Direct disposal preserves an inactive/history record while removing the active record.
+
+## Round 7 — asset process decisions awaiting owner response
+
+See BUSINESS-PROCESSES.md. Proposed decisions: bulk registration previews all row-level validation results and imports only valid rows explicitly confirmed by the operator; cross-function/entity transfers are supported with explicit source/destination authorization and retained history; ownership/location/status changes require a recorded movement reason. These are proposals, not implemented behavior.
 
 ## Company-side fact collection task
 

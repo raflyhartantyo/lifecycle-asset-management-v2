@@ -87,3 +87,16 @@ Phase 1 round 5: owner amended the proposed export restriction: Viewer and Respo
 ## D020 — Reminder authority
 
 Phase 1 round 5: both Business Owner and Asset Manager can send standard reminders to pending respondents on relevant requests within their authority. Reminders do not themselves edit responses, complete a process or reopen closed work. Recipient selection, rate limiting, delivery and audit details are designed later.
+
+
+## D021 — Audited reopening
+
+Phase 1 round 6: Asset Manager, Global User and Super User may reopen closed processes within their respective scope, with a required reason and audit record. Business Owner may request reopening but does not execute it through that role alone. Preserve prior responses and decisions. Workflow-specific reset/reapproval rules are still to be defined.
+
+## D022 — Respondent task reassignment
+
+Phase 1 round 6: Asset Manager, Global User and Super User may reassign respondent tasks within their authority. Record the reason, audit the change and notify affected participants. Former respondents retain read-only history of their assigned work; replacement respondents receive explicit task access. This decision does not define final-approver reassignment/delegation rules, which remain a workflow-design question.
+
+## D023 — Historical preservation and routine record removal
+
+Phase 1 round 6: normal application actions archive, retire or cancel records with retained history rather than permanently deleting historical/audit evidence. Permanent removal of historical/audit records is a separately controlled maintenance operation governed by company retention requirements. No retention duration is assumed. Direct disposal removes the asset from the active register while preserving disposal/history records.

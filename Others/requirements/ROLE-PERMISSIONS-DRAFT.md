@@ -33,10 +33,14 @@ D015 assigns asset registration/movement to Asset Operator and adds stock verifi
 
 D018 confirms Viewer read-only access and Inventory Operator registration/transfers/history. D019 permits Viewer and Respondent to export assigned data, while other roles export within their module/ownership/entity/application scope. D020 grants reminder authority to both Business Owner and Asset Manager. Export and reminder behavior remains subject to authorized data visibility.
 
-## Round 6 — exception controls proposed, not approved
+## Round 6 — confirmed exception controls
 
-Asset Manager/Global User/Super User may reopen and reassign within their respective authority with recorded reasons and audit; Business Owner may request reopening. Prior respondents retain read-only historical access to assigned work. Routine business actions retain history through archiving/retirement/cancellation; permanent historical/audit removal is a separately controlled maintenance operation under company retention requirements. See PERMISSION-MATRIX.md.
+D021 permits Asset Manager/Global User/Super User to reopen closed processes in scope with required reason/audit, preserving earlier answers/decisions. Business Owner can request reopening. D022 permits those same roles to reassign respondent tasks with a reason, audit and notifications; previous assignees retain read-only assigned history. D023 preserves historical/audit records through routine archive/retire/cancel actions; permanent removal is a separately controlled maintenance operation under company retention requirements.
+
+## Current planning status
+
+The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Next owner round addresses asset business processes in BUSINESS-PROCESSES.md.
 
 ## Later decisions
 
-Define export formats/fields, reminder details, accounting field edits, master-list editing, reopen/reassign/delegate rights, final approval routing/thresholds and exception handling. Clarify historical process detail visibility and access revocation. Specify how entity-wide/all-entity administrators select context and how flows validate their authority. Validate Power BI access separately from Canvas UI permissions. No broad maintenance role silently grants an unresolved approval/destructive operation.
+Define export formats/fields, reminder details, accounting field edits, master-list editing, workflow-specific reopening consequences, final-approver reassignment/delegation, approval routing/thresholds and exception handling. Clarify historical process detail visibility and access revocation. Specify how entity-wide/all-entity administrators select context and how flows validate their authority. Validate Power BI access separately from Canvas UI permissions. No broad maintenance role silently grants an unresolved approval/destructive operation.
