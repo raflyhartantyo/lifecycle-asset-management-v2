@@ -4,6 +4,7 @@ Copy the linked prompt into company Claude when indicated. Status tracks handove
 
 | ID | Status | When to use | Prompt |
 | --- | --- | --- | --- |
+| 002 | **PENDING** | Once SITE-A is complete: create two empty foundation lists | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
 | 001 | **PENDING** | Now: read-only preparation | [Company environment inventory](PENDING-001-environment-inventory.md) |
 
 Mark a prompt complete only after its returned output has been reviewed by the user/main developer.

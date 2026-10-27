@@ -10,3 +10,7 @@
 6. Use anonymized sample copies only for controlled development tests. Backfill production only in a separately delivered migration with before/after counts, owner-approved mapping and rollback.
 
 Backend permission enforcement is an open design item: UI menu checks and client-side filters alone do not demonstrate IT/CRESS isolation.
+
+## New build path
+
+The owner confirmed a blank V2 app and no V2 lists. Baseline inventories above remain reference-only. Begin new reference-list setup with [V2 foundation delivery 001](v2/README.md); operational contracts and backend authorization remain under design. User implements manually; Claude provides Q&A only.

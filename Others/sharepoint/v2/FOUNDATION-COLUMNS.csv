@@ -1,0 +1,8 @@
+List,InternalName,Type,Required,Unique,MaxLength,Default,LookupList,LookupDisplayField,AllowMultiple,DeleteBehavior,Notes
+LAM2_Organizations,Title,Single line of text,Yes,No,255,,,,,,Human-readable organization name; built-in column
+LAM2_Organizations,Organization_ID,Single line of text,Yes,Yes,50,,,,,,Stable organization code; verify unique index
+LAM2_Organizations,IsActive,Yes/No,,,,Yes,,,,,Default is Yes; deactivate instead of ordinary removal
+LAM2_Functions,Title,Single line of text,Yes,No,255,,,,,,Human-readable function name; built-in column
+LAM2_Functions,Function_ID,Single line of text,Yes,Yes,50,,,,,,Globally unique stable function code; verify unique index
+LAM2_Functions,OrganizationRef,Lookup,Yes,No,,,LAM2_Organizations,Organization_ID,No,Restrict delete,Stored reference is numeric organization list item ID
+LAM2_Functions,IsActive,Yes/No,,,,Yes,,,,,Default is Yes; deactivate instead of ordinary removal
