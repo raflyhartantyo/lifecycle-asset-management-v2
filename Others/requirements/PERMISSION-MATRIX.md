@@ -84,3 +84,13 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 - Routine disposal/cancellation preserves historical evidence; business-data access alone cannot permanently erase audit history.
 
 These are requirement-level acceptance examples. Detailed test data, status names, API contracts, audit fields and deployment evidence are specified in later phases.
+
+## Asset Type catalogue maintenance — confirmed D056
+
+| Action | Authorized roles | Scope |
+| --- | --- | --- |
+| Maintain Asset Types | Global User | Assigned entity only |
+| Maintain Asset Types | Super User | Across entities |
+| Select an existing Asset Type | Existing authorized registration/edit roles | Valid type for the asset's entity; no new mutation authority |
+
+Other roles alone do not grant type-catalogue maintenance. Check explicit role combinations without granting entity-wide rights from a pair-scoped role. Every type retains its entity and Category parent. D056 does not grant editing of Accounting categories or global buildings. Backend enforcement and reclassification/deactivation rules still require implementation and verification.

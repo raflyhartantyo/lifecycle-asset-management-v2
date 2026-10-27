@@ -266,3 +266,10 @@ Moving a registered asset to In Use is a separate authorized update under existi
 Owner confirmed, 2026-10-27: maintain Asset Types separately for each entity. Each type belongs to an entity and retains the Category lookup from D048. The same display label may describe separate records in different entity catalogues; do not merge them into a single global type merely because their labels match. Registration must validate that the selected type belongs to the asset's entity.
 
 Accounting categories remain the fixed KO/NK/PL classification from D047; this decision does not make categories independently editable by entity. Locations remain shared across entities/functions under D049/D050. Type-maintainer roles, duplicate rules within one entity, availability across functions, and transfer handling where the destination entity uses a different type record remain to be designed. Entity-scoped maintenance must be enforced at the mutation boundary, not only by a filtered picker.
+
+
+## D056 — Asset Type catalogue maintainers
+
+Owner agreed, 2026-10-27: Global User maintains Asset Types within its assigned entity; Super User maintains Asset Types across entities. Other roles select existing types during registration and do not independently grant type-catalogue maintenance. Role combinations retain their explicit authorized privileges; a pair-scoped Asset Manager role does not implicitly grant entity-wide reference maintenance.
+
+Maintain the entity parent and valid Category lookup on every type. This decision settles the type-maintainer question in D055, not the authority to change Accounting's fixed categories or global shared buildings. Deactivation/reclassification safeguards and destination-type mapping for cross-entity transfers remain design details. Enforce maintenance scope in the backend as well as in the UI.
