@@ -202,3 +202,14 @@ Owner confirmations, 2026-10-27: an Available asset can have no assigned custodi
 This supersedes the Required=Yes settings in the first V2 foundation proposal. Keep business-required metadata separate from storage-required metadata. Uniqueness, types, indexes, access control and parent relationships remain separate integrity requirements. Applying the same business validations at flow/import mutation boundaries is an engineering recommendation to avoid alternate-entry inconsistency, not a new company approval policy. Direct SharePoint maintenance can produce incomplete rows; business operations must recognize them and guide correction rather than silently treat them as valid. Blank account codes do not satisfy registration even if storage permits them.
 
 Lifecycle status labels/transitions remain under discussion. Available/In Use already distinguish stock-verification scope; this decision does not approve additional states or a maintenance module.
+
+
+## D045 — Asset status, condition and approval progress
+
+Owner agreed, 2026-10-27: use the label Asset Status for the asset's operational lifecycle, separate from physical Condition and request/approval progress. Available, In Use and Disposed were the agreed examples; final stored labels/transitions and condition choices will be finalized in the data contract. Available can have no custodian; In Use requires a custodian under D044. No maintenance module or additional status is approved by analogy.
+
+## D046 — IDR and scheduled monthly Book Value calculation
+
+Owner confirmed, 2026-10-27: currency is always IDR. Book Value will use a formula to be supplied later, applied by a scheduled flow at the start of every month. The uploaded accounting ledger is not selected as the automatic Book Value source. This replaces the proposed ledger-sourced Book Value design, not the retained reconciliation comparison/sign-off/explicit-correction process.
+
+Formula, effective dates, asset eligibility, useful-life inputs if applicable, precision/rounding, minimum value, first/last-period handling, time zone/run time and correction/backfill rules are not yet defined. No formula or accounting convention is inferred. Monthly calculation needs its own auditable operation and reliable retry/recovery design; it must not conflate accounting sign-off with execution. No scheduled flow has been implemented, enabled or run. See `../architecture/MONTHLY-BOOK-VALUE-DESIGN.md` for the proposed engineering contract.
