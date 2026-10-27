@@ -1,18 +1,18 @@
 # Role and permission working draft
 
-Status: seven permanent role names, administrative scopes and respondent participation confirmed. Detailed action permissions remain proposed. No application permissions have been implemented by these planning documents.
+Status: seven permanent role names, administrative scopes and respondent participation confirmed. Confirmed action permissions are distinguished from open proposals in PERMISSION-MATRIX.md. No application permissions have been implemented by these planning documents.
 
 ## Confirmed responsibility and scope model
 
 | Role / participation | Confirmed meaning or scope | Pending permission details |
 |---|---|---|
 | Viewer | Ordinary business role in an explicitly assigned organization/function | Read/export/reporting boundaries |
-| Asset Operator | Ordinary business role in an explicitly assigned organization/function | Registration, movement, disposal and field-edit boundaries |
+| Asset Operator | Register and move assets in an explicitly assigned organization/function (D015) | Field-edit/export boundaries; operator alone has no direct-disposal permission |
 | Inventory Operator | Ordinary business role in an explicitly assigned organization/function | Quantity registration/transfer and history boundaries |
-| Asset Manager | Operational management of assets in authorized scope | Stock/reconciliation initiation, direct disposal, reopening, exports and master-data permissions |
+| Asset Manager | Operational asset management, stock verification, accounting reconciliation and direct disposal in authorized scope (D015) | Reopening, exports, master-data and approval-step permissions |
 | Business Owner | Accountable owner of specified assets, reflected in the existing asset Business Owner field; reporting oversight including relevant request progress/status | Exact reporting visibility, exports, follow-up actions, designated approvals and report-editing rights |
-| Global User | Maintenance across all functions of one assigned entity | Administration versus business-action rights, privileged-role assignment and cross-function views |
-| Super User | Developer-like maintenance across all entities/functions | Detailed business-action, privileged-role, destructive-change and company-side deployment permissions |
+| Global User | Maintenance across all functions of one assigned entity; ordinary role administration in that entity (D013/D017) | Business-action matrix; cannot grant/revoke Global User or Super User |
+| Super User | Developer-like maintenance across all entities/functions; sole authority to grant/revoke Global User and Super User (D013/D017) | Detailed business actions, destructive-change and company-side deployment permissions |
 | Respondent (task participation) | Explicit process assignment; read access to historically assigned processes; edit assigned responses while the response step is open | Historical detail visibility, reassignment, reopening and offboarding rules |
 
 Ordinary business roles retain D002/D007's tuple-scoped contract. Global User and Super User use explicit broader administrative scopes (D013); the grant schema is designed in Phase 2 rather than faking duplicate tuple rows. Operational records still carry a valid organization/function pair.
@@ -25,11 +25,13 @@ Ordinary business roles retain D002/D007's tuple-scoped contract. Global User an
 - D014: Business Owner monitors relevant request progress/status through reporting. Export, follow-up actions and report-definition editing remain open.
 - D013: Global User has entity-wide maintenance scope; Super User has all-entity/function maintenance scope. Detailed permissions remain to be agreed. Actual maker/environment rights are managed in the company platform.
 
-## Round 4 proposals — not yet approved
+## Round 4 — confirmed
 
-1. Asset Operator registers/moves assets. Asset Manager additionally runs stock verification and reconciliation and performs direct disposal in scope.
-2. Business Owner reporting includes requests involving their business-owned assets even when initiated by other people, exposing only relevant records/details in authorized scope. Exports and report-editing/follow-up actions remain separate permissions.
-3. Global User may maintain ordinary business-role assignments within its entity. Only Super User may grant/revoke Global User and Super User. Define role combinations and restrictions against privilege escalation in the detailed matrix after owner confirmation.
+D015 assigns asset registration/movement to Asset Operator and adds stock verification, reconciliation and direct disposal for Asset Manager. D016 confirms Business Owner reporting on relevant owned-asset requests initiated by others. D017 reserves privileged-role grants/revocations to Super User while Global User manages ordinary roles in its entity.
+
+## Round 5 — proposed, not yet approved
+
+See PERMISSION-MATRIX.md. Viewer is scoped read-only; Inventory Operator registers/transfers quantity inventory and reads history. Module/ownership-scoped exports are proposed for operators, managers and Business Owners, with administration scopes applying to Global User/Super User. Viewer/Respondent participation alone does not grant bulk export. Business Owner may send standardized reminders for pending relevant response tasks, while response/status edits require their separate permissions.
 
 ## Later decisions
 

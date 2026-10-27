@@ -61,3 +61,16 @@ The owner confirmed maintenance scopes. Detailed permissions for granting privil
 ## D014 — Business Owner reporting oversight
 
 Phase 1 round 3 follow-up: owner explicitly requested Business Owner access to the reporting side, including checking request progress. Business Owners can monitor the progress/status of relevant processes in their authorized business scope. Detailed reporting visibility, exports, follow-up/reminder actions and report-definition editing are still to be specified; progress monitoring does not silently grant these additional write/administration permissions.
+
+
+## D015 — Asset Operator and Asset Manager duties
+
+Phase 1 round 4: Asset Operator registers and moves assets in authorized scope. Asset Manager additionally runs stock verification, accounting reconciliation and direct disposal in authorized scope. Asset Operator alone does not grant direct disposal. Self-approval remains governed by D009 and explicit workflow-step authority.
+
+## D016 — Business Owner process visibility
+
+Phase 1 round 4: Business Owner reporting includes requests involving their business-owned assets even when initiated by another person. Expose relevant progress and asset details within authorized business scope. Export, follow-up actions and report editing remain separate permissions; ownership/report visibility does not expose unrelated records in a mixed-owner request.
+
+## D017 — Privileged role administration
+
+Phase 1 round 4: Global User may maintain ordinary business-role assignments within its assigned entity. Only Super User may grant/revoke Global User and Super User privileges. Grant scope must stay within the administrator's authority; ordinary role combinations must not indirectly confer privileged role administration.

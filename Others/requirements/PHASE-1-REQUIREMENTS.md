@@ -52,11 +52,19 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - Global User maintains one assigned entity across all its functions. Super User maintains the whole application across entities/functions. These are explicit exceptions to ordinary pair-scoped access, not a change to record entity/function integrity.
 - Permanent roles: Viewer, Asset Operator, Inventory Operator, Asset Manager, Business Owner, Global User and Super User. Exact action permissions and privileged-role assignment authority remain open.
 
-## Round 4 — proposed decisions awaiting owner response
+## Round 4 — owner responses recorded
 
-1. Asset Operator handles registration/movement; Asset Manager additionally runs stock verification and accounting reconciliation and performs direct disposal in authorized scope.
-2. Business Owner reporting covers requests involving their business-owned assets, including requests initiated by others. Only relevant records/details are exposed within authorized scope; report exports and edit/follow-up actions are separate decisions.
-3. Global User can administer ordinary role assignments within its entity; granting/revoking Global User or Super User is reserved for Super User. This is a proposal, not an approved restriction.
+- D015: Asset Operator registers/moves assets. Asset Manager additionally runs stock verification and accounting reconciliation and performs direct disposal in scope. Operator role alone does not grant direct disposal.
+- D016: Business Owner can report on requests involving owned assets, even when initiated by others. Visibility is limited to relevant progress/details in authorized scope.
+- D017: Global User administers ordinary role assignments within its entity. Only Super User grants/revokes Global User and Super User privileges.
+
+## Round 5 — proposed remaining basic permissions
+
+See PERMISSION-MATRIX.md for confirmed versus proposed permissions. Proposals: Viewer has scoped read-only access; Inventory Operator registers/transfers quantity inventory and views its history; scoped business exports are allowed for operators/managers/Business Owners but not Viewer or Respondent participation alone; Business Owner may send standard reminders for pending relevant response tasks without changing their responses/status.
+
+## Company-side fact collection task
+
+Give company Claude `../handover/COMPANY-ENVIRONMENT-INVENTORY.md`. This read-only inventory establishes environment, deployment, schema, permissions, scale and asset availability without waiting for every role decision. Technical conclusions are deferred until the returned facts are verified.
 
 ## Later decisions and evidence
 
