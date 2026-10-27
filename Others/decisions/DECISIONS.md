@@ -224,3 +224,10 @@ Owner confirmed, 2026-10-27: categories follow Accounting rules and are fixed as
 Owner confirmed, 2026-10-27: Asset Type has a foreign-key lookup to Category. Design each type as belonging to one category; business-requiredness is enforced through the application under D044 rather than SharePoint Required flags. The final lookup/list names and physical contracts will be delivered with reference-data setup.
 
 Perangkat Lunak represents internal software enhancements budgeted/capitalized and documented as assets. Use the same registration fields as other assets; no separate licence/subscription module or software-specific registration form is requested. Exact type names, reference-data administration authority and category-change rules remain to be specified. See `../architecture/ASSET-CLASSIFICATION-DESIGN.md` for the distinction between confirmed requirements and proposed UI/integrity behavior.
+
+
+## D049 — Shared locations across entities and functions
+
+Owner confirmed, 2026-10-27: locations are reusable by multiple functions and multiple entities; most represent shared buildings. Use shared location reference records rather than making each location exclusively owned by an organization/function or duplicating the same building per entity. Asset organization/function remains the authority scope; a common location does not grant cross-scope asset, inventory, report or task access.
+
+Location granularity (building alone versus building/floor/room), finer location relationships, site codes, deactivation rules and location-maintainer authority remain to be designed. Shared physical buildings do not automatically imply a shared custodian, Business Owner, respondent or approver. See `../architecture/LOCATION-DESIGN.md`.
