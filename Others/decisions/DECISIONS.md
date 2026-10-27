@@ -247,3 +247,8 @@ Owner confirmed, 2026-10-27: Custodian is an individual employee, not a team/dep
 Owner confirmed, 2026-10-27: use the company directory for employee selections and add a fixed/hardcoded option for employees not yet in that directory. Working display label: Awaiting employee registration; exact display wording is not prescribed by the owner. Do not interpret this as a request for a separate manually maintained employee-registration module.
 
 The pending selection represents missing directory identity, not a synthetic account, email or approval recipient. Employee-assignment resolution and pending-item visibility must be designed. Owner follow-up confirmed the fallback is available only to Custodian. Business Owner must resolve to a real company-directory account. Do not apply the fallback to approval routing or other person fields by analogy. See `../architecture/EMPLOYEE-SELECTION-DESIGN.md` for the proposed handling and unresolved scope.
+
+
+## D053 — Single Condition dropdown with owner-selected labels
+
+Owner selected and reaffirmed, 2026-10-27: use one Condition dropdown containing exactly Good, Broken and Ready to Auction. The owner declined splitting Auction Readiness into a separate field. Do not substitute Needs Repair/Unusable or add a separate Auction Readiness field. Asset Status and request/approval progress remain separate under D045. Selecting Ready to Auction records the chosen condition; it is not evidence of completed direct disposal, a sale transaction or a newly required disposal approval. Default condition, permitted state combinations and transition/edit authority remain to be specified with the screen/operation contract. D044's application-controlled requiredness continues.
