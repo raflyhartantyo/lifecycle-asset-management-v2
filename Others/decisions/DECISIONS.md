@@ -126,3 +126,16 @@ Phase 1 round 8: rejection by either required Business Owner ends the transfer r
 ## D029 — Business Owner changes within a scope
 
 Phase 1 round 8: changing Business Owner requires outgoing and receiving Business Owner approval even when organization/function stay the same. Location, asset-custodian or status changes that leave organization, function and Business Owner unchanged remain BAU under ordinary permissions. Preserve asset identity/history and D026's absence of mandatory BAU remarks/reasons.
+
+
+## D030 — Registration does not overwrite existing assets
+
+Phase 1 round 9: registration/import creates new assets only. Identified duplicates are reported without overwriting existing records; existing-record changes use authorized edit/movement processes. Valid new rows can be imported under D024's preview/confirmation rules. Exact duplicate keys and retry outcome labels remain data-contract/design details.
+
+## D031 — Sale and non-sale direct disposal
+
+Phase 1 round 9: direct disposal supports sales and non-sale retirement. Disposal date is required; buyer/selling-price details apply to sales. No mandatory BAU remarks/justification field is added. Capture the appropriate inactive/history record and preserve D023's historical evidence.
+
+## D032 — Lightweight quantity-inventory transfers
+
+Phase 1 round 9: owner rejected applying asset-style dual Business Owner approvals to inventory because inventories are less tightly managed than assets. Inventory transfers use ordinary authorized inventory permissions, including supported cross-function/entity movements, without the dual Business Owner approval step. Preserve quantity validation, scope/authority checks and movement history; the absence of asset-style approval does not remove those controls. Do not add an inventory Business Owner relationship solely to implement the rejected approval proposal. Any other future inventory approval rule would require a separate explicit decision.

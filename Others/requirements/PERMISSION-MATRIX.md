@@ -48,6 +48,12 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 - D027–D029: changing Business Owner within a pair also requires both capacities to approve. Other location/custodian/status-only changes remain BAU if entity/function/Business Owner are unchanged.
 - D026: routine asset transactions do not require remarks/reasons. Automatic change history is retained; reopening/reassignment reasons under D021/D022 still apply.
 
+## Registration, disposal and inventory distinction
+
+- D030: registration/import is create-only; identified duplicates are reported, not silently overwritten. Editing existing assets still requires its specific authorized business action.
+- D031: disposal supports sale/non-sale retirement with disposal date and applicable sale details, without mandatory BAU remarks.
+- D032: Inventory Operator's authorized inventory transfers do not use the asset-style dual Business Owner approval route. Scope/authority checks, quantity validation and movement history remain required, including supported cross-scope transfers.
+
 ## Acceptance examples for confirmed decisions
 
 - Asset Operator can register/move an in-scope asset; direct disposal through that role alone is rejected, including calls bypassing the UI.

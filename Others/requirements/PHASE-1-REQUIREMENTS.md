@@ -82,11 +82,15 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D028: either owner's rejection ends the transfer request as rejected without changing the asset. Corrected requests preserve prior request history.
 - D029: Business Owner changes require both approvals even within one entity/function. Location/custodian/status changes that change none of entity/function/Business Owner remain BAU under permissions.
 
-## Round 9 — next asset/inventory proposals awaiting owner response
+## Round 9 — owner responses recorded
 
-1. Registration imports create new assets only; identified duplicates appear in the error/results report without silently updating existing assets. Use authorized edit/movement processes for changes.
-2. Direct disposal supports sales and non-sale retirement; disposal date is required, buyer/selling-price details apply when the disposal is a sale, with no mandatory remarks/reason for BAU.
-3. Cross-function/entity quantity-inventory transfers follow the same outgoing/receiving Business Owner approval policy as assets; scope-local BAU transfers remain subject to ordinary permissions. Inventory Business Owner relationships need a defined target data contract if this proposal is accepted.
+- D030: registration/import creates new assets only. Report identified duplicates without overwriting existing assets; existing-record changes use authorized edit/movement processes.
+- D031: direct disposal supports sale and non-sale retirement. Require disposal date; buyer/price details apply to sales. No mandatory BAU remarks/reason.
+- D032: inventory is managed more lightly than individually tracked assets. Inventory transfers do not require outgoing/receiving Business Owner approval. Retain scope/authority, quantity and history controls; do not add a Business Owner relationship solely for the rejected inventory approval proposal.
+
+## Guided review remaining
+
+Target approximately three further short business-decision rounds: stock verification, accounting reconciliation, and acceptance/rollout constraints. See PHASE-1-REVIEW-PLAN.md. Consolidate routine engineering details and traceable baseline rules into a draft for review rather than asking field-by-field questions. This is a planning estimate, not a claim that required company facts or all business decisions are already resolved.
 
 ## Company-side fact collection task
 

@@ -53,13 +53,15 @@ flowchart TD
 
 This is a business-flow overview, not a deployed flow or fixed canonical status vocabulary. Final transfer application must still validate authorization and current record state; approval success and application success are separate outcomes.
 
-## Round 9 proposals — not yet approved
+## Round 9 — confirmed registration, disposal and inventory rules
 
-| ID | Decision | Proposed behavior |
+| Decision | Confirmed behavior | Remaining design detail |
 |---|---|---|
-| P9-01 | Registration versus update | Registration/import creates new assets only. Identified duplicates are reported without silently overwriting existing records; changes use authorized edit/movement processes. Exact matching keys and retry outcomes still need definition. |
-| P9-02 | Sale/non-sale disposal | Support both sales and non-sale retirement. Disposal date required; buyer/selling-price details apply to sales. No mandatory BAU remarks/reason. Method labels and any reference/document fields remain to be specified. |
-| P9-03 | Cross-scope quantity-inventory transfer | Apply outgoing/receiving Business Owner approval to cross-function/entity inventory transfers too. Same-scope BAU transfers use ordinary inventory permissions. Source schemas do not contain an inventory Business Owner field; the target relationship must be defined if approved. |
+| D030 — registration versus update | Create new assets only. Report identified duplicates without overwriting existing records; changes use authorized edit/movement processes. | Duplicate matching and stable import/retry identity |
+| D031 — sale/non-sale disposal | Support sales and non-sale retirement. Disposal date required; buyer/selling-price details apply to sales. No mandatory BAU remarks/justification. | Method labels and any applicable reference/document fields |
+| D032 — quantity-inventory transfers | Lightweight authorized transfers, without asset-style dual Business Owner approval. Retain quantity/scope checks and movement history. | Cross-scope action authorization, quantity units/validation and concurrent balance updates; no inventory owner relationship added solely for the rejected approval route |
+
+The dual Business Owner approval rules D025/D027/D028/D029 govern individually tracked assets; D032 explicitly prevents carrying that route into quantity inventory by analogy.
 
 ## Requirement-level acceptance examples for confirmed rules
 
@@ -68,12 +70,15 @@ This is a business-flow overview, not a deployed flow or fixed canonical status 
 - When the same eligible person is both owners, one explicit decision is recorded for both capacities; merely holding those capacities does not auto-approve.
 - Either required owner rejecting leaves the asset unchanged and retains rejected-request history. A Business Owner change within one entity/function follows the same approval requirement.
 - Successful transfer preserves the asset identity and source/destination history. Request approval is not reported as completed asset movement if applying the change fails.
+- Registration never silently overwrites an identified existing asset; valid new rows remain eligible for confirmed import and duplicates appear in the results report.
+- A non-sale disposal does not require a fictional buyer/selling price; sales use the applicable sale fields and every disposal has a disposal date.
+- An authorized inventory transfer does not create a dual Business Owner approval task. It still validates scope/quantity and records movement history.
 - BAU asset changes save without entering remarks/reason. Automated change history still records actor/time/old-new values. Reopening/reassignment without the required exceptional reason remains rejected.
 
-## Asset registration acceptance criteria still to define
+## Remaining registration design detail
 
-Required fields by asset type, accounting-code uniqueness scope, serial-number applicability, initial statuses, owner/location defaults, record validation, duplicate handling and bulk confirmation/error behavior. Existing YAML provides evidence for review but does not automatically approve every current rule as the V2 requirement.
+Required fields by asset type, accounting-code uniqueness scope, serial-number applicability, initial statuses, owner/location defaults, record validation, exact duplicate matching and safe bulk retry behavior. Business choices D024/D030 are already confirmed. Existing YAML provides evidence for review but does not automatically approve every current rule as the V2 requirement.
 
 ## Remaining process work
 
-Resolve registration duplicate/validation and sale/non-sale disposal details, then define remaining direct-disposal fields/confirmation, quantity inventory transfer rules, stock-verification participants/statuses/deadlines, reconciliation matching/discrepancies/approvals and reporting scope. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+Prioritize remaining business decisions about stock-verification participants/completion, reconciliation discrepancies/approvals, and acceptance/rollout constraints. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
