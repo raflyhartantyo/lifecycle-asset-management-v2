@@ -74,3 +74,16 @@ Phase 1 round 4: Business Owner reporting includes requests involving their busi
 ## D017 — Privileged role administration
 
 Phase 1 round 4: Global User may maintain ordinary business-role assignments within its assigned entity. Only Super User may grant/revoke Global User and Super User privileges. Grant scope must stay within the administrator's authority; ordinary role combinations must not indirectly confer privileged role administration.
+
+
+## D018 — Viewer and Inventory Operator basics
+
+Phase 1 round 5: Viewer has read-only access to authorized records/reports. Inventory Operator registers quantity inventory, transfers quantities and views inventory history within its assigned organization/function. Export is a permitted read operation under D019, not a business-data edit.
+
+## D019 — Assigned-data and scoped exports
+
+Phase 1 round 5: owner amended the proposed export restriction: Viewer and Respondent can export data assigned to them. Viewer exports stay within assigned data and authorized scope. Respondent exports stay within their assigned process/data visibility, including readable historical assigned work; no unrelated records/fields are exposed. Preserve the other proposed export scopes: Asset/Inventory Operator exports its authorized module data; Asset Manager exports in-scope operational data; Business Owner exports relevant owned-asset reports; Global User exports within its entity; Super User exports across entities. Export filters and field visibility match authorized access; formats, field lists and historical detail boundaries remain to be specified.
+
+## D020 — Reminder authority
+
+Phase 1 round 5: both Business Owner and Asset Manager can send standard reminders to pending respondents on relevant requests within their authority. Reminders do not themselves edit responses, complete a process or reopen closed work. Recipient selection, rate limiting, delivery and audit details are designed later.

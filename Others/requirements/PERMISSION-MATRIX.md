@@ -14,20 +14,38 @@ Status: mixed confirmed decisions and open proposals, labeled below. This docume
 | Respondent participation | Edit assigned open responses; read historically assigned processes | Request-specific; closed responses are read-only without audited reopening; additional history detail/offboarding rules pending | D010/D012 |
 | Authorized final approver | May approve a request they initiated | Must otherwise be explicitly authorized for the workflow step; no blanket self-approval ban | D009 |
 
-## Round 5 proposals — require owner response
+## Confirmed read, export and reminder permissions
+
+| Role / participation | Read / business capability | Export permission | Reminder permission |
+|---|---|---|---|
+| Viewer | Authorized records/reports; business-data read-only | Assigned data in authorized scope | Not granted by this role |
+| Asset Operator | Register/move assets | Authorized asset-module data | Not granted by this role |
+| Inventory Operator | Register/transfer quantity inventory and view history | Authorized inventory-module data | Not granted by this role |
+| Asset Manager | Asset operations, stock verification, reconciliation and direct disposal | Authorized operational data | Standard reminders to relevant pending respondents |
+| Business Owner | Relevant owned-asset reporting including others' requests | Relevant owned-asset reports | Standard reminders to relevant pending respondents |
+| Global User | Maintenance within assigned entity | Entity-wide authorized data | Broader maintenance scope confirmed; detailed operational matrix remains to be completed |
+| Super User | Application-wide maintenance | Across entities | Broader maintenance scope confirmed; detailed operational matrix remains to be completed |
+| Respondent participation | Assigned open responses; read-only historical assigned work | Assigned data within current/historical read visibility | Not granted through respondent participation alone |
+
+Source: D018–D020 and earlier role decisions. Exported rows/fields never exceed authorized read visibility. Exact formats, field lists, assignment semantics for Viewer and historical detail rules remain to be specified. Not-granted entries mean this role/participation alone supplies no such permission; another explicit role may supply it.
+
+## Round 6 proposals — require owner response
 
 | ID | Proposal | Boundaries |
 |---|---|---|
-| P5-01 | Viewer reads authorized records/reporting; Inventory Operator registers/transfers quantity inventory and views history | Viewer has no business-data writes; Inventory Operator scope is its assigned organization/function |
-| P5-02 | Operators export their authorized module data; Asset Manager exports in-scope operational data; Business Owner exports relevant owned-asset reports | Global User entity-wide and Super User application-wide export; Viewer and Respondent participation alone grant no bulk export; exported rows/fields respect the same visibility rules |
-| P5-03 | Business Owner sends standardized reminders for pending responses in relevant requests | Only assigned participants receive reminders; no arbitrary recipient changes, response/status edits or automatic reopening implied; rate limiting and audit behavior are designed later |
+| P6-01 | Asset Manager, Global User and Super User may reopen closed work within their authority; Business Owner may request reopening | Reason and audit required; old answers/decisions remain historical; exact reset/reapproval consequences are designed per workflow |
+| P6-02 | Asset Manager, Global User and Super User may reassign participants within their scope | Record reason, audit and notify affected users; former assignees retain read-only history of their assigned work, not permission to edit later work; replacement gets explicit task access |
+| P6-03 | Routine app actions archive/retire/cancel with retained history | Permanent removal of historical/audit records only through separately controlled maintenance under company retention requirements; duration and legal requirements come from company owners |
 
 ## Acceptance examples for confirmed decisions
 
 - Asset Operator can register/move an in-scope asset; direct disposal through that role alone is rejected, including calls bypassing the UI.
 - Asset Manager can execute stock/reconciliation/direct-disposal actions in scope; ordinary role alone does not grant a different function's records.
 - Business Owner sees relevant progress for a request initiated by another user, while unrelated owners' asset details remain inaccessible.
-- Respondent can read a previously assigned completed process, but cannot edit the closed response or unassigned records through that participation.
+- Respondent can read/export a previously assigned completed process within its historical visibility, but cannot edit the closed response or expose unassigned records through that participation.
+- Viewer can export assigned data but cannot broaden the export to unrelated records or modify business data.
+- Inventory Operator can register/transfer authorized inventory and view history; another function is inaccessible through that role alone.
+- Business Owner and Asset Manager can send relevant pending-task reminders; this action alone changes no business response/status.
 - Global User can administer ordinary roles within its entity; requests granting privileged roles or changing another entity's assignments are rejected.
 - Super User may grant/revoke Global User and Super User with attribution recorded.
 - An assigned authorized approver is not blocked solely because they initiated the request; an unassigned/unauthorized user remains blocked.

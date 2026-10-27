@@ -58,9 +58,17 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D016: Business Owner can report on requests involving owned assets, even when initiated by others. Visibility is limited to relevant progress/details in authorized scope.
 - D017: Global User administers ordinary role assignments within its entity. Only Super User grants/revokes Global User and Super User privileges.
 
-## Round 5 — proposed remaining basic permissions
+## Round 5 — owner responses recorded
 
-See PERMISSION-MATRIX.md for confirmed versus proposed permissions. Proposals: Viewer has scoped read-only access; Inventory Operator registers/transfers quantity inventory and views its history; scoped business exports are allowed for operators/managers/Business Owners but not Viewer or Respondent participation alone; Business Owner may send standard reminders for pending relevant response tasks without changing their responses/status.
+- D018: Viewer has scoped read-only access; Inventory Operator registers/transfers quantity inventory and views history.
+- D019: Viewer and Respondent can export data assigned to them. All other proposed module/ownership/entity/application export scopes remain, with rows/fields filtered to authorized visibility. Historical exports do not exceed historical read access.
+- D020: both Business Owner and Asset Manager may send standard reminders for pending relevant response tasks. Reminders do not change response/status or reopen work.
+
+## Round 6 — proposed exception controls awaiting owner response
+
+1. Asset Manager, Global User and Super User may reopen closed work within their authority with a required reason and audit; Business Owner may request reopening but does not reopen through that role alone.
+2. Asset Manager, Global User and Super User may reassign participants in their authorized scope with an explicit recorded reason and notification. Prior assignees retain read-only historical visibility of their assigned work; replacement assignees receive explicit scoped tasks.
+3. Routine app actions archive/retire/cancel with reasons and retained history. Permanent removal of historical/audit records is reserved for separately controlled maintenance under the company's retention requirements; no retention duration is assumed.
 
 ## Company-side fact collection task
 
