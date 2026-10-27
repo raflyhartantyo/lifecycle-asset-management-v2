@@ -213,3 +213,14 @@ Owner agreed, 2026-10-27: use the label Asset Status for the asset's operational
 Owner confirmed, 2026-10-27: currency is always IDR. Book Value will use a formula to be supplied later, applied by a scheduled flow at the start of every month. The uploaded accounting ledger is not selected as the automatic Book Value source. This replaces the proposed ledger-sourced Book Value design, not the retained reconciliation comparison/sign-off/explicit-correction process.
 
 Formula, effective dates, asset eligibility, useful-life inputs if applicable, precision/rounding, minimum value, first/last-period handling, time zone/run time and correction/backfill rules are not yet defined. No formula or accounting convention is inferred. Monthly calculation needs its own auditable operation and reliable retry/recovery design; it must not conflate accounting sign-off with execution. No scheduled flow has been implemented, enabled or run. See `../architecture/MONTHLY-BOOK-VALUE-DESIGN.md` for the proposed engineering contract.
+
+
+## D047 — Accounting-controlled asset categories
+
+Owner confirmed, 2026-10-27: categories follow Accounting rules and are fixed as Komputer (KO), Non-Komputer (NK) and Perangkat Lunak (PL). These replace the illustrative IT/Furniture/Office category proposal. Accounting code definitions/mappings are deferred; KO/NK/PL are the supplied abbreviations, not an inferred full accounting-code scheme. Do not confuse category accounting mappings with the company-wide unique Accounting Asset Code assigned to each asset (D043).
+
+## D048 — Asset Type parent lookup and software enhancement treatment
+
+Owner confirmed, 2026-10-27: Asset Type has a foreign-key lookup to Category. Design each type as belonging to one category; business-requiredness is enforced through the application under D044 rather than SharePoint Required flags. The final lookup/list names and physical contracts will be delivered with reference-data setup.
+
+Perangkat Lunak represents internal software enhancements budgeted/capitalized and documented as assets. Use the same registration fields as other assets; no separate licence/subscription module or software-specific registration form is requested. Exact type names, reference-data administration authority and category-change rules remain to be specified. See `../architecture/ASSET-CLASSIFICATION-DESIGN.md` for the distinction between confirmed requirements and proposed UI/integrity behavior.
