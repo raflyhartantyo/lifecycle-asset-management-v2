@@ -1,0 +1,79 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items_Sharepoint/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items_Sharepoint/inputs/parameters/table",
+      "field": "table",
+      "source_value": "0c1fb580-fd36-4461-8d78-b4f055e63e7f",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items_Sharepoint/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/parameters/table",
+      "field": "table",
+      "source_value": "0c1fb580-fd36-4461-8d78-b4f055e63e7f",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Post_message_in_a_chat_or_channel/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_teams",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_sharepointonline/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-sharepointonl-84fd4fce-e7ac-4217-bce0-340e9010cb19",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_teams/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-teams-4b01ea08-4a7d-49ba-b64d-630cea84850b",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": [
+    "shared_sharepointonline",
+    "shared_teams"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "display_name": "Data Refresh ALM",
+  "triggers": {
+    "manual": {
+      "metadata": {
+        "operationMetadataId": "f2407803-d956-4bb2-a9cd-69f66217acda"
+      },
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    }
+  }
+}

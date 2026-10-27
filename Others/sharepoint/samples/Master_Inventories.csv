@@ -1,0 +1,6 @@
+Title,Item_Name,Category,Employee_MYID,Location,Remarks,Quantity,Update_Date,Update_Type,Parent_ID
+2e79e268-928e-4599-9ba0-f3a1a441cde2,Converter Dell DA-200,ATP-026,,LOC-01,,4,10/27/2026,Add items back to stock,
+2301e030-22d9-4cf6-9cf9-ca07ab124e79,Tas Laptop,ATP-026,,LOC-01,,10,10/14/2026,Add items back to stock,
+bfab530b-a210-41da-8ac2-748c1c772634,Converter Dell DA-200,ATP-026,<anon>,LOC-01,,2,10/14/2026,Registration,
+cc60131d-115d-4569-b862-ab97b21c3d73,Child - Converter Dell DA-200,ATP-026,<anon>,LOC-01,,1,10/27/2026,Registration,2e79e268-928e-4599-9ba0-f3a1a441cde2
+c3b13e20-d2cc-4584-bbb0-db769e55bf06,Child - Converter Dell DA-200,ATP-026,<anon>,LOC-01,,1,10/27/2026,Registration,2e79e268-928e-4599-9ba0-f3a1a441cde2

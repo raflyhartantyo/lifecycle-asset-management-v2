@@ -1,0 +1,52 @@
+{
+  "display_name": "SO_Respondent_Save",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "description": "Please enter your input",
+              "title": "JsonResponse",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            },
+            "text_1": {
+              "description": "Please enter your input",
+              "title": "GUID",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            },
+            "text_2": {
+              "description": "Please enter your input",
+              "title": "User_Email",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "text",
+            "text_1",
+            "text_2"
+          ]
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    },
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  }
+}

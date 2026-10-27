@@ -1,0 +1,5 @@
+Category_ID,Category_Accounting_Name,Category_Name,Category_Description,ID
+CAT-01,Y2004070,KO,Komputer,1
+CAT-02,Y2007010,PL,Perangkat Lunak,2
+CAT-03,Y2004060,NK,Non-Komputer,3
+CAT-07,0000000,NV,Inventaris,7

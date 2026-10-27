@@ -1,0 +1,48 @@
+{
+  "display_name": "Accounting_ReconsiliationV2",
+  "triggers": {
+    "manual": {
+      "metadata": {
+        "operationMetadataId": "ec1dd4a4-4d0c-4caf-8966-437236800c74"
+      },
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "description": "Please select file or image",
+              "title": "Accounting_Data",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "contentBytes": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              },
+              "x-ms-content-hint": "FILE",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "file"
+          ]
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    }
+  }
+}

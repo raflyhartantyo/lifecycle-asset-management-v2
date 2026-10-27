@@ -1,0 +1,3 @@
+Asset_ID,IM_Number,Buyer_Name,Selling_Price,Dispose_Date,Accounting_Asset_Code,Asset_Name,Asset_Type_ID,Purchasing_Price,Remarks,Organization_ID,Function_ID,Arrival_Date
+ASSET/FNC-01/ATP-022/3908,-,<anon>,0,2/1/2026,NK-000030/99/17,Honeywell Dolphin 60s,ATP-022,"11,660,000",,ORG-01,FNC-01,6/21/2017
+ASSET/FNC-01/ATP-013/4695,000000000,<anon>,"500,000",7/29/2026,Y2004070-402549,Notebook - Dell L 5310 NewLabelCFI(i5 16GB OS 3Yr),ATP-013,"18,238,000",<anon>,ORG-01,FNC-01,

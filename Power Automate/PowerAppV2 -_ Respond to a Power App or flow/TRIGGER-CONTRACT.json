@@ -1,0 +1,45 @@
+{
+  "display_name": "PowerAppV2 -> Respond to a Power App or flow",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "description": "Please select file or image",
+              "title": "File content",
+              "type": "object",
+              "properties": {
+                "contentBytes": {
+                  "type": "string",
+                  "format": "byte"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "x-ms-content-hint": "FILE",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "file"
+          ]
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    },
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  }
+}

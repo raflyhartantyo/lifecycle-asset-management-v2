@@ -1,0 +1,535 @@
+{
+  "release": "baseline-001",
+  "original_archive_files": 87,
+  "post_handover_decision_documents": 1,
+  "files": [
+    {
+      "source": "app/src/1_LandingPage.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/1_LandingPage.pa.yaml",
+      "sha256": "ba7fd087f0207b3f7df13872e84bfd363850551e822f8acc326c43288be9caf0",
+      "bytes": 4463
+    },
+    {
+      "source": "app/src/2_HomePage.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/2_HomePage.pa.yaml",
+      "sha256": "33f90adc280f6755e85fefdc147ea4ee28d5cf2a3d8a6c053dfe7d5670da3a40",
+      "bytes": 35776
+    },
+    {
+      "source": "app/src/3_HomePageMasterData.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/3_HomePageMasterData.pa.yaml",
+      "sha256": "10eb236d55e96327e0a21f5f55abcf5a2c1231616cc4f137273f50570c5e52c7",
+      "bytes": 43683
+    },
+    {
+      "source": "app/src/ALM - Dispose.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Dispose.pa.yaml",
+      "sha256": "044da5756de2651dab0876628a0cb73e446cec309a1677df1097f606d87bd9c6",
+      "bytes": 185072
+    },
+    {
+      "source": "app/src/ALM - Master Asset Type.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Asset Type.pa.yaml",
+      "sha256": "a5ed25eeae7422d0d68e55f99ce396ccbaebfbca7b44c312067dca291cedfced",
+      "bytes": 41381
+    },
+    {
+      "source": "app/src/ALM - Master Category.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Category.pa.yaml",
+      "sha256": "b1889ad7f2007c00684b182e61753343966d84dc4176eb3ed379c8420e2d14c6",
+      "bytes": 41093
+    },
+    {
+      "source": "app/src/ALM - Master Employee.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Employee.pa.yaml",
+      "sha256": "9b546062f6260d511b01857c2a118825d4b69c31b94490061ed8798903393a96",
+      "bytes": 72122
+    },
+    {
+      "source": "app/src/ALM - Master Function.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Function.pa.yaml",
+      "sha256": "be73f2f75c9eca35e15d7f9a2a16f335390a105aad6de2c51f5d78938435a942",
+      "bytes": 35059
+    },
+    {
+      "source": "app/src/ALM - Master Location - New.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Location - New.pa.yaml",
+      "sha256": "ce8cf11611b6c97b03d73188d060483866a4eecfe0a88f06bac5b58d73d83018",
+      "bytes": 41873
+    },
+    {
+      "source": "app/src/ALM - Master Location.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Location.pa.yaml",
+      "sha256": "ceff5f0cf14d2ec4eb202d80d76f3791d1918ec352eb5a900b2f70b3cf60e485",
+      "bytes": 46975
+    },
+    {
+      "source": "app/src/ALM - Master Organization.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Master Organization.pa.yaml",
+      "sha256": "cbdb6fa559c170a8fdaebce255331c78b3071d5da764c559daf8b460d312aadd",
+      "bytes": 28992
+    },
+    {
+      "source": "app/src/ALM - Movement.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - Movement.pa.yaml",
+      "sha256": "e6bc6fcbad504807c5587112d9efcb8a5c74fe59383a8ea55c71488bcf3fb51c",
+      "bytes": 143501
+    },
+    {
+      "source": "app/src/ALM - StockOpname - Available.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - StockOpname - Available.pa.yaml",
+      "sha256": "4a0027e5ebb038b968b31b3f243e0749e955e6f1cd1c7c0c5a01f8688a752de9",
+      "bytes": 174593
+    },
+    {
+      "source": "app/src/ALM - StockOpname - In Use.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM - StockOpname - In Use.pa.yaml",
+      "sha256": "104ca6fca9b937e13ae74f7602f0dc9e8e01d6850d84c993d952bed746bb559c",
+      "bytes": 163978
+    },
+    {
+      "source": "app/src/ALM-AccReconcile.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-AccReconcile.pa.yaml",
+      "sha256": "4348a658de7be0a91127da3831dbd5f49709f7582a0c0633b13c45fb3949fe5c",
+      "bytes": 194847
+    },
+    {
+      "source": "app/src/ALM-Asset Master.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Asset Master.pa.yaml",
+      "sha256": "6374708a0c6f839804fbbd8bc37373aec7eb483fb35b5a532c080bc86954644c",
+      "bytes": 156242
+    },
+    {
+      "source": "app/src/ALM-Dashboard.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Dashboard.pa.yaml",
+      "sha256": "ad5111599cb716df5de0aed8831954320489ccc6fccc198a4940f2db0ddda2f4",
+      "bytes": 4820
+    },
+    {
+      "source": "app/src/ALM-DisposeRequest.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-DisposeRequest.pa.yaml",
+      "sha256": "92fc3bc143b71b3449a1cfed889d9b611f535a14aa7086dad8536528359dc731",
+      "bytes": 131941
+    },
+    {
+      "source": "app/src/ALM-Master Asset Type-New.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Master Asset Type-New.pa.yaml",
+      "sha256": "58c5699940352a893e05354c9ca3c14fd32dc650f0ef4da0559e712bb11460a9",
+      "bytes": 38291
+    },
+    {
+      "source": "app/src/ALM-Master Category-New.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Master Category-New.pa.yaml",
+      "sha256": "d2bb6d040efacacd776d75fd12a9bcb303405bfbb3664de4594b1643c93bccd7",
+      "bytes": 42873
+    },
+    {
+      "source": "app/src/ALM-Master Function-New.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Master Function-New.pa.yaml",
+      "sha256": "351f99a855e7cba1c7f0d45f338032718093380afa207ed9f790cd1cfb64371c",
+      "bytes": 36282
+    },
+    {
+      "source": "app/src/ALM-Master Organization-New.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Master Organization-New.pa.yaml",
+      "sha256": "ff49d683edd54073b338225110085e97b825639bdc15654cd32e959f0dcf9216",
+      "bytes": 30959
+    },
+    {
+      "source": "app/src/ALM-Registration.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/ALM-Registration.pa.yaml",
+      "sha256": "e0751ff3d393171d70e51d9fa474c6ff6b6c64480347b99903cf0866c5110998",
+      "bytes": 142278
+    },
+    {
+      "source": "app/src/App.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/App.pa.yaml",
+      "sha256": "19c7bdac640ec12d0da8a42655e8f486cb8579e81dea968bafa55239ebaac6d1",
+      "bytes": 662
+    },
+    {
+      "source": "app/src/Home Page_Asset_Inventory.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Home Page_Asset_Inventory.pa.yaml",
+      "sha256": "c38864333aa93cb0d689a42a01f8f453ded529b4bb778494b059d42f00963a0c",
+      "bytes": 14326
+    },
+    {
+      "source": "app/src/Home Page_Stock_Opname.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Home Page_Stock_Opname.pa.yaml",
+      "sha256": "f79fbb49f03c1935ded0915ed43ad9e3da518e98a84d8cbb40680961b79027be",
+      "bytes": 14873
+    },
+    {
+      "source": "app/src/Home Page_Transaction.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Home Page_Transaction.pa.yaml",
+      "sha256": "bd77a106bbf2942e1c2030eeead7cf8fb17937317b34bc48103b9cdb65dbfa03",
+      "bytes": 18810
+    },
+    {
+      "source": "app/src/Inventaris.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Inventaris.pa.yaml",
+      "sha256": "80974a938f01e66b50e6a6798fd4891ed6f525f02495dcb4d5c608e1284f7ec1",
+      "bytes": 30987
+    },
+    {
+      "source": "app/src/Inventaris_Transfer.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Inventaris_Transfer.pa.yaml",
+      "sha256": "a1d7400b1ebd9ed4a3e8a3ff6fe668103925dd833ff791cd6deadebda15374bc",
+      "bytes": 76579
+    },
+    {
+      "source": "app/src/Registration_Inventories.pa.yaml",
+      "destination": "Power Apps/Lifecycle Asset Management V2/screens/Registration_Inventories.pa.yaml",
+      "sha256": "372ba694f3a55dc8ecb17203ad96aee58fca44871c485d074da3b4eaee1e1395",
+      "bytes": 75328
+    },
+    {
+      "source": "data/schema/Acces_Matrix.md",
+      "destination": "Others/sharepoint/schema/Acces_Matrix.md",
+      "sha256": "6fa84e9301817bfa5f224f88a2690b666a22d2c9944480a709c6f8c7fb723051",
+      "bytes": 440
+    },
+    {
+      "source": "data/schema/Asset_Movement_History.md",
+      "destination": "Others/sharepoint/schema/Asset_Movement_History.md",
+      "sha256": "f8ac7594e373688cef7443517943e66891ee2a1097c2840db5893376c1e9dec4",
+      "bytes": 592
+    },
+    {
+      "source": "data/schema/AuditLog.md",
+      "destination": "Others/sharepoint/schema/AuditLog.md",
+      "sha256": "c3c6eedc23109ed15123bcf2bdc6633be140e0b9fd18bf000f8c743b9e03adf1",
+      "bytes": 413
+    },
+    {
+      "source": "data/schema/Inactive_Assets.md",
+      "destination": "Others/sharepoint/schema/Inactive_Assets.md",
+      "sha256": "13dbb56a9bc4decf30c0cda412c7a4117e8fdf10e790ed4bfb370e6b2122c57b",
+      "bytes": 571
+    },
+    {
+      "source": "data/schema/Inventories_Movement_History.md",
+      "destination": "Others/sharepoint/schema/Inventories_Movement_History.md",
+      "sha256": "78b89c14a633770c686bfb011465daa1642cffa4697991506ec12766ca408f77",
+      "bytes": 498
+    },
+    {
+      "source": "data/schema/Master_Asset.md",
+      "destination": "Others/sharepoint/schema/Master_Asset.md",
+      "sha256": "47da8791dff31de1959daa66ef4668d58ed8db805466787444f05f9d669596e3",
+      "bytes": 1058
+    },
+    {
+      "source": "data/schema/Master_Asset2.md",
+      "destination": "Others/sharepoint/schema/Master_Asset2.md",
+      "sha256": "ef41d0f61ce058457ae3d1dd8e20babbf54174ebff3da448176a18996a32acbe",
+      "bytes": 1085
+    },
+    {
+      "source": "data/schema/Master_Asset_Type.md",
+      "destination": "Others/sharepoint/schema/Master_Asset_Type.md",
+      "sha256": "8a0217efb5d895a1a5532dc4c33304b5ddcc17e0a86c9466278405c6f5748e84",
+      "bytes": 315
+    },
+    {
+      "source": "data/schema/Master_Category.md",
+      "destination": "Others/sharepoint/schema/Master_Category.md",
+      "sha256": "c7f420827013d393c78b52dc2d8d924c63a170656ad80301bbdaf0934beadc54",
+      "bytes": 324
+    },
+    {
+      "source": "data/schema/Master_Employee.md",
+      "destination": "Others/sharepoint/schema/Master_Employee.md",
+      "sha256": "1284592ec9384e69c8ff0dc37f34f9442526e88ca32fd4a0dfbd6d96f9ef86e6",
+      "bytes": 946
+    },
+    {
+      "source": "data/schema/Master_Function.md",
+      "destination": "Others/sharepoint/schema/Master_Function.md",
+      "sha256": "0b15a0020e11ce4422d99a71d0115d1f72c8babf469045ea3f238828eff4a1ee",
+      "bytes": 284
+    },
+    {
+      "source": "data/schema/Master_Inventories.md",
+      "destination": "Others/sharepoint/schema/Master_Inventories.md",
+      "sha256": "293824632878742fb24e90f6249d68a5d8af9bcca878a9048d66355ee1452840",
+      "bytes": 476
+    },
+    {
+      "source": "data/schema/Master_Location.md",
+      "destination": "Others/sharepoint/schema/Master_Location.md",
+      "sha256": "09ef31e1a2a3d35cedfc7d6ca7810daeede720bc1bb57e8a28acd2c9ccc156e0",
+      "bytes": 439
+    },
+    {
+      "source": "data/schema/Master_Organization.md",
+      "destination": "Others/sharepoint/schema/Master_Organization.md",
+      "sha256": "56e5b79abd4acf967a3c6166c98e678242e2fe5f3be7d681ca70bab98e84ef46",
+      "bytes": 274
+    },
+    {
+      "source": "data/schema/Stock_Opname_InUse.md",
+      "destination": "Others/sharepoint/schema/Stock_Opname_InUse.md",
+      "sha256": "cca9eaa1bec985dfcf1d83917f1ef1c711f95c7f7c701da1b6b1b45b69b8d5ee",
+      "bytes": 486
+    },
+    {
+      "source": "data/schema/Temp_Acc_Reconcile.md",
+      "destination": "Others/sharepoint/schema/Temp_Acc_Reconcile.md",
+      "sha256": "2e9380a96315f2a40e491d3cf29fd4ae37846712a0e447c3dbbdaeb7b42538c7",
+      "bytes": 817
+    },
+    {
+      "source": "data/schema/Temp_Inventory_Asset.md",
+      "destination": "Others/sharepoint/schema/Temp_Inventory_Asset.md",
+      "sha256": "c397bbb264debb1b9e9c6a330b9e194be505e98c863c096a618b5a3eecc83ba2",
+      "bytes": 265
+    },
+    {
+      "source": "data/schema/Temp_Stock_Opname.md",
+      "destination": "Others/sharepoint/schema/Temp_Stock_Opname.md",
+      "sha256": "dd1777d67f534e18878e03ae62e94cf9a4b554d91ee0ae10a62a11807ef8094f",
+      "bytes": 484
+    },
+    {
+      "source": "data/samples/Acces_Matrix.csv",
+      "destination": "Others/sharepoint/samples/Acces_Matrix.csv",
+      "sha256": "1e039b126d2b628f61045ef99cf26be7811f073972fd1368ba4521eb2faaafa4",
+      "bytes": 608
+    },
+    {
+      "source": "data/samples/Asset_Movement_History.csv",
+      "destination": "Others/sharepoint/samples/Asset_Movement_History.csv",
+      "sha256": "03952102f2b77c5f72ba592405849a17f423a29339ad632c670520cee035516f",
+      "bytes": 1447
+    },
+    {
+      "source": "data/samples/AuditLog.csv",
+      "destination": "Others/sharepoint/samples/AuditLog.csv",
+      "sha256": "d4f2554d7c23941f8232ca525f35761d76c6ad723bfa3a01674eb47ca4ab6011",
+      "bytes": 987
+    },
+    {
+      "source": "data/samples/Inactive_Assets.csv",
+      "destination": "Others/sharepoint/samples/Inactive_Assets.csv",
+      "sha256": "c19ff79b464f5daeffb6cfb13bf9c2fb759cafeda25655f5587738f7a8693261",
+      "bytes": 476
+    },
+    {
+      "source": "data/samples/Inventories_Movement_History.csv",
+      "destination": "Others/sharepoint/samples/Inventories_Movement_History.csv",
+      "sha256": "c429dcc6a29a962a69f02c88ec5c459c16a60c3bc51d7cbbf1d26f9b41b2168b",
+      "bytes": 1094
+    },
+    {
+      "source": "data/samples/Master_Asset.csv",
+      "destination": "Others/sharepoint/samples/Master_Asset.csv",
+      "sha256": "1657aa26026da55f8f55d6a61a0d8d3cd9ce1fc2c2bd04d9b643809825a4d8bf",
+      "bytes": 2827
+    },
+    {
+      "source": "data/samples/Master_Asset2.csv",
+      "destination": "Others/sharepoint/samples/Master_Asset2.csv",
+      "sha256": "1657aa26026da55f8f55d6a61a0d8d3cd9ce1fc2c2bd04d9b643809825a4d8bf",
+      "bytes": 2827
+    },
+    {
+      "source": "data/samples/Master_Asset_Type.csv",
+      "destination": "Others/sharepoint/samples/Master_Asset_Type.csv",
+      "sha256": "f653d8d032ac7997e864e59b2e17a52c15cc19cab014c31b0f42b998a785fc4a",
+      "bytes": 320
+    },
+    {
+      "source": "data/samples/Master_Category.csv",
+      "destination": "Others/sharepoint/samples/Master_Category.csv",
+      "sha256": "1141abf079936cae5d92f311f6182fb89a40de52bf066d976e8343e16fbd6874",
+      "bytes": 212
+    },
+    {
+      "source": "data/samples/Master_Employee.csv",
+      "destination": "Others/sharepoint/samples/Master_Employee.csv",
+      "sha256": "ef3f99d8794bec5a9224b5d5a254db43072b36397a70e52424bf15cc0189bad4",
+      "bytes": 1641
+    },
+    {
+      "source": "data/samples/Master_Function.csv",
+      "destination": "Others/sharepoint/samples/Master_Function.csv",
+      "sha256": "49e0abeee1b3a69ef279e579f1e577a698703114cf35c483b5c151f40d9c379a",
+      "bytes": 89
+    },
+    {
+      "source": "data/samples/Master_Inventories.csv",
+      "destination": "Others/sharepoint/samples/Master_Inventories.csv",
+      "sha256": "2811bb24d32178349090862d65e7fed2e3bbaef4996aacb34613245a209a164a",
+      "bytes": 738
+    },
+    {
+      "source": "data/samples/Master_Location.csv",
+      "destination": "Others/sharepoint/samples/Master_Location.csv",
+      "sha256": "4bdadaf0c4da607452ab84523b49bed429059829ca37475fd21288ab188809e2",
+      "bytes": 402
+    },
+    {
+      "source": "data/samples/Master_Organization.csv",
+      "destination": "Others/sharepoint/samples/Master_Organization.csv",
+      "sha256": "d74b08f3cd771bf71c7d199cf2e5054726c8afaf78af2108b836cf3884f8775a",
+      "bytes": 117
+    },
+    {
+      "source": "data/samples/Stock_Opname_InUse.csv",
+      "destination": "Others/sharepoint/samples/Stock_Opname_InUse.csv",
+      "sha256": "827cfa05aa47ba03a254ca6f31889efc059d735361017c5a218bd6c1c9b38538",
+      "bytes": 185
+    },
+    {
+      "source": "data/samples/Temp_Acc_Reconcile.csv",
+      "destination": "Others/sharepoint/samples/Temp_Acc_Reconcile.csv",
+      "sha256": "230f55910ee7042b9f63a2eb536bc764e26a0c51517a2e014779421e9c2a497a",
+      "bytes": 4547
+    },
+    {
+      "source": "data/samples/Temp_Inventory_Asset.csv",
+      "destination": "Others/sharepoint/samples/Temp_Inventory_Asset.csv",
+      "sha256": "3c0876761349c56d840491be9121234238610c2b201ec7d17458b6e069f264c6",
+      "bytes": 27
+    },
+    {
+      "source": "data/samples/Temp_Stock_Opname.csv",
+      "destination": "Others/sharepoint/samples/Temp_Stock_Opname.csv",
+      "sha256": "5919af85df8d49ef8b8729e3a3a93c5c2d8ddb1031017db6020f6508d58845b8",
+      "bytes": 441
+    },
+    {
+      "source": "docs/Context.txt",
+      "destination": "Others/reference/Context.txt",
+      "sha256": "d91ade8efb6e978ab39c8288c255084ec433ef0baf7c5503172151cdf54b437d",
+      "bytes": 36933
+    },
+    {
+      "source": "docs/Zurich Brand Guidelines.md",
+      "destination": "Others/reference/Zurich Brand Guidelines.md",
+      "sha256": "22f2ac1ba734b9271441613e2cad9eeed3305eb78bb4e41b7efb32919a05afd1",
+      "bytes": 6261
+    },
+    {
+      "source": "docs/confirmed-decisions.md",
+      "destination": "Others/reference/confirmed-decisions.md",
+      "sha256": "39b28540048642979efe05ea5dfa4a5ae8740923ddca715d2938521bbbd5b869",
+      "bytes": 635
+    },
+    {
+      "source": "docs/redesign-plan.md",
+      "destination": "Others/reference/redesign-plan.md",
+      "sha256": "2c3f49cc1f8d83ef9fd9ccfcf075c9d2678410fc5da721505555fe6c2663307c",
+      "bytes": 5294
+    },
+    {
+      "source": "README.md",
+      "destination": "Others/reference/ORIGINAL-README.md",
+      "sha256": "0cc713f8d4789d63e6fdae4c88d0d5f3c4ad6218a03a28331b1236eb9ecbb061",
+      "bytes": 1565
+    },
+    {
+      "source": "flows/index.md",
+      "destination": "Others/reference/ORIGINAL-FLOW-INDEX.md",
+      "sha256": "3e15b452ea385b98b99579ba8949fda28fe2256f210eaee65ee9d3cf2996648b",
+      "bytes": 1567
+    },
+    {
+      "source": "tools/check_yaml.py",
+      "destination": "Others/tools/check_yaml.py",
+      "sha256": "8662d38ed02b626d54c0b23995d14d59f34b884fb2d4503307187a0264574b7e",
+      "bytes": 1969
+    },
+    {
+      "source": "flows/Accounting Reconciliation - Approval Request/definition.json",
+      "destination": "Power Automate/Accounting Reconciliation - Approval Request/definition.json",
+      "sha256": "bb8b49c665fe64a19963231c402806a8e6880a47185258ef70fd2c3e1bf5503e",
+      "bytes": 39434
+    },
+    {
+      "source": "flows/Accounting_ReconsiliationV2/definition.json",
+      "destination": "Power Automate/Accounting_ReconsiliationV2/definition.json",
+      "sha256": "aa42e0371b58997d114bcc8e9d7656a001f3e2b8bc4408e50e48e542641d2a0d",
+      "bytes": 21837
+    },
+    {
+      "source": "flows/Accounting_ReconsiliationV3/definition.json",
+      "destination": "Power Automate/Accounting_ReconsiliationV3/definition.json",
+      "sha256": "dd1d8054d3710254188883f29a6fda737f15f995584e554d31458af4162125f2",
+      "bytes": 32172
+    },
+    {
+      "source": "flows/Bulk_Registration/definition.json",
+      "destination": "Power Automate/Bulk_Registration/definition.json",
+      "sha256": "946f85b0689303146983797781b6a25fda13d3d5e039722919e6cd0f99631798",
+      "bytes": 5823
+    },
+    {
+      "source": "flows/Data Refresh ALM/definition.json",
+      "destination": "Power Automate/Data Refresh ALM/definition.json",
+      "sha256": "b6414ad54feaef93b6df3b604889049d8b14d8172607b7af7ca4002d431979b8",
+      "bytes": 2395
+    },
+    {
+      "source": "flows/Export Data/definition.json",
+      "destination": "Power Automate/Export Data/definition.json",
+      "sha256": "9c8bed9baf4be33b20a1c7fd442800c88c3d5ccf202863ea09b21af6d75b3332",
+      "bytes": 4846
+    },
+    {
+      "source": "flows/Flow Networking Device/definition.json",
+      "destination": "Power Automate/Flow Networking Device/definition.json",
+      "sha256": "7e56099e833b6dbb7d1889aca2b9f490a66a8bfab347902c3c6662d9fc87be9d",
+      "bytes": 1968
+    },
+    {
+      "source": "flows/InTune Flow/definition.json",
+      "destination": "Power Automate/InTune Flow/definition.json",
+      "sha256": "a390c901c5450795eac098dbc48534bc44f01861f289c4b5b34f8be007e19c6d",
+      "bytes": 10059
+    },
+    {
+      "source": "flows/PowerAppV2 -_ Respond to a Power App or flow/definition.json",
+      "destination": "Power Automate/PowerAppV2 -_ Respond to a Power App or flow/definition.json",
+      "sha256": "2dbef7e9309017ef762ee39f3d5ec656b667f60c931e595135edf1644f03976f",
+      "bytes": 3796
+    },
+    {
+      "source": "flows/Return Master Asset/definition.json",
+      "destination": "Power Automate/Return Master Asset/definition.json",
+      "sha256": "4d593625b4920bf31ce81f171e4ba4ed82e87b75eea07297a3e5021e9a4946e3",
+      "bytes": 2892
+    },
+    {
+      "source": "flows/SO_Respondent_Save/definition.json",
+      "destination": "Power Automate/SO_Respondent_Save/definition.json",
+      "sha256": "887dccbce97f9d836acfec7cc043e4efd3ba1839d684e5ab79ab6c9a653be101",
+      "bytes": 8974
+    },
+    {
+      "source": "flows/SO_Respondents_Confirm/definition.json",
+      "destination": "Power Automate/SO_Respondents_Confirm/definition.json",
+      "sha256": "1becfc84a77e58a53c6959c950631e6a4ad22b46c9ed82000e8a32380bf561c6",
+      "bytes": 29776
+    },
+    {
+      "source": "flows/Stock_Opname_Available_Trigger/definition.json",
+      "destination": "Power Automate/Stock_Opname_Available_Trigger/definition.json",
+      "sha256": "d74accc2bdbda2ce8a5a92ae8edc8ff51d2198ca99bd4d60dc064f76b976fcba",
+      "bytes": 12091
+    },
+    {
+      "source": "flows/Stock_Opname_In_Use_Match/definition.json",
+      "destination": "Power Automate/Stock_Opname_In_Use_Match/definition.json",
+      "sha256": "48512393b8affa67bc3a168ae58a141e9207440ca0d6cf095dafda6f03dfc417",
+      "bytes": 14424
+    },
+    {
+      "source": "flows/Stock_Opname_In_Use_Trigger/definition.json",
+      "destination": "Power Automate/Stock_Opname_In_Use_Trigger/definition.json",
+      "sha256": "749626db39553ab8c6bde1da124e17237a1bbb000289e401aa7889030f7ec79d",
+      "bytes": 15176
+    }
+  ]
+}

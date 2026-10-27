@@ -1,0 +1,13 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": []
+}

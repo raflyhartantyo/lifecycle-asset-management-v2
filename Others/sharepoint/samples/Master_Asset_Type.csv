@@ -1,0 +1,9 @@
+Asset_Type_ID,Asset_Type_Name,Function_ID,Category_ID,ID
+ATP-001,Tone Checker,FNC-01,CAT-01,1
+ATP-002,Fluke,FNC-01,CAT-01,2
+ATP-003,PC,FNC-01,CAT-01,3
+ATP-004,Server,FNC-01,CAT-01,4
+ATP-005,Kabel,FNC-01,CAT-01,5
+ATP-006,Patch Panel,FNC-01,CAT-01,6
+ATP-007,Printer,FNC-01,CAT-01,7
+ATP-008,Router,FNC-01,CAT-01,8

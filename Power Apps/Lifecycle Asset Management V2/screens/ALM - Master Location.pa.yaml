@@ -1,0 +1,945 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ALM - Master Location:
+    Properties:
+      Fill: =Color.WhiteSmoke
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnHidden: =Clear(colGalleryDataMasterLocation)
+    Children:
+      - Header_CategoryMaster_4:
+          Control: Header@0.0.44
+          Properties:
+            BasePaletteColor: =RGBA(5, 102, 178, 1)
+            Fill: =RGBA(180, 214, 250, 1)
+            Logo: ='Zurich Logo'
+            LogoTooltip: ="Zurich Indonesia"
+            Title: ="ALM - Master Location"
+            Width: =1352
+            X: =14
+            Y: =21
+      - ButtonNew_CategoryMaster_6:
+          Control: Button@0.0.45
+          Properties:
+            Height: =50
+            OnSelect: =Navigate('ALM - Master Location - New', ScreenTransition.Fade)
+            Text: ="Create New"
+            Width: =116
+            X: =Icon15_4.X-150
+            Y: =Header_CategoryMaster_4.Y + (Header_CategoryMaster_4.Height / 2) - (Self.Height / 2)
+      - AssetDataContainer_6:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Height: =658
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowX: =LayoutOverflow.Scroll
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Width: =1352
+            X: =HeaderContainer_AssetMaster.X
+            Y: =110
+          Children:
+            - ColumnNameMasterAsset_6:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  FillPortions: =0
+                  Height: =50
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Width: =Column_Name_AccAssetCode_MasterAsset_47.X+ Column_Name_AccAssetCode_MasterAsset_47.Width
+                  X: =
+                  Y: =40
+                Children:
+                  - Column_Name_AccAssetCode_MasterAsset_45:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Location Address"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =540
+                        X: =Column_Name_AccAssetCode_MasterAsset_46.Width+Column_Name_AccAssetCode_MasterAsset_46.X
+                  - Column_Name_AccAssetCode_MasterAsset_46:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Location Name"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AssetDate_MasterAsset_6.Width+Column_Name_AssetDate_MasterAsset_6.X
+                  - Column_Name_AssetDate_MasterAsset_6:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =Parent.Height
+                        Size: =15
+                        Text: ="Location ID"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250+Rectangle2_24.Width
+                  - Column_Name_AccAssetCode_MasterAsset_47:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Location PIC"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_114.Width+Column_Name_AccAssetCode_MasterAsset_114.X
+                  - Column_Name_AccAssetCode_MasterAsset_114:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Location Contact Number"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_45.Width+Column_Name_AccAssetCode_MasterAsset_45.X
+            - ColumnValueMasterAsset_6:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =Color.Transparent
+                  Height: =Parent.Height-50
+                  Items: =colGalleryDataMasterLocation
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  TemplateFill: |-
+                    =
+                    If(
+                        ThisItem.IsSelected,
+                        RGBA(160, 200, 240, 1),   // Light blue shade
+                        Color.Transparent         // No fill when not selected
+                    )
+                  TemplateSize: =50
+                  Width: =ColumnNameMasterAsset_6.Width + NextArrow2_5.Width
+                  X: =Parent.X
+                  Y: =Parent.Height-Self.Height
+                Children:
+                  - Column_Value_AsssetDate_MasterAsset_69:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Location_ID
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AssetDate_MasterAsset_6.Width-Rectangle2_24.Width
+                        X: =Rectangle2_24.Width
+                  - Column_Value_AsssetDate_MasterAsset_70:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Location_Name
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_46.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_46.X
+                  - Column_Value_AsssetDate_MasterAsset_71:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Location_Address
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_45.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_45.X
+                  - Column_Value_AsssetDate_MasterAsset_72:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.PIC
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_47.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_47.X
+                  - NextArrow2_5:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                        DisabledColor: =RGBA(119, 119, 119, 1)
+                        Fill: =Color.WhiteSmoke
+                        Height: =50
+                        Icon: =Icon.Edit
+                        OnSelect: |
+                          =UpdateContext({colTempEditMasterLocation : ThisItem});
+                          UpdateContext({ShowFormEditMasterLocation: true})
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Visible: |-
+                          =If(
+                              LookUp(Acces_Matrix, Title = LookUp(Master_Employee,Email = User().Email).MyID, Master_Data_Edit) = true,
+                              true,
+                              false
+                          )
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                  - Column_Value_AsssetDate_MasterAsset_217:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Location_Contact
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_114.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_114.X
+                  - Rectangle2_25:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_47.X+Column_Name_AccAssetCode_MasterAsset_47.Width
+                        Y: =Column_Name_AccAssetCode_MasterAsset_45.Y
+                  - Rectangle2_26:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_47.X+Column_Name_AccAssetCode_MasterAsset_47.Width
+                        Y: =49
+                  - Rectangle2_27:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =1
+                        X: =Column_Name_AccAssetCode_MasterAsset_47.X+Column_Name_AccAssetCode_MasterAsset_47.Width
+                  - Rectangle2_24:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+      - Icon15_4:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =50
+            Icon: =Icon.Home
+            OnSelect: =Navigate('3_HomePageMasterData', ScreenTransition.Fade);
+            Width: =50
+            X: =Header_CategoryMaster_4.X+Header_CategoryMaster_4.Width-150
+            Y: =Header_CategoryMaster_4.Y + (Header_CategoryMaster_4.Height / 2) - (Self.Height / 2)
+      - ButtonNew_CategoryMaster_7:
+          Control: Button@0.0.45
+          Properties:
+            BasePaletteColor: =Color.Orange
+            Height: =50
+            Icon: ="ArrowClockwise"
+            OnSelect: |
+              =Refresh(Master_Location);
+              ClearCollect(colGalleryDataMasterLocation,Master_Location)
+            Text: ="Load Data"
+            Width: =116
+            X: =ButtonNew_CategoryMaster_6.X-150
+            Y: =Header_CategoryMaster_4.Y + (Header_CategoryMaster_4.Height / 2) - (Self.Height / 2)
+      - Text4_4:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(0, 18, 107, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =34
+            Size: =13
+            Text: |-
+              =Concatenate(
+                  "Last Updated: ",
+                  Text(
+                      First(
+                          SortByColumns(
+                              colGalleryDataMasterLocation,
+                              "Modified",
+                              SortOrder.Descending
+                          )
+                      ).Modified,
+                      "dd mmm yyyy hh:mm"
+                  )
+              )
+            Width: =302
+            X: =108
+            Y: =Icon7_3.Y - 5
+      - Icon7_3:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =24
+            Icon: =Icon.Clock
+            Width: =24
+            X: =85
+            Y: =70
+      - Container1_5:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245,245,245,0.9)
+            Height: =Parent.Height
+            Visible: =ShowFormEditMasterLocation
+            Width: =Parent.Width
+            X: =('ALM - Master Location'.Width-Self.Width)/2
+            Y: =('ALM - Master Location'.Height-Self.Height)/2
+          Children:
+            - Form1_6:
+                Control: Form@2.4.4
+                Layout: Vertical
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  DataSource: =Master_Location
+                  Fill: =Color.White
+                  Height: =640
+                  Item: =colTempEditMasterLocation
+                  NumberOfColumns: =2
+                  Width: =1312
+                  X: =Parent.Width/2-Self.Width/2
+                  Y: =Parent.Height/2-(Self.Height+ButtonClose_Registration_22.Height)/2
+                Children:
+                  - Location_ID_DataCard1:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Title"
+                        Default: =ThisItem.Location_ID
+                        DisplayMode: =DisplayMode.Disabled
+                        DisplayName: =DataSourceInfo([@Master_Location],DataSourceInfo.DisplayName,Location_ID)
+                        MaxLength: =DataSourceInfo([@Master_Location], DataSourceInfo.MaxLength, Location_ID)
+                        Required: =true
+                        Update: =DataCardValue46.Value
+                        Width: =656
+                        X: =0
+                        Y: =0
+                      Children:
+                        - DataCardKey50:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue46:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey50.Y + DataCardKey50.Height + 4
+                        - ErrorMessage49:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              Height: =30
+                              Text: =Parent.Error
+                              Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue46.Y + DataCardValue46.Height
+                        - StarVisible49:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey50.Y
+                  - Location_Name_DataCard1:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="field_1"
+                        Default: =ThisItem.Location_Name
+                        DisplayName: =DataSourceInfo([@Master_Location],DataSourceInfo.DisplayName,Location_Name)
+                        MaxLength: =DataSourceInfo([@Master_Location], DataSourceInfo.MaxLength, Location_Name)
+                        Required: =true
+                        Update: |+
+                          =
+                          If(
+                              IsBlank(DataCardValue43.Value) || Len(DataCardValue43.Value) > Location_Name_DataCard1.MaxLength,
+                              Blank(),
+                              DataCardValue43.Value
+                          )
+                        Width: =656
+                        X: =1
+                        Y: =0
+                      Children:
+                        - DataCardKey47:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue43:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              BorderColor: |-
+                                =
+                                If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey47.Y + DataCardKey47.Height + 4
+                        - ErrorMessage46:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =// ErrorMessage16.Text
+                                If(
+                                    IsBlank(Trim(DataCardValue43.Value)),
+                                    "Location Name is required.",
+                                    If(Len(DataCardValue43.Value) > Location_Name_DataCard1.MaxLength,
+                                        Concatenate("Maximum ", Location_Name_DataCard1.MaxLength, " characters allowed."),
+                                        ""
+                                    )
+                                )
+                              Visible: =!Parent.Error
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue43.Y + DataCardValue43.Height
+                        - StarVisible46:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey47.Y
+                  - Location_Address_DataCard1:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="field_2"
+                        Default: =ThisItem.Location_Address
+                        DisplayName: =DataSourceInfo([@Master_Location],DataSourceInfo.DisplayName,Location_Address)
+                        MaxLength: =DataSourceInfo([@Master_Location], DataSourceInfo.MaxLength, Location_Address)
+                        Required: =false
+                        Update: |-
+                          =If(
+                              Len(DataCardValue44.Value) > Location_Address_DataCard1.MaxLength,
+                              Blank(),
+                              DataCardValue44.Value
+                          )
+                        Width: =656
+                        X: =0
+                        Y: =1
+                      Children:
+                        - DataCardKey48:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue44:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              BorderColor: |-
+                                =
+                                If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey48.Y + DataCardKey48.Height + 4
+                        - ErrorMessage47:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |+
+                                =// ErrorMessage16.Text
+                                If(Len(DataCardValue44.Value) > Location_Address_DataCard1.MaxLength,
+                                        Concatenate("Maximum ", Location_Address_DataCard1.MaxLength, " characters allowed."),
+                                        ""
+                                    )
+                              Visible: =!Parent.Error
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue44.Y + DataCardValue44.Height
+                        - StarVisible47:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey48.Y
+                  - Location_Contact_DataCard1:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="field_3"
+                        Default: =ThisItem.Location_Contact
+                        DisplayName: =DataSourceInfo([@Master_Location],DataSourceInfo.DisplayName,Location_Contact)
+                        MaxLength: =DataSourceInfo([@Master_Location], DataSourceInfo.MaxLength, Location_Contact)
+                        Required: =false
+                        Update: |-
+                          =If(
+                              Len(DataCardValue45.Value) > Location_Contact_DataCard1.MaxLength,
+                              Blank(),
+                              DataCardValue45.Value
+                          )
+                        Width: =656
+                        X: =1
+                        Y: =1
+                      Children:
+                        - DataCardKey49:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue45:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              BorderColor: |-
+                                =
+                                If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey49.Y + DataCardKey49.Height + 4
+                        - ErrorMessage48:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |+
+                                =// ErrorMessage16.Text
+                                If(Len(DataCardValue45.Value) > Location_Contact_DataCard1.MaxLength,
+                                        Concatenate("Maximum ", Location_Contact_DataCard1.MaxLength, " characters allowed."),
+                                        ""
+                                    )
+                              Visible: =!Parent.Error
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue45.Y + DataCardValue45.Height
+                        - StarVisible48:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey49.Y
+                  - PIC_DataCard2:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="PIC"
+                        Default: =ThisItem.PIC
+                        DisplayName: =DataSourceInfo([@Master_Location],DataSourceInfo.DisplayName,PIC)
+                        MaxLength: =DataSourceInfo([@Master_Location], DataSourceInfo.MaxLength, PIC)
+                        Required: =false
+                        Update: =ComboboxCanvas1_1.Selected.MyID
+                        Width: =656
+                        X: =0
+                        Y: =2
+                      Children:
+                        - DataCardKey6:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - ErrorMessage6:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              Height: =30
+                              Text: =Parent.Error
+                              Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =ComboboxCanvas1_1.Y + ComboboxCanvas1_1.Height
+                        - StarVisible6:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey6.Y
+                        - ComboboxCanvas1_1:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              BorderColor: |-
+                                =
+                                If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DefaultSelectedItems: =LookUp(Master_Employee,MyID = ThisItem.PIC)
+                              FontWeight: =""
+                              ItemDisplayText: =ThisItem.Display_Name
+                              Items: |-
+                                =Filter(
+                                    Master_Employee,
+                                    Identity_Status = "Active" &&
+                                    StartsWith(Display_Name, ComboboxCanvas1_1.SearchText))
+                              SelectMultiple: =false
+                              Size: =0
+                              Width: =Parent.Width-48
+                              X: =24
+                              Y: =DataCardKey6.Y + DataCardKey6.Height + 4
+            - ButtonClose_Registration_21:
+                Control: Button@0.0.45
+                Properties:
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Save"
+                  OnSelect: |
+                    =If(
+                        Form1_6.Valid,
+
+                        // ---- 1) Generate correlation + timestamp
+                        UpdateContext({
+                            ctxCorrelationId: GUID(),
+                            ctxNow: Now()
+                        });
+
+                        // ---- 2) ORIGINAL values (stored in your edit buffer)
+                        UpdateContext({
+                            ctxOrig_Location_ID: colTempEditMasterLocation.Location_ID,
+                            ctxOrig_Location_Name: colTempEditMasterLocation.Location_Name,
+                            ctxOrig_Location_Address: colTempEditMasterLocation.Location_Address,
+                            ctxOrig_Location_Contact: colTempEditMasterLocation.Location_Contact
+                        });
+
+                        // ---- 3) EDITED values (from form inputs)
+                        UpdateContext({
+                            ctxEdit_Location_ID: Location_ID_DataCard1.Update,
+                            ctxEdit_Location_Name: Location_Name_DataCard1.Update,
+                            ctxEdit_Location_Address: Location_Address_DataCard1.Update,
+                            ctxEdit_Location_Contact: Location_Contact_DataCard1.Update,
+                            ctxEdit_Location_PIC: PIC_DataCard2.Update
+                        });
+
+                        // ---- 4) Detect changed fields
+                        UpdateContext({
+                            ctxChangesAll: Table(
+                                {
+                                    FieldName: "Location_ID",
+                                    OldValue: ctxOrig_Location_ID,
+                                    NewValue: ctxEdit_Location_ID,
+                                    Changed: ctxOrig_Location_ID <> ctxEdit_Location_ID
+                                },
+                                {
+                                    FieldName: "Location_Name",
+                                    OldValue: ctxOrig_Location_Name,
+                                    NewValue: ctxEdit_Location_Name,
+                                    Changed: ctxOrig_Location_Name <> ctxEdit_Location_Name
+                                },
+                                {
+                                    FieldName: "Location_Address",
+                                    OldValue: ctxOrig_Location_Address,
+                                    NewValue: ctxEdit_Location_Address,
+                                    Changed: ctxOrig_Location_Address <> ctxEdit_Location_Address
+                                },
+                                {
+                                    FieldName: "Location_Contact",
+                                    OldValue: ctxOrig_Location_Contact,
+                                    NewValue: ctxEdit_Location_Contact,
+                                    Changed: ctxOrig_Location_Contact <> ctxEdit_Location_Contact
+                                }
+                            )
+                        });
+                        UpdateContext({
+                            ctxChanges: Filter(ctxChangesAll, Changed)
+                        });
+
+                        // ---- 5) Patch Master_Location
+                        UpdateContext({
+                            ctxPatchedItem:
+                                Patch(
+                                    Master_Location,
+                                    LookUp(
+                                        Master_Location,
+                                        ID = colTempEditMasterLocation.ID
+                                    ),
+                                    {
+                                        Location_ID: ctxEdit_Location_ID,
+                                        Location_Name: ctxEdit_Location_Name,
+                                        Location_Address: ctxEdit_Location_Address,
+                                        Location_Contact: Text(ctxEdit_Location_Contact),
+                                        PIC: ctxEdit_Location_PIC
+                                    }
+                                )
+                        });
+
+                        // ---- 6) Build the single "Changes" string: [FieldName:OldValue-NewValue,...]
+                        // Concat doesn't support a separator param; add commas manually then strip the trailing one.
+                        UpdateContext({
+                            ctxChangesFlat:
+                                Concat(
+                                    ctxChanges,
+                                    FieldName & ":" &
+                                    Coalesce(Text(OldValue), "") & "-" &
+                                    Coalesce(Text(NewValue), "") & ","
+                                )
+                        });
+                        UpdateContext({
+                            ctxChangesText:
+                                "[" &
+                                If(
+                                    Len(ctxChangesFlat) > 0,
+                                    Left(ctxChangesFlat, Len(ctxChangesFlat) - 1),
+                                    ""
+                                ) &
+                                "]"
+                        });
+                        // ---- 7) If Patch succeeded AND there are changes, write ONE AuditLog row
+                        If(
+                            And(
+                                !IsBlank(ctxPatchedItem.ID),
+                                CountRows(ctxChanges) > 0
+                            ),
+                            Patch(
+                                AuditLog,
+                                Defaults(AuditLog),
+                                {
+                                    CorrelationID: ctxCorrelationId,
+                                    TargetList: "Master_Location",
+                                    // Use the exact internal name of your column below (ItemID vs ItemId).
+                                    ItemId: ctxPatchedItem.ID,
+                                    ChangedBy: LookUp(Master_Employee, Email = User().Email).MyID,
+                                    ChangedOn: ctxNow,
+                                    ChangeType: "Edit",
+                                    Changes: ctxChangesText
+                                }
+                            )
+                        );
+
+                        // ---- 7) Notify + cleanup
+                        If(
+                            !IsBlank(ctxPatchedItem.ID),
+
+                            // SUCCESS BRANCH
+                            Notify(
+                                If(
+                                    CountRows(ctxChanges) = 0,
+                                    "Saved (no changes detected).",
+                                    "Saved and audit logged."
+                                ),
+                                NotificationType.Success
+                            );
+
+                            UpdateContext({ colTempEditMasterLocation: Blank() });
+                            ResetForm(Form1_6);
+                            UpdateContext({ ShowFormEditMasterLocation: false });
+                            Refresh(Master_Location);ClearCollect(colGalleryDataMasterLocation,Master_Location),
+
+                            // FAILURE BRANCH
+                            Notify(
+                                "Save failed. The item may have been modified; refresh and try again.",
+                                NotificationType.Error
+                            )
+                        ),
+
+                        // ---- ELSE (Form not valid)
+                        Notify("Please fill all required fields before submitting.", NotificationType.Error)
+                    );
+                  Text: ="Save"
+                  Width: =120
+                  X: =Parent.Width*3/4-120
+                  Y: =Form1_6.Height+Form1_6.Y+10
+            - ButtonClose_Registration_22:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(255, 0, 0, 1)
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Dismiss"
+                  OnSelect: |
+                    =UpdateContext({colTempEditMasterLocation:Blank()});
+                    ResetForm(Form1_6);
+                    UpdateContext({ShowFormEditMasterLocation: false});
+                  Text: ="Close"
+                  Width: =120
+                  X: =Parent.Width/4
+                  Y: =Form1_6.Height+Form1_6.Y+10

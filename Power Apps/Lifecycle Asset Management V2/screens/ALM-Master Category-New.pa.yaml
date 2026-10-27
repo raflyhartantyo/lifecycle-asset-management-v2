@@ -1,0 +1,723 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ALM-Master Category-New:
+    Properties:
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnVisible: |
+        =
+        UpdateContext({
+            locSelectedItem: Blank(),
+            showConfirm: false,
+            recordToDelete: Blank()
+        })
+    Children:
+      - MainContainer_CategoryMaster_New_1:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Fill: =RGBA(245, 245, 245, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =16
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Width: =Parent.Width
+          Children:
+            - HeaderContainer_CategoryMaster_New_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =75
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  RadiusBottomLeft: =8
+                  RadiusBottomRight: =8
+                  RadiusTopLeft: =8
+                  RadiusTopRight: =8
+                Children:
+                  - Header_CategoryMaster_New_1:
+                      Control: Header@0.0.44
+                      Properties:
+                        BasePaletteColor: =RGBA(5, 102, 178, 1)
+                        Fill: =RGBA(180, 214, 250, 1)
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        Logo: ='Zurich Logo'
+                        LogoTooltip: ="Zurich Indonesia"
+                        Title: ="ALM-Master Asset Type-New"
+                        Width: =1352
+                        X: =14
+                        Y: =21
+            - BottomContainer_CategoryMaster_New_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  Fill: =RGBA(245, 245, 245, 1)
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =16
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  LayoutWrap: =true
+                  PaddingBottom: =2
+                  PaddingLeft: =2
+                  PaddingRight: =2
+                  PaddingTop: =2
+                Children:
+                  - SidebarContainer_CategoryMaster_New_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =RGBA(255, 255, 255, 1)
+                        FillPortions: =3
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                      Children:
+                        - DataGallery_CategoryMaster_New_1:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_ThreeTextVariant_ver5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Items: =colTempData_CategoryMaster
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              OnSelect: |-
+                                =
+                                If(
+                                    !IsBlank(locSelectedItem) && locSelectedItem.Category_ID = ThisItem.Category_ID,
+                                    UpdateContext({locSelectedItem: Blank()});
+                                    ResetForm(Form_CategoryMaster_New_1),
+                                    UpdateContext({locSelectedItem: ThisItem})
+                                )
+                            Children:
+                              - GalleryRectangle_CategoryMaster_New_1:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.TemplateHeight - GallerySeparator_CategoryMaster_New_1.Height
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =4
+                              - TextCategory_AssetGroupMaster_New_2:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    Color: =RGBA(50, 49, 48, 1)
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                    Height: =Self.Size * 1.8
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =14
+                                    Text: =ThisItem.Category_Desc
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =Parent.TemplateWidth - 86
+                                    X: =16
+                                    Y: =(Parent.TemplateHeight - (Self.Size*1.8 + TextGroupCategory_CategoryMaster_New_1.Size*1.8 + 2 + TextDepartment_CategoryMaster_New_1.Size*1.8)) / 2
+                              - GalleryRightArrow_CategoryMaster_New_1:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    AccessibleLabel: =Self.Tooltip
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Color: =RGBA(166, 166, 166, 1)
+                                    Height: =50
+                                    Icon: =Icon.ChevronRight
+                                    OnSelect: =
+                                    PaddingBottom: =16
+                                    PaddingLeft: =16
+                                    PaddingRight: =16
+                                    PaddingTop: =16
+                                    Tooltip: ="View item details"
+                                    Width: =50
+                                    X: =Parent.TemplateWidth - Self.Width - 12
+                                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                              - TextGroupCategory_CategoryMaster_New_1:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                    Height: =Self.Size * 1.8
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =12
+                                    Text: =ThisItem.Category_Name
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =TextCategory_AssetGroupMaster_New_2.Width
+                                    X: =TextCategory_AssetGroupMaster_New_2.X
+                                    Y: =TextCategory_AssetGroupMaster_New_2.Y + TextCategory_AssetGroupMaster_New_2.Height
+                              - IconDelete_CategoryMaster_New_1:
+                                  Control: Classic/Icon@2.5.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Color: =RGBA(0, 18, 107, 1)
+                                    Height: =33
+                                    Icon: =Icon.Trash
+                                    OnSelect: |-
+                                      =UpdateContext({showConfirm: true, recordToDelete: ThisItem})
+                                    Width: =33
+                                    X: =GallerySeparator_CategoryMaster_New_1.X + GallerySeparator_CategoryMaster_New_1.Width - 40
+                                    Y: =GallerySeparator_CategoryMaster_New_1.Y + GallerySeparator_CategoryMaster_New_1.Height - 40
+                              - GallerySeparator_CategoryMaster_New_1:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    Fill: =RGBA(255, 255, 255, 1)
+                                    Height: =8
+                                    OnSelect: =Select(Parent)
+                                    Width: =Parent.TemplateWidth
+                                    Y: =Parent.TemplateHeight - Self.Height
+                              - TextDepartment_CategoryMaster_New_1:
+                                  Control: Label@2.5.1
+                                  Properties:
+                                    BorderColor: =RGBA(0, 0, 0, 1)
+                                    Font: =Font.'Open Sans'
+                                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                                    Height: =Self.Size * 1.8
+                                    OnSelect: =Select(Parent)
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =12
+                                    Text: =ThisItem.Category_Accounting_Name
+                                    VerticalAlign: =VerticalAlign.Top
+                                    Width: =TextCategory_AssetGroupMaster_New_2.Width
+                                    X: =TextCategory_AssetGroupMaster_New_2.X
+                                    Y: =TextGroupCategory_CategoryMaster_New_1.Y + TextGroupCategory_CategoryMaster_New_1.Height
+                        - ButtonSave_CategoryMaster_New_1:
+                            Control: Button@0.0.45
+                            Properties:
+                              Icon: ="Save"
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: |
+                                =
+                                // Step 1 — Global context for this save run
+                                UpdateContext({
+                                    ctxUserDisplay: User().FullName,
+                                    ctxUserEmail: Lower(User().Email),
+                                    ctxNow: Now()
+                                });
+
+                                // Step 2 — Loop through collection and patch each new record
+                                ForAll(
+                                    colTempData_CategoryMaster As r,
+
+                                    // Per-item correlation ID (valid inside ForAll using With)
+                                    With(
+                                        { localCorrelationId: GUID() },
+
+                                        // 1) Create the new master item
+                                        With(
+                                            {
+                                                newItem:
+                                                    Patch(
+                                                        Master_Category,
+                                                        Defaults(Master_Category),
+                                                        {
+                                                            Category_ID: r.Category_ID,
+                                                            Category_Accounting_Name: r.Category_Accounting_Name,
+                                                            Category_Name: r.Category_Name,
+                                                            Category_Description: r.Category_Desc
+                                                        }
+                                                    )
+                                            },
+
+                                            // 2) Build a per-record change table
+                                            With(
+                                                {
+                                                    changeTable:
+                                                        Table(
+                                                            {
+                                                                FieldName: "Category_ID",
+                                                                OldValue: "",
+                                                                NewValue: Text(r.Category_ID)
+                                                            },
+                                                            {
+                                                                FieldName: "Category_Accounting_Name",
+                                                                OldValue: "",
+                                                                NewValue: r.Category_Accounting_Name
+                                                            },
+                                                            {
+                                                                FieldName: "Category_Name",
+                                                                OldValue: "",
+                                                                NewValue: r.Category_Name
+                                                            },
+                                                            {
+                                                                FieldName: "Category_Description",
+                                                                OldValue: "",
+                                                                NewValue: r.Category_Desc
+                                                            }
+                                                        )
+                                                },
+
+                                               // 3a) WITH #1 — build changesFlat once
+                                                With(
+                                                    {
+                                                        changesFlat:
+                                                            Concat(
+                                                                changeTable,
+                                                                FieldName & ":" &
+                                                                Coalesce(Text(OldValue), "") & "-" &
+                                                                Coalesce(Text(NewValue), "") & ","
+                                                            )
+                                                    },
+                                                    // 3b) WITH #2 — build changesText from changesFlat
+                                                    With(
+                                                        {
+                                                            changesText:
+                                                                "[" &
+                                                                If(
+                                                                    Len(changesFlat) > 0,
+                                                                    Left(changesFlat, Len(changesFlat) - 1),
+                                                                    ""
+                                                                ) &
+                                                                "]"
+                                                        },
+                                                        // 4) Write ONE row to AuditLog per created item
+                                                        If(
+                                                            !IsBlank(newItem.ID),
+                                                            Patch(
+                                                                AuditLog,
+                                                                Defaults(AuditLog),
+                                                                {
+                                                                    CorrelationID: localCorrelationId,
+                                                                    TargetList: "Master_Category",
+                                                                    // Ensure this matches your column's display/internal name
+                                                                    ItemId: newItem.ID,
+                                                                    ChangedBy: LookUp(Master_Employee, Email = User().Email).MyID,
+                                                                    ChangedOn: ctxNow,
+                                                                    ChangeType: "Created",
+                                                                    Changes: changesText
+                                                                }
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                );
+
+                                // Post save cleanup
+                                Clear(colTempData_CategoryMaster);
+                                Notify("Data saved and audit logged!", NotificationType.Success);
+                                Navigate('ALM - Master Category', ScreenTransition.Fade);
+                              Text: ="Save"
+                  - FormContainer_CategoryMaster_New_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =RGBA(255, 255, 255, 1)
+                        FillPortions: =7
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        RadiusBottomLeft: =8
+                        RadiusBottomRight: =8
+                        RadiusTopLeft: =8
+                        RadiusTopRight: =8
+                      Children:
+                        - Form_CategoryMaster_New_1:
+                            Control: Form@2.4.4
+                            Layout: Vertical
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              DataSource: =Master_Category
+                              DefaultMode: =FormMode.New
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              NumberOfColumns: =1
+                            Children:
+                              - Category_Accounting_Name_DataCard2:
+                                  Control: TypedDataCard@1.0.7
+                                  Variant: TextualEdit
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    DataField: ="AssetGroupCode"
+                                    Default: =locSelectedItem.Category_Accounting_Name
+                                    DisplayName: =DataSourceInfo([@Master_Category],DataSourceInfo.DisplayName,Category_Accounting_Name)
+                                    MaxLength: =DataSourceInfo([@Master_Category], DataSourceInfo.MaxLength, Category_Accounting_Name)
+                                    Required: =true
+                                    Update: |+
+                                      =If(
+                                          IsBlank(Trim(DataCardValue21.Value)) || Len(DataCardValue21.Value) > Category_Accounting_Name_DataCard2.MaxLength,
+                                          Blank(),
+                                          DataCardValue21.Value
+                                      )
+                                    Width: =904
+                                    X: =0
+                                    Y: =0
+                                  Children:
+                                    - DataCardKey20:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldName
+                                        Properties:
+                                          Height: =22
+                                          Text: =Parent.DisplayName
+                                          Weight: ='TextCanvas.Weight'.Semibold
+                                          Width: =Parent.Width - 48
+                                          Wrap: =false
+                                          X: =24
+                                          Y: =10
+                                    - DataCardValue21:
+                                        Control: TextInput@0.0.54
+                                        MetadataKey: FieldValue
+                                        Properties:
+                                          AccessibleLabel: =Parent.DisplayName
+                                          BorderColor: |-
+                                            =If(
+                                                !Parent.Valid,
+                                                Color.Red,
+                                                RGBA(0, 18, 107, 1)  // your normal border color
+                                            )
+                                          DisplayMode: =Parent.DisplayMode
+                                          Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                          Required: =Parent.Required
+                                          ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                          Value: =Parent.Default
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardKey20.Y + DataCardKey20.Height + 4
+                                    - ErrorMessage20:
+                                        Control: Text@0.0.51
+                                        MetadataKey: ErrorMessage
+                                        Properties:
+                                          FontColor: =Color.Red
+                                          Height: =30
+                                          Text: |+
+                                            =
+                                            If(
+                                                IsBlank(Trim(DataCardValue21.Value)),
+                                                "Asset Type Name is required.",
+                                                If(Len(DataCardValue21.Value) > Category_Accounting_Name_DataCard2.MaxLength,
+                                                    Concatenate("Maximum ", Category_Accounting_Name_DataCard2.MaxLength, " characters allowed."),
+                                                    ""
+                                                )
+                                            )
+                                          Visible: =!Parent.Valid
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardValue21.Y + DataCardValue21.Height
+                                    - StarVisible20:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldRequired
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Center
+                                          Height: =30
+                                          Text: ="*"
+                                          Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                          Width: =30
+                                          Y: =DataCardKey20.Y
+                              - Category_Name_DataCard2:
+                                  Control: TypedDataCard@1.0.7
+                                  Variant: TextualEdit
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    DataField: ="AssetGroupName"
+                                    Default: =locSelectedItem.Category_Name
+                                    DisplayName: =DataSourceInfo([@Master_Category],DataSourceInfo.DisplayName,Category_Name)
+                                    MaxLength: =DataSourceInfo([@Master_Category], DataSourceInfo.MaxLength, Category_Name)
+                                    Required: =true
+                                    Update: |-
+                                      =If(
+                                          IsBlank(Trim(DataCardValue18.Value)) || Len(DataCardValue18.Value) > Category_Name_DataCard2.MaxLength,
+                                          Blank(),
+                                          DataCardValue18.Value
+                                      )
+                                    Width: =904
+                                    X: =0
+                                    Y: =1
+                                  Children:
+                                    - DataCardKey15:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldName
+                                        Properties:
+                                          Height: =22
+                                          Text: =Parent.DisplayName
+                                          Weight: ='TextCanvas.Weight'.Semibold
+                                          Width: =Parent.Width - 48
+                                          Wrap: =false
+                                          X: =24
+                                          Y: =10
+                                    - DataCardValue18:
+                                        Control: TextInput@0.0.54
+                                        MetadataKey: FieldValue
+                                        Properties:
+                                          AccessibleLabel: =Parent.DisplayName
+                                          BorderColor: |-
+                                            =
+                                            If(
+                                                !Parent.Valid,
+                                                Color.Red,
+                                                RGBA(0, 18, 107, 1)  // your normal border color
+                                            )
+                                          DisplayMode: =Parent.DisplayMode
+                                          Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                          Required: =Parent.Required
+                                          ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                          Value: =Parent.Default
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardKey15.Y + DataCardKey15.Height + 4
+                                    - ErrorMessage15:
+                                        Control: Text@0.0.51
+                                        MetadataKey: ErrorMessage
+                                        Properties:
+                                          FontColor: =Color.Red
+                                          Height: =30
+                                          Text: |-
+                                            =
+                                            If(
+                                                IsBlank(Trim(DataCardValue18.Value)),
+                                                "Category Name is required.",
+                                                If(Len(DataCardValue18.Value) > Category_Name_DataCard2.MaxLength,
+                                                    Concatenate("Maximum ", Category_Name_DataCard2.MaxLength, " characters allowed."),
+                                                    ""
+                                                )
+                                            )
+                                          Visible: =!Parent.Valid
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardValue18.Y + DataCardValue18.Height
+                                    - StarVisible15:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldRequired
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Center
+                                          Height: =30
+                                          Text: ="*"
+                                          Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                          Width: =30
+                                          Y: =DataCardKey15.Y
+                              - Category_Description_DataCard2:
+                                  Control: TypedDataCard@1.0.7
+                                  Variant: TextualEdit
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    DataField: ="Category_Description"
+                                    Default: =locSelectedItem.Category_Desc
+                                    DisplayName: =DataSourceInfo([@Master_Category],DataSourceInfo.DisplayName,Category_Description)
+                                    MaxLength: =DataSourceInfo([@Master_Category], DataSourceInfo.MaxLength, Category_Description)
+                                    Required: =true
+                                    Update: |-
+                                      =If(
+                                          IsBlank(Trim(DataCardValue20.Value)) || Len(DataCardValue20.Value) > Category_Description_DataCard2.MaxLength,
+                                          Blank(),
+                                          DataCardValue20.Value
+                                      )
+                                    Width: =904
+                                    X: =0
+                                    Y: =2
+                                  Children:
+                                    - DataCardKey17:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldName
+                                        Properties:
+                                          Height: =22
+                                          Text: =Parent.DisplayName
+                                          Weight: ='TextCanvas.Weight'.Semibold
+                                          Width: =Parent.Width - 48
+                                          Wrap: =false
+                                          X: =24
+                                          Y: =10
+                                    - DataCardValue20:
+                                        Control: TextInput@0.0.54
+                                        MetadataKey: FieldValue
+                                        Properties:
+                                          AccessibleLabel: =Parent.DisplayName
+                                          BorderColor: |-
+                                            =
+                                            If(
+                                                !Parent.Valid,
+                                                Color.Red,
+                                                RGBA(0, 18, 107, 1)  // your normal border color
+                                            )
+                                          DisplayMode: =Parent.DisplayMode
+                                          Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                                          Required: =Parent.Required
+                                          ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                          Value: =Parent.Default
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardKey17.Y + DataCardKey17.Height + 4
+                                    - ErrorMessage17:
+                                        Control: Text@0.0.51
+                                        MetadataKey: ErrorMessage
+                                        Properties:
+                                          FontColor: =Color.Red
+                                          Height: =30
+                                          Text: |-
+                                            =
+                                            If(
+                                                IsBlank(Trim(DataCardValue20.Value)),
+                                                "Category Description is required.",
+                                                If(Len(DataCardValue20.Value) > Category_Description_DataCard2.MaxLength,
+                                                    Concatenate("Maximum ", Category_Description_DataCard2.MaxLength, " characters allowed."),
+                                                    ""
+                                                )
+                                            )
+                                          Visible: =!Parent.Valid
+                                          Width: =Parent.Width - 48
+                                          X: =24
+                                          Y: =DataCardValue20.Y + DataCardValue20.Height
+                                    - StarVisible17:
+                                        Control: Text@0.0.51
+                                        MetadataKey: FieldRequired
+                                        Properties:
+                                          Align: ='TextCanvas.Align'.Center
+                                          Height: =30
+                                          Text: ="*"
+                                          Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                          Width: =30
+                                          Y: =DataCardKey17.Y
+                        - ButtonAddtoGallery_CategoryMaster_New_1:
+                            Control: Button@0.0.45
+                            Properties:
+                              Icon: ="Add"
+                              Layout: ='ButtonCanvas.Layout'.IconBefore
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              OnSelect: |-
+                                =If(Form_CategoryMaster_New_1.Valid,If(
+                                    IsBlank(locSelectedItem),
+                                    // Add new record
+                                    Collect(
+                                        colTempData_CategoryMaster,
+                                        {
+                                            Category_ID : RandBetween(100000, 999999),
+                                            Category_Accounting_Name: Category_Accounting_Name_DataCard2.Update,
+                                            Category_Name: Category_Name_DataCard2.Update,
+                                            Category_Desc: Category_Description_DataCard2.Update
+                                        }
+                                    ),
+                                    // Edit existing record
+                                    Patch(
+                                        colTempData_CategoryMaster,
+                                        locSelectedItem,
+                                        {
+                                            Category_ID : RandBetween(100000, 999999),
+                                            Category_Accounting_Name: Category_Accounting_Name_DataCard2.Update,
+                                            Category_Name: Category_Name_DataCard2.Update,
+                                            Category_Desc: Category_Description_DataCard2.Update
+                                        }
+                                    )
+                                );
+
+                                // Clear selection and reset form
+                                UpdateContext({locSelectedItem: Blank()});
+                                ResetForm(Form_CategoryMaster_New_1),
+                                Notify("Please fill all required fields and ensure value entered is valid.", NotificationType.Error))
+                              Text: ="Add to Gallery"
+                              Width: =150
+      - ButtonClose_CategoryMaster_New_1:
+          Control: Button@0.0.45
+          Properties:
+            BasePaletteColor: =RGBA(255, 0, 0, 1)
+            BorderRadiusBottomLeft: =8
+            BorderRadiusBottomRight: =8
+            BorderRadiusTopLeft: =8
+            BorderRadiusTopRight: =8
+            Height: =40
+            Icon: ="Dismiss"
+            OnSelect: |
+              =Clear(colTempData_CategoryMaster);
+              UpdateContext({locSelectedItem: Blank()});
+              ResetForm(Form_CategoryMaster_New_1);
+              Navigate('ALM - Master Category', ScreenTransition.Fade)
+            Text: ="Close"
+            Width: =120
+            X: =HeaderContainer_CategoryMaster_New_1.Width - 150 - 16
+            Y: =HeaderContainer_CategoryMaster_New_1.Height/2
+      - ConfirmationContainer_CategoryMaster_New_1:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            BorderColor: =RGBA(0, 0, 0, 0.2)
+            BorderThickness: =2
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height * 0.25
+            RadiusBottomLeft: =10
+            RadiusTopRight: =10
+            Visible: =showConfirm
+            Width: =Parent.Width * 0.4
+            X: =(Parent.Width - Self.Width) / 2
+            Y: =(Parent.Height - Self.Height) / 2
+          Children:
+            - TextConfirmation_CategoryMaster_New_1:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Height: =50
+                  Size: =20
+                  Text: ="Are you sure you want to delete this item?"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width * 0.9
+                  X: =(Parent.Width - Self.Width) / 2
+                  Y: =20
+            - ButtonConfirmationNo_CategoryMaster_New_1:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(255, 0, 0, 1)
+                  Height: =50
+                  IconStyle: ='ButtonCanvas.IconStyle'.Outline
+                  OnSelect: |-
+                    =UpdateContext({showConfirm: false, recordToDelete: Blank()})
+                  Text: ="No"
+                  Width: =120
+                  X: =(Parent.Width / 2) - 130
+                  Y: =Parent.Height - 70
+            - ButtonConfirmationYes_CategoryMaster_New_1:
+                Control: Button@0.0.45
+                Properties:
+                  Height: =50
+                  OnSelect: |-
+                    =Remove(colTempData_CategoryMaster, recordToDelete);
+                    UpdateContext({showConfirm: false, recordToDelete: Blank()})
+                  Text: ="Yes"
+                  Width: =120
+                  X: =(Parent.Width / 2) + 10
+                  Y: =Parent.Height - 70

@@ -1,0 +1,55 @@
+{
+  "display_name": "Accounting Reconciliation - Approval Request",
+  "triggers": {
+    "manual": {
+      "metadata": {
+        "operationMetadataId": "fb00c033-7f48-4f0f-99fa-5ede840f49ba"
+      },
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "description": "Please enter your input",
+              "title": "GUID",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            },
+            "text_1": {
+              "description": "Please enter your input",
+              "title": "Submitted By",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            },
+            "text_2": {
+              "description": "Please enter your input",
+              "title": "Submitted On",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "text",
+            "text_1",
+            "text_2"
+          ]
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    },
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Refresh_a_dataset/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_powerbi",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Refresh_a_dataset/inputs/parameters/groupid",
+      "field": "groupid",
+      "source_value": "myworkspace",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Refresh_a_dataset/inputs/parameters/datasetid",
+      "field": "datasetid",
+      "source_value": "7189fe1e-d208-4c40-9ed1-2c29d0e39f11",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_powerbi/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-powerbi-0c38a950-43fd-4455-9c7a-aef6ee80a24d",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": [
+    "shared_powerbi"
+  ]
+}

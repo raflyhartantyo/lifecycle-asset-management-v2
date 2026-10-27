@@ -1,0 +1,3050 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ALM - StockOpname - In Use:
+    Properties:
+      Fill: =Color.WhiteSmoke
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnHidden: |-
+        =UpdateContext({ShowSOData: false});
+        UpdateContext({ShowSOTrigger:true});
+        UpdateContext({ShowFileUploadInUse : false})
+      OnVisible: |-
+        =UpdateContext({ShowSOTrigger:true});
+        UpdateContext({Responses_SO:false});
+        UpdateContext({ShowRunDetailSO:false})
+    Children:
+      - Trigger Form_1:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245, 245, 245, 0.75)
+            Height: ='ALM-Registration'.Height
+            Visible: =false
+            Width: ='ALM-Registration'.Width
+          Children:
+            - Form2_5:
+                Control: Form@2.4.4
+                Layout: Vertical
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  DataSource: =Master_Asset
+                  DefaultMode: =FormMode.New
+                  Fill: =Color.White
+                  Height: =200
+                  NumberOfColumns: =1
+                  X: =(Parent.Width-Self.Width)/2
+                  Y: =(Parent.Height-Self.Height)/2
+                Children:
+                  - Organization_ID_DataCard5_4:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Organization_ID"
+                        Default: =ThisItem.Organization_ID
+                        DisplayName: =DataSourceInfo([@Master_Asset],DataSourceInfo.DisplayName,Organization_ID)
+                        MaxLength: =DataSourceInfo([@Master_Asset], DataSourceInfo.MaxLength, Organization_ID)
+                        Required: =true
+                        Update: =DropdownCanvas14_4.Selected.Organization_ID
+                        X: =0
+                        Y: =0
+                      Children:
+                        - DataCardKey84_4:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - ErrorMessage84_4:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =If(
+                                    !Organization_ID_DataCard5_4.Valid,
+                                    "Please select an Organization.",
+                                    ""
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DropdownCanvas14_4.Y + DropdownCanvas14_4.Height
+                        - StarVisible84_4:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey84_4.Y
+                        - DropdownCanvas14_4:
+                            Control: DropDown@0.0.45
+                            Properties:
+                              BorderColor: |-
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              Items: =Master_Organization
+                              Width: =Parent.Width-48
+                              X: =24
+                              Y: =DataCardKey84_4.Y + DataCardKey84_4.Height + 4
+                            Children:
+                              - Organization_Name3_4:
+                                  Control: DropDownDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Organization_Name"
+                                    FieldName: ="Organization_Name"
+                                    FieldType: ="s"
+                                    Order: =2
+                  - Function_ID_DataCard5_4:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Function_ID"
+                        Default: =ThisItem.Function_ID
+                        DisplayName: =DataSourceInfo([@Master_Asset],DataSourceInfo.DisplayName,Function_ID)
+                        MaxLength: =DataSourceInfo([@Master_Asset], DataSourceInfo.MaxLength, Function_ID)
+                        Required: =true
+                        Update: =DropdownCanvas15_4.Selected.Function_ID
+                        X: =0
+                        Y: =1
+                      Children:
+                        - DataCardKey85_4:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - ErrorMessage85_4:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =If(
+                                    !Function_ID_DataCard5_4.Valid,
+                                    "Please select a Function.",
+                                    ""
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DropdownCanvas15_4.Y + DropdownCanvas15_4.Height
+                        - StarVisible85_4:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey85_4.Y
+                        - DropdownCanvas15_4:
+                            Control: DropDown@0.0.45
+                            Properties:
+                              BorderColor: |-
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              Items: =Filter(Master_Function, Organization_ID = Organization_ID_DataCard5_4.Update)
+                              Width: =Parent.Width-48
+                              X: =24
+                              Y: =DataCardKey85_4.Y + DataCardKey85_4.Height + 4
+                            Children:
+                              - Function_Name1_4:
+                                  Control: DropDownDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Function_Name"
+                                    FieldName: ="Function_Name"
+                                    FieldType: ="s"
+                                    Order: =2
+            - ButtonClose_Registration_47:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color.Red
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =50
+                  Icon: ="Dismiss"
+                  OnSelect: |-
+                    =ResetForm(Form2_5);
+                    Navigate('2_HomePage', ScreenTransition.Fade)
+                  Text: ="Close"
+                  Width: =200
+                  X: =Form2_5.X + 50
+                  Y: =Form2_5.Height+Form2_5.Y+10
+            - ButtonClose_Registration_50:
+                Control: Button@0.0.45
+                Properties:
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =ButtonClose_Registration_47.Height
+                  Icon: ="Checkmark"
+                  OnSelect: |
+                    =ClearCollect(
+                            colTempData_SO_Trigger,
+                            {
+                                Organization_ID : Organization_ID_DataCard5_4.Update,
+                                Function_ID : Function_ID_DataCard5_4.Update
+                            });
+                    UpdateContext({ShowSOTrigger: false});
+                    ResetForm(Form2_5)
+                  Text: ="Save"
+                  Width: =ButtonClose_Registration_47.Width
+                  X: =Form2_5.Width + Form2_5.X - Self.Width - 50
+                  Y: =ButtonClose_Registration_47.Y
+      - Data_Upload_Form_SO_1:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245, 245, 245, 0.75)
+            Height: ='ALM-Registration'.Height
+            Visible: =ShowSOUpload
+            Width: ='ALM-Registration'.Width
+          Children:
+            - Container4_1:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  Fill: =Color.White
+                  Height: =500
+                  Width: =900
+                  X: =(Parent.Width-Self.Width)/2
+                  Y: =(Parent.Height-Self.Height)/2
+                Children:
+                  - ButtonClose_Registration_53:
+                      Control: Button@0.0.45
+                      Properties:
+                        BasePaletteColor: =Color.Red
+                        BorderRadiusBottomLeft: =8
+                        BorderRadiusBottomRight: =8
+                        BorderRadiusTopLeft: =8
+                        BorderRadiusTopRight: =8
+                        Height: =50
+                        Icon: ="Dismiss"
+                        OnSelect: |-
+                          =Reset(Registration_AttachmentControl_5);
+                          Reset(Registration_AttachmentControl_6);
+                          Reset(Registration_AttachmentControl_7);
+                          UpdateContext({ShowSOUpload:false})
+                        Text: ="Close"
+                        Width: =200
+                        X: =(Parent.Width / 2 - Self.Width) / 2
+                        Y: =Parent.Height/5*4
+                  - ButtonClose_Registration_54:
+                      Control: Button@0.0.45
+                      Properties:
+                        BorderRadiusBottomLeft: =8
+                        BorderRadiusBottomRight: =8
+                        BorderRadiusTopLeft: =8
+                        BorderRadiusTopRight: =8
+                        Height: =ButtonClose_Registration_53.Height
+                        Icon: ="Checkmark"
+                        OnSelect: |
+                          =
+                          // ── Step 1: Show loading state ──────────────────────────────
+                          UpdateContext({locIsSaving: true});
+                          // ── Step 2: InTune flow (LEFT) ──────────────────────────────
+                          If(
+                              !IsEmpty(Registration_AttachmentControl_5.Attachments),
+                              Set(
+                                  varInTuneResult,
+                                  InTuneFlow.Run({contentBytes: Last(Registration_AttachmentControl_5.Attachments).Value,name: Last(Registration_AttachmentControl_5.Attachments).Name})
+                              )
+                          );
+                          // ── Step 3: CMDB flow (MIDDLE) ──────────────────────────────
+                          If(
+                              !IsEmpty(Registration_AttachmentControl_6.Attachments),
+                              Set(
+                                  varCMDBResult,
+                                  InTuneFlow.Run({contentBytes: Last(Registration_AttachmentControl_6.Attachments).Value,name: Last(Registration_AttachmentControl_6.Attachments).Name})
+                              )
+                          );
+                          // ── Step 4: Networking Device flow (RIGHT) ──────────────────
+                          If(
+                              !IsEmpty(Registration_AttachmentControl_7.Attachments),
+                              Set(
+                                  varNetworkingResult,
+                                  FlowNetworkingDevice.Run({contentBytes: Last(Registration_AttachmentControl_7.Attachments).Value,name: Last(Registration_AttachmentControl_7.Attachments).Name})
+                              )
+                          );
+                          // ── Step 5: Done ─────────────────────────────────────────────
+                          UpdateContext({locIsSaving: false});
+                          Notify("Files submitted! Processing will complete within 10 minutes.", NotificationType.Success);
+                          Reset(Registration_AttachmentControl_5);
+                          Reset(Registration_AttachmentControl_6); 
+                          Reset(Registration_AttachmentControl_7);
+                          UpdateContext({ShowSOUpload:false})
+                        Text: ="Save"
+                        Width: =ButtonClose_Registration_53.Width
+                        X: =Parent.Width / 2 + (Parent.Width / 2 - Self.Width) / 2
+                        Y: =Parent.Height/5*4
+                  - Registration_AttachmentControl_5:
+                      Control: Attachments@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Fill: =Color.Transparent
+                        Font: =Font.'Open Sans'
+                        Height: =80
+                        HoverBorderColor: =Color.Transparent
+                        HoverColor: =Color.Transparent
+                        HoverFill: =Color.Transparent
+                        ItemColor: =RGBA(255, 255, 255, 1)
+                        ItemFill: =RGBA(56, 96, 178, 1)
+                        ItemHoverFill: =RGBA(186, 202, 226, 1)
+                        MaxAttachmentSize: =100
+                        OnAddFile: |-
+                          =UpdateContext({ShowRegistrationLastSpinner: true});
+                          UpdateContext({timerrepeat:true});
+                          UpdateContext({starttimer: true});
+                          UpdateContext({ Acc_Upload_job: Accounting_ReconsiliationV2.Run({contentBytes: Last(Self.Attachments).Value,name: Last(Self.Attachments).Name})});
+                          UpdateContext({Job_ID : Acc_Upload_job.jobid});
+                          UpdateContext({Acc_Status : Acc_Upload_job.status});
+                          Clear(Acc_Result)
+                        PaddingBottom: =5
+                        PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        PressedColor: =RGBA(255, 255, 255, 1)
+                        PressedFill: =RGBA(0, 18, 107, 1)
+                        Size: =10
+                        Tooltip: =
+                        Width: =TextConfirmation_CategoryMaster_New_12.Width - 20
+                        X: =TextConfirmation_CategoryMaster_New_12.X + (TextConfirmation_CategoryMaster_New_12.Width - Self.Width)/2
+                        Y: =TextConfirmation_CategoryMaster_New_12.Y + TextConfirmation_CategoryMaster_New_12.Height + 50
+                  - TextConfirmation_CategoryMaster_New_11:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =60
+                        Size: =20
+                        Text: ="Please upload the corresponding files"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width * 0.9
+                        X: =(Parent.Width - Self.Width) / 2
+                        Y: =20
+                  - TextConfirmation_CategoryMaster_New_12:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =60
+                        Size: =20
+                        Text: ="InTune"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width * 0.3
+                        X: =(Parent.Width)/3 - Self.Width
+                        Y: =TextConfirmation_CategoryMaster_New_11.Y + TextConfirmation_CategoryMaster_New_11.Height
+                  - TextConfirmation_CategoryMaster_New_13:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =60
+                        Size: =20
+                        Text: ="CMDB"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width * 0.3
+                        X: =(Parent.Width)*2/3 - Self.Width
+                        Y: =TextConfirmation_CategoryMaster_New_11.Y + TextConfirmation_CategoryMaster_New_11.Height
+                  - TextConfirmation_CategoryMaster_New_14:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        Height: =60
+                        Size: =20
+                        Text: ="Networking Device"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Parent.Width * 0.3
+                        X: =(Parent.Width) - Self.Width
+                        Y: =TextConfirmation_CategoryMaster_New_11.Y + TextConfirmation_CategoryMaster_New_11.Height
+                  - Rectangle1_2:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =RGBA(56, 96, 178, 1)
+                        Height: =300
+                        Width: =5
+                        X: =(TextConfirmation_CategoryMaster_New_13.X - TextConfirmation_CategoryMaster_New_12.X - TextConfirmation_CategoryMaster_New_12.Width)/2 + TextConfirmation_CategoryMaster_New_12.Width + TextConfirmation_CategoryMaster_New_12.X
+                        Y: =TextConfirmation_CategoryMaster_New_12.Y
+                  - Registration_AttachmentControl_6:
+                      Control: Attachments@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Fill: =Color.Transparent
+                        Font: =Font.'Open Sans'
+                        Height: =80
+                        HoverBorderColor: =Color.Transparent
+                        HoverColor: =Color.Transparent
+                        HoverFill: =Color.Transparent
+                        ItemColor: =RGBA(255, 255, 255, 1)
+                        ItemFill: =RGBA(56, 96, 178, 1)
+                        ItemHoverFill: =RGBA(186, 202, 226, 1)
+                        MaxAttachmentSize: =100
+                        OnAddFile: |-
+                          =UpdateContext({ShowRegistrationLastSpinner: true});
+                          UpdateContext({timerrepeat:true});
+                          UpdateContext({starttimer: true});
+                          UpdateContext({ Acc_Upload_job: Accounting_ReconsiliationV2.Run({contentBytes: Last(Self.Attachments).Value,name: Last(Self.Attachments).Name})});
+                          UpdateContext({Job_ID : Acc_Upload_job.jobid});
+                          UpdateContext({Acc_Status : Acc_Upload_job.status});
+                          Clear(Acc_Result)
+                        PaddingBottom: =5
+                        PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        PressedColor: =RGBA(255, 255, 255, 1)
+                        PressedFill: =RGBA(0, 18, 107, 1)
+                        Size: =10
+                        Tooltip: =
+                        Width: =TextConfirmation_CategoryMaster_New_13.Width - 20
+                        X: =TextConfirmation_CategoryMaster_New_13.X + (TextConfirmation_CategoryMaster_New_13.Width - Self.Width)/2
+                        Y: =TextConfirmation_CategoryMaster_New_13.Y + TextConfirmation_CategoryMaster_New_12.Height + 50
+                  - Rectangle1_3:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =RGBA(56, 96, 178, 1)
+                        Height: =300
+                        Width: =5
+                        X: =(TextConfirmation_CategoryMaster_New_14.X - TextConfirmation_CategoryMaster_New_13.X - TextConfirmation_CategoryMaster_New_13.Width)/2 + TextConfirmation_CategoryMaster_New_13.Width + TextConfirmation_CategoryMaster_New_13.X
+                        Y: =TextConfirmation_CategoryMaster_New_13.Y
+                  - Registration_AttachmentControl_7:
+                      Control: Attachments@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Fill: =Color.Transparent
+                        Font: =Font.'Open Sans'
+                        Height: =80
+                        HoverBorderColor: =Color.Transparent
+                        HoverColor: =Color.Transparent
+                        HoverFill: =Color.Transparent
+                        ItemColor: =RGBA(255, 255, 255, 1)
+                        ItemFill: =RGBA(56, 96, 178, 1)
+                        ItemHoverFill: =RGBA(186, 202, 226, 1)
+                        MaxAttachmentSize: =100
+                        OnAddFile: |-
+                          =UpdateContext({ShowRegistrationLastSpinner: true});
+                          UpdateContext({timerrepeat:true});
+                          UpdateContext({starttimer: true});
+                          UpdateContext({ Acc_Upload_job: Accounting_ReconsiliationV2.Run({contentBytes: Last(Self.Attachments).Value,name: Last(Self.Attachments).Name})});
+                          UpdateContext({Job_ID : Acc_Upload_job.jobid});
+                          UpdateContext({Acc_Status : Acc_Upload_job.status});
+                          Clear(Acc_Result)
+                        PaddingBottom: =5
+                        PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                        PaddingRight: =5
+                        PaddingTop: =5
+                        PressedColor: =RGBA(255, 255, 255, 1)
+                        PressedFill: =RGBA(0, 18, 107, 1)
+                        Size: =10
+                        Tooltip: =
+                        Width: =TextConfirmation_CategoryMaster_New_14.Width - 20
+                        X: =TextConfirmation_CategoryMaster_New_14.X + (TextConfirmation_CategoryMaster_New_14.Width - Self.Width)/2
+                        Y: =TextConfirmation_CategoryMaster_New_14.Y + TextConfirmation_CategoryMaster_New_12.Height + 50
+      - HeaderContainer_AssetMaster_8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            BorderStyle: =BorderStyle.None
+            Height: =75
+            Width: =1352
+            X: =14
+            Y: =21
+          Children:
+            - Header_AssetMaster_8:
+                Control: Header@0.0.44
+                Properties:
+                  BasePaletteColor: =RGBA(5, 102, 178, 1)
+                  BorderStyle: =BorderStyle.None
+                  Fill: =RGBA(180, 214, 250, 1)
+                  Logo: ='Zurich Logo'
+                  LogoTooltip: ="Zurich Indonesia"
+                  Width: =1352
+            - ButtonNew_CategoryMaster_18:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color.Orange
+                  Height: =50
+                  Icon: ="ArrowClockwise"
+                  OnSelect: |
+                    =Refresh(Stock_Opname_InUse);
+                    ClearCollect(colGalleryDataSOInUseRequest,Stock_Opname_InUse)
+                  Text: ="Load Data"
+                  Width: =116
+                  X: =1050
+                  Y: =(HeaderContainer_AssetMaster_8.Height-Self.Height)/2
+            - ButtonClose_Registration_58:
+                Control: Button@0.0.45
+                Properties:
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  DisplayMode: |-
+                    =If(
+                        LookUp(
+                            Acces_Matrix,
+                            Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                            SO_Requester
+                        ),
+                        DisplayMode.Edit, DisplayMode.Disabled)
+                  Height: =50
+                  Icon: ="Send"
+                  OnSelect: |-
+                    =UpdateContext({ShowFileUploadInUse : true})
+                  Text: ="Start SO - Match"
+                  Width: =120
+                  X: =ButtonNew_CategoryMaster_18.X - Self.Width - 45
+                  Y: =(HeaderContainer_AssetMaster_8.Height-Self.Height)/2
+            - Icon15_13:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Height: =50
+                  Icon: =Icon.Home
+                  OnSelect: |-
+                    =Navigate('Home Page_Stock_Opname', ScreenTransition.Fade);
+                    Clear(colGalleryDataSORequest);
+                  Width: =50
+                  X: =ButtonNew_CategoryMaster_18.X+ButtonNew_CategoryMaster_18.Width + 40
+                  Y: =(HeaderContainer_AssetMaster_8.Height-Self.Height)/2
+      - SOLogDataTable_1:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Height: =658
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowX: =LayoutOverflow.Scroll
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Width: =1352
+            X: =HeaderContainer_AssetMaster.X
+            Y: =110
+          Children:
+            - ColumnNameMasterAsset_31:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  FillPortions: =0
+                  Height: =50
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Width: =Column_Name_AccAssetCode_MasterAsset_145.X+ Column_Name_AccAssetCode_MasterAsset_145.Width
+                  X: =
+                  Y: =40
+                Children:
+                  - Column_Name_AccAssetCode_MasterAsset_143:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Processing Status"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AssetDate_MasterAsset_31.Width+Column_Name_AssetDate_MasterAsset_31.X
+                  - Column_Name_AssetDate_MasterAsset_31:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =Parent.Height
+                        Size: =15
+                        Text: ="Created"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250+Rectangle2_127.Width
+                  - Column_Name_AccAssetCode_MasterAsset_144:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Approval Result"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_143.Width+Column_Name_AccAssetCode_MasterAsset_143.X
+                  - Column_Name_AccAssetCode_MasterAsset_145:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="% Progress"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_146.Width+Column_Name_AccAssetCode_MasterAsset_146.X
+                  - ButtonCanvas2_12:
+                      Control: Button@0.0.45
+                      Properties:
+                        Height: =25
+                        Icon: ="Filter"
+                        OnSelect: |-
+                          =UpdateContext({ DatePickerAcc: !DatePickerAcc });
+                          Reset(DatePickerCanvas1_3)
+                        Text: =
+                        Width: =25
+                        X: =Column_Name_AssetDate_MasterAsset_31.Width -35
+                        Y: =Column_Name_AssetDate_MasterAsset_31.Height / 2 - Self.Height/2
+                  - Column_Name_AccAssetCode_MasterAsset_146:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="# Of Assets"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_144.Width+Column_Name_AccAssetCode_MasterAsset_144.X
+                  - ButtonCanvas2_13:
+                      Control: Button@0.0.45
+                      Properties:
+                        Height: =25
+                        Icon: ="Filter"
+                        OnSelect: |-
+                          =UpdateContext({ DropdownStatus: !DropdownStatus });
+                          Reset(DropdownCanvas20_8)
+                        Text: =
+                        Width: =25
+                        X: =Column_Name_AccAssetCode_MasterAsset_143.Width + Column_Name_AccAssetCode_MasterAsset_143.X -35
+                        Y: =Column_Name_AccAssetCode_MasterAsset_144.Height / 2 - Self.Height/2
+                  - DropdownCanvas20_8:
+                      Control: DropDown@0.0.45
+                      Properties:
+                        Items: =["Completed", "Processed"]
+                        Visible: =DropdownStatus
+                        Width: =175
+                        X: =Column_Name_AccAssetCode_MasterAsset_143.X + Column_Name_AccAssetCode_MasterAsset_143.Width -Self.Width - 50
+                        Y: =Column_Name_AccAssetCode_MasterAsset_144.Height / 2 - Self.Height/2
+                  - DatePickerCanvas1_3:
+                      Control: DatePicker@0.0.46
+                      Properties:
+                        Visible: =DatePickerAcc
+                        Width: =Column_Name_AssetDate_MasterAsset_31.Width - ButtonCanvas2_12.Width - 30
+                        X: =10
+                        Y: =Column_Name_AssetDate_MasterAsset_31.Height / 2 - Self.Height/2
+                  - ButtonCanvas2_14:
+                      Control: Button@0.0.45
+                      Properties:
+                        Height: =25
+                        Icon: ="Filter"
+                        OnSelect: |-
+                          =UpdateContext({ DropdownResultAcc: !DropdownResultAcc });
+                          Reset(DropdownCanvas20_9)
+                        Text: =
+                        Width: =25
+                        X: =Column_Name_AccAssetCode_MasterAsset_144.Width + Column_Name_AccAssetCode_MasterAsset_144.X -35
+                        Y: =Column_Name_AccAssetCode_MasterAsset_144.Height / 2 - Self.Height/2
+                  - DropdownCanvas20_9:
+                      Control: DropDown@0.0.45
+                      Properties:
+                        Items: =["Approved", "Rejected", "Pending"]
+                        Visible: =DropdownResultAcc
+                        Width: =175
+                        X: =Column_Name_AccAssetCode_MasterAsset_144.X + Column_Name_AccAssetCode_MasterAsset_144.Width -Self.Width - 50
+                        Y: =Column_Name_AccAssetCode_MasterAsset_144.Height / 2 - Self.Height/2
+            - ColumnValueMasterAsset_31:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =Color.Transparent
+                  Height: =Parent.Height-50
+                  Items: |
+                    =SortByColumns(
+                        Filter(
+                            colGalleryDataSOInUseRequest,
+                            Created > DatePickerCanvas1_3.SelectedDate &&
+
+                            /* Result status filter */
+                            Switch(
+                                DropdownCanvas20_8.Selected.Value,
+                                "Completed", Status = "Completed",
+                                "Processed", Status = "Processed",
+                                true
+                            ) &&
+
+                            /* Approval status filter */
+                            Switch(
+                                DropdownCanvas20_9.Selected.Value,
+                                "Approved", Approval_Status = "Approved",
+                                "Rejected", Approval_Status = "Rejected",
+                                "Pending", Approval_Status = "Pending",
+                                true
+                            ) &&
+
+                            /* ✅ Requester sees ALL, others filtered */
+                            (
+                                LookUp(
+                                    Acces_Matrix,
+                                    Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                                    SO_Requester
+                                ) = true ||
+
+                                (
+                                    LookUp(
+                                        Acces_Matrix,
+                                        Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                                        SO_Respondents
+                                    ) = true &&
+                                    Status = "Waiting for SO Confirmation"
+                                )
+                            )
+                        ),
+                        "Created",
+                        SortOrder.Descending
+                    )
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  TemplateFill: |-
+                    =
+                    If(
+                        ThisItem.IsSelected,
+                        RGBA(160, 200, 240, 1),   // Light blue shade
+                        Color.Transparent         // No fill when not selected
+                    )
+                  TemplateSize: =50
+                  Width: =ColumnNameMasterAsset_31.Width + NextArrow2_18.Width
+                  X: =Parent.X
+                  Y: =Parent.Height-Self.Height
+                Children:
+                  - Column_Value_AsssetDate_MasterAsset_264:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Created
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AssetDate_MasterAsset_31.Width-Rectangle2_127.Width
+                        X: =Rectangle2_127.Width
+                  - Column_Value_AsssetDate_MasterAsset_265:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =Concatenate(ThisItem.Status)
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_143.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_143.X
+                  - Column_Value_AsssetDate_MasterAsset_266:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: |-
+                          =IfError(
+                              With(
+                                  {
+                                      _tbl: Table(ParseJSON(ThisItem.Asset_Details))
+                                  },
+                                  Text(
+                                      (
+                                          CountRows(
+                                              Filter(
+                                                  _tbl,
+                                                  !IsBlank(Text(Value.Response))
+                                              )
+                                          ) / CountRows(_tbl)
+                                      ) * 100,
+                                      "0.00"
+                                  ) & "%"
+                              ),
+                              "--.--%"
+                          )
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_145.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_145.X
+                  - NextArrow2_18:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                        DisabledColor: =RGBA(119, 119, 119, 1)
+                        DisplayMode: |-
+                          =If(
+                              LookUp(
+                                  Acces_Matrix,
+                                  Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                                  SO_Requester
+                              ),
+                              DisplayMode.Edit,
+                              If(
+                                  LookUp(
+                                      Acces_Matrix,
+                                      Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                                      SO_Respondents
+                                  ) && ThisItem.Status = "Waiting for SO Confirmation",
+                                  DisplayMode.Edit,
+                                  DisplayMode.Disabled
+                              )
+                          )
+                        Fill: =Color.WhiteSmoke
+                        Height: =50
+                        Icon: =Icon.Information
+                        OnSelect: |-
+                          =UpdateContext({locIsLoading : true});
+
+                          UpdateContext({ShowRunDetailSO: true});
+
+                          UpdateContext({locselecteditem : ThisItem});
+
+                          ClearCollect(
+                              colProgressDetailsSO,
+                                      ForAll(
+                                          Table(ParseJSON(ThisItem.Asset_Details)),
+                                          With(
+                                              { r: ThisRecord.Value },
+                                              {
+                                                  Accounting_Asset_Code: Text(r.Accounting_Asset_Code),
+                                                  Asset_Name: Text(r.Asset_Name),
+                                                  Asset_Status : Text(r.Asset_Status),
+                                                  Asset_Type: Text(r.Asset_Type),
+                                                  Asset_Type_ID : Text(r.Asset_Type_ID),
+                                                  Comments : Text(r.Comments),
+                                                  Employee_Email : Text(r.Employee_Email),
+                                                  Employee_Name : Text(r.Employee_Name),
+                                                  HostName : Text(r.HostName),
+                                                  Location : Text(r.Location),
+                                                  Location_ID : Text(r.Location_ID),
+                                                  MYID_Asset_Owner : Text(r.MYID_Asset_Owner),
+                                                  PIC_Email : Text(r.PIC_Email),
+                                                  PIC_Name : Text(r.PIC_Name),
+                                                  Receiver_Email : Text(r.Receiver_Email),
+                                                  Response : Coalesce(Text(r.Response), "None"),
+                                                  Response_Date : Text(r.Response_Date),
+                                                  Response_Email : Text(r.Response_Email),
+                                                  Response_Type : Text(r.Response_Type), 
+                                                  Serial_Number: Text(r.Serial_Number)
+                                              }
+                                          )
+                                      )
+                              );
+
+                          ClearCollect(
+                              ColAssetTypeValues_SOInUse,
+                              Sort(
+                                  Distinct(colProgressDetailsSO, Asset_Type),
+                                  Value
+                              )
+                          );
+
+                          ClearCollect(
+                              ColUserEmailValues_SOInUse,
+                              Sort(
+                                  Distinct(colProgressDetailsSO, Employee_Email),
+                                  Value
+                              )
+                          );
+
+                          ClearCollect(
+                              ColReceiverEmailValues_SOInUse,
+                              Sort(
+                                  Distinct(colProgressDetailsSO, Receiver_Email),
+                                  Value
+                              )
+                          );
+
+                          ClearCollect(
+                              ColLocationValues_SOInUse,
+                              Sort(
+                                  Distinct(colProgressDetailsSO, Location),
+                                  Value
+                              )
+                          );
+
+                          UpdateContext({locIsLoading : false});
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                  - Rectangle2_124:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =1
+                        X: =Column_Name_AccAssetCode_MasterAsset_145.X+Column_Name_AccAssetCode_MasterAsset_145.Width
+                  - Column_Value_AsssetDate_MasterAsset_267:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: |
+                          =Coalesce(ThisItem.Approval_Status)
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_144.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_144.X
+                  - Column_Value_AsssetDate_MasterAsset_268:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =CountRows(Table(ParseJSON(ThisItem.Asset_Details)))
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_146.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_146.X
+                  - Rectangle2_125:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_145.X+Column_Name_AccAssetCode_MasterAsset_145.Width
+                        Y: =49
+                  - Rectangle2_126:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_145.X+Column_Name_AccAssetCode_MasterAsset_145.Width
+                        Y: =Column_Name_AccAssetCode_MasterAsset_145.Y
+                  - Rectangle2_127:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+      - Container_Data_Confirm_8:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =Color.White
+            Height: =Parent.Height*9/10
+            Visible: =ShowRunDetailSO
+            Width: =Parent.Width*9/10
+            X: =(Parent.Width-Self.Width)/2
+            Y: =(Parent.Height-Self.Height)/2
+          Children:
+            - TextCanvas2_8:
+                Control: Text@0.0.51
+                Properties:
+                  Align: ='TextCanvas.Align'.Center
+                  Height: =60
+                  Size: =30
+                  Text: ="Run Details"
+                  VerticalAlign: =VerticalAlign.Middle
+                  Weight: ='TextCanvas.Weight'.Semibold
+                  Width: =Parent.Width/2
+                  X: =Parent.Width/2-Self.Width/2
+            - ButtonCanvas1_8:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color.Green
+                  DisplayMode: |-
+                    =If(
+                        LookUp(
+                            Acces_Matrix,
+                            Title = LookUp(Master_Employee, Email = User().Email).MyID,
+                            SO_Requester
+                        ),
+                        DisplayMode.Edit, DisplayMode.Disabled)
+                  Height: =ButtonCanvas1_9.Height
+                  Icon: ="Send"
+                  Layout: ='ButtonCanvas.Layout'.IconBefore
+                  OnSelect: |
+                    ='AccountingReconciliation-ApprovalRequest'.Run(locselecteditem.Title, User().FullName, Now());
+                    UpdateContext({ShowRunDetails:false});
+                    Notify("Approval has been sent. Please check regularly for updates on the approval status", NotificationType.Success, 5000);
+                    Refresh(Temp_Acc_Reconcile)
+                  Text: ="Send Approval"
+                  Visible: =false
+                  Width: =AssetDataContainer_30.Width/3 - ButtonCanvas1_9.Width - 20
+                  X: =ButtonCanvas1_9.X - Self.Width - 25
+                  Y: =20
+            - ButtonClose_Registration_56:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =If(IsSelectedSOResponse=true,Color,Color.Gray)
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =50
+                  Icon: ="Checkmark"
+                  Layout: ='ButtonCanvas.Layout'.TextOnly
+                  OnSelect: |-
+                    =UpdateContext({IsSelectedSOResponse: true});
+                    UpdateContext({IsSelectedApprovalRequest: false});
+                  Text: ="Asset Details"
+                  Width: =AssetDataContainer_30.Width/2
+                  X: =AssetDataContainer_30.X
+                  Y: =AssetDataContainer_30.Y-Self.Height
+            - AssetDataContainer_30:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Height: =Parent.Height-150
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutOverflowX: =LayoutOverflow.Scroll
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =IsSelectedSOResponse
+                  Width: |
+                    =Parent.Width-100
+                  X: =(Parent.Width-Self.Width)/2
+                  Y: "=TextCanvas2_8.Height+TextCanvas2_8.Y+70\r\n "
+                Children:
+                  - ColumnNameMasterAsset_34:
+                      Control: GroupContainer@1.5.0
+                      Variant: ManualLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        FillPortions: =0
+                        Height: =50
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        Width: =Column_Name_BusinessOwner_MasterAsset_49.Width+Column_Name_BusinessOwner_MasterAsset_49.X + 15
+                        X: =
+                        Y: =40
+                      Children:
+                        - Column_Name_AccAssetCode_MasterAsset_147:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Asset Status"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =100
+                              X: =Column_Name_AccAssetCode_MasterAsset_158.Width+Column_Name_AccAssetCode_MasterAsset_158.X
+                        - Column_Name_AccAssetCode_MasterAsset_155:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Asset Name"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =400
+                              X: =Column_Name_AssetDate_MasterAsset_34.Width+Column_Name_AssetDate_MasterAsset_34.X
+                        - Column_Name_AssetDate_MasterAsset_34:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.None
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =Parent.Height
+                              Size: =15
+                              Text: ="Accounting Asset Code"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =175+Rectangle2_138.Width
+                              X: =NextArrow2_19.Width + NextArrow2_19.X + 5
+                        - Column_Name_AccAssetCode_MasterAsset_156:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Serial Number"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =150
+                              X: =Column_Name_AccAssetCode_MasterAsset_147.Width+Column_Name_AccAssetCode_MasterAsset_147.X
+                        - Column_Name_BusinessOwner_MasterAsset_49:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Response Comments"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =300
+                              X: =Column_Name_AccAssetCode_MasterAsset_168.Width+Column_Name_AccAssetCode_MasterAsset_168.X
+                        - Column_Name_AccAssetCode_MasterAsset_157:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Location"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =200
+                              X: =Column_Name_AccAssetCode_MasterAsset_156.Width+Column_Name_AccAssetCode_MasterAsset_156.X
+                        - Column_Name_AccAssetCode_MasterAsset_158:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Asset Type"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =150
+                              X: =Column_Name_AccAssetCode_MasterAsset_155.Width+Column_Name_AccAssetCode_MasterAsset_155.X
+                        - Column_Name_AccAssetCode_MasterAsset_166:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Employee Name"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =250
+                              X: =Column_Name_AccAssetCode_MasterAsset_157.Width+Column_Name_AccAssetCode_MasterAsset_157.X
+                        - Column_Name_AccAssetCode_MasterAsset_167:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Employee Email"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =300
+                              X: =Column_Name_AccAssetCode_MasterAsset_166.Width+Column_Name_AccAssetCode_MasterAsset_166.X
+                        - Column_Name_AccAssetCode_MasterAsset_168:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Response Date"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =200
+                              X: =Column_Name_AccAssetCode_MasterAsset_171.Width+Column_Name_AccAssetCode_MasterAsset_171.X
+                        - Column_Name_AccAssetCode_MasterAsset_169:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Receiver Email"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =300
+                              X: =Column_Name_AccAssetCode_MasterAsset_167.Width+Column_Name_AccAssetCode_MasterAsset_167.X
+                        - Column_Name_AccAssetCode_MasterAsset_170:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Location PIC Email"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =300
+                              X: =Column_Name_AccAssetCode_MasterAsset_169.Width+Column_Name_AccAssetCode_MasterAsset_169.X
+                        - Column_Name_AccAssetCode_MasterAsset_171:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: =RGBA(174, 208, 221, 1)
+                              Height: =50
+                              Size: =15
+                              Text: ="Response Type"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =200
+                              X: =Column_Name_AccAssetCode_MasterAsset_170.Width+Column_Name_AccAssetCode_MasterAsset_170.X
+                  - ColumnValueMasterAsset_34:
+                      Control: Gallery@2.15.0
+                      Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Fill: =Color.Transparent
+                        Height: =Parent.Height-50
+                        Items: |-
+                          =SortByColumns(
+                              Filter(
+                                  Search(
+                                      colProgressDetailsSO,
+                                      Search_AssetMaster_2.Text,
+                                      Accounting_Asset_Code,
+                                      Asset_Name,
+                                      Asset_Status,
+                                      Serial_Number,
+                                      Asset_Type,
+                                      Employee_Email,
+                                      Employee_Name,
+                                      Location,
+                                      Receiver_Email,
+                                      PIC_Email,
+                                      Response_Date,
+                                      Response_Type
+                                  ),
+
+                                  Coalesce(CountRows(Combobox3.SelectedItems), 0)= 0 ||
+                                  Response in Combobox3.SelectedItems.Value,
+
+                                  Coalesce(CountRows(Combobox3_1.SelectedItems), 0)= 0 ||
+                                  Response_Type in Combobox3_1.SelectedItems.Value,
+
+                                  Coalesce(CountRows(Combobox3_2.SelectedItems), 0)= 0 ||
+                                  Asset_Type in Combobox3_2.SelectedItems.Value,
+
+                                  Coalesce(CountRows(Combobox3_3.SelectedItems), 0)= 0 ||
+                                  Employee_Email in Combobox3_3.SelectedItems.Value,
+
+                                  Coalesce(CountRows(Combobox3_4.SelectedItems), 0)= 0 ||
+                                  Receiver_Email in Combobox3_4.SelectedItems.Value,
+
+                                  Coalesce(CountRows(Combobox3_5.SelectedItems), 0)= 0 ||
+                                  Location in Combobox3_5.SelectedItems.Value
+                              ),
+                              "Accounting_Asset_Code"
+                          )
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        TemplateFill: |-
+                          =If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1)
+                          )
+                        TemplateSize: =50
+                        Visible: =IsSelectedSOResponse
+                        Width: =ColumnNameMasterAsset_34.Width
+                        X: =Parent.X
+                        Y: =Parent.Height-Self.Height
+                      Children:
+                        - Column_Value_AsssetDate_MasterAsset_269:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Accounting_Asset_Code
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AssetDate_MasterAsset_34.Width
+                              X: =Column_Name_AssetDate_MasterAsset_34.X
+                        - Column_Value_AsssetDate_MasterAsset_270:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Asset_Name
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_155.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_155.X
+                        - Column_Value_AsssetDate_MasterAsset_271:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Asset_Status
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_147.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_147.X
+                        - Column_Value_AsssetDate_MasterAsset_272:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Serial_Number
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_156.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_156.X
+                        - Column_Value_AsssetDate_MasterAsset_273:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Location
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_157.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_157.X
+                        - NextArrow2_19:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              AccessibleLabel: =Self.Tooltip
+                              BorderColor: =RGBA(0, 0, 0, 1)
+                              Color: =Color.Black
+                              DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                              DisabledColor: =RGBA(119, 119, 119, 1)
+                              Fill: =Color.White
+                              Height: =50
+                              Icon: |
+                                =Switch(
+                                    ThisItem.Response,
+                                    "None", Icon.More,
+                                    "Confirmed", Icon.Check,
+                                    "False", Icon.Cancel,
+                                    "")
+                              OnSelect: =
+                              PaddingBottom: =16
+                              PaddingLeft: =16
+                              PaddingRight: =16
+                              PaddingTop: =16
+                              Tooltip: ="View item details"
+                              Width: =50
+                              Y: =(Column_Value_AsssetDate_MasterAsset_269.Height - Self.Height) / 2
+                        - Column_Value_AsssetDate_MasterAsset_274:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Asset_Type
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_158.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_158.X
+                        - Column_Value_AsssetDate_MasterAsset_275:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Comments
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_BusinessOwner_MasterAsset_49.Width
+                              X: =Column_Name_BusinessOwner_MasterAsset_49.X
+                        - Column_Value_AsssetDate_MasterAsset_276:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Employee_Name
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_166.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_166.X
+                        - Column_Value_AsssetDate_MasterAsset_277:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Employee_Email
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_167.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_167.X
+                        - Column_Value_AsssetDate_MasterAsset_278:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Response_Date
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_168.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_168.X
+                        - Column_Value_AsssetDate_MasterAsset_280:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.PIC_Email
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_170.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_170.X
+                        - Column_Value_AsssetDate_MasterAsset_279:
+                            Control: Text@0.0.51
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              Size: =15
+                              Text: =ThisItem.Response_Type
+                              VerticalAlign: =VerticalAlign.Middle
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Column_Name_AccAssetCode_MasterAsset_171.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_171.X
+                        - Combobox2:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              BorderColor: =RGBA(214, 221, 224, 1)
+                              BorderStyle: =BorderStyle.Solid
+                              BorderThickness: =1
+                              DefaultSelectedItems: =LookUp(Master_Employee, Email = ThisItem.Receiver_Email)
+                              Fill: |-
+                                =
+                                If(
+                                    ThisItem.IsSelected,
+                                    RGBA(160, 200, 240, 1),   // Light blue shade
+                                    Color.Transparent         // No fill when not selected
+                                )
+                              Height: =50
+                              ItemDisplayText: =ThisItem.Email
+                              Items: ='Employee Master'
+                              OnChange: |-
+                                =Patch(
+                                    colProgressDetailsSO,
+                                    ThisItem,
+                                    {
+                                        Receiver_Email: Combobox2.Selected.Email
+                                    }
+                                )
+                              SelectMultiple: =false
+                              Width: =Column_Name_AccAssetCode_MasterAsset_169.Width
+                              X: =Column_Name_AccAssetCode_MasterAsset_169.X
+                        - Rectangle2_138:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              BorderThickness: =1
+                              Fill: =RGBA(0, 18, 107, 1)
+                              Height: =Parent.TemplateHeight
+                              OnSelect: =Select(Parent)
+                              Visible: =ThisItem.IsSelected
+                              Width: =4
+                              X: =Column_Name_AssetDate_MasterAsset_34.X
+                        - Rectangle2_139:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              BorderThickness: =1
+                              Fill: =RGBA(0, 18, 107, 1)
+                              Height: =Parent.TemplateHeight
+                              OnSelect: =Select(Parent)
+                              Visible: =ThisItem.IsSelected
+                              Width: =1
+                              X: =3223
+                        - Rectangle2_137:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              BorderThickness: =1
+                              Fill: =RGBA(0, 18, 107, 1)
+                              Height: =1
+                              OnSelect: =Select(Parent)
+                              Visible: =ThisItem.IsSelected
+                              Width: =Column_Name_BusinessOwner_MasterAsset_49.X+Column_Name_BusinessOwner_MasterAsset_49.Width
+                              Y: =49
+                        - Rectangle2_136:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              BorderThickness: =1
+                              Fill: =RGBA(0, 18, 107, 1)
+                              Height: =1
+                              OnSelect: =Select(Parent)
+                              Visible: =ThisItem.IsSelected
+                              Width: =Column_Name_BusinessOwner_MasterAsset_49.X+Column_Name_BusinessOwner_MasterAsset_49.Width
+                              Y: =Column_Name_AccAssetCode_MasterAsset_147.Y
+            - ButtonCanvas2_15:
+                Control: Button@0.0.45
+                Properties:
+                  Height: =25
+                  Icon: ="Filter"
+                  OnSelect: |-
+                    =UpdateContext({ DropdownConfirmSO: !DropdownConfirmSO });
+                  Text: =
+                  Visible: =IsSelectedSOResponse
+                  Width: =25
+                  X: =70
+                  Y: |
+                    =150
+            - ButtonClose_Registration_57:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =If(IsSelectedApprovalRequest=true,Color,Color.Gray)
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =ButtonClose_Registration_56.Height
+                  Icon: ="Checkmark"
+                  Layout: ='ButtonCanvas.Layout'.TextOnly
+                  OnSelect: |-
+                    =UpdateContext({IsSelectedSOResponse: false});
+                    UpdateContext({IsSelectedApprovalRequest: true});
+                    UpdateContext({DropdownConfirmSO:false})
+                  Text: ="Summary"
+                  Width: =ButtonClose_Registration_56.Width
+                  X: =ButtonClose_Registration_56.X+ButtonClose_Registration_56.Width
+                  Y: =ButtonClose_Registration_56.Y
+            - ButtonCanvas1_9:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color.Red
+                  Icon: ="Dismiss"
+                  Layout: ='ButtonCanvas.Layout'.IconBefore
+                  OnSelect: |-
+                    =UpdateContext({ShowRunDetailSO:false});
+                    Reset(Search_AssetMaster_2);
+                    Reset(Combobox3);
+                    Reset(Combobox3_1);
+                    Reset(Combobox3_2);
+                    Reset(Combobox3_3);
+                    Reset(Combobox3_4);
+                    Reset(Combobox3_5);
+                  Text: ="Close"
+                  X: =Parent.Width-Self.Width-50
+                  Y: =20
+            - Search_AssetMaster_2:
+                Control: ModernTextInput@1.1.2
+                Properties:
+                  Fill: =Color.WhiteSmoke
+                  FontWeight: =""
+                  MaxLength: =-1
+                  Placeholder: ="Search"
+                  Size: =0
+                  Visible: =IsSelectedSOResponse
+                  Width: =175
+                  X: =ButtonCanvas1_9.X - Self.Width - 50
+                  Y: =20
+            - Icon2_1:
+                Control: Classic/Icon@2.5.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Color: =RGBA(0, 18, 107, 1)
+                  Height: =Search_AssetMaster_2.Height
+                  Icon: =Icon.Search
+                  Visible: =IsSelectedSOResponse
+                  Width: =Search_AssetMaster_2.Height
+                  X: =ButtonCanvas1_9.X - Self.Width - 10
+                  Y: =20
+            - Text3_4:
+                Control: ModernText@1.0.0
+                Properties:
+                  Align: =Align.Center
+                  FontWeight: =FontWeight.Bold
+                  Text: ="Stock Opname Progress Summary"
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =ButtonClose_Registration_56.Width + ButtonClose_Registration_56.Width
+                  X: =ButtonClose_Registration_56.X
+                  Y: =ButtonClose_Registration_56.Height + ButtonClose_Registration_56.Y
+            - Rectangle2_140:
+                Control: Rectangle@2.3.0
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  BorderThickness: =1
+                  Fill: =RGBA(0, 18, 107, 1)
+                  Height: =1
+                  OnSelect: =
+                  Visible: =false
+                  Width: =1229.4
+                  Y: =TextCanvas2_8.Height+TextCanvas2_8.Y+330
+            - conStatusSummary:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Height: =140
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =16
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =620
+                  X: =ButtonClose_Registration_56.X
+                  Y: =ButtonClose_Registration_56.Y + ButtonClose_Registration_56.Height + 75
+                Children:
+                  - Container8_2:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =RGBA(180,180,180,1)
+                        BorderThickness: =1
+                        Fill: =RGBA(240,240,240,1)
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =4
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        X: =40
+                        Y: =40
+                      Children:
+                        - Icon8:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Color: =RGBA(120,120,120,1)
+                              Height: =28
+                              Icon: =Icon.More
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =28
+                        - Text4:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(120,120,120,1)
+                              FillPortions: =1
+                              FontWeight: =FontWeight.Semibold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =20
+                              Text: =CountRows(Filter(colProgressDetailsSO, Response = "None"))
+                              Width: =65
+                        - Text5:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(120,120,120,1)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =
+                              Text: ="Empty"
+                              Width: =65
+                  - Container8_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =RGBA(60,150,90,1)
+                        BorderThickness: =1
+                        Fill: =RGBA(230,247,235,1)
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =4
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        X: =40
+                        Y: =40
+                      Children:
+                        - Icon8_1:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Color: =RGBA(40,130,70,1)
+                              Height: =28
+                              Icon: =Icon.CheckBadge
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =28
+                        - Text4_9:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(40,130,70,1)
+                              FillPortions: =1
+                              FontWeight: =FontWeight.Semibold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =20
+                              Text: =CountRows(Filter(colProgressDetailsSO, Response = "Confirmed"))
+                              Width: =65
+                        - Text5_1:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(40,130,70,1)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =12
+                              Text: ="Confirmed"
+                              Width: =100
+                  - Container8:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =RGBA(200,60,60,1)
+                        BorderThickness: =1
+                        Fill: =RGBA(252,233,233,1)
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =4
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                      Children:
+                        - Icon8_2:
+                            Control: Classic/Icon@2.5.0
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Color: =RGBA(180,40,40,1)
+                              Height: =28
+                              Icon: =Icon.Cancel
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =28
+                        - Text4_10:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(180,40,40,1)
+                              FillPortions: =1
+                              FontWeight: =FontWeight.Semibold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =20
+                              Text: =CountRows(Filter(colProgressDetailsSO, Response = "False"))
+                              Width: =65
+                        - Text5_2:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Center
+                              Color: =RGBA(180,40,40,1)
+                              FontWeight: =FontWeight.Lighter
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =12
+                              Text: ="False"
+                              Width: =100
+            - Container10_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Height: =conStatusSummary.Height
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =450
+                  X: =conStatusSummary.X + conStatusSummary.Width + 50
+                  Y: =conStatusSummary.Y
+                Children:
+                  - Container11:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                      Children:
+                        - Text6:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              AutoHeight: =true
+                              Color: =Color.Gray
+                              FillPortions: =1
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =25
+                              Text: ="Overall Progress"
+                        - Text6_1:
+                            Control: ModernText@1.0.0
+                            Properties:
+                              Align: =Align.Right
+                              AutoHeight: =true
+                              Color: =Color.Black
+                              FontWeight: =FontWeight.Bold
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =32
+                              Text: |-
+                                =IfError(Text(
+                                    (
+                                        CountRows(
+                                            Filter(
+                                                colProgressDetailsSO,
+                                                Response = "Confirmed"
+                                            )
+                                        ) / CountRows(colProgressDetailsSO)
+                                    ) * 100,
+                                    "0.00"
+                                ) & "%", "--.--%")
+                  - Container10:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Height: =10
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutMaxHeight: =10
+                        LayoutMinHeight: =1
+                        Width: =450
+                        X: =conStatusSummary.X + conStatusSummary.Width + 50
+                        Y: =conStatusSummary.Y
+                      Children:
+                        - Rectangle4:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =Color.Green
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: |-
+                                =IfError(
+                                Container10.Width * CountRows(Filter(colProgressDetailsSO, Response ="Confirmed")) / CountRows(colProgressDetailsSO),0)
+                        - Rectangle4_1:
+                            Control: Rectangle@2.3.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =Color.Red
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =IfError(Container10.Width * CountRows(Filter(colProgressDetailsSO, Response ="False")) / CountRows(colProgressDetailsSO),0)
+                              X: =Rectangle4.Width + Rectangle4.X
+                  - Text7:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        Color: =Color.Gray
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        Size: =12
+                        Text: =Concatenate(CountRows(Filter(colProgressDetailsSO, Response = "Confirmed" Or Response = "False")), " Of ", CountRows(colProgressDetailsSO), " Items Has Been Responded")
+                        Width: =300
+            - Container12:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Height: =285
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =Container10_1.Width
+                  X: =Container10_1.X
+                  Y: =Container10_1.Y + Container10_1.Height + 50
+                Children:
+                  - Text2_9:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        Height: =25
+                        Size: =11
+                        Text: |-
+                          =Concatenate("Approval Sent on : ", ParseJSON(locselecteditem.Approval_Data).submittedOn)
+                        Visible: =IsSelectedApprovalRequest
+                        Width: =350
+                  - Text2_10:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        Height: =Text2_9.Height
+                        Size: =11
+                        Text: |-
+                          =Concatenate("Approval Sent by : ", ParseJSON(locselecteditem.Approval_Data).submittedBy)
+                        Visible: =IsSelectedApprovalRequest
+                        Width: =350
+                        X: =Text2_9.X
+                        Y: =Text2_9.Y + Text2_9.Height + 5
+                  - Text2_8:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Start
+                        Height: =Text2_9.Height
+                        Size: =11
+                        Text: |-
+                          =Concatenate("Approval Status : ", locselecteditem.Approval_Status)
+                        Visible: =IsSelectedApprovalRequest
+                        Width: =350
+                        X: =Text2_9.X
+                        Y: =Text2_10.Y + Text2_10.Height + 5
+                  - AttachmentDetailsTable_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Height: =155
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutOverflowX: =LayoutOverflow.Scroll
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        Visible: =IsSelectedApprovalRequest
+                        Width: =ButtonClose_Registration_57.Width
+                        X: =Text2_9.X
+                        Y: =Text2_8.Height+Text2_8.Y+25
+                      Children:
+                        - ColumnNameMasterAsset_36:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              FillPortions: =0
+                              Height: =50
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              Width: =Parent.Width - 10
+                              X: =
+                              Y: =40
+                            Children:
+                              - Column_Name_AssetDate_MasterAsset_36:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =1
+                                    Fill: =RGBA(174, 208, 221, 1)
+                                    Height: =Parent.Height
+                                    Size: =15
+                                    Text: ="Attachment name"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =330+Rectangle2_144.Width
+                        - ColumnValueMasterAsset_36:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =Color.Transparent
+                              Height: =Parent.Height-50
+                              Items: =locselecteditem.Attachments
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              TemplateFill: =
+                              TemplateSize: =30
+                              Width: =ColumnNameMasterAsset_36.Width
+                              X: =Parent.X
+                              Y: =Parent.Height-Self.Height
+                            Children:
+                              - Icon1_2:
+                                  Control: ModernIcon@1.1.1
+                                  Properties:
+                                    Height: =15
+                                    Icon: ="Open"
+                                    OnSelect: =Launch(ThisItem.AbsoluteUri)
+                                    Width: =13
+                                    Y: =(Column_Value_AsssetDate_MasterAsset_299.Height - Self.Width)/2
+                              - Column_Value_AsssetDate_MasterAsset_299:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.Solid
+                                    BorderThickness: =1
+                                    Fill: |-
+                                      =
+                                      If(
+                                          ThisItem.IsSelected,
+                                          RGBA(160, 200, 240, 1),   // Light blue shade
+                                          Color.Transparent         // No fill when not selected
+                                      )
+                                    Height: =30
+                                    Size: =10
+                                    Text: =ThisItem.DisplayName
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =1
+                                    X: =Column_Name_AssetDate_MasterAsset_36.X
+                              - Rectangle2_144:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.TemplateHeight
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                                    X: =Column_Value_AsssetDate_MasterAsset_299.X
+                              - Rectangle2_145:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                                    X: =Column_Name_AssetDate_MasterAsset_36.X
+                                    Y: =Column_Name_AssetDate_MasterAsset_36.Y
+                              - Rectangle2_146:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.TemplateHeight
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                              - Rectangle2_147:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                                    X: =Column_Name_AssetDate_MasterAsset_36.X
+                                    Y: =29
+            - Container12_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Height: =285
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =conStatusSummary.Width
+                  X: =ButtonClose_Registration_56.X
+                  Y: =Container10_1.Y + Container10_1.Height + 50
+                Children:
+                  - TextInput1_1:
+                      Control: Classic/TextInput@2.3.2
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        Clear: =true
+                        Default: =
+                        Font: =Font.'Open Sans'
+                        Height: =30
+                        HintText: |-
+                          ="🔍Search"
+                        HoverBorderColor: =RGBA(0, 18, 107, 1)
+                        HoverFill: =RGBA(225, 228, 232, 1)
+                  - User_Progress_Details:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Height: =155
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutOverflowX: =LayoutOverflow.Scroll
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        Visible: =IsSelectedApprovalRequest
+                        Width: =ButtonClose_Registration_57.Width
+                      Children:
+                        - ColumnNameMasterAsset_37:
+                            Control: GroupContainer@1.5.0
+                            Variant: ManualLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Start
+                              FillPortions: =0
+                              Height: =50
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              Width: =Parent.Width - 10
+                              X: =
+                              Y: =40
+                            Children:
+                              - Column_Name_AssetDate_MasterAsset_37:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =1
+                                    Fill: =RGBA(174, 208, 221, 1)
+                                    Height: =Parent.Height
+                                    Size: =15
+                                    Text: ="Receiver Email"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =330+Rectangle2_148.Width
+                                    X: =Icon1_3.X + Icon1_3.Width + 5
+                              - Column_Name_AssetDate_MasterAsset_38:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =1
+                                    Fill: =RGBA(174, 208, 221, 1)
+                                    Height: =Parent.Height
+                                    Size: =15
+                                    Text: ="Pending"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =100
+                                    X: =Column_Name_AssetDate_MasterAsset_37.X + Column_Name_AssetDate_MasterAsset_37.Width
+                              - Column_Name_AssetDate_MasterAsset_39:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.None
+                                    BorderThickness: =1
+                                    Fill: =RGBA(174, 208, 221, 1)
+                                    Height: =Parent.Height
+                                    Size: =15
+                                    Text: ="Completed"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =100
+                                    X: =Column_Name_AssetDate_MasterAsset_38.X + Column_Name_AssetDate_MasterAsset_38.Width
+                        - ColumnValueMasterAsset_37:
+                            Control: Gallery@2.15.0
+                            Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Fill: =Color.Transparent
+                              Height: =Parent.Height-50
+                              Items: |-
+                                =Distinct(Search(colProgressDetailsSO,
+                                TextInput1_1.Text,
+                                Receiver_Email), Receiver_Email)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              TemplateFill: =
+                              TemplateSize: =30
+                              Width: =ColumnNameMasterAsset_37.Width
+                              X: =Parent.X
+                              Y: =Parent.Height-Self.Height
+                            Children:
+                              - Icon1_3:
+                                  Control: ModernIcon@1.1.1
+                                  Properties:
+                                    Height: =20
+                                    Icon: |-
+                                      =If(
+                                          CountIf(
+                                              colProgressDetailsSO,
+                                              Response = "None" &&
+                                              Receiver_Email = ThisItem.Value
+                                          ) > 0,
+                                          "MoreHorizontal",
+                                          Icon.Check
+                                      )
+                                    IconColor: |-
+                                      =If(
+                                          CountIf(colProgressDetailsSO, Response = "None") > 0,
+                                          RGBA(0, 18, 107, 1),
+                                          RGBA(40,130,70,1)
+                                      )
+                                    OnSelect: =
+                                    Width: =20
+                                    X: =5
+                                    Y: =(Column_Value_AsssetDate_MasterAsset_300.Height - Self.Width)/2
+                              - Column_Value_AsssetDate_MasterAsset_300:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.Solid
+                                    BorderThickness: =1
+                                    Fill: |-
+                                      =
+                                      If(
+                                          ThisItem.IsSelected,
+                                          RGBA(160, 200, 240, 1),   // Light blue shade
+                                          Color.Transparent         // No fill when not selected
+                                      )
+                                    Height: =30
+                                    Size: =13
+                                    Text: =ThisItem.Value
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Column_Name_AssetDate_MasterAsset_37.Width
+                                    X: =Column_Name_AssetDate_MasterAsset_37.X
+                              - Column_Value_AsssetDate_MasterAsset_301:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.Solid
+                                    BorderThickness: =1
+                                    Fill: |-
+                                      =
+                                      If(
+                                          ThisItem.IsSelected,
+                                          RGBA(160, 200, 240, 1),   // Light blue shade
+                                          Color.Transparent         // No fill when not selected
+                                      )
+                                    Height: =30
+                                    Size: =13
+                                    Text: |-
+                                      =CountIf(
+                                              colProgressDetailsSO,
+                                              Response = "None" &&
+                                              Receiver_Email = ThisItem.Value
+                                          )
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Column_Name_AssetDate_MasterAsset_38.Width
+                                    X: =Column_Name_AssetDate_MasterAsset_38.X
+                              - Column_Value_AsssetDate_MasterAsset_302:
+                                  Control: Text@0.0.51
+                                  Properties:
+                                    Align: ='TextCanvas.Align'.Center
+                                    BorderColor: =RGBA(214, 221, 224, 1)
+                                    BorderStyle: =BorderStyle.Solid
+                                    BorderThickness: =1
+                                    Fill: |-
+                                      =
+                                      If(
+                                          ThisItem.IsSelected,
+                                          RGBA(160, 200, 240, 1),   // Light blue shade
+                                          Color.Transparent         // No fill when not selected
+                                      )
+                                    Height: =30
+                                    Size: =13
+                                    Text: |-
+                                      =CountIf(
+                                          colProgressDetailsSO,
+                                          Response <> "None" &&
+                                          Receiver_Email = ThisItem.Value
+                                      )
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Weight: ='TextCanvas.Weight'.Semibold
+                                    Width: =Column_Name_AssetDate_MasterAsset_39.Width
+                                    X: =Column_Name_AssetDate_MasterAsset_39.X
+                              - Rectangle2_148:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.TemplateHeight
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                                    X: =Column_Name_AssetDate_MasterAsset_39.X + Column_Name_AssetDate_MasterAsset_39.Width
+                              - Rectangle2_149:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =Column_Name_AssetDate_MasterAsset_39.X + Column_Name_AssetDate_MasterAsset_39.Width
+                                    Y: =Column_Name_AssetDate_MasterAsset_37.Y
+                              - Rectangle2_150:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =Parent.TemplateHeight
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =1
+                              - Rectangle2_151:
+                                  Control: Rectangle@2.3.0
+                                  Properties:
+                                    BorderColor: =RGBA(0, 18, 107, 1)
+                                    BorderThickness: =1
+                                    Fill: =RGBA(0, 18, 107, 1)
+                                    Height: =1
+                                    OnSelect: =Select(Parent)
+                                    Visible: =ThisItem.IsSelected
+                                    Width: =Column_Name_AssetDate_MasterAsset_39.X + Column_Name_AssetDate_MasterAsset_39.Width
+                                    Y: =29
+            - Text3_5:
+                Control: ModernText@1.0.0
+                Properties:
+                  Align: =Align.Center
+                  FontWeight: =FontWeight.Bold
+                  Text: ="Response Progress by User"
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =Container12_1.Width
+                  X: =Container12_1.X
+                  Y: =Container12_1.Y - Self.Height
+            - ButtonCanvas1_10:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color
+                  Icon: ="Save"
+                  Layout: ='ButtonCanvas.Layout'.IconBefore
+                  OnSelect: |-
+                    =UpdateContext({locIsLoading: true});
+
+                    Patch(
+                        Stock_Opname_InUse,
+                        LookUp(
+                            Stock_Opname_InUse,
+                            Title = locselecteditem.Title
+                        ),
+                        {
+                            Asset_Details: JSON(
+                                ForAll(
+                                    colProgressDetailsSO,
+                                    Patch(
+                                        ThisRecord,
+                                        {
+                                            Response: If(
+                                                Response = "None",
+                                                Blank(),
+                                                Response
+                                            )
+                                        }
+                                    )
+                                ),
+                                JSONFormat.Compact
+                            )
+                        }
+                    );
+
+                    UpdateContext({ShowRunDetailSO:false});
+                    Refresh(Temp_Stock_Opname);
+                    ClearCollect(colGalleryDataSOInUseRequest,Stock_Opname_InUse);
+                    UpdateContext({locIsLoading: false});
+
+                    Notify("Data Saved & Updated",NotificationType.Success)
+                  Text: ="Save"
+                  Visible: =IsSelectedSOResponse
+                  X: =ButtonClose_Registration_56.X
+                  Y: =20
+            - Toggle2:
+                Control: ModernToggle@1.0.1
+                Properties:
+                  Default: |-
+                    =If(
+                        LookUp(Stock_Opname_InUse, Title = locselecteditem.Title).Active = "Yes",
+                        true,
+                        false
+                    )
+                  Height: =32
+                  Label: ="Active?"
+                  LabelPosition: =ToggleLabelPosition.Before
+                  OnCheck: |-
+                    =UpdateIf(
+                        Stock_Opname_InUse,
+                        Active = "Yes",
+                        {
+                            Active: "No"
+                        }
+                    );
+
+                    Patch(
+                        Stock_Opname_InUse,
+                        locselecteditem,
+                        {
+                            Active: "Yes"
+                        }
+                    );
+
+                    Notify("This record has been set as Active. All other records are now Inactive and Stock Opname will use this data as the reference source.", NotificationType.Warning, 5000)
+                  OnUncheck: |-
+                    =Patch(
+                        Stock_Opname_InUse,
+                        locselecteditem,
+                        {
+                            Active: "No"
+                        }
+                    );
+
+                    Notify("This record has been set to Inactive. Stock Opname will not have a reference data source until another record is activated.", NotificationType.Warning, 5000)
+                  Visible: =IsSelectedApprovalRequest
+                  X: =ButtonCanvas1_11.X - Self.Width - 25
+                  Y: =20
+            - ButtonCanvas1_11:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =Color
+                  DisplayMode: |-
+                    =If(
+                        locselecteditem.Status <> "Waiting to send to users",
+                        DisplayMode.Disabled,
+                        If(
+                            LookUp(
+                                Acces_Matrix,
+                                Title = LookUp(
+                                    Master_Employee,
+                                    Email = User().Email
+                                ).MyID,
+                                SO_Requester
+                            ),
+                            DisplayMode.Edit,
+                            DisplayMode.Disabled
+                        )
+                    )
+                  Icon: ="Send"
+                  Layout: ='ButtonCanvas.Layout'.IconBefore
+                  OnSelect: |-
+                    =UpdateContext({locIsLoading:true});
+
+                    Stock_Opname_In_Use_Trigger.Run(
+                        locselecteditem.Title
+                    );
+
+                    UpdateContext({locIsLoading:false});
+                    UpdateContext({ShowRunDetailSO:false});
+
+                    Notify(
+                        "Stock Opname In Use has been started",
+                        NotificationType.Success,
+                        5000
+                    )
+                  Text: ="Send"
+                  Visible: =IsSelectedApprovalRequest
+                  X: =ButtonCanvas1_9.X - Self.Width - 25
+                  Y: =20
+            - Container9:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  BorderColor: =Color.Black
+                  BorderThickness: =1
+                  Fill: =Color.White
+                  Height: =250
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =5
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Visible: =DropdownConfirmSO
+                  Width: =535
+                  X: =ButtonCanvas2_15.X
+                  Y: =ButtonCanvas2_15.Y + ButtonCanvas2_15.Height
+                Children:
+                  - Container11_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =Color.Transparent
+                        BorderThickness: =1
+                        Fill: =Color.White
+                        Height: =325
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =10
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        Visible: =DropdownConfirmSO
+                        Width: =535
+                        X: =ButtonCanvas2_15.X
+                        Y: =ButtonCanvas2_15.Y + ButtonCanvas2_15.Height
+                      Children:
+                        - Label2:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="Response : "
+                              Width: =Combobox3.Width
+                        - Combobox3:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =["Confirmed", "False", "None"]
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+                        - Label2_1:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="Response Type : "
+                              Width: =Combobox3_1.Width
+                        - Combobox3_1:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =["Automated", "Manual - Personal", "Manual - Location PIC", "Manual - Delegate", Blank()]
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+                        - Label2_2:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="Asset Type : "
+                              Width: =Combobox3_2.Width
+                        - Combobox3_2:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =Distinct(SortByColumns(ColAssetTypeValues_SOInUse,"Value"),Value)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+                  - Container11_2:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        BorderColor: =Color.Transparent
+                        BorderThickness: =1
+                        Fill: =Color.White
+                        Height: =325
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =10
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                        Visible: =DropdownConfirmSO
+                        Width: =535
+                        X: =ButtonCanvas2_15.X
+                        Y: =ButtonCanvas2_15.Y + ButtonCanvas2_15.Height
+                      Children:
+                        - Label2_3:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="User Email : "
+                              Width: =Combobox3_3.Width
+                        - Combobox3_3:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =Distinct(SortByColumns(ColUserEmailValues_SOInUse,"Value"),Value)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+                        - Label2_4:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="Receiver Email : "
+                              Width: =Combobox3_4.Width
+                        - Combobox3_4:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =Distinct(SortByColumns(ColReceiverEmailValues_SOInUse,"Value"),Value)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+                        - Label2_5:
+                            Control: Label@2.5.1
+                            Properties:
+                              BorderColor: =RGBA(0, 18, 107, 1)
+                              Font: =Font.'Open Sans'
+                              FontWeight: =FontWeight.Semibold
+                              Height: =20
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Size: =10
+                              Text: |-
+                                ="Location : "
+                              Width: =Combobox3_5.Width
+                        - Combobox3_5:
+                            Control: ModernCombobox@1.1.2
+                            Properties:
+                              ItemDisplayText: =ThisItem.Value
+                              Items: =Distinct(SortByColumns(ColLocationValues_SOInUse,"Value"),Value)
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              Width: =Parent.Width - 20
+            - Text8_1:
+                Control: ModernText@1.0.0
+                Properties:
+                  FontWeight: =FontWeight.Bold
+                  Text: |-
+                    =Concatenate("Asset Count: ", CountRows(ColumnValueMasterAsset_34.AllItems))
+                  Visible: =IsSelectedSOResponse
+                  X: =ButtonCanvas1_10.X
+                  Y: =ButtonCanvas1_10.Y + ButtonCanvas1_10.Height
+            - Text3_6:
+                Control: ModernText@1.0.0
+                Properties:
+                  Align: =Align.Center
+                  FontWeight: =FontWeight.Bold
+                  Text: ="Approval Summary"
+                  Visible: =IsSelectedApprovalRequest
+                  Width: =Container12.Width
+                  X: =Container12.X
+                  Y: =Container12.Y - Self.Height
+      - Container6:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(0, 0, 0, 0.6)
+            Height: =Parent.Height
+            Visible: =ShowFileUploadInUse
+            Width: =Parent.Width
+          Children:
+            - Container13:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =Color.White
+                  Height: =Parent.Height - 200
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =10
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =8
+                  PaddingTop: =8
+                  Width: =Parent.Width - 200
+                  X: =(Parent.Width - Self.Width)/2
+                  Y: =(Parent.Height - Self.Height)/2
+                Children:
+                  - Button1:
+                      Control: ModernButton@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.End
+                        BasePaletteColor: =Color.Red
+                        OnSelect: =UpdateContext({ShowFileUploadInUse:false})
+                        Text: ="Close"
+                        X: =40
+                        Y: =
+                  - Container14:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =20
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        PaddingBottom: =8
+                        PaddingLeft: =8
+                        PaddingRight: =8
+                        PaddingTop: =8
+                      Children:
+                        - Container15_1:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =16
+                              LayoutMinWidth: =16
+                              PaddingBottom: =8
+                              PaddingLeft: =8
+                              PaddingRight: =8
+                              PaddingTop: =8
+                              X: =40
+                              Y: =40
+                            Children:
+                              - Icon6_2:
+                                  Control: ModernIcon@1.1.1
+                                  Properties:
+                                    Height: =200
+                                    Icon: ="Laptop"
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Width: =200
+                              - Text10_1:
+                                  Control: ModernText@1.0.0
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    FillPortions: =1
+                                    FontWeight: =FontWeight.Bold
+                                    LayoutMinHeight: =16
+                                    LayoutMinWidth: =16
+                                    Size: =25
+                                    Text: ="CMDB Data"
+                              - Registration_AttachmentControl_9:
+                                  Control: Attachments@2.3.0
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BorderColor: =Color.Black
+                                    Color: =Color.Black
+                                    Fill: =Color.Transparent
+                                    Font: =Font.'Open Sans'
+                                    Height: =80
+                                    HoverBorderColor: =Color.Black
+                                    HoverColor: =Color.Black
+                                    HoverFill: =Color.LightBlue
+                                    ItemColor: =RGBA(255, 255, 255, 1)
+                                    ItemFill: =RGBA(56, 96, 178, 1)
+                                    ItemHoverFill: =RGBA(186, 202, 226, 1)
+                                    MaxAttachmentSize: =100
+                                    OnAddFile: =
+                                    PaddingBottom: =5
+                                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                    PaddingRight: =5
+                                    PaddingTop: =5
+                                    PressedColor: =RGBA(255, 255, 255, 1)
+                                    PressedFill: =RGBA(0, 18, 107, 1)
+                                    Size: =10
+                                    Tooltip: =
+                                    Width: =
+                                    X: =
+                                    Y: =
+                  - Button3:
+                      Control: ModernButton@1.0.0
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Icon: ="Checkmark"
+                        LayoutMinHeight: =16
+                        LayoutMinWidth: =16
+                        OnSelect: "=If(\r\n    !IsBlank(Registration_AttachmentControl_9.Attachments),\r\n    \r\n    UpdateContext({locIsLoading: true});\r\n    Concurrent(\r\n    ClearCollect(\r\n    colEmployeeTop,\r\n    AddColumns(\r\n        ShowColumns(\r\n            SortByColumns(\r\n                Master_Employee,\r\n                \"ID\",\r\n                SortOrder.Ascending\r\n            ),\r\n            MyID,\r\n            Display_Name,\r\n            Email,\r\n            Manager\r\n        ) As Employee,\r\n        ManagerDisplayName,\r\n        LookUp(\r\n            Master_Employee As ManagerEmployee,\r\n            ManagerEmployee.MyID = Employee.field_11,\r\n            ManagerEmployee.Display_Name\r\n        ),\r\n        ManagerEmail,\r\n        LookUp(\r\n            Master_Employee As ManagerEmployee,\r\n            ManagerEmployee.MyID = Employee.field_11,\r\n            ManagerEmployee.Email\r\n        )\r\n    )\r\n),\r\n\r\n    ClearCollect(\r\n        colEmployeeBottom,\r\n        AddColumns(\r\n        ShowColumns(\r\n            SortByColumns(\r\n                Master_Employee,\r\n                \"ID\",\r\n                SortOrder.Ascending\r\n            ),\r\n            MyID,\r\n            Display_Name,\r\n            Email,\r\n            Manager\r\n        ) As Employee,\r\n        ManagerDisplayName,\r\n        LookUp(\r\n            Master_Employee As ManagerEmployee,\r\n            ManagerEmployee.MyID = Employee.field_11,\r\n            ManagerEmployee.Display_Name\r\n        ),\r\n        ManagerEmail,\r\n        LookUp(\r\n            Master_Employee As ManagerEmployee,\r\n            ManagerEmployee.MyID = Employee.field_11,\r\n            ManagerEmployee.Email\r\n        )\r\n    )\r\n    )\r\n);\r\n\r\nClearCollect(\r\n    colEmployees,\r\n    colEmployeeTop,\r\n    colEmployeeBottom\r\n);\r\n\r\nConcurrent(\r\n    ClearCollect(\r\n        colLocations,\r\n        ShowColumns(\r\n            Master_Location,\r\n            Location_ID,\r\n            Location_Name,\r\n            PIC\r\n        )\r\n    ),\r\n\r\n    ClearCollect(\r\n        colAssetTypes,\r\n        ShowColumns(\r\n            Master_Asset_Type,\r\n            Asset_Type_ID,\r\n            Asset_Type_Name\r\n        )\r\n    )\r\n);\r\n\r\nWith(\r\n    {\r\n        Assets:\r\n            ShowColumns(\r\n                Filter(\r\n                    Master_Asset,\r\n                    Asset_Status = \"In Use\"\r\n                ),\r\n                Accounting_Asset_Code,\r\n                Asset_Name,\r\n                MYID_Asset_Owner,\r\n                Asset_Status,\r\n                Location_ID,\r\n                Asset_Type_ID,\r\n                Serial_Number,\r\n                HostName\r\n            )\r\n    },\r\n\r\n    ClearCollect(\r\n        colAssets,\r\n        DropColumns(\r\n            AddColumns(\r\n                AddColumns(\r\n                    Assets As Asset,\r\n\r\n                    EmployeeRecord,\r\n                    LookUp(\r\n                        colEmployees,\r\n                        Title = Asset.MYID_Asset_Owner\r\n                    ),\r\n\r\n                    Location,\r\n                    LookUp(\r\n                        colLocations,\r\n                        Title = Asset.Location_ID,\r\n                        field_1\r\n                    ),\r\n\r\n                    Asset_Type,\r\n                    LookUp(\r\n                        colAssetTypes,\r\n                        Asset_Type_ID = Asset.Asset_Type_ID,\r\n                        Asset_Type_Name\r\n                    ),\r\n\r\n                    PICEmployeeRecord,\r\n                    LookUp(\r\n                        colEmployees,\r\n                        Title = LookUp(\r\n                        colLocations,\r\n                        Title = Asset.Location_ID,\r\n                        PIC\r\n                    )\r\n                    )\r\n                ),\r\n\r\n                Employee_Name,\r\n                EmployeeRecord.field_6,\r\n\r\n                Employee_Email,\r\n                EmployeeRecord.field_7,\r\n\r\n                Receiver_Email,\r\n                EmployeeRecord.field_7,\r\n\r\n                PIC_Name,\r\n                PICEmployeeRecord.field_6,\r\n\r\n                PIC_Email,\r\n                PICEmployeeRecord.field_7,\r\n\r\n                Manager_Display_Name,\r\n                EmployeeRecord.ManagerDisplayName,\r\n\r\n                Manager_Email,\r\n                EmployeeRecord.ManagerEmail,\r\n\r\n                Response,\r\n                Blank(),\r\n\r\n                Comments,\r\n                Blank(),\r\n\r\n                Response_Date,\r\n                Blank(),\r\n\r\n                Response_Email,\r\n                Blank(),\r\n\r\n                Response_Type,\r\n                Blank()\r\n            ),\r\n            EmployeeRecord,\r\n            PICEmployeeRecord\r\n        )\r\n    )\r\n);\r\n    UpdateContext({timerrepeat:true});\r\n    UpdateContext({starttimer: true});\r\n    UpdateContext({ SO_In_Use_GUID: Stock_Opname_In_Use_Match.Run(\r\n\r\n        {contentBytes: Last(Registration_AttachmentControl_9.Attachments).Value, name: Last(Registration_AttachmentControl_9.Attachments).Name},\r\n        \r\n        \r\n        JSON(colAssets),\r\n\r\n        User().Email\r\n        )});\r\n    UpdateContext({GUID: SO_In_Use_GUID.guid});\r\n    Reset(Registration_AttachmentControl_9);\r\n    UpdateContext({locIsLoading: false});\r\n    UpdateContext({ShowFileUploadInUse:false});\r\n    Notify(\"Kindly wait for PowerApps to notify in teams\", NotificationType.Success),\r\n    Notify(\"Please insert CMDB file in the attachment above\", NotificationType.Error)\r\n);\r\n"
+                        Text: ="Run"
+                        X: =40
+                        Y: =40
+      - Spinner_Wait_SO_InUse:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245, 245, 245, 0.9)
+            Height: =Parent.Height
+            Visible: =locIsLoading
+            Width: =Parent.Width
+          Children:
+            - Spinner2_3:
+                Control: Spinner@1.4.6
+                Properties:
+                  Height: =503
+                  Label: ="Please Wait, Data is Being Processed"
+                  LabelPosition: ='Spinner.LabelPosition'.Above
+                  SpinnerSize: ='Spinner.SpinnerSize'.ExtraLarge
+                  Width: =1143
+                  X: =122
+                  Y: =(Parent.Height-Self.Height)/2

@@ -1,0 +1,579 @@
+This is the context file of the Lifecycle Asset Management PowerApps
+
+1. Database, this project has several databases, their names and columns are as follows
+
+Row counts are approximate (file line count minus header). Items marked (inferred) are meanings worked out from column names and sample values; confirm them if they matter.
+
+=== Master tables ===
+
+Master_Asset (12).csv
+- Function: Asset register, the core table. Each row is one asset.
+- Rows: about 2,180
+- Columns:
+  - Asset_ID - unique asset key, format ASSET/{Function_ID}/{Asset_Type_ID}/{sequence}
+  - Modified - last modified timestamp
+  - Organization_ID - owning organization (links to Master_Organization)
+  - Accounting_Asset_Code - accounting asset code (e.g. KO-000127/99/10, Y2004070-402549)
+  - Asset_Name - asset description
+  - MYID_Asset_Owner - MYID of the employee who holds the asset (links to Master_Employee)
+  - MYID_Business_Owner - MYID of the business owner
+  - Asset_Condition - physical condition (Good, Broken)
+  - Asset_Status - status (In Use, Available, Auction, etc.)
+  - Location_ID - location (links to Master_Location)
+  - Asset_Type_ID - asset type (links to Master_Asset_Type)
+  - Category_ID - category (links to Master_Category)
+  - Environment - deployment environment (e.g. Not Applicable)
+  - Merk - brand
+  - Sub_Merk - sub-brand or model
+  - Lifespan - useful life in years (inferred)
+  - Arrival_Date - date the asset was received
+  - Purchasing_Price - purchase price (IDR)
+  - Function_ID - function that owns the asset (links to Master_Function)
+  - Updated_Date - date of last update
+  - Update_Type - type of last update (e.g. Initialization, Stock Opname, Mutation)
+  - Supplier - supplier name
+  - Remarks - free-text notes
+  - Book_Value - current book value
+  - HostName - computer host name
+  - Serial_Number - manufacturer serial number
+  - EndOfSupport - vendor end-of-support date
+  - EndOfLife - end-of-life date
+  - LicenseEndDate - software license expiry date
+  - ID - record sequence number (inferred)
+  - SODate - date of last stock opname
+  - SO_Method - how the last stock opname was done (e.g. Manual)
+  - ID Number - asset number label (inferred)
+  - Asset_Sub_Status - sub-status (In Use, etc.)
+
+Master_Employee.csv
+- Function: Employee directory. MyID is the key used across the app (Acces_Matrix, Master_Asset owner fields, and lookups from User().Email).
+- Rows: about 2,677
+- Columns:
+  - MyID - employee ID, the key used by the app (e.g. USER.A)
+  - GADID - directory account ID
+  - APUID - employee number
+  - First_Name, Middle_Name, Last_Name - name parts
+  - Display_Name - full display name
+  - Email - email address (matched against User().Email)
+  - Title - job title
+  - Company - legal entity
+  - Manager - MyID of the manager
+  - City - work city
+  - Employee_Type - employee type (e.g. EMP)
+  - Department - department name
+  - Identity_Status - Active or Disabled
+  - Start_Date - contract or start date
+  - End_Date - end date
+  - Hire_Date - hire date
+  - Remarks - free-text notes
+  - Modified - last modified timestamp
+
+Master_Asset_Type (2).csv
+- Function: Asset type lookup, e.g. Notebook, Fluke, Tone Checker. Used for filters and to group assets.
+- Rows: about 26
+- Columns:
+  - Asset_Type_ID - type key (e.g. ATP-001)
+  - Asset_Type_Name - type name
+  - Function_ID - function (links to Master_Function)
+  - Category_ID - category (links to Master_Category)
+  - ID - record sequence number (inferred)
+
+Master_Category.csv
+- Function: Category lookup. Accounting code prefix and category name for each asset category.
+- Rows: about 4
+- Columns:
+  - Category_ID - category key (e.g. CAT-01)
+  - Category_Accounting_Name - accounting category code (e.g. Y2004070)
+  - Category_Name - short name (KO = Komputer, PL = Perangkat Lunak)
+  - Category_Description - full description (e.g. Komputer, Perangkat Lunak)
+  - ID - record sequence number (inferred)
+
+Master_Function.csv
+- Function: Function lookup, e.g. IT, CRESS. Used in asset IDs and the Function filter on forms.
+- Rows: about 2
+- Columns:
+  - Function_ID - function key (e.g. FNC-01)
+  - Function_Name - function name (e.g. IT)
+  - Organization_ID - owning organization (links to Master_Organization)
+  - ID - record sequence number (inferred)
+
+Master_Organization.csv
+- Function: Organization lookup. Zurich legal entities.
+- Rows: about 2
+- Columns:
+  - Organization_ID - organization key (e.g. ORG-01)
+  - Organization_Name - legal entity name
+  - ID - record sequence number (inferred)
+
+Master_Location (5).csv
+- Function: Location lookup. Offices and their contacts, with the PIC for each site.
+- Rows: about 33
+- Columns:
+  - Location_ID - location key (e.g. LOC-01)
+  - Location_Name - site name
+  - Location_Address - postal address
+  - Location_Contact - phone number
+  - ID - record sequence number (inferred)
+  - PIC - MYID of the person in charge of the site
+
+Master_Inventories.csv
+- Function: Consumable inventory master. One row per stock batch, with current quantity.
+- Rows: about 5
+- Columns:
+  - Title - item GUID, the key used to group movements
+  - Item_Name - item name
+  - Category - asset type ID of the item (e.g. ATP-026)
+  - Employee_MYID - MyID of the holder, if issued
+  - Location - location ID (links to Master_Location)
+  - Remarks - free-text notes
+  - Quantity - current quantity
+  - Update_Date - date of last update
+  - Update_Type - type of last update (e.g. Add items back to stock)
+  - Parent_ID - parent item reference (inferred)
+
+Acces_Matrix.csv
+- Function: User permission matrix. One row per MyID, with Yes/No flags for each app feature. Used by the screens to show or hide actions.
+- Rows: about 9
+- Columns:
+  - Title - MyID (links to Master_Employee.MyID)
+  - Transaction - may use transaction features
+  - Master_Data - may view master data
+  - Reconciliation - may use reconciliation
+  - Disposal Request - may request disposal
+  - SO_Respondents - responds to stock opname requests (approver)
+  - SO_Requester - starts stock opname requests (requester)
+  - Master_Data_Edit - may edit master data
+  - Inventories_Management - may manage inventories
+  - Asset_Management - may manage assets
+
+=== History and audit tables ===
+
+Asset_Movement_History (1).csv
+- Function: Log of changes to each asset (mutations, status changes, owner changes).
+- Rows: about 4,484
+- Columns:
+  - Asset_ID - asset affected (links to Master_Asset.Asset_ID)
+  - Modified - timestamp of the change
+  - Organization_ID - organization (links to Master_Organization)
+  - Accounting_Asset_Code - accounting asset code
+  - Asset_Name - asset description at the time of the change
+  - MYID_Asset_Owner - owner after the change
+  - Asset_Condition - condition after the change
+  - Asset_Status - status after the change
+  - Location_ID - location after the change
+  - Function_ID - function after the change
+  - Updated_Date - effective date of the change
+  - Update_Type - type of change (e.g. Mutation)
+  - Remarks - free-text notes
+
+AuditLog.csv
+- Function: Field-level audit trail. Each row records one changed field on one record, grouped by CorrelationID when one save changed several fields.
+- Rows: about 810
+- Columns:
+  - CorrelationID - GUID shared by all changes made in one save
+  - ID - sequence number of the audit row
+  - TargetList - SharePoint list or table that changed (e.g. Master_Asset)
+  - ItemId - key of the changed record (e.g. Asset_ID)
+  - ChangedBy - user who made the change (e.g. USER.B)
+  - ChangedOn - date of the change
+  - ChangeType - kind of change (e.g. Movement)
+  - Changes - list of field:value pairs that changed (inferred: the value may show old-new)
+
+Inventories_Movement_History.csv
+- Function: Log of stock movements for consumable items (registration, issue, return).
+- Rows: about 25
+- Columns:
+  - Title - item GUID (links to Master_Inventories.Title)
+  - Item_Name - item name
+  - Category - asset type ID of the item
+  - Employee_MYID - MyID of the holder, if issued
+  - Location - location ID
+  - Remarks - free-text notes
+  - Quantity - quantity moved
+  - Updated_Date - date of the movement
+  - Update_Type - type of movement (e.g. Registration)
+  - Parent_ID - parent item reference (inferred)
+
+Inactive Assets.csv
+- Function: Assets that have been disposed, sold, or lost. Keeps the sale details.
+- Rows: about 2
+- Columns:
+  - Asset_ID - asset key (links to Master_Asset.Asset_ID)
+  - IM_Number - disposal or item-movement document number
+  - Buyer_Name - buyer name (for sold assets)
+  - Selling_Price - sale price (IDR)
+  - Dispose_Date - disposal date
+  - Accounting_Asset_Code - accounting asset code
+  - Asset_Name - asset description
+  - Asset_Type_ID - asset type (links to Master_Asset_Type)
+  - Purchasing_Price - original purchase price (IDR)
+  - Remarks - reason (e.g. Asset Hilang = lost)
+  - Organization_ID - organization (links to Master_Organization)
+  - Function_ID - function (links to Master_Function)
+  - Arrival_Date - date the asset was received
+
+=== Workflow and temp tables ===
+
+Stock_Opname_InUse (1).csv
+- Function: Stock opname requests currently in progress. Each row is one request, with the asset list and approval state as JSON.
+- Rows: about 1
+- Columns:
+  - GUID - request key
+  - Status - request status (e.g. Waiting for User Approval)
+  - Asset_Details - JSON list of assets in the request (code, name, status, type, location, owner)
+  - Request_Date - date the request was raised
+  - Requested_By - user who raised the request
+  - Approval_Status - overall approval status
+  - Approval_Data - JSON list of approvers with their status and comments
+  - Active - whether the request is still active
+
+Temp_Stock_Opname.csv
+- Function: Stock opname results. This is the source for the Load Data button on the StockOpnameResponseScreen (Temp_Stock_Opname feeds colGalleryDataSORequest).
+- Rows: about 76
+- Columns:
+  - GUID - request key
+  - Status - request status (e.g. Completed, Processed)
+  - Available_Assets - JSON list of assets to confirm, each with Confirmed (true/false/None), SO_Comments, and Condition
+  - Approval_Status - overall approval status (Approved, Rejected, Pending)
+  - Current_Approver - MyID of the current approver
+  - Approval_Data - JSON list of approvers with their status and comments
+  - SO_Type - type of stock opname (inferred)
+  - Modified - last modified timestamp
+
+Temp_Acc_Reconcile.csv
+- Function: Accounting reconciliation runs. Compares the accounting ledger with the asset register and tracks the approval of the result.
+- Rows: about 21
+- Columns:
+  - GUID - run key
+  - Differences - JSON list of differences found
+  - NewAssetLatestMonth - JSON list of new assets in the latest month
+  - Status - run status
+  - Created - run creation timestamp
+  - Result - result of the run
+  - ErrorDetails - error details if the run failed
+  - IT_Asset - JSON list of IT assets in the run
+  - Non_IT_Asset - JSON list of non-IT assets in the run
+  - Acc_IT - accounting-side IT assets (inferred)
+  - Gov_IT - governance-side IT assets (inferred)
+  - Approval_Status - overall approval status
+  - Current_Approver - MyID of the current approver
+  - Approval_Data - JSON list of approvers with their status and comments
+  - Disposed_IT_Assets - JSON list of IT assets disposed in the run
+
+Temp_Inventory_Asset.csv
+- Function: Staging table for inventory asset requests approvals. Currently empty (header only).
+- Rows: 0
+- Columns:
+  - Title - request key
+  - Request Date - date the request was raised
+  - Status - request status
+
+
+Screens :
+
+Entry and navigation
+- 1_LandingPage (1_LandingPage.pa.yaml) - start screen
+- 2_HomePage (2_HomePage.pa.yaml) - main menu linking to Master Data, Transaction, and Dashboard
+- 3_HomePageMasterData (3_HomePageMasterData.pa.yaml) - menu for the master data screens
+- Home Page_Transaction (Home Page_Transaction.pa.yaml) - menu for Registration, Movement, and Dispose
+- Home Page_Asset_Inventory (Home Page_Asset_Inventory.pa.yaml) - menu for Inventories and Asset
+- Home Page_Stock_Opname (Home Page_Stock_Opname.pa.yaml) - menu for Stock Opname In Use and Available
+
+Master data
+- ALM-Asset Master (ALM-Asset Master.pa.yaml) - asset register, create and edit assets
+- ALM - Master Asset Type (ALM - Master Asset Type.pa.yaml) - asset type list
+- ALM-Master Asset Type-New (ALM-Master Asset Type-New.pa.yaml) - asset type editor (newer version, possibly replaces the one above)
+- ALM - Master Category (ALM - Master Category.pa.yaml) - category list
+- ALM-Master Category-New (ALM-Master Category-New.pa.yaml) - category editor (newer version, possibly replaces the one above)
+- ALM - Master Employee (ALM - Master Employee.pa.yaml) - employee directory view
+- ALM - Master Function (ALM - Master Function.pa.yaml) - function list
+- ALM-Master Function-New (ALM-Master Function-New.pa.yaml) - function editor (newer version, possibly replaces the one above)
+- ALM - Master Location (ALM - Master Location.pa.yaml) - location list
+- ALM - Master Location - New (ALM - Master Location - New.pa.yaml) - location editor (newer version, possibly replaces the one above)
+- ALM - Master Organization (ALM - Master Organization.pa.yaml) - organization list
+- ALM-Master Organization-New (ALM-Master Organization-New.pa.yaml) - organization editor (newer version, possibly replaces the one above)
+
+Transactions
+- ALM-Registration (ALM-Registration.pa.yaml) - register a new asset with attachments
+- ALM - Movement (ALM - Movement.pa.yaml) - move an asset between owners or locations
+- ALM - Dispose (ALM - Dispose.pa.yaml) - dispose or sell an asset
+- ALM-DisposeRequest (ALM-DisposeRequest.pa.yaml) - request asset disposal and track approval
+- ALM-AccReconcile (ALM-AccReconcile.pa.yaml) - accounting reconciliation, upload, and approval
+
+Inventory
+- Inventaris (Inventaris.pa.yaml) - inventory entry point with Registration and Movement
+- Registration_Inventories (Registration_Inventories.pa.yaml) - register consumable item quantities
+- Inventaris_Transfer (Inventaris_Transfer.pa.yaml) - move consumable items to a location or employee
+- Inventaris_Report (Inventaris_Report.pa.yaml) - report of items with a date range
+
+Stock opname
+- ALM - StockOpname - Available (ALM - StockOpname - Available.pa.yaml) - confirm available assets during a stock opname
+- ALM - StockOpname - In Use (ALM - StockOpname - In Use.pa.yaml) - confirm in-use assets during a stock opname
+
+Dashboard
+- ALM-Dashboard (ALM-Dashboard.pa.yaml) - dashboard with a Refresh Data button
+
+3. Table relationships
+
+Theory: Master_Asset is the hub. Each asset points to its type, category, function, organization, location, and two employees. The history tables link to assets by Asset_ID.
+
+Primary keys (verified unique)
+- Master_Asset - Asset_ID (also Accounting_Asset_Code) - 2,179 rows
+- Master_Employee - MyID - 2,677 rows
+- Master_Asset_Type - Asset_Type_ID - 26 rows
+- Master_Category - Category_ID (lookup)
+- Master_Function - Function_ID (lookup)
+- Master_Organization - Organization_ID (lookup)
+- Master_Location - Location_ID (lookup)
+
+Foreign keys from Master_Asset (verified, 0 orphans)
+- Asset_Type_ID -> Master_Asset_Type
+- Category_ID -> Master_Category
+- Function_ID -> Master_Function
+- Organization_ID -> Master_Organization
+- Location_ID -> Master_Location
+- MYID_Asset_Owner, MYID_Business_Owner -> Master_Employee.MyID
+
+Lookup chain (verified, 0 orphans)
+- Master_Asset_Type.Category_ID -> Master_Category
+- Master_Asset_Type.Function_ID -> Master_Function
+- Master_Function.Organization_ID -> Master_Organization
+
+Tables that reference Master_Asset
+- Asset_Movement_History.Asset_ID -> Master_Asset.Asset_ID: 45 IDs not in Master_Asset (see known issues)
+- Inactive Assets.Asset_ID -> Master_Asset.Asset_ID: 2 of 2 not in Master_Asset (expected for disposed assets)
+- Inactive Assets.Asset_Type_ID -> Master_Asset_Type: 0 orphans
+- AuditLog (TargetList = Master_Asset).ItemId -> Master_Asset.Asset_ID: 129 of 739 use a numeric ID instead of the ASSET/... key
+
+Other links
+- Acces_Matrix.Title -> Master_Employee.MyID (0 orphans). Screens use this for role checks.
+- Master_Inventories.Category -> Master_Asset_Type (0 orphans)
+- Master_Asset.Accounting_Asset_Code is the key screens use for asset matching.
+- Screens use *_Cache collections (Master_Asset_Type_Cache, Master_Employee_Cache, Master_Location_Cache, Master_Category_Cache) as local copies keyed on the same IDs.
+
+Screen join keys
+- Role check: Acces_Matrix.Title = LookUp(Master_Employee, Email = User().Email).MyID
+- Asset matching: Master_Asset.Accounting_Asset_Code
+- Stock opname and reconciliation requests are matched by GUID or Title (for example Temp_Acc_Reconcile.Title = Job_ID).
+
+Known issues
+- Asset_Movement_History: 45 Asset_IDs are not in Master_Asset. 2 are in Inactive Assets (disposed). 43 are unexplained: their last recorded status is mostly Available (24) or In Use (19), so they do not look disposed. Check these before treating them as deleted. One ID (17020260902110956956) has a non-standard format and is probably a legacy or bad entry.
+- Inactive Assets: ASSET/FNC-01/ATP-013/4695 also appears in Asset_Movement_History, so the disposal table and the movement log overlap.
+- AuditLog: 129 of 739 Master_Asset entries use a numeric ItemId. Deferred: to be changed in the future.
+- Inventories_Movement_History: 4 Title GUIDs are not in Master_Inventories. These are placeholders, not data errors.
+- Temp_* tables store progress and history as JSON fields, because the full process is too large for one table. Joins happen by parsing that JSON in the screens. This is by design.
+- Inventories_Movement_History: no screen writes it yet. It should be written by inventory registration and inventory movement. Incomplete, to be completed in the next iteration.
+
+4. Power Automate flows
+
+Source: Microsoft.Flow\flows (15 flow folders). Folder names are GUIDs, so the display name is the reliable name. Screens call flows by display name.
+
+Current
+
+Stock opname
+- Stock_Opname_Available_Trigger (9d97ebfb) - starts an available-asset stock opname. Reads all assets, builds the request, and emails the approvers. Called from ALM - StockOpname - Available (line 1125, Start SO).
+- SO_Respondents_Confirm (0eefb3df) - runs the respondent approval. Creates an approval, waits for the result, emails the requester, and records the outcome. Builds the confirmed and rejected tables and attaches them. Called from ALM - StockOpname - Available (line 1977, Confirm).
+- SO_Respondent_Save (2cf2b4d9) - saves a respondent's responses to the SharePoint list and posts a Teams message. Called from ALM - StockOpname - Available (line 2083, Save).
+- Stock_Opname_In_Use_Trigger (939219c2) - starts an in-use stock opname. Reads employees and PICs, builds the delegate list, and emails each employee their assets. Called from ALM - StockOpname - In Use (line 2688).
+- Stock_Opname_In_Use_Match (ed89ad96) - matches submitted in-use notebooks against the CMDB by host name, writes matched, mismatched, and non-automated lists, and posts a Teams message. Called from ALM - StockOpname - In Use (line 3028).
+
+Accounting reconciliation
+- Accounting_ReconsiliationV3 (9ba319fb) - compares the accounting ledger with the asset register and writes the differences. Current version. Called from ALM-AccReconcile (line 124).
+- Accounting Reconciliation - Approval Request (1f8fcf93) - sends the reconciliation result for approval. Builds IT and non-IT asset tables, attaches them, and runs an approval loop. Called from ALM-AccReconcile (line 2112, Send Approval).
+
+Registration and export
+- Bulk_Registration (454540b3) - creates files for a bulk asset registration. Called from ALM-Registration (line 1237).
+- Export Data (587369ae) - writes a table to a CSV file and returns a sharing link. Called from ALM - StockOpname - Available (line 3240) and ALM-Asset Master (line 2454).
+
+Dashboard
+- Data Refresh ALM (97120110) - refreshes the dataset behind the dashboard. Current, but no screen in the package calls it; it runs on the dashboard refresh. Its automation is limited by request quotas, so it is currently unusable in practice.
+
+Not current
+- Accounting_ReconsiliationV2 (3fbd7c1e) - previous iteration, unused. Still referenced from both stock opname screens (lines 336, 426, 468), but only inside the hidden upload section.
+- InTune Flow (17f8b7bb) - previous iteration, unused. Still referenced from both stock opname screens (lines 288, 296), inside the hidden upload section.
+- Flow Networking Device (23af3065) - unused. A stub with one variable and no logic. Still referenced from both stock opname screens (line 304), inside the hidden upload section.
+- Return Master Asset (d56caa4a) - used for earlier testing only. No screen calls it.
+- PowerAppV2 -> Respond to a Power App or flow (5e948931) - a template with only a response action. No screen calls it.
+
+Differences
+- Reconciliation V2 vs V3: V3 is current and is the only reconciliation flow called from a live screen (ALM-AccReconcile). V2 is an earlier version, called only from the stock opname upload section, which is hidden and never shown.
+- Stock opname upload vs live flows: the stock opname screens still contain calls to InTune, Networking Device, and V2. These belong to an upload feature that is no longer shown, so the calls are dead code.
+- Dashboard refresh: Data Refresh ALM is the only current flow with no screen caller. Its trigger is the dashboard refresh, and its request limit makes it unreliable.
+- Testing leftovers: Return Master Asset was used for testing. It can be retired once the dashboard depends on another source.
+
+5. Screen-to-data map
+
+Naming convention
+- ALM - XXX screens edit existing master data records.
+- ALM - XXX - New (or XXX-New) screens create new master data records.
+
+Master data
+- ALM - Master Asset Type / ALM-Master Asset Type-New: writes Master_Asset_Type, AuditLog. Reads Master_Category, Master_Function, Master_Employee, Acces_Matrix.
+- ALM - Master Category / ALM-Master Category-New: writes Master_Category, AuditLog. Reads Master_Employee, Acces_Matrix.
+- ALM - Master Function / ALM-Master Function-New: writes Master_Function, AuditLog. Reads Master_Organization, Master_Employee, Acces_Matrix.
+- ALM - Master Location / ALM - Master Location - New: writes Master_Location, AuditLog. Reads Master_Employee, Acces_Matrix.
+- ALM - Master Organization / ALM-Master Organization-New: writes Master_Organization, AuditLog. Reads Master_Employee, Acces_Matrix.
+- ALM - Master Employee: writes Master_Employee. Reads Master_Employee, AuditLog.
+
+Asset register and transactions
+- ALM-Asset Master: writes Master_Asset (refresh and edit). Reads Master_Employee, Acces_Matrix, and the master tables through caches.
+- ALM-Registration: writes Master_Asset (Patch) and colTempData_Registration. Reads Master_Asset, Master_Employee, Master_Asset_Type, Master_Category, Master_Function, Master_Organization, Master_Location. Starts Bulk_Registration.
+- ALM - Movement: writes Asset_Movement_History, AuditLog, and Master_Asset (refresh). Reads Master_Asset, Master_Employee, Master_Asset_Type, Master_Category, Master_Function, Master_Organization, Master_Location.
+- ALM - Dispose: writes Master_Asset (refresh and remove), Asset_Movement_History (Patch), AuditLog (Patch). Reads the master tables. Inactive Assets is a form data source, written when the form saves (see notes).
+- ALM-DisposeRequest: writes Master_Asset (refresh). Reads Master_Asset, Master_Employee, Master_Asset_Type, Master_Function, Master_Organization.
+
+Inventory
+- Registration_Inventories: writes Master_Inventories (Patch). Reads Master_Employee, Master_Asset_Type, Master_Location. Uses colTempDataInventories.
+- Inventaris_Transfer: writes Master_Inventories (Patch, refresh, RemoveIf). Reads Master_Employee, Master_Asset_Type, Master_Location, Master_Inventories.
+- Inventaris: reads Master_Employee, Master_Asset_Type, Master_Location, Master_Inventories, Acces_Matrix. No writes.
+
+Stock opname
+- ALM - StockOpname - Available: writes Temp_Stock_Opname and Temp_Acc_Reconcile (refresh). Reads Master_Employee, Master_Function, Master_Organization, Acces_Matrix, Master_Asset_Type. Calls the stock opname flows.
+- ALM - StockOpname - In Use: writes Stock_Opname_InUse (Patch, refresh, UpdateIf), Temp_Stock_Opname, Temp_Acc_Reconcile (refresh). Reads Master_Employee, Master_Function, Master_Organization, Acces_Matrix. Calls the In Use flows.
+
+Reconciliation
+- ALM-AccReconcile: writes Temp_Acc_Reconcile (Patch, refresh). Reads Master_Asset, Master_Employee, Master_Asset_Type, Master_Category, Master_Function, Master_Organization, Master_Location, Temp_Acc_Reconcile.
+
+Read-only
+- 1_LandingPage, 2_HomePage, 3_HomePageMasterData, Home Page_Transaction, Home Page_Asset_Inventory, Home Page_Stock_Opname: read Master_Employee and Acces_Matrix for the role check. No writes.
+- ALM-Dashboard: no direct table use. It depends on the Data Refresh ALM flow.
+
+Notes for the handover
+1. Caches are deliberate. Master_Asset_Type_Cache, Master_Category_Cache, Master_Employee_Cache, and Master_Location_Cache hold local copies of the master tables. Searches use the caches instead of calling the SharePoint connector each time. This makes the app lighter and works around the Power Apps limit of 2,000 items per SharePoint connector call. Changes to the source list show in the cache only after it is refreshed.
+2. Inactive Assets is written through a form. ALM - Dispose declares Inactive Assets as a form data source. The table is written when the form saves, not by an explicit Patch on the table name. Check this before relying on it.
+3. Temp tables are JSON. Temp_Stock_Opname, Temp_Acc_Reconcile, and Stock_Opname_InUse hold progress in JSON fields. The table-level map does not show the field-level dependencies.
+4. Inventories_Movement_History is incomplete. It should be written by inventory registration and inventory movement, but no screen writes it yet. The next iteration should complete this.
+5. Acces_Matrix is read by almost every screen as the role check. Changing a role there changes access across the app.
+
+6. Access control
+
+How access is decided (current design)
+
+1) Identity. Each screen resolves the signed-in user with LookUp(Master_Employee, Email = User().Email).MyID. Planned change: use the Microsoft 365 user connector instead (see Future direction).
+
+2) Permission flags. Acces_Matrix has one row per user, with True/False flags. Screens check them with LookUp(Acces_Matrix, Title = <MyID>, <Flag>).
+- Transaction - can open transaction screens
+- Master_Data - can view master data
+- Master_Data_Edit - can edit master data (the ALM - XXX editors)
+- Reconciliation - can run accounting reconciliation
+- Asset_Management - can manage assets
+- Inventories_Management - can manage inventory
+- SO_Requester - can start a stock opname
+- SO_Respondents - can approve or confirm a stock opname
+- Disposal Request - retired with the disposal module. Not used.
+
+3) Stock opname roles
+- Requester (SO_Requester = True): starts the opname. The Start SO button is enabled only for requesters. Requesters see all rows on the request list.
+- Respondent (SO_Respondents = True, plus a matching row in the request's approver list): confirms assets and saves responses. The approver row holds the respondent's Role and Access values.
+
+4) Asset scope for respondents. Once a respondent opens a request, the asset list is filtered by the approver's Access value (current, hardcoded):
+- all or All (see known issues) - every asset type
+- Data Center - ATP-020, ATP-012, ATP-019, ATP-004, ATP-025, ATP-005, ATP-017
+- Service Management - ATP-013, ATP-010, ATP-016, ATP-003, ATP-018
+Planned change: the group comes from the asset's function, looked up through Master_Asset_Type and Master_Function, instead of a hardcoded ID list.
+
+5) Button and icon rules
+- Start SO: enabled when SO_Requester is true.
+- Confirm and Save (stock opname): enabled when the approver's Role is respondents and the approval status is still open.
+- Master data and transaction screens: checked against the flags above.
+
+Known issues
+1. all vs All: the asset load checks "all" and the Confirm button checks "All". Respondents with Access = all may see different results on load and on confirm. Undecided; fix in the new design.
+2. Approve vs Approved: the Confirm button compares the respondent's status to "Approve", and the Save icon compares it to "Approved". Undecided; fix in the new design.
+3. Hardcoded asset-type lists: the Data Center and Service Management lists are copied into several screens. A change to a type's group needs an edit in each place. Planned fix: look up the function through Master_Asset_Type and Master_Function.
+4. Access flags are enforced only in the UI. Acces_Matrix is read by the app to hide or show actions. Anyone with access to the SharePoint list can read or change it directly, so the flags do not restrict the data itself.
+5. Disposal Request is retired. The flag and the disposal module are no longer in use. Do not assign it.
+
+Users and roles (counts only, no IDs)
+- Acces_Matrix holds 9 users.
+- 2 users have full access (transaction, master data, reconciliation, asset, inventory).
+- 3 users can request a stock opname.
+- 3 users can respond to a stock opname.
+- 1 user has inventory management only.
+
+Future direction
+- Stop using Master_Employee for identity. Use the Microsoft 365 user connector.
+- Record users in the access list by email and display name.
+- Replace the hardcoded asset-type lists with a function lookup.
+- Resolve the all/All and Approve/Approved literals in the new design.
+
+7. External reports
+
+Power BI dashboard (the only external report)
+- Where: the ALM-Dashboard screen, which embeds a Power BI report.
+- How it refreshes: the Refresh Data button on the dashboard runs the Data Refresh ALM flow (section 4). The flow refreshes the dataset behind the report.
+- What the reader sees: the report shows data only as of the last dataset refresh.
+- Known limit: refreshes are limited by request quotas, so the dashboard can be out of date. Check the report's last-refresh time before relying on it.
+
+8. App-level setup
+
+- Start screen: 1_LandingPage. The app opens there (App.StartScreen).
+- No global startup logic. App.pa.yaml has no OnStart. Nothing runs at launch.
+- Startup is per screen. 19 of 30 screens set state in OnVisible (for example, ALM - Movement, ALM-Registration, ALM-DisposeRequest, ALM - StockOpname - Available). They reset collections and flags when the screen opens. Check a screen's OnVisible before changing its data flow.
+- Navigation: screens move between each other through Navigate() calls on buttons. The home screens (2_HomePage, 3_HomePageMasterData, Home Page_*) are the menus.
+- Data: every table is a SharePoint list (section 5). The app holds no local database, only collections and caches.
+
+9. Known bugs and working rules
+
+Known bugs (open)
+1. all vs All (Available screen, lines 866 and 1935): the asset load and the Confirm button compare different literals.
+2. Approve vs Approved (Available screen): Confirm uses "Approve", the Save icon uses "Approved".
+3. Hardcoded org, function, and location IDs (ORG-01, FNC-01, LOC-01) appear in 4 screens. A change to these needs an edit in each screen.
+4. Hardcoded asset-type groups (Data Center, Service Management) are copied across screens.
+5. Two hidden control groups (Visible: =false and ShowSOUpload) still hold upload logic and flow calls that never run (see section 4).
+6. 43 Asset_Movement_History IDs are not in Master_Asset and are unexplained (section 3).
+7. One malformed movement ID (17020260902110956956).
+8. Inventories_Movement_History is written by no screen (incomplete).
+9. AuditLog ItemId uses a numeric ID for 129 of 739 Master_Asset entries (deferred).
+10. Access flags are enforced only in the UI (section 6).
+
+Working rules (for the next agent)
+1. Quote any label that contains a colon, for example Text: '="Response : "'. An unquoted ": " breaks the Power Apps YAML parser.
+2. Use FontColor on Text@0.0.51 controls. Color is not a valid property there, and PowerApps reports PA2108.
+3. Use the palette values: Zurich Blue RGBA(33,103,174,1), Dark Blue RGBA(35,54,111,1), Dove RGBA(221,228,227,1), Light Blue RGBA(145,191,227,1), Rust RGBA(186,69,56,1), Moss RGBA(58,131,103,1).
+4. Use Arial for text. Open Sans is not a Zurich font.
+5. Naming: ALM - XXX edits existing master data, ALM - XXX - New creates new records.
+6. Check a screen's OnVisible before changing its data flow (section 8).
+7. Re-check that the YAML parses and the controls resolve before pasting into Power Apps Studio.
+
+10. Main achievable goals for the next processes
+
+1. Complete the inventory history. Write Inventories_Movement_History from the inventory registration and movement screens. Closes known bug 8.
+2. Replace hardcoded IDs with lookups. Read the asset-type group and the org, function, and location defaults from Master_Asset_Type, Master_Function, and Master_Organization. Closes known bugs 3 and 4.
+3. Move identity to Office 365 connectors. Replace LookUp(Master_Employee, Email = User().Email) with the Office 365 user connector. Record users by email and display name. Closes the identity part of section 6.
+4. Resolve the literals. Decide all/All and Approve/Approved, then use one value everywhere. Closes known bugs 1 and 2.
+5. Remove dead upload code. Delete the hidden upload section and its unused flows (InTune, Networking Device, V2), or rebuild them if the feature returns. Closes known bug 5.
+6. Scale to other entities. Use the same screens for all entities. The entity is chosen at the start, and buttons, data, filters, and submits follow the selected organization. This is the agreed design. The method is flagged as flawed and will be revisited in the next iteration. Replaces the hardcoded org, function, and location IDs (bug 3).
+
+11. Zurich brand guidelines
+
+The rules for making this app Zurich-branded are in "Zurich Brand Guidelines.md" in this folder. Read that file before changing any color, font, icon, logo, or component style. The guidelines are the rules only. They do not describe the current state of the app.
+
+12. Improvement priorities and redesign direction
+
+This is a total redesign, not an incremental fix. The current app is the reference for business rules and data only, not for layout or structure. Priorities, in order: simple, consistent (teratur), Zurich-styled, and scalable to the two other Zurich entities.
+
+Notable improvements
+- Scalability to different entities: one shared set of lists with an Entity column on every table. Screens filter by the selected entity. ORG-03 and ORG-04 are placeholders until real names are given.
+- Identity from Office 365 connectors: email and display name come from the Office 365 user connector. Roles come from a Roles list keyed by email, replacing Acces_Matrix and the Master_Employee lookup.
+- Design streamlining: from 30 screens to about 10, one screen per job. Master data uses one list-and-edit screen per table, removing the -New twins. Stock opname uses one screen for both available and in-use.
+- Architecture streamlining: access checks once (gblRoles), asset scope by function instead of hardcoded IDs, shared formulas in app-level named formulas, one literal per status and access value, and flows that take an Entity parameter. Dead flows are removed.
+
+Migration phases
+1. Data: add the Entity column, backfill existing rows, create Roles from Acces_Matrix.
+2. Identity: switch access checks to email and Roles.
+3. Entity picker: add gblEntity and filter every query on it.
+4. Shared components and theme, built before any screen uses them.
+5. Screens: rebuild one job at a time, retiring old screens after testing.
+6. Flows: add the Entity parameter and remove dead flows.
+7. Clean-up: remove unused lists and screens.
+
+Open decisions (for the next agent's session)
+1. Real names and codes for ORG-03 and ORG-04.
+2. Whether a user can work across entities, or is tied to one.
+3. Whether existing lists are kept with Entity added (assumed), or replaced.
+4. Whether available and in-use stock opname stay as two flows or merge into one.
+5. Whether reconciliation approval and stock opname confirm share one approval flow.
+
+Full plan with the target architecture and verification: "powerapps-landing-page-screen-binary-duckling.md" in C:\Users\<user>\.claude\plans.
+

@@ -1,0 +1,601 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ALM - Master Organization:
+    Properties:
+      Fill: =Color.WhiteSmoke
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnHidden: =Clear(colGalleryDataMasterOrganization)
+    Children:
+      - Header_CategoryMaster_6:
+          Control: Header@0.0.44
+          Properties:
+            BasePaletteColor: =RGBA(5, 102, 178, 1)
+            Fill: =RGBA(180, 214, 250, 1)
+            Logo: ='Zurich Logo'
+            LogoTooltip: ="Zurich Indonesia"
+            Title: ="ALM - Master Function"
+            Width: =1352
+            X: =14
+            Y: =21
+      - ButtonNew_CategoryMaster_10:
+          Control: Button@0.0.45
+          Properties:
+            Height: =50
+            OnSelect: =Navigate('ALM-Master Organization-New', ScreenTransition.Fade)
+            Text: ="Create New"
+            Width: =116
+            X: =Icon15_6.X-150
+            Y: =Header_CategoryMaster_6.Y + (Header_CategoryMaster_6.Height / 2) - (Self.Height / 2)
+      - AssetDataContainer_8:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Height: =658
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowX: =LayoutOverflow.Scroll
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Width: =1352
+            X: =HeaderContainer_AssetMaster.X
+            Y: =110
+          Children:
+            - ColumnNameMasterAsset_8:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  FillPortions: =0
+                  Height: =50
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Width: =Column_Name_AccAssetCode_MasterAsset_51.X+ Column_Name_AccAssetCode_MasterAsset_51.Width
+                  X: =
+                  Y: =40
+                Children:
+                  - Column_Name_AccAssetCode_MasterAsset_51:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Organization Name"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =650
+                        X: =Column_Name_AssetDate_MasterAsset_8.Width+Column_Name_AssetDate_MasterAsset_8.X
+                  - Column_Name_AssetDate_MasterAsset_8:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =Parent.Height
+                        Size: =15
+                        Text: ="Organization ID"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =650+Rectangle2_32.Width
+            - ColumnValueMasterAsset_8:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =Color.Transparent
+                  Height: =Parent.Height-50
+                  Items: =colGalleryDataMasterOrganization
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  TemplateFill: |-
+                    =
+                    If(
+                        ThisItem.IsSelected,
+                        RGBA(160, 200, 240, 1),   // Light blue shade
+                        Color.Transparent         // No fill when not selected
+                    )
+                  TemplateSize: =50
+                  Width: =ColumnNameMasterAsset_8.Width + NextArrow2_7.Width
+                  X: =Parent.X
+                  Y: =Parent.Height-Self.Height
+                Children:
+                  - Rectangle2_32:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                  - Column_Value_AsssetDate_MasterAsset_76:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Organization_ID
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AssetDate_MasterAsset_8.Width-Rectangle2_32.Width
+                        X: =Rectangle2_32.Width
+                  - Column_Value_AsssetDate_MasterAsset_77:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Organization_Name
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_51.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_51.X
+                  - Rectangle2_33:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AssetDate_MasterAsset_8.X+Column_Name_AssetDate_MasterAsset_8.Width
+                        Y: =Column_Name_AssetDate_MasterAsset_8.Y
+                  - Rectangle2_34:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AssetDate_MasterAsset_8.X+Column_Name_AssetDate_MasterAsset_8.Width
+                        Y: =49
+                  - Rectangle2_35:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =1
+                        X: =Column_Name_AssetDate_MasterAsset_8.X+Column_Name_AssetDate_MasterAsset_8.Width
+                  - NextArrow2_7:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                        DisabledColor: =RGBA(119, 119, 119, 1)
+                        Fill: =Color.WhiteSmoke
+                        Height: =50
+                        Icon: =Icon.Edit
+                        OnSelect: |
+                          =UpdateContext({colTempEditMasterOrganization : ThisItem});
+                          UpdateContext({ShowFormEditMasterOrganization: true})
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Visible: |-
+                          =If(
+                              LookUp(Acces_Matrix, Title = LookUp(Master_Employee,Email = User().Email).MyID, Master_Data_Edit) = true,
+                              true,
+                              false
+                          )
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+      - Icon15_6:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =50
+            Icon: =Icon.Home
+            OnSelect: =Navigate('3_HomePageMasterData', ScreenTransition.Fade)
+            Width: =50
+            X: =Header_CategoryMaster_6.X+Header_CategoryMaster_6.Width-150
+            Y: =Header_CategoryMaster_6.Y + (Header_CategoryMaster_6.Height / 2) - (Self.Height / 2)
+      - ButtonNew_CategoryMaster_11:
+          Control: Button@0.0.45
+          Properties:
+            BasePaletteColor: =Color.Orange
+            Height: =50
+            Icon: ="ArrowClockwise"
+            OnSelect: |
+              =Refresh(Master_Organization);
+              ClearCollect(colGalleryDataMasterOrganization,Master_Organization)
+            Text: ="Load Data"
+            Width: =116
+            X: =ButtonNew_CategoryMaster_10.X-150
+            Y: =Header_CategoryMaster_6.Y + (Header_CategoryMaster_6.Height / 2) - (Self.Height / 2)
+      - Text4_5:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(0, 18, 107, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =34
+            Size: =13
+            Text: |-
+              =Concatenate(
+                  "Last Updated: ",
+                  Text(
+                      First(
+                          SortByColumns(
+                              colGalleryDataMasterOrganization,
+                              "Modified",
+                              SortOrder.Descending
+                          )
+                      ).Modified,
+                      "dd mmm yyyy hh:mm"
+                  )
+              )
+            Width: =302
+            X: =108
+            Y: =Icon7_4.Y - 5
+      - Icon7_4:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =24
+            Icon: =Icon.Clock
+            Width: =24
+            X: =85
+            Y: =70
+      - Container1_7:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245,245,245,0.9)
+            Height: =Parent.Height
+            Visible: =ShowFormEditMasterOrganization
+            Width: =Parent.Width
+            X: =('ALM - Master Organization'.Width-Self.Width)/2
+            Y: =('ALM - Master Organization'.Height-Self.Height)/2
+          Children:
+            - Form1_8:
+                Control: Form@2.4.4
+                Layout: Vertical
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  DataSource: =Master_Organization
+                  Fill: =Color.White
+                  Height: =640
+                  Item: =colTempEditMasterOrganization
+                  NumberOfColumns: =2
+                  Width: =1312
+                  X: =Parent.Width/2-Self.Width/2
+                  Y: =Parent.Height/2-(Self.Height+ButtonClose_Registration_26.Height)/2
+                Children:
+                  - Organization_ID_DataCard3:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Title"
+                        Default: =ThisItem.Organization_ID
+                        DisplayMode: =DisplayMode.Disabled
+                        DisplayName: =DataSourceInfo([@Master_Organization],DataSourceInfo.DisplayName,Organization_ID)
+                        MaxLength: =DataSourceInfo([@Master_Organization], DataSourceInfo.MaxLength, Organization_ID)
+                        Required: =true
+                        Update: =DataCardValue27.Value
+                        Width: =656
+                        X: =0
+                        Y: =0
+                      Children:
+                        - DataCardKey32:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue27:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey32.Y + DataCardKey32.Height + 4
+                        - ErrorMessage32:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              Height: =30
+                              Text: =
+                              Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue27.Y + DataCardValue27.Height
+                        - StarVisible32:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey32.Y
+                  - Organization_Name_DataCard1:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Organization_Name"
+                        Default: =ThisItem.Organization_Name
+                        DisplayName: =DataSourceInfo([@Master_Organization],DataSourceInfo.DisplayName,Organization_Name)
+                        MaxLength: =DataSourceInfo([@Master_Organization], DataSourceInfo.MaxLength, Organization_Name)
+                        Required: =true
+                        Update: |+
+                          =If(
+                              IsBlank(DataCardValue26.Value) || Len(DataCardValue26.Value) > Organization_Name_DataCard1.MaxLength,
+                              Blank(),
+                              DataCardValue26.Value
+                          )
+                        Width: =656
+                        X: =1
+                        Y: =0
+                      Children:
+                        - DataCardKey31:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue26:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              BorderColor: |-
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey31.Y + DataCardKey31.Height + 4
+                        - ErrorMessage31:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =// ErrorMessage16.Text
+                                If(
+                                    IsBlank(Trim(DataCardValue26.Value)),
+                                    "Organization Name is required.",
+                                    If(Len(DataCardValue26.Value) > Organization_Name_DataCard1.MaxLength,
+                                        Concatenate("Maximum ", Organization_Name_DataCard1.MaxLength, " characters allowed."),
+                                        ""
+                                    )
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue26.Y + DataCardValue26.Height
+                        - StarVisible31:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey31.Y
+            - ButtonClose_Registration_25:
+                Control: Button@0.0.45
+                Properties:
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Save"
+                  OnSelect: |
+                    =If(
+                        Form1_8.Valid,
+
+                        // ---- 1) Correlation + timestamp
+                        UpdateContext({
+                            ctxCorrelationId: GUID(),
+                            ctxNow: Now()
+                        });
+
+                        // ---- 2) ORIGINAL values (from your local edit buffer)
+                        UpdateContext({
+                            ctxOrig_Organization_ID: colTempEditMasterOrganization.Organization_ID,
+                            ctxOrig_Organization_Name: colTempEditMasterOrganization.Organization_Name
+                        });
+
+                        // ---- 3) EDITED values (from cards)
+                        UpdateContext({
+                            ctxEdit_Organization_ID: Organization_ID_DataCard3.Update,
+                            ctxEdit_Organization_Name: Organization_Name_DataCard1.Update
+                        });
+
+                        // ---- 4) Build change table and keep only changed fields
+                        UpdateContext({
+                            ctxChangesAll: Table(
+                                {
+                                    FieldName: "Organization_ID",
+                                    OldValue: ctxOrig_Organization_ID,
+                                    NewValue: ctxEdit_Organization_ID,
+                                    Changed: ctxOrig_Organization_ID <> ctxEdit_Organization_ID
+                                },
+                                {
+                                    FieldName: "Organization_Name",
+                                    OldValue: ctxOrig_Organization_Name,
+                                    NewValue: ctxEdit_Organization_Name,
+                                    Changed: ctxOrig_Organization_Name <> ctxEdit_Organization_Name
+                                }
+                            )
+                        });
+                        UpdateContext({
+                            ctxChanges: Filter(ctxChangesAll, Changed)
+                        });
+
+                        // ---- 5) Patch the master record (optional ETag for concurrency)
+                        UpdateContext({
+                            ctxPatchedItem:
+                                Patch(
+                                    Master_Organization,
+                                    LookUp(Master_Organization, ID = colTempEditMasterOrganization.ID),
+                                    {
+                                        Organization_ID: ctxEdit_Organization_ID,
+                                        Organization_Name: ctxEdit_Organization_Name
+                                    }
+                                )
+                        });
+
+                        // ---- 6) Build the single "Changes" string: [FieldName:OldValue-NewValue,...]
+                        // Concat doesn't support a separator param; add commas manually then strip the trailing one.
+                        UpdateContext({
+                            ctxChangesFlat:
+                                Concat(
+                                    ctxChanges,
+                                    FieldName & ":" &
+                                    Coalesce(Text(OldValue), "") & "-" &
+                                    Coalesce(Text(NewValue), "") & ","
+                                )
+                        });
+                        UpdateContext({
+                            ctxChangesText:
+                                "[" &
+                                If(
+                                    Len(ctxChangesFlat) > 0,
+                                    Left(ctxChangesFlat, Len(ctxChangesFlat) - 1),
+                                    ""
+                                ) &
+                                "]"
+                        });
+                        // ---- 7) If Patch succeeded AND there are changes, write ONE AuditLog row
+                        If(
+                            And(
+                                !IsBlank(ctxPatchedItem.ID),
+                                CountRows(ctxChanges) > 0
+                            ),
+                            Patch(
+                                AuditLog,
+                                Defaults(AuditLog),
+                                {
+                                    CorrelationID: ctxCorrelationId,
+                                    TargetList: "Master_Organization",
+                                    // Use the exact internal name of your column below (ItemID vs ItemId).
+                                    ItemId: ctxPatchedItem.ID,
+                                    ChangedBy: LookUp(Master_Employee, Email = User().Email).MyID,
+                                    ChangedOn: ctxNow,
+                                    ChangeType: "Edit",
+                                    Changes: ctxChangesText
+                                }
+                            )
+                        );
+
+                        // ---- 7) Notify & clean up
+                        If(
+                            !IsBlank(ctxPatchedItem.ID),
+                            Notify(
+                                If(CountRows(ctxChanges) = 0, "Saved (no changes detected).", "Saved and audit logged."),
+                                NotificationType.Success
+                            );
+                            UpdateContext({ colTempEditMasterOrganization: Blank() });
+                            ResetForm(Form1_8);
+                            UpdateContext({ ShowFormEditMasterOrganization: false });
+                            Refresh(Master_Organization);ClearCollect(colGalleryDataMasterOrganization,Master_Organization),
+                            Notify(
+                                "Save failed. The item may have been modified; refresh and try again.",
+                                NotificationType.Error
+                            )
+                        ),
+
+                        // ---- ELSE (Form not valid)
+                        Notify("Please fill all required fields before submitting.", NotificationType.Error)
+                    );
+                  Text: ="Save"
+                  Width: =120
+                  X: =Parent.Width*3/4-120
+                  Y: =Form1_8.Height+Form1_8.Y+10
+            - ButtonClose_Registration_26:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(255, 0, 0, 1)
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Dismiss"
+                  OnSelect: |
+                    =UpdateContext({colTempEditMasterOrganization:Blank()});
+                    ResetForm(Form1_8);
+                    UpdateContext({ShowFormEditMasterOrganization: false});
+                  Text: ="Close"
+                  Width: =120
+                  X: =Parent.Width/4
+                  Y: =Form1_8.Height+Form1_8.Y+10

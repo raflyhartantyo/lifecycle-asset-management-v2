@@ -1,0 +1,846 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ALM - Master Asset Type:
+    Properties:
+      Fill: =Color.WhiteSmoke
+      LoadingSpinnerColor: =RGBA(56, 96, 178, 1)
+      OnHidden: =Clear(colGalleryDataMasterAssetType)
+      OnVisible: |-
+        =UpdateContext({
+            // App/user context
+            ctxAppName: "Master Data App",
+            ctxUserDisplay: User().FullName,
+            ctxUserEmail: Lower(User().Email),
+
+            // Save-run context
+            ctxCorrelationId: Blank(),
+            ctxNow: Blank(),
+
+            // Originals (pulled at save time from frmAssetType.Item)
+            ctxOrig_AssetTypeID: Blank(),
+            ctxOrig_AssetTypeName: Blank(),
+            ctxOrig_FunctionID: Blank(),
+            ctxOrig_CategoryID: Blank(),
+
+            // Edited (pulled at save time from text inputs)
+            ctxEdit_AssetTypeID: Blank(),
+            ctxEdit_AssetTypeName: Blank(),
+            ctxEdit_FunctionID: Blank(),
+            ctxEdit_CategoryID: Blank(),
+
+            // Change tables (temporary)
+            ctxChangesAll: Table({FieldName:"",OldValue:"",NewValue:"",Changed:false}),
+            ctxChanges: Table({FieldName:"",OldValue:"",NewValue:"",Changed:false}),
+
+            // Patched record holder
+            ctxPatchedItem: Blank()
+        });
+    Children:
+      - Header_CategoryMaster:
+          Control: Header@0.0.44
+          Properties:
+            BasePaletteColor: =RGBA(5, 102, 178, 1)
+            Fill: =RGBA(180, 214, 250, 1)
+            Logo: ='Zurich Logo'
+            LogoTooltip: ="Zurich Indonesia"
+            Title: ="ALM - Master Asset Type"
+            Width: =1352
+            X: =14
+            Y: =21
+      - ButtonNew_CategoryMaster:
+          Control: Button@0.0.45
+          Properties:
+            Height: =50
+            OnSelect: =Navigate('ALM-Master Asset Type-New', ScreenTransition.Fade)
+            Text: ="Create New"
+            Width: =116
+            X: =Icon15_1.X-150
+            Y: =Header_CategoryMaster.Y + (Header_CategoryMaster.Height / 2) - (Self.Height / 2)
+      - AssetDataContainer_3:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Height: =658
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutOverflowX: =LayoutOverflow.Scroll
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            Width: =1352
+            X: =HeaderContainer_AssetMaster.X
+            Y: =110
+          Children:
+            - ColumnNameMasterAsset_3:
+                Control: GroupContainer@1.5.0
+                Variant: ManualLayout
+                Properties:
+                  AlignInContainer: =AlignInContainer.Start
+                  FillPortions: =0
+                  Height: =50
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Width: =Column_Name_AccAssetCode_MasterAsset_5.X+ Column_Name_AccAssetCode_MasterAsset_5.Width
+                  X: =
+                  Y: =40
+                Children:
+                  - Column_Name_AccAssetCode_MasterAsset_3:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Function ID"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_4.Width+Column_Name_AccAssetCode_MasterAsset_4.X
+                  - Column_Name_AccAssetCode_MasterAsset_4:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Asset Type Name"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =540
+                        X: =Column_Name_AssetDate_MasterAsset_3.Width+Column_Name_AssetDate_MasterAsset_3.X
+                  - Column_Name_AssetDate_MasterAsset_3:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =Parent.Height
+                        Size: =15
+                        Text: ="Asset Type ID"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250+Rectangle2_12.Width
+                  - Column_Name_AccAssetCode_MasterAsset_5:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: =RGBA(174, 208, 221, 1)
+                        Height: =50
+                        Size: =15
+                        Text: ="Category ID"
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =250
+                        X: =Column_Name_AccAssetCode_MasterAsset_3.Width+Column_Name_AccAssetCode_MasterAsset_3.X
+            - ColumnValueMasterAsset_3:
+                Control: Gallery@2.15.0
+                Variant: BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0
+                Properties:
+                  AlignInContainer: =AlignInContainer.SetByContainer
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  Fill: =Color.Transparent
+                  Height: =Parent.Height-50
+                  Items: =colGalleryDataMasterAssetType
+                  LayoutMinHeight: =16
+                  LayoutMinWidth: =16
+                  TemplateFill: |-
+                    =
+                    If(
+                        ThisItem.IsSelected,
+                        RGBA(160, 200, 240, 1),   // Light blue shade
+                        Color.Transparent         // No fill when not selected
+                    )
+                  TemplateSize: =50
+                  Width: =ColumnNameMasterAsset_3.Width + NextArrow2_3.Width
+                  X: =Parent.X
+                  Y: =Parent.Height-Self.Height
+                Children:
+                  - Rectangle2_12:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =4
+                  - Column_Value_AsssetDate_MasterAsset_5:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Asset_Type_ID
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AssetDate_MasterAsset_3.Width-Rectangle2_12.Width
+                        X: =Rectangle2_12.Width
+                  - Column_Value_AsssetDate_MasterAsset_6:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Fill: |-
+                          =
+                          If(
+                              ThisItem.IsSelected,
+                              RGBA(160, 200, 240, 1),   // Light blue shade
+                              Color.Transparent         // No fill when not selected
+                          )
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Asset_Type_Name
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_4.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_4.X
+                  - Column_Value_AsssetDate_MasterAsset_7:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Function_ID
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_3.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_3.X
+                  - Column_Value_AsssetDate_MasterAsset_8:
+                      Control: Text@0.0.51
+                      Properties:
+                        Align: ='TextCanvas.Align'.Center
+                        BorderColor: =RGBA(214, 221, 224, 1)
+                        BorderStyle: =BorderStyle.Solid
+                        BorderThickness: =1
+                        Height: =50
+                        Size: =15
+                        Text: =ThisItem.Category_ID
+                        VerticalAlign: =VerticalAlign.Middle
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =Column_Name_AccAssetCode_MasterAsset_5.Width
+                        X: =Column_Name_AccAssetCode_MasterAsset_5.X
+                  - Rectangle2_13:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_5.X+Column_Name_AccAssetCode_MasterAsset_5.Width
+                        Y: =Column_Name_AccAssetCode_MasterAsset_3.Y
+                  - Rectangle2_14:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =1
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =Column_Name_AccAssetCode_MasterAsset_5.X+Column_Name_AccAssetCode_MasterAsset_5.Width
+                        Y: =49
+                  - Rectangle2_15:
+                      Control: Rectangle@2.3.0
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        BorderThickness: =1
+                        Fill: =RGBA(0, 18, 107, 1)
+                        Height: =Parent.TemplateHeight
+                        OnSelect: =Select(Parent)
+                        Visible: =ThisItem.IsSelected
+                        Width: =1
+                        X: =Column_Name_AccAssetCode_MasterAsset_5.X+Column_Name_AccAssetCode_MasterAsset_5.Width
+                  - NextArrow2_3:
+                      Control: Classic/Icon@2.5.0
+                      Properties:
+                        AccessibleLabel: =Self.Tooltip
+                        BorderColor: =RGBA(0, 0, 0, 1)
+                        Color: =RGBA(166, 166, 166, 1)
+                        DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                        DisabledColor: =RGBA(119, 119, 119, 1)
+                        Fill: =Color.WhiteSmoke
+                        Height: =50
+                        Icon: =Icon.Edit
+                        OnSelect: |
+                          =UpdateContext({colTempEditMasterAssetType : ThisItem});
+                          UpdateContext({ShowFormEditMasterAssetType: true})
+                        PaddingBottom: =16
+                        PaddingLeft: =16
+                        PaddingRight: =16
+                        PaddingTop: =16
+                        Tooltip: ="View item details"
+                        Visible: |-
+                          =If(
+                              LookUp(Acces_Matrix, Title = LookUp(Master_Employee,Email = User().Email).MyID, Master_Data_Edit) = true,
+                              true,
+                              false
+                          )
+                        Width: =50
+                        X: =Parent.TemplateWidth - Self.Width
+                        Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+      - Icon15_1:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =50
+            Icon: =Icon.Home
+            OnSelect: =Navigate('3_HomePageMasterData', ScreenTransition.Fade);
+            Width: =50
+            X: =Header_CategoryMaster.X+Header_CategoryMaster.Width-150
+            Y: =Header_CategoryMaster.Y + (Header_CategoryMaster.Height / 2) - (Self.Height / 2)
+      - ButtonNew_CategoryMaster_1:
+          Control: Button@0.0.45
+          Properties:
+            BasePaletteColor: =Color.Orange
+            Height: =50
+            Icon: ="ArrowClockwise"
+            OnSelect: |+
+              =Refresh(Master_Asset_Type);
+              ClearCollect(colGalleryDataMasterAssetType,Master_Asset_Type)
+            Text: ="Load Data"
+            Width: =116
+            X: =ButtonNew_CategoryMaster.X-150
+            Y: =Header_CategoryMaster.Y + (Header_CategoryMaster.Height / 2) - (Self.Height / 2)
+      - Text4_1:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(0, 18, 107, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =34
+            Size: =13
+            Text: |-
+              =Concatenate(
+                  "Last Updated: ",
+                  Text(
+                      First(
+                          SortByColumns(
+                              colGalleryDataMasterAssetType,
+                              "Modified",
+                              SortOrder.Descending
+                          )
+                      ).Modified,
+                      "dd mmm yyyy hh:mm"
+                  )
+              )
+            Width: =302
+            X: =108
+            Y: =Icon7.Y - 5
+      - Icon7:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =24
+            Icon: =Icon.Clock
+            Width: =24
+            X: =85
+            Y: =70
+      - Container1_2:
+          Control: GroupContainer@1.5.0
+          Variant: ManualLayout
+          Properties:
+            Fill: =RGBA(245,245,245,0.9)
+            Height: =Parent.Height
+            Visible: =ShowFormEditMasterAssetType
+            Width: =Parent.Width
+            X: =('ALM - Master Asset Type'.Width-Self.Width)/2
+            Y: =('ALM - Master Asset Type'.Height-Self.Height)/2
+          Children:
+            - Form1_2:
+                Control: Form@2.4.4
+                Layout: Vertical
+                Properties:
+                  BorderColor: =RGBA(0, 18, 107, 1)
+                  DataSource: =Master_Asset_Type
+                  Fill: =Color.White
+                  Height: =640
+                  Item: =colTempEditMasterAssetType
+                  NumberOfColumns: =2
+                  Width: =1312
+                  X: =Parent.Width/2-Self.Width/2
+                  Y: =Parent.Height/2-(Self.Height+ButtonClose_Registration_16.Height)/2
+                Children:
+                  - Asset_Type_ID_DataCard2:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Title"
+                        Default: =ThisItem.Asset_Type_ID
+                        DisplayMode: =DisplayMode.Disabled
+                        DisplayName: =DataSourceInfo([@Master_Asset_Type],DataSourceInfo.DisplayName,Asset_Type_ID)
+                        MaxLength: =DataSourceInfo([@Master_Asset_Type], DataSourceInfo.MaxLength, Asset_Type_ID)
+                        Required: =true
+                        Update: =DataCardValue25.Value
+                        Width: =656
+                        X: =0
+                        Y: =0
+                      Children:
+                        - DataCardKey22:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue25:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey22.Y + DataCardKey22.Height + 4
+                        - ErrorMessage22:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              Height: =30
+                              Text: =Parent.Error
+                              Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue25.Y + DataCardValue25.Height
+                        - StarVisible22:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey22.Y
+                  - Asset_Type_Name_DataCard2:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="field_0"
+                        Default: =ThisItem.Asset_Type_Name
+                        DisplayName: =DataSourceInfo([@Master_Asset_Type],DataSourceInfo.DisplayName,Asset_Type_Name)
+                        MaxLength: =DataSourceInfo([@Master_Asset_Type], DataSourceInfo.MaxLength, Asset_Type_Name)
+                        Required: =true
+                        Update: |-
+                          =If(
+                              IsBlank(Trim(DataCardValue24.Value)),
+                              Blank(),
+                              DataCardValue24.Value
+                          )
+                        Width: =656
+                        X: =1
+                        Y: =0
+                      Children:
+                        - DataCardKey21:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - DataCardValue24:
+                            Control: TextInput@0.0.54
+                            MetadataKey: FieldValue
+                            Properties:
+                              AccessibleLabel: =Parent.DisplayName
+                              BorderColor: |+
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DisplayMode: =Parent.DisplayMode
+                              Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                              Required: =Parent.Required
+                              ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                              Value: =Parent.Default
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardKey21.Y + DataCardKey21.Height + 4
+                        - ErrorMessage21:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =
+                                If(
+                                    !Asset_Type_Name_DataCard2.Valid,
+                                    "Asset Type Name is required.",
+                                    ""
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DataCardValue24.Y + DataCardValue24.Height
+                        - StarVisible21:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey21.Y
+                  - Function_ID_DataCard2:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="field_2"
+                        Default: =ThisItem.Function_ID
+                        DisplayName: =DataSourceInfo([@Master_Asset_Type],DataSourceInfo.DisplayName,Function_ID)
+                        MaxLength: =DataSourceInfo([@Master_Asset_Type], DataSourceInfo.MaxLength, Function_ID)
+                        Required: =true
+                        Update: =DropdownCanvas4.Selected.Function_ID
+                        Width: =656
+                        X: =0
+                        Y: =1
+                      Children:
+                        - DataCardKey23:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - ErrorMessage23:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =
+                                If(
+                                    !Function_ID_DataCard2.Valid,
+                                    "Asset Type Name is required.",
+                                    ""
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DropdownCanvas4.Y + DropdownCanvas4.Height
+                        - StarVisible23:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey23.Y
+                        - DropdownCanvas4:
+                            Control: DropDown@0.0.45
+                            Properties:
+                              BorderColor: |-
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DefaultSelectedItems: =LookUp(Master_Function,Function_ID = ThisItem.Function_ID)
+                              Items: =Master_Function
+                              Width: =Parent.Width-48
+                              X: =24
+                              Y: =DataCardKey23.Y + DataCardKey23.Height + 4
+                            Children:
+                              - Function_Name3:
+                                  Control: DropDownDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Function_Name"
+                                    FieldName: ="Function_Name"
+                                    FieldType: ="s"
+                                    Order: =2
+                  - Category_ID_DataCard3:
+                      Control: TypedDataCard@1.0.7
+                      Variant: TextualEdit
+                      Properties:
+                        BorderColor: =RGBA(0, 18, 107, 1)
+                        DataField: ="Category_ID"
+                        Default: =ThisItem.Category_ID
+                        DisplayName: =DataSourceInfo([@Master_Asset_Type],DataSourceInfo.DisplayName,Category_ID)
+                        MaxLength: =DataSourceInfo([@Master_Asset_Type], DataSourceInfo.MaxLength, Category_ID)
+                        Required: =true
+                        Update: =DropdownCanvas4_1.Selected.Category_ID
+                        Width: =656
+                        X: =1
+                        Y: =1
+                      Children:
+                        - DataCardKey24:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldName
+                            Properties:
+                              Height: =22
+                              Text: =Parent.DisplayName
+                              Weight: ='TextCanvas.Weight'.Semibold
+                              Width: =Parent.Width - 48
+                              Wrap: =false
+                              X: =24
+                              Y: =10
+                        - ErrorMessage24:
+                            Control: Text@0.0.51
+                            MetadataKey: ErrorMessage
+                            Properties:
+                              FontColor: =Color.Red
+                              Height: =30
+                              Text: |-
+                                =
+                                If(
+                                    !Category_ID_DataCard3.Valid,
+                                    "Asset Type Name is required.",
+                                    ""
+                                )
+                              Visible: =!Parent.Valid
+                              Width: =Parent.Width - 48
+                              X: =24
+                              Y: =DropdownCanvas4_1.Y + DropdownCanvas4_1.Height
+                        - StarVisible24:
+                            Control: Text@0.0.51
+                            MetadataKey: FieldRequired
+                            Properties:
+                              Align: ='TextCanvas.Align'.Center
+                              Height: =30
+                              Text: ="*"
+                              Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                              Width: =30
+                              Y: =DataCardKey24.Y
+                        - DropdownCanvas4_1:
+                            Control: DropDown@0.0.45
+                            Properties:
+                              BorderColor: |-
+                                =If(
+                                    !Parent.Valid,
+                                    Color.Red,
+                                    RGBA(0, 18, 107, 1)  // your normal border color
+                                )
+                              DefaultSelectedItems: =LookUp(Master_Category,Category_ID = ThisItem.Category_ID)
+                              Items: =Master_Category
+                              Width: =Parent.Width-48
+                              X: =24
+                              Y: =DataCardKey24.Y + DataCardKey24.Height + 4
+                            Children:
+                              - Category_Name2:
+                                  Control: DropDownDataField@1.5.0
+                                  Variant: textualColumn
+                                  IsLocked: true
+                                  Properties:
+                                    FieldDisplayName: ="Category_Name"
+                                    FieldName: ="AssetGroupName"
+                                    FieldType: ="s"
+                                    Order: =1
+            - ButtonClose_Registration_15:
+                Control: Button@0.0.45
+                Properties:
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Save"
+                  OnSelect: |-
+                    =If(Form1_2.Valid,
+                    // ---- 1) Set correlation & timestamp for this save
+                    UpdateContext({
+                        ctxCorrelationId: GUID(),
+                        ctxNow: Now()
+                    });
+                    // ---- 2) Capture ORIGINAL values from the bound SharePoint item (normalize to text)
+                    UpdateContext({
+                        ctxOrig_AssetTypeID: colTempEditMasterAssetType.Asset_Type_ID,
+                        ctxOrig_AssetTypeName: colTempEditMasterAssetType.Asset_Type_Name,
+                        ctxOrig_FunctionID: colTempEditMasterAssetType.Function_ID,
+                        ctxOrig_CategoryID: colTempEditMasterAssetType.Category_ID
+                    });
+                    // ---- 3) Capture EDITED values from the screen inputs (trim & normalize to text)
+                    UpdateContext({
+                        ctxEdit_AssetTypeID: Asset_Type_ID_DataCard2.Update,
+                        ctxEdit_AssetTypeName: Asset_Type_Name_DataCard2.Update,
+                        ctxEdit_FunctionID: Function_ID_DataCard2.Update,
+                        ctxEdit_CategoryID: Category_ID_DataCard3.Update
+                    });
+                    // ---- 4) Build a 4-row comparison table, then keep only changed fields
+                    UpdateContext({
+                        ctxChangesAll: Table(
+                            {
+                                FieldName: "Asset_Type_ID",
+                                OldValue: ctxOrig_AssetTypeID,
+                                NewValue: ctxEdit_AssetTypeID,
+                                Changed: ctxOrig_AssetTypeID <> ctxEdit_AssetTypeID
+                            },
+                            {
+                                FieldName: "Asset_Type_Name",
+                                OldValue: ctxOrig_AssetTypeName,
+                                NewValue: ctxEdit_AssetTypeName,
+                                Changed: ctxOrig_AssetTypeName <> ctxEdit_AssetTypeName
+                            },
+                            {
+                                FieldName: "Function_ID",
+                                OldValue: ctxOrig_FunctionID,
+                                NewValue: ctxEdit_FunctionID,
+                                Changed: ctxOrig_FunctionID <> ctxEdit_FunctionID
+                            },
+                            {
+                                FieldName: "Category_ID",
+                                OldValue: ctxOrig_CategoryID,
+                                NewValue: ctxEdit_CategoryID,
+                                Changed: ctxOrig_CategoryID <> ctxEdit_CategoryID
+                            }
+                        )
+                    });
+                    UpdateContext({
+                        ctxChanges: Filter(ctxChangesAll, Changed)
+                    });
+                    // ---- 5) Patch the master list with optimistic concurrency (ETag)
+                    // Note: All four are TEXT columns per your confirmation.
+                    UpdateContext({
+                        ctxPatchedItem:
+                            Patch(
+                                Master_Asset_Type,
+                                LookUp(Master_Asset_Type, ID = colTempEditMasterAssetType.ID),
+                                {
+                                    Asset_Type_ID: ctxEdit_AssetTypeID,
+                                    Asset_Type_Name: ctxEdit_AssetTypeName,
+                                    Function_ID: ctxEdit_FunctionID,
+                                    Category_ID: ctxEdit_CategoryID
+                                }
+                            )
+                    });
+                    // ---- 6) Build the single "Changes" string: [FieldName:OldValue-NewValue,...]
+                        // Concat doesn't support a separator param; add commas manually then strip the trailing one.
+                        UpdateContext({
+                            ctxChangesFlat:
+                                Concat(
+                                    ctxChanges,
+                                    FieldName & ":" &
+                                    Coalesce(Text(OldValue), "") & "-" &
+                                    Coalesce(Text(NewValue), "") & ","
+                                )
+                        });
+                        UpdateContext({
+                            ctxChangesText:
+                                "[" &
+                                If(
+                                    Len(ctxChangesFlat) > 0,
+                                    Left(ctxChangesFlat, Len(ctxChangesFlat) - 1),
+                                    ""
+                                ) &
+                                "]"
+                        });
+
+                        // ---- 7) If Patch succeeded AND there are changes, write ONE AuditLog row
+                        If(
+                            And(
+                                !IsBlank(ctxPatchedItem.ID),
+                                CountRows(ctxChanges) > 0
+                            ),
+                            Patch(
+                                AuditLog,
+                                Defaults(AuditLog),
+                                {
+                                    CorrelationID: ctxCorrelationId,
+                                    TargetList: "Master_Asset_Type",
+                                    // Use the exact internal name of your column below (ItemID vs ItemId).
+                                    ItemId: ctxPatchedItem.ID,
+                                    ChangedBy: LookUp(Master_Employee, Email = User().Email).MyID,
+                                    ChangedOn: ctxNow,
+                                    ChangeType: "Edit",
+                                    Changes: ctxChangesText
+                                }
+                            )
+                        );
+                    // ---- 7) Notify outcome
+                    If(
+                        !IsBlank(ctxPatchedItem.ID),
+                        Notify(
+                            If(CountRows(ctxChanges) = 0, "Saved (no changes detected).", "Saved and audit logged."),
+                            NotificationType.Success
+                        );
+                        UpdateContext({colTempEditMasterAssetType:Blank()});
+                        ResetForm(Form1_2);
+                        UpdateContext({ShowFormEditMasterAssetType: false});
+                        ,
+                        Notify("Save failed. The item may have been modified; refresh and try again.", NotificationType.Error)
+                    ); Refresh(Master_Asset_Type);ClearCollect(colGalleryDataMasterAssetType,Master_Asset_Type),
+                    Notify("Please fill all required fields before submitting.", NotificationType.Error));
+                  Text: ="Save"
+                  Width: =120
+                  X: =Parent.Width*3/4-120
+                  Y: =Form1_2.Height+Form1_2.Y+10
+            - ButtonClose_Registration_16:
+                Control: Button@0.0.45
+                Properties:
+                  BasePaletteColor: =RGBA(255, 0, 0, 1)
+                  BorderRadiusBottomLeft: =8
+                  BorderRadiusBottomRight: =8
+                  BorderRadiusTopLeft: =8
+                  BorderRadiusTopRight: =8
+                  Height: =40
+                  Icon: ="Dismiss"
+                  OnSelect: |
+                    =UpdateContext({colTempEditMasterAssetType:Blank()});
+                    ResetForm(Form1_2);
+                    UpdateContext({ShowFormEditMasterAssetType: false});
+                  Text: ="Close"
+                  Width: =120
+                  X: =Parent.Width/4
+                  Y: =Form1_2.Height+Form1_2.Y+10

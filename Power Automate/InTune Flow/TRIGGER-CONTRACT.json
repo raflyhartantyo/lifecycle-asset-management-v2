@@ -1,0 +1,53 @@
+{
+  "display_name": "InTune Flow",
+  "triggers": {
+    "manual": {
+      "metadata": {
+        "operationMetadataId": "d87523fd-0f6e-4071-9a29-f459bd58c7bf"
+      },
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "description": "Please select file or image",
+              "title": "InTuneFile",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "contentBytes": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              },
+              "x-ms-content-hint": "FILE",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "file"
+          ]
+        }
+      },
+      "runtimeConfiguration": {
+        "concurrency": {
+          "runs": 1
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    },
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    }
+  }
+}

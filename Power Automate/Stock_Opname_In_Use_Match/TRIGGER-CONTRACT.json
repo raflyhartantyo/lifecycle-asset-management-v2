@@ -1,0 +1,61 @@
+{
+  "display_name": "Stock_Opname_In_Use_Match",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "PowerAppV2",
+      "inputs": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "description": "Please select file or image",
+              "title": "File_CMDB",
+              "type": "object",
+              "properties": {
+                "contentBytes": {
+                  "type": "string",
+                  "format": "byte"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "x-ms-content-hint": "FILE",
+              "x-ms-dynamically-added": true
+            },
+            "text": {
+              "description": "Please enter your input",
+              "title": "RawJSON",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            },
+            "text_1": {
+              "description": "Please enter your input",
+              "title": "Requester_Email",
+              "type": "string",
+              "x-ms-content-hint": "TEXT",
+              "x-ms-dynamically-added": true
+            }
+          },
+          "required": [
+            "file",
+            "text",
+            "text_1"
+          ]
+        }
+      }
+    }
+  },
+  "definition_parameters": {
+    "$authentication": {
+      "defaultValue": {},
+      "type": "SecureObject"
+    },
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  }
+}

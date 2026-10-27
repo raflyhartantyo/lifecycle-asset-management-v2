@@ -1,0 +1,85 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/parameters/folderPath",
+      "field": "folderPath",
+      "source_value": "/Shared Documents/General/ASSET/Asset Lifecycle Management System/Temp Files/Export",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_sharing_link_for_a_file_or_folder/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_sharing_link_for_a_file_or_folder/inputs/parameters/table",
+      "field": "table",
+      "source_value": "d2e655c4-29e4-4892-85ea-bc1f36f86e4e",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_sharing_link_for_a_file_or_folder/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Get_file_metadata_using_path/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Get_file_metadata_using_path/inputs/parameters/path",
+      "field": "path",
+      "source_value": "@outputs('Create_file')?['body/Path']",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Get_file_metadata_using_path/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_sharepointonline/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-sharepointonl-84fd4fce-e7ac-4217-bce0-340e9010cb19",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": [
+    "shared_sharepointonline"
+  ]
+}

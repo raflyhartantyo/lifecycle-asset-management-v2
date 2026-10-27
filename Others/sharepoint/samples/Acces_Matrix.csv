@@ -1,0 +1,9 @@
+Title,Transaction,Master_Data,Reconciliation,Disposal Request,SO_Respondents,SO_Requester,Master_Data_Edit,Inventories_Management,Asset_Management
+USER.A,True,True,False,False,True,False,False,False,True
+USER.B,True,True,True,False,False,True,True,True,True
+USER.C,True,True,False,False,False,False,True,False,False
+USER.D,True,True,True,False,False,True,False,True,True
+USER.E,True,True,True,False,False,True,True,True,True
+USER.F,False,True,False,False,True,False,False,False,False
+USER.G,True,True,True,False,False,True,False,True,False
+USER.H,False,False,False,False,True,False,False,False,True

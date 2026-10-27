@@ -1,0 +1,184 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/parameters/folderPath",
+      "field": "folderPath",
+      "source_value": "/Shared Documents/General/ASSET/Asset Lifecycle Management System/Temp File Accounting",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_file/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_item_1/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_item_1/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Create_item_1/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_items/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_items/inputs/parameters/table",
+      "field": "table",
+      "source_value": "d079077a-6b99-4bbb-9e8c-f77ba59f7619",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_items/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_tables/inputs/parameters/drive",
+      "field": "drive",
+      "source_value": "b!hQXUlt9d4UScNlKJXEXRuTyGDWSMvqZHlwyfJIs0cbfEVebS5CmSSIXqvB82-G5O",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_tables/inputs/parameters/file",
+      "field": "file",
+      "source_value": "@outputs('Create_file')?['body/Id']",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Get_tables/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_excelonlinebusiness",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/List_rows_present_in_a_table/inputs/parameters/drive",
+      "field": "drive",
+      "source_value": "b!hQXUlt9d4UScNlKJXEXRuTyGDWSMvqZHlwyfJIs0cbfEVebS5CmSSIXqvB82-G5O",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/List_rows_present_in_a_table/inputs/parameters/file",
+      "field": "file",
+      "source_value": "@outputs('Create_file')?['body/Id']",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/List_rows_present_in_a_table/inputs/parameters/table",
+      "field": "table",
+      "source_value": "@first(outputs('Get_tables')?['body/value'])?['name']",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/List_rows_present_in_a_table/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_excelonlinebusiness",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Update_item/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Update_item/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Try/actions/Update_item/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Catch/actions/Update_error/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Catch/actions/Update_error/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Catch/actions/Update_error/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_sharepointonline/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-sharepointonl-84fd4fce-e7ac-4217-bce0-340e9010cb19",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_excelonlinebusiness/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-excelonlinebu-95d887d5-2242-4329-afe1-3a2420ace210",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": [
+    "shared_excelonlinebusiness",
+    "shared_sharepointonline"
+  ]
+}

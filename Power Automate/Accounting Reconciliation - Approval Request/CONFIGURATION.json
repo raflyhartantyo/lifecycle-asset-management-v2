@@ -1,0 +1,325 @@
+{
+  "status": "needs_target_environment_values",
+  "bindings": [
+    {
+      "json_pointer": "/properties/definition/metadata/creator/tenantId",
+      "field": "tenantId",
+      "source_value": "<REDACTED-ID>",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_items/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Asset_IT/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Asset_IT/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Asset_IT/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Update_item_1_1/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Update_item_1_1/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Update_item_1_1/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_2/actions/Update_item_1_3/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_2/actions/Update_item_1_3/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_2/actions/Update_item_1_3/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/actions/Create_an_approval_-_Dispose/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_approvals",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/actions/Send_an_email_(V2)/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_office365",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/actions/Wait_for_an_approval/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_approvals",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/else/actions/Create_an_approval_-_No_Dispose/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_approvals",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/else/actions/Send_an_email_(V2)_-_No_Dispose/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_office365",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1/else/actions/Wait_for_an_approval_-_No_Dispose/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_approvals",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/actions/Update_item_1/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/actions/Update_item_1/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/actions/Update_item_1/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/else/actions/Update_item_1_2/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/else/actions/Update_item_1_2/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/actions/Condition_1/else/actions/Update_item_1_2/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/actions/Update_item_2/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/actions/Update_item_2/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/actions/Update_item_2/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/else/actions/Update_item_1_4/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/else/actions/Update_item_1_4/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Do_until/actions/Condition_3_1_1_1/else/actions/Condition_1_1/else/actions/Update_item_1_4/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Update_item/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Condition_3/actions/Add_attachment_-_Disposed_IT_Asset/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Condition_3/actions/Add_attachment_-_Disposed_IT_Asset/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Condition_3/actions/Add_attachment_-_Disposed_IT_Asset/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Non_Asset_IT/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Non_Asset_IT/inputs/parameters/table",
+      "field": "table",
+      "source_value": "e78ef794-2556-4eb9-be20-fb27623b5309",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Add_attachment_-_Non_Asset_IT/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_file_content/inputs/parameters/dataset",
+      "field": "dataset",
+      "source_value": "https://ziapac.sharepoint.com/sites/IDIDZITGOVERNANCE",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/definition/actions/Get_file_content/inputs/host/connectionName",
+      "field": "connectionName",
+      "source_value": "shared_sharepointonline",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_sharepointonline/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-sharepointonl-84fd4fce-e7ac-4217-bce0-340e9010cb19",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_approvals/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-approvals-ac00d96b-ef34-4441-99bb-9b6265be47cd",
+      "target_value": null,
+      "verified": false
+    },
+    {
+      "json_pointer": "/properties/connectionReferences/shared_office365/connectionName",
+      "field": "connectionName",
+      "source_value": "shared-office365-866e7e86-011c-4847-82ac-0e5f902d33cf",
+      "target_value": null,
+      "verified": false
+    }
+  ],
+  "connection_reference_keys": [
+    "shared_approvals",
+    "shared_office365",
+    "shared_sharepointonline"
+  ]
+}
