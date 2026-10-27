@@ -236,3 +236,14 @@ Location granularity (building alone versus building/floor/room), finer location
 ## D050 — Building-only location granularity
 
 Owner confirmed, 2026-10-27: track location at building level only. Floor and room documentation is too burdensome based on prior operational experience. Do not add optional or mandatory floor/room fields or a building/floor/room hierarchy to the V2 registration or movement experience. This settles the granularity question left open by D049; buildings remain shared across functions and entities without granting cross-scope data access. Location codes, deactivation and shared-reference maintainer authority remain open.
+
+
+## D051 — Individual employee custodians
+
+Owner confirmed, 2026-10-27: Custodian is an individual employee, not a team/department. D044's rule continues: required for In Use and optional for Available assets. The pending-directory selection in D052 is an explicit unresolved employee-assignment state, not a group custodian.
+
+## D052 — Directory-backed employee selection with registration-pending option
+
+Owner confirmed, 2026-10-27: use the company directory for employee selections and add a fixed/hardcoded option for employees not yet in that directory. Working display label: Awaiting employee registration; exact display wording is not prescribed by the owner. Do not interpret this as a request for a separate manually maintained employee-registration module.
+
+The pending selection represents missing directory identity, not a synthetic account, email or approval recipient. Employee-assignment resolution and pending-item visibility must be designed. Whether the fallback is available only to Custodian or also to Business Owner is not yet confirmed. Interim design proposes Custodian-only availability; do not apply it to approval routing or other person fields by analogy. See `../architecture/EMPLOYEE-SELECTION-DESIGN.md` for the proposed handling and unresolved scope.
