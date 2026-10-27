@@ -37,9 +37,20 @@ Redesign Lifecycle Asset Management V2 as a simple, consistent, Zurich-branded a
 2. Pilot the completed production candidate with ORG-01 / IT first. Validate IT/CRESS isolation before production acceptance; activate CRESS usage after its setup and acceptance. Add other entities through verified configuration and staged onboarding.
 3. Permit users to have explicit role assignments across more than one organization/function pair. Show only authorized pairs, with an active session pair. A role in one pair grants no implicit access to another.
 
-## Round 2 — permissions proposals awaiting owner response
+## Round 2 — owner responses recorded
 
-See ROLE-PERMISSIONS-DRAFT.md. Proposed decisions: composable scoped roles; separate final approval from physical response and block self-approval; constrain respondents to assigned open requests/assets. These proposals are not approved and no permissions have been implemented.
+- Owner-selected roles: Viewer, Asset Operator, Inventory Operator, Asset Manager, Business Owner and Superuser. Respondent remains tentative; duties, role combination and exact authority are pending.
+- Owner rejected the blanket self-approval ban. A user may approve an initiated request when otherwise explicitly authorized for its assigned approval step/scope; permission is not created by this exception.
+- Respondent access is limited to assigned open work; closing/reopening and audit rules apply. Additional responsibilities require their own explicit permission.
+
+See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemented.
+
+## Round 3 — proposed responsibility mapping awaiting owner response
+
+1. Map retained stock-coordination and reconciliation responsibilities to Asset Manager; detailed direct-disposal, export and master-data permissions are still explicit decisions.
+2. Define Business Owner as accountability for assigned assets/business area and authority only for designated approval tasks. Whether it is the same identity as the existing asset Business Owner field needs clarification before data design.
+3. Keep Superuser administration within explicitly assigned organization/function pairs unless the owner approves a separate global administration exception.
+4. Treat Respondent as request-specific participation rather than a permanent broad role, preserving D010 and explicit organization/function scope.
 
 ## Later decisions and evidence
 

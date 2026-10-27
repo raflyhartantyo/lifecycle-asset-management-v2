@@ -1,26 +1,32 @@
-# Role and permission proposals — Phase 1 round 2
+# Role and permission working draft
 
-Status: proposed, awaiting owner response. Role names describe business responsibilities, not the physical Roles list schema. A user can hold several responsibilities within one email/entity/function assignment; this does not imply duplicate tuple rows.
+Status: owner-selected role names and policies recorded; detailed responsibility mapping awaits review. Role names describe business responsibilities, not the physical Roles list schema. Whether responsibilities combine within one tuple is still to be confirmed; D002's one-row-per-email/entity/function contract remains.
 
-## Proposed responsibility set
+## Confirmed decisions
 
-| Responsibility | Proposed purpose | Boundary needing detailed acceptance criteria |
+- D008: Viewer, Asset Operator, Inventory Operator, Asset Manager, Business Owner and Superuser. Respondent(?) remains an open modeling question.
+- D009: no blanket self-approval ban. The user must still have explicit approval authority for the assigned step and scope; names alone confer no privileges.
+- D010: respondent permission is limited to assigned requests/assets and editing while the response step is open. Closed responses require explicit audited reopening; separate permissions govern broader access.
+
+## Responsibility mapping — proposed, not approved
+
+| Role | Proposed responsibility | Unresolved detail |
 |---|---|---|
-| Viewer | Read authorized operational data and reporting | Export and reporting scope need explicit rules |
-| Asset operator | Register and move individually tracked assets | Direct disposal is a separately granted permission, not automatically inherited |
-| Inventory operator | Register and transfer quantity inventory | No automatic asset management rights |
-| Stock coordinator | Start and manage physical stock verification | Final approval remains a separate authority |
-| Reconciliation operator | Upload ledger data, run comparisons and prepare reconciliation | Final approval remains a separate authority |
-| Respondent | Provide assigned physical-verification responses/evidence | Assigned open requests and assets only; no final approval implied |
-| Approver | Make final decisions on assigned approval steps | No final approval of a request initiated by the same identity |
-| Scoped administrator | Maintain authorized reference data and manage permitted access assignments | No automatic approval authority, cross-pair access or ability to exceed delegated administration scope |
+| Viewer | Read authorized records/reporting | Export and Power BI scope need explicit rules |
+| Asset Operator | Register and move individually tracked assets | Direct disposal and accounting edits are not assumed |
+| Inventory Operator | Register and transfer quantity inventory | No automatic asset-management rights |
+| Asset Manager | Manage asset operations, stock verification and accounting reconciliation in assigned scope | Exact disposal, reopen, master-data, export and assignment permissions require confirmation |
+| Business Owner | Accountable for assigned assets/business area; performs designated approval tasks | Confirm whether this denotes the existing MYID_Business_Owner asset identity, a function/business authority, or a distinct workflow participant |
+| Superuser | Configure the application and administer delegated data/access settings | Current explicit scope rules remain; any global exception requires an owner decision. Final approval authority is not implied |
+| Respondent (tentative) | Provide assigned verification responses/evidence | Recommend a request-specific assignment instead of a permanent broad role; D010 applies either way |
 
-## Proposed controls — not yet confirmed
+## Questions for round 3
 
-1. Composable responsibilities scoped by organization/function, mapped into explicit permissions during architecture design.
-2. Distinguish evidence/response confirmation from final approval. Block self-approval of requests initiated by the same user; administration does not create an exemption. The same person may hold operator and approver responsibilities for different requests.
-3. Respondents see and change only their assigned requests/assets in the authorized pair while their response step is open. Changes after closure need an explicit reopening/reassignment process with audit, to be defined later.
+1. Confirm the proposed duties and whether a person may hold multiple roles in one authorized pair.
+2. Clarify Business Owner's business meaning and relationship to the asset-record business owner.
+3. Confirm whether Superuser remains within explicitly assigned pairs or has an explicit global administrative exception.
+4. Decide permanent Respondent role versus task-specific participation. Task participation must carry explicit scope and cannot grant unrestricted app/data access.
 
 ## Follow-up after this round
 
-Define who can dispose, edit accounting values, export data, maintain each reference list, assign roles, reopen requests or change assignments. Define named approval authorities, routing, delegation, escalation, substitutions and thresholds from company business owners. Decide reporting access separately, including Power BI permissions and scope enforcement. These details depend on the approved responsibility set and are not silently granted by this draft.
+Define who can dispose, edit accounting values, export, maintain each reference list, assign roles, reopen requests and reassign participants. Define approval routing, substitutions, delegation, escalation and thresholds with company owners. Define response versus final approval state transitions. Decide Power BI access separately. Implement checks on backend writes and flow calls as well as the UI.
