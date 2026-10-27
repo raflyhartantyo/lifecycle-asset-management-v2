@@ -88,9 +88,21 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 - D031: direct disposal supports sale and non-sale retirement. Require disposal date; buyer/price details apply to sales. No mandatory BAU remarks/reason.
 - D032: inventory is managed more lightly than individually tracked assets. Inventory transfers do not require outgoing/receiving Business Owner approval. Retain scope/authority, quantity and history controls; do not add a Business Owner relationship solely for the rejected inventory approval proposal.
 
+## Round 10 — stock verification owner responses recorded
+
+- D033: derive entity/function from access matrix and active authorized session; filter assets by Available/In Use; include due date with a configurable default. Never infer unrestricted scope from a visible selection control.
+- D034: respondents provide presence/condition/discrepancy evidence; Asset Manager reviews differences and authorized processes apply master-record corrections.
+- D035: Business Owners sign off relevant results. A cycle may close with explicitly acknowledged unresolved exceptions, which remain visibly unverified.
+
+## Round 11 — reconciliation proposals awaiting owner response
+
+1. Upload the accounting ledger within authorized scope and preview matched assets, missing-on-either-side records, value/quantity differences and disposed-asset exceptions before any register update.
+2. Route final reconciliation sign-off to configured Accounting and Governance approvers for the relevant entity/function, as explicit workflow assignments. Permanent application roles need not be expanded solely to name these approver responsibilities.
+3. After sign-off, an authorized Asset Manager explicitly reviews/applies any proposed register corrections with history. Upload/comparison alone does not automatically create/dispose assets or rewrite ownership/scope.
+
 ## Guided review remaining
 
-Target approximately three further short business-decision rounds: stock verification, accounting reconciliation, and acceptance/rollout constraints. See PHASE-1-REVIEW-PLAN.md. Consolidate routine engineering details and traceable baseline rules into a draft for review rather than asking field-by-field questions. This is a planning estimate, not a claim that required company facts or all business decisions are already resolved.
+Two planned short rounds remain: accounting reconciliation, then acceptance/rollout constraints. Consolidate routine implementation details and traceable baseline rules into a review draft. Company-side facts may expose material blockers; unanswered facts remain explicit dependencies, not reasons to restart field-by-field interviews.
 
 ## Company-side fact collection task
 

@@ -54,6 +54,12 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 - D031: disposal supports sale/non-sale retirement with disposal date and applicable sale details, without mandatory BAU remarks.
 - D032: Inventory Operator's authorized inventory transfers do not use the asset-style dual Business Owner approval route. Scope/authority checks, quantity validation and movement history remain required, including supported cross-scope transfers.
 
+## Stock verification overlays
+
+- D033: cycle entity/function comes from the authoritative permission source and active authorized session. Available/In Use filters and due-date defaults confer no new data access.
+- D034: Respondent supplies verification evidence; Asset Manager reviews discrepancies. Any master-record change still needs its authorized business action and applicable transfer approval.
+- D035: relevant Business Owners sign off their asset results; acknowledged unresolved exceptions may remain on a closed cycle and are never reported as successfully verified.
+
 ## Acceptance examples for confirmed decisions
 
 - Asset Operator can register/move an in-scope asset; direct disposal through that role alone is rejected, including calls bypassing the UI.

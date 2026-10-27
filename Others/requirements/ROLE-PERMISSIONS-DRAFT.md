@@ -39,11 +39,13 @@ D021 permits Asset Manager/Global User/Super User to reopen closed processes in 
 
 ## Confirmed asset process overlays
 
+D033–D035 derive stock-verification scope from the access matrix/session, assign discrepancy review to Asset Manager and scoped result sign-off to Business Owners; unresolved exceptions remain visible after closure.
+
 D025 assigns cross-function/entity transfer approvals to outgoing and receiving Business Owners. Transfer execution waits for both approvals and remains subject to source/destination authority. D026 removes mandatory BAU transaction remarks/reasons while retaining automatic history and exceptional reopening/reassignment reasons. D027–D029 confirm same-person approval in both recorded capacities, rejected transfers leaving assets unchanged, and dual-capacity approval for Business Owner changes within the same entity/function. See BUSINESS-PROCESSES.md for the confirmed overview.
 
 ## Current planning status
 
-The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Next focused rounds cover stock verification, reconciliation and launch acceptance; see PHASE-1-REVIEW-PLAN.md.
+The initial role/scope/exception requirements are recorded. Outstanding process-specific details include master-data/field-edit boundaries, assigned final approval routes/delegation, historical field visibility, revocation, export formats and reminder delivery/rate limits. Registration/disposal policies are now confirmed (D030/D031); inventory transfers explicitly omit asset-style dual Business Owner approval while keeping quantity/scope/history controls (D032). Stock-verification scope/discrepancy/sign-off rules are confirmed in D033–D035. Next focused rounds cover accounting reconciliation and launch acceptance; see PHASE-1-REVIEW-PLAN.md.
 
 ## Later decisions
 

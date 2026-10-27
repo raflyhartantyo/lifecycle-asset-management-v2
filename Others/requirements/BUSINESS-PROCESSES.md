@@ -63,6 +63,26 @@ This is a business-flow overview, not a deployed flow or fixed canonical status 
 
 The dual Business Owner approval rules D025/D027/D028/D029 govern individually tracked assets; D032 explicitly prevents carrying that route into quantity inventory by analogy.
 
+## Stock verification — round 10 confirmed
+
+| Decision | Confirmed behavior | Detail for design/review |
+|---|---|---|
+| D033 | Scope derives from access matrix/authorized session; Available/In Use filters the asset set; due date has a configurable default. | Target permission-source schema, default duration/configuration ownership and reviewable respondent prefills. Preserve existing authorized-session selection when more than one pair is available. |
+| D034 | Respondents report presence/condition/ownership/location discrepancies; Asset Manager reviews differences. | Verification evidence does not silently alter master records; corrections use existing authorized update/transfer processes. |
+| D035 | Business Owners sign off relevant asset results; close only with a verified result or explicit acknowledged unresolved exception per asset. | Unanswered/unresolved assets remain unverified, with exceptions visible in reporting after closure. |
+
+Respondent task/history/export access, reminder authority, audited reopening and participant reassignment continue to apply. Available and In Use are asset-set filters; a unified interface does not imply identical verification evidence or matching rules. Exact status vocabulary remains a design contract.
+
+## Accounting reconciliation — round 11 proposals, not approved
+
+The source contains accounting and IT Governance summaries and an approval-request flow; these are evidence for the target review, not confirmation of live configuration or target approver assignments.
+
+| ID | Decision | Proposal |
+|---|---|---|
+| P11-01 | Comparison results | Compare uploaded ledger against authorized operational data and preview matched, missing-on-either-side, value/quantity differences and disposed-asset exceptions before any register update. Retain period/file/run provenance. |
+| P11-02 | Sign-off responsibilities | Use configured Accounting and Governance approvers for the relevant entity/function, assigned to explicit workflow steps. Preserve D009 and assigned-task visibility; exact routing/configuration is designed after acceptance. |
+| P11-03 | Applying corrections | After sign-off, an authorized Asset Manager explicitly reviews/applies proposed master-register corrections with history. Comparison does not automatically create/dispose assets or rewrite ownership/scope; transfer/disposal/registration authority and approvals remain applicable. |
+
 ## Requirement-level acceptance examples for confirmed rules
 
 - A spreadsheet containing valid and invalid rows is fully validated before confirmation. Only explicitly confirmed valid rows are attempted; invalid rows appear in an error report and never silently become assets.
@@ -75,10 +95,17 @@ The dual Business Owner approval rules D025/D027/D028/D029 govern individually t
 - An authorized inventory transfer does not create a dual Business Owner approval task. It still validates scope/quantity and records movement history.
 - BAU asset changes save without entering remarks/reason. Automated change history still records actor/time/old-new values. Reopening/reassignment without the required exceptional reason remains rejected.
 
+## Stock verification acceptance examples
+
+- A user cannot create a cycle for an entity/function outside its access-matrix/session authority; filters do not broaden that authority.
+- Available/In Use selection restricts the cycle asset set; due date uses the configured default rather than a hardcoded campaign date.
+- Respondent discrepancies are retained for review and do not silently alter the master owner/location/scope.
+- Closed cycles with acknowledged exceptions still report missing/unresolved assets as unverified; completeness and verification success are distinct measures.
+
 ## Remaining registration design detail
 
 Required fields by asset type, accounting-code uniqueness scope, serial-number applicability, initial statuses, owner/location defaults, record validation, exact duplicate matching and safe bulk retry behavior. Business choices D024/D030 are already confirmed. Existing YAML provides evidence for review but does not automatically approve every current rule as the V2 requirement.
 
 ## Remaining process work
 
-Prioritize remaining business decisions about stock-verification participants/completion, reconciliation discrepancies/approvals, and acceptance/rollout constraints. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+Prioritize accounting reconciliation discrepancies/approvals/correction behavior and acceptance/rollout constraints. Stock-verification rules D033–D035 are confirmed; remaining evidence/prefill/configuration details are reviewed as labeled design assumptions. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.

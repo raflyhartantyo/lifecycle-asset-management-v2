@@ -139,3 +139,18 @@ Phase 1 round 9: direct disposal supports sales and non-sale retirement. Disposa
 ## D032 — Lightweight quantity-inventory transfers
 
 Phase 1 round 9: owner rejected applying asset-style dual Business Owner approvals to inventory because inventories are less tightly managed than assets. Inventory transfers use ordinary authorized inventory permissions, including supported cross-function/entity movements, without the dual Business Owner approval step. Preserve quantity validation, scope/authority checks and movement history; the absence of asset-style approval does not remove those controls. Do not add an inventory Business Owner relationship solely to implement the rejected approval proposal. Any other future inventory approval rule would require a separate explicit decision.
+
+
+## D033 — Stock verification scope, filtering and due dates
+
+Phase 1 round 10: derive entity/function from the access matrix and authorized session rather than free-form cycle selection. Filter the cycle's asset set by Available or In Use. Include a due date with a configurable default. For consistency with D002/D007/D013, a single authorized pair can be resolved automatically; multiple authorized pairs use the existing once-per-session authorized context selection, and broader administrators stay within their grant. This resolution detail is an engineering interpretation of the confirmed scope rules, not a new cross-scope permission.
+
+Access matrix denotes the target authoritative permission source, not proof that the legacy Acces_Matrix already contains the required scope columns. Exact default duration, configuration ownership and physical permission schema are architecture/configuration details. Reviewable custodian/location-PIC respondent prefills remain a traceable baseline/design assumption for consolidated review.
+
+## D034 — Stock verification discrepancies are evidence for review
+
+Phase 1 round 10: respondents record asset presence, condition and ownership/location discrepancies. Differences go to Asset Manager for review. Responses are verification evidence; master-record changes use the authorized update process with history and applicable transfer approvals. A response does not silently rewrite ownership or scope.
+
+## D035 — Stock verification sign-off and exception-aware completion
+
+Phase 1 round 10: relevant Business Owners sign off their asset results. Every asset has either a verified outcome or an explicitly recorded unresolved exception. A cycle may close with acknowledged exceptions; unanswered or unresolved assets remain visibly unverified and never count as successfully verified. Preserve prior respondent/history/reminder/reopening rules. Exact states and exception implementation are specified during design.

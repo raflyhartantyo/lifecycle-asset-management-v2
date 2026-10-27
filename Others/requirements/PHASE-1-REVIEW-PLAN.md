@@ -1,6 +1,6 @@
 # Phase 1 — remaining guided review
 
-Planning estimate after round 9: approximately three more short business-decision rounds, followed by one consolidated requirements review. Additional questioning should be limited to material new blockers, not routine implementation details. This plan is an estimate, not an owner-approved requirement or fixed deadline.
+Current progress: round 10 completed; two planned short business-decision rounds remain (11 and 12), followed by one consolidated requirements review. Original planning estimate after round 9 was three remaining rounds. Additional questioning should be limited to material new blockers, not routine implementation details. This plan is an estimate, not an owner-approved requirement or fixed deadline.
 
 ## Covered in rounds 1–9
 
@@ -10,7 +10,7 @@ Production replacement scope and pilot; ordinary/entity/application-wide roles; 
 
 | Round | Focus | Decisions to consolidate |
 |---|---|---|
-| 10 | Stock verification | Participant assignment/evidence, completion/exception handling, deadlines and approval ownership. Reuse confirmed respondent/history/reminder policies. |
+| 10 — complete | Stock verification | D033–D035 confirm access-matrix/session scope, Available/In Use filtering, configurable default due date, discrepancy review and Business Owner sign-off with visible unresolved exceptions. |
 | 11 | Accounting reconciliation | Ledger comparison/discrepancy treatment, explicit review/approval ownership and whether/how accepted results change operational data. Preserve baseline matching rules as evidence for review. |
 | 12 | Acceptance and rollout constraints | Success measures, priority user/device needs, business acceptance/support owners, any deadline and rollout constraints. Use returned company inventory for technical facts rather than asking the owner to guess. |
 
