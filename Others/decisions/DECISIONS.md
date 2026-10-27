@@ -180,3 +180,12 @@ Phase 1 round 12: retained workflows must pass representative UAT, access isolat
 ## D041 — Sole human UAT tester
 
 Phase 1 round 12: the project owner will personally conduct testing rather than assigning separate business-representative testers. Provide an individual-testing setup and staged runbook. Company Claude may assist permitted setup/implementation and the main developer supplies fixes/cases; neither substitutes for the owner's observed results. One test operator may use multiple company-approved test identities/personas sequentially. Unavailable independent identities/platform access leave the affected authorization/approval cases BLOCKED or NOT RUN; a UI role switch or one unrestricted account is not evidence that backend isolation passed. Post-launch support ownership and a fixed go-live date were not supplied and remain explicit dependencies.
+
+
+## D042 — Microsoft Approvals for workflow decisions
+
+Owner direction, 2026-10-27: approvals will use Microsoft Approvals. Design the retained workflow decision steps around Microsoft approval services, with Power Automate orchestrating the LAM integration. This selects the approval platform; it does not introduce approvals into direct disposal or lightweight inventory transfers, change required approval capacities, or settle routing order, deadlines, delegation or reassignment policies.
+
+Existing rules continue: outgoing and receiving Business Owner capacities for asset scope/owner changes; one explicit response when the same authorized person holds both capacities; rejection leaves the asset unchanged; stock result Business Owner sign-off; configured Accounting and Governance reconciliation sign-off; authorized explicit correction application afterward. LAM retains workflow progress, assigned-task context and historical evidence. Microsoft service access does not replace LAM scope authorization.
+
+See `../architecture/MICROSOFT-APPROVALS-RESEARCH.md` for verified platform facts and `../architecture/APPROVALS-INTEGRATION-DESIGN.md` for the proposed integration and open implementation checks. No company approval flow was deployed or tested by this decision.

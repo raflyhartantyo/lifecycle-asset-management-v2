@@ -38,3 +38,7 @@ No application or flow source was modified, no flow was executed, and no live pr
 
 
 This analysis was produced against the original handover paths; resolve `app/src/` to the Power Apps app screens folder, `flows/` to Power Automate and `data/schema/` to Others/sharepoint/schema in this repository.
+
+## Microsoft Approvals target direction
+
+D042 selects Microsoft Approvals for retained workflow decisions. Current planning references: [research](MICROSOFT-APPROVALS-RESEARCH.md), [integration proposal](APPROVALS-INTEGRATION-DESIGN.md) and [revised navigation](APP-NAVIGATION.md). These target design notes do not describe deployed functionality.
