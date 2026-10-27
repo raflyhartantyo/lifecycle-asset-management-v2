@@ -280,3 +280,10 @@ Maintain the entity parent and valid Category lookup on every type. This decisio
 Owner agreed, 2026-10-27: a cross-entity asset transfer specifies a valid receiving-entity Asset Type before requesting approval. The destination type must use the same Accounting Category (KO/NK/PL) as the source. If no suitable type exists, the receiving entity's Global User creates it first; Super User's cross-entity catalogue maintenance authority under D056 remains available.
 
 The transfer preserves asset identity and the company-wide Accounting Asset Code, with prior/new type references in history. Both required Business Owner capacities approve under D025/D027–D029 and D042; mapping does not bypass those decisions. Rejection leaves the asset unchanged. Selecting receiving-catalogue reference data does not grant access to unrelated destination assets or maintenance privileges. Revalidate destination type/entity/category and reviewed asset/request versions before applying the approved transfer.
+
+
+## D058 — Provisional registration-field review
+
+Owner response, 2026-10-27: agreed for now, to check later. Treat the following as a provisional working field contract for design, not a permanently finalized mandatory-field policy. Revisit during screen review and representative registration testing.
+
+Provisionally required: Asset Name, Asset Type, Business Owner, Building and Condition (default Good). Provisionally optional: Serial Number, Manufacturer/Model, supporting documents/photos and Custodian while Available. Existing confirmed Accounting Asset Code, Purchase Date/Purchase Cost, authorized entity/function, IDR and Available-only initial registration rules remain in force. Business-required fields are application-validated under D044, not SharePoint Required flags. Include a visible field-review checkpoint before accepting the registration implementation; record any changes against this decision and update the screen/data contract together.
