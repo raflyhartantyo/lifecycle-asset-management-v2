@@ -64,7 +64,7 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 
 - D036: ledger comparison is preview/reporting work and does not itself authorize master-data mutation.
 - D037: Accounting and Governance sign-off is explicit scoped workflow participation; it does not introduce a permanent application role or unrestricted data access.
-- D038: authorized Asset Manager explicitly previews/applies eligible corrections after required sign-off. Other action rights and approvals remain in force; outcomes are audited.
+- D038/D070: authorized Asset Manager explicitly previews/applies eligible corrections before Accounting/Governance final sign-off on actual results. Other action rights and approvals remain in force; outcomes are audited.
 
 ## Acceptance examples for confirmed decisions
 

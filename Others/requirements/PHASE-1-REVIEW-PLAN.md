@@ -11,7 +11,7 @@ Production replacement scope and pilot; ordinary/entity/application-wide roles; 
 | Round | Focus | Decisions to consolidate |
 |---|---|---|
 | 10 — complete | Stock verification | D033–D035 confirm access-matrix/session scope, Available/In Use filtering, configurable default due date, discrepancy review and Business Owner sign-off with visible unresolved exceptions. |
-| 11 — complete | Accounting reconciliation | D036–D038 confirm preview/provenance, configured Accounting/Governance sign-off and explicit Asset Manager correction application with existing action rules preserved. |
+| 11 — complete | Accounting reconciliation | D036–D038 confirm preview/provenance, explicit Asset Manager correction application and configured Accounting/Governance sign-off; D070 places application before final sign-off on actual results, preserving existing action prerequisites. |
 | 12 — complete | Acceptance and individual testing | D039–D041 confirm device priorities, acceptance gates, developer-authored cases and the project owner as sole human UAT tester. Support ownership and any fixed go-live date remain unspecified. |
 
 ## Reduce interview overhead

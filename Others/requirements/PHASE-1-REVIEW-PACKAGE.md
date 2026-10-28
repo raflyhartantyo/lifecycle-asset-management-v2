@@ -15,7 +15,7 @@ A total Zurich-branded LAM redesign for individually tracked assets, quantity in
 - Quantity inventory transfers deliberately omit dual Business Owner approval while retaining authorization, quantity and movement history controls.
 - Bulk imports preview rows and create confirmed valid new assets only; report invalid/duplicate rows without overwriting existing records. Disposal supports sale/non-sale outcomes with date and applicable sale fields.
 - Stock verification derives scope from the permission source/session, filters Available/In Use and uses configurable default due dates. Respondents supply evidence, managers review discrepancies and owners sign off. Acknowledged unresolved exceptions stay visibly unverified after closure.
-- Reconciliation previews ledger comparisons/provenance, routes Accounting/Governance sign-off and requires explicit authorized Asset Manager application of corrections. Existing action/transfer rules still apply.
+- Reconciliation previews ledger comparisons/provenance, requires explicit authorized Asset Manager application of eligible corrections, then routes Accounting/Governance final sign-off on actual applied results (D070). Existing action/transfer rules still apply.
 - Desktop/laptop primary, responsive tablet and mobile-friendly responses/approvals/progress; Zurich branding and accessibility govern design.
 - The project owner performs human UAT alone. Main developer supplies cases, setup and fixes; company Claude assists implementation/setup. No separate business-representative testers are assumed.
 

@@ -1,5 +1,7 @@
 # Main screen concepts — 28 October 2026
 
+Reconciliation ordering update — D070: the earlier reconciliation images are historical. Use the [revised apply-first visual sequence](../reconciliation-apply-first/README.md): review → explicit authorized apply → Accounting/Governance final sign-off on actual results. Original images and prompts are retained as design history.
+
 Status: proposed visual concepts for owner review, not implemented screens or approved detailed workflow contracts. The owner accepted the palette/spacing of Concept 01 and requested a clearer guided reading path; the guided registration Concept 02 is the shared style reference. These main screens extend that direction for review.
 
 All data, names, amounts, task counts and reference codes are illustrative. These examples show a Global User; actual navigation and operations follow implemented grants and explicit task/approval assignments. Detailed states, controls and interactions remain subject to review. Microsoft Approvals handles approval decisions; LAM retains evidence tasks and progress/history.

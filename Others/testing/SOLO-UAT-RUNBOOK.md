@@ -19,7 +19,7 @@ You conduct all human tests yourself. Personas are the permission contexts you e
 | 3 | MOV | BAU movement and owner/scope approvals; use sequential distinct approved owner sessions |
 | 4 | DIS and INV | Disposal preservation and lightweight quantity transfers; reset fixtures afterward |
 | 5 | SO | Responding, discrepancies, history, reminders, sign-off, reopen and reassign |
-| 6 | REC | Ledger comparison, task approvals and explicit correction application |
+| 6 | REC | Ledger comparison, explicit authorized correction application, then final task sign-offs on actual results (D070) |
 | 7 | RPT and UX | Export/report scope, desktop/tablet/mobile and Zurich/accessibility |
 | 8 | OPS and FLOW | Failure recovery, rollback and each selected baseline flow characterization |
 

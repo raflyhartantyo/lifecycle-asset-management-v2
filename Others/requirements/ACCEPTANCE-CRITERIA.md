@@ -21,7 +21,7 @@ Status: confirmed business acceptance requirements translated into scenarios; co
 | AC-13 | Inventory transfers retain scope/quantity/history checks without creating asset-style dual Business Owner approval tasks. | D018/D032 |
 | AC-14 | Stock scope derives from access/session, Available/In Use filters assets, and configured default due date is used. Respondent discrepancies become evidence for review. | D033/D034 |
 | AC-15 | Business Owners sign off stock results; acknowledged exceptions can remain after closure, but missing/unresolved assets are never counted verified. | D035 |
-| AC-16 | Reconciliation comparison preserves provenance and does not mutate the register. Configured Accounting/Governance sign-off precedes explicit authorized Asset Manager correction application. Preserve applicable action/transfer rules and correction outcomes. | D036–D038 |
+| AC-16 | Reconciliation comparison preserves provenance and does not mutate the register. Explicit authorized Asset Manager correction application precedes configured Accounting/Governance final sign-off on actual applied results. Preserve applicable action/transfer prerequisites and correction outcomes; final rejection/rework and unresolved-follow-up eligibility remain open. | D036–D038, D070 |
 
 ## Brand and accessibility requirements from baseline
 

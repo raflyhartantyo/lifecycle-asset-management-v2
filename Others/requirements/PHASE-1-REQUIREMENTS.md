@@ -98,7 +98,7 @@ See D008–D010 and ROLE-PERMISSIONS-DRAFT.md. No permissions have been implemen
 
 - D036: comparison preview includes matches, missing records on either side, value/quantity differences and disposal exceptions; retain accounting period/file/run history.
 - D037: configured Accounting and Governance approvers sign off in entity/function scope through explicit workflow assignments; no new permanent role names are required.
-- D038: after sign-off, authorized Asset Manager explicitly reviews/applies proposed corrections with preview/audit. Uploading/comparing alone does not create/dispose assets or change ownership/scope; existing action approvals remain applicable.
+- D038/D070: authorized Asset Manager explicitly reviews/applies eligible corrections with preview/audit before configured Accounting/Governance final sign-offs on actual applied results. Uploading/comparing alone does not create/dispose assets or change ownership/scope; existing action approvals remain applicable.
 
 ## Round 12 — owner responses recorded
 

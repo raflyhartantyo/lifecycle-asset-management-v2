@@ -13,13 +13,13 @@ All sections below branch directly from Home. The lower row of the example image
 | Inventory | Quantity register, registration, authorized transfers and history |
 | My Tasks | Assigned evidence/response tasks, status of Microsoft approval steps, authorized link to open the relevant Microsoft approval, historical task context |
 | Stock Verification | Cycle setup, due dates, assignments, evidence review, owner sign-off progress and exceptions |
-| Reconciliation | Ledger upload, comparison, Accounting/Governance approval progress and explicit correction application |
+| Reconciliation | Ledger upload, comparison/review, explicit authorized correction application, then Accounting/Governance final sign-off progress on actual results (D070) |
 | Reports | Relevant request progress, authorized dashboards and scoped exports |
 | Administration | Authorized reference data, role administration, routing/default configuration |
 
 My Tasks has two experiences: respondents enter asset-verification evidence in LAM; approvers make workflow decisions through Microsoft Approvals. Propose an Open approval action rather than a competing custom Approve/Reject implementation in LAM. Link format, environment visibility, mobile behavior and permissions require tenant validation; do not invent a hardcoded deep-link contract.
 
-LAM displays last-synchronized state and distinguishes pending, rejected/canceled/expired, approved and applied/failed application outcomes. These are proposed display concepts, not final physical choice labels. No transfer or reconciliation correction is shown as completed merely because approval was granted.
+LAM displays last-synchronized state and distinguishes pending, rejected/canceled/expired, approved and applied/failed application outcomes. These are proposed display concepts, not final physical choice labels. Applied status requires a durable successful write. Final reconciliation certification is tracked separately after application under D070; an applied run awaiting final sign-off is not certified. Transfer approval alone does not mean the transfer applied.
 
 ## Frequent movements — D059
 

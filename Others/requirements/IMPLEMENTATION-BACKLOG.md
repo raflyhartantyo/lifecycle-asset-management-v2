@@ -13,7 +13,7 @@ Status: proposed execution plan, not implemented functionality or dated commitme
 | BL-07 | P1 | Direct disposal | BL-05 | Sale/non-sale date/applicable fields; archive/history and safe failure recovery; no retired request process. | DIS-01..04 |
 | BL-08 | P1 | Quantity inventory | BL-02/04 | Scoped quantities/transfer/history without asset-style owner approvals; concurrency protection. | INV-01..04 |
 | BL-09 | P1 | Stock verification and participation | BL-05/06 | Access-derived cycles/filter/default due; assigned evidence/history/export; discrepancy review, reminders, owner sign-off and visible exceptions. | SO-01..11 |
-| BL-10 | P1 | Accounting reconciliation | BL-02/05/06 | Validated comparison/provenance, configured Accounting/Governance steps and explicit correction application. | REC-01..07 |
+| BL-10 | P1 | Accounting reconciliation | BL-02/05/06 | Validated comparison/provenance, explicit authorized correction application, then configured Accounting/Governance final sign-off on actual results (D070). | REC-01..07 |
 | BL-11 | P1 | Reporting/export and report-scope enforcement | BL-02/09/10 | Role-scoped rows/fields and freshness; direct report permissions verified. | RPT-01..06 |
 | BL-12 | P1 | UAT, migration rehearsal and release recovery | BL-03..11 | All retained workflows/evidence, migration reconciliation/rollback, Zurich/accessibility/device gates and no unresolved Critical/High defects. | All required target cases |
 | BL-13 | P2 | Pilot and staged onboarding | BL-12; promotion/support authority | ORG-01/IT pilot then accepted CRESS/entities; monitor defects/adoption and verify cutover records. | Approved candidate regression subset |

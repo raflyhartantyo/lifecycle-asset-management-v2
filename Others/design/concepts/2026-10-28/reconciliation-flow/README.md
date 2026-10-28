@@ -1,5 +1,7 @@
 # Reconciliation — proposed visual flow
 
+Reconciliation ordering update — D070: the earlier reconciliation images are historical. Use the [revised apply-first visual sequence](../reconciliation-apply-first/README.md): review → explicit authorized apply → Accounting/Governance final sign-off on actual results. Original images and prompts are retained as design history.
+
 Date: 2026-10-28. Status: detailed visual/interaction proposal; existing D036–D038/D042/D046 rules remain in force. No company app/list/flow changes or runtime results.
 
 ## 1. Upload and validate

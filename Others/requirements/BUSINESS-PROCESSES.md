@@ -81,7 +81,7 @@ The source contains accounting and IT Governance summaries and an approval-reque
 |---|---|---|
 | D036 | Review matches, records missing on either side, value/quantity differences and disposal exceptions before register changes; retain period/file/run provenance. | Baseline matching/grouping validation, field semantics and input schema. |
 | D037 | Configured Accounting and Governance approvers sign off for the relevant entity/function through explicit task assignments, without adding permanent application roles. | Routing order, configuration source, substitutions and exact task-level access. |
-| D038 | Authorized Asset Manager previews and explicitly applies proposed corrections after sign-off, with audit. Comparison does not automatically create/dispose assets or alter ownership/scope. | Correction eligibility, affected fields, partial failures and retry/concurrency behavior; existing action/approval rules remain applicable. |
+| D038 | Authorized Asset Manager previews and explicitly applies eligible corrections before final Accounting/Governance sign-off on actual applied results (D070), with audit. Comparison does not automatically create/dispose assets or alter ownership/scope. | Correction eligibility, affected fields, partial failures and retry/concurrency behavior; existing action/approval rules remain applicable. |
 
 ### Reconciliation overview
 
@@ -89,9 +89,9 @@ The source contains accounting and IT Governance summaries and an approval-reque
 flowchart LR
     A[Upload ledger within authorized scope] --> B[Validate and compare; retain file, period and run]
     B --> C[Review matches, differences and exceptions]
-    C --> D[Configured Accounting and Governance sign-off]
-    D --> E[Asset Manager previews authorized corrections]
-    E --> F[Explicitly apply corrections; record outcomes and history]
+    C --> D[Asset Manager previews authorized corrections]
+    D --> E[Explicitly apply corrections; record outcomes and history]
+    E --> F[Configured Accounting and Governance final sign-off on applied results]
 ```
 
 The diagram shows the successful business path; it does not prescribe sequential approval order or omit the need for rejected/failed/cancelled states in implementation. Successful approval does not imply every proposed correction has been applied. Registration/disposal/transfer rules still govern those actions.
@@ -119,7 +119,7 @@ The diagram shows the successful business path; it does not prescribe sequential
 
 - Upload/comparison leaves operational master records unchanged and preserves the source period/file/run reference.
 - Configured eligible Accounting/Governance participants can decide assigned steps; unrelated users cannot access or approve the run.
-- No correction is applied before required sign-off and explicit authorized Asset Manager action.
+- No correction is applied without explicit authorized Asset Manager review/action and applicable transaction-specific prerequisites. D070 places final reconciliation sign-off after application; rejection/rework/rollback and unresolved-follow-up eligibility remain open.
 - A correction changing Business Owner or scope still requires the applicable transfer approval; reconciliation sign-off does not bypass it.
 - Applied/rejected/failed correction outcomes remain distinguishable with audit/history and recovery evidence.
 
@@ -129,4 +129,4 @@ Required fields by asset type, accounting-code uniqueness scope, serial-number a
 
 ## Remaining process work
 
-The main accounting reconciliation behavior is confirmed in D036–D038. Finish acceptance/rollout constraints, then consolidate field/routing details and technical assumptions for review. Stock-verification rules D033–D035 are confirmed; remaining evidence/prefill/configuration details are reviewed as labeled design assumptions. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.
+The main accounting reconciliation behavior is confirmed in D036–D038, with apply-before-final-sign-off ordering in D070. Finish acceptance/rollout constraints, then consolidate field/routing details and technical assumptions for review. Stock-verification rules D033–D035 are confirmed; remaining evidence/prefill/configuration details are reviewed as labeled design assumptions. Carry registration/disposal field details and technical validation into a consolidated review draft, clearly distinguishing confirmed decisions, baseline evidence and engineering assumptions. Keep company-side facts separate from owner business decisions. Define retention and operational acceptance targets from company requirements rather than assumptions.

@@ -25,7 +25,7 @@ These are engineering proposals to support the requirement, not an approved acco
 
 ## Relation to reconciliation
 
-Book Value generation and ledger comparison are different operations. The monthly calculation will generate the register's value using the approved formula; reconciliation can compare it with accounting data and preserve differences/provenance. Accounting/Governance sign-off and the Asset Manager's explicit correction step remain separate under D036–D038. No upload automatically overwrites Book Value. Authority and rules for a reconciliation correction that conflicts with a formula result must be settled before deployment.
+Book Value generation and ledger comparison are different operations. The monthly calculation will generate the register's value using the approved formula; reconciliation can compare it with accounting data and preserve differences/provenance. Accounting/Governance sign-off and the Asset Manager's explicit correction step remain separate under D036–D038 and D070: explicit authorized application comes before final sign-off on actual results. No upload automatically overwrites Book Value. Authority and rules for a reconciliation correction that conflicts with a formula result must be settled before deployment.
 
 ## Deferred decisions
 

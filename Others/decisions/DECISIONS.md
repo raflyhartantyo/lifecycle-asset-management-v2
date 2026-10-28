@@ -166,6 +166,8 @@ Phase 1 round 11: final reconciliation sign-off goes to configured Accounting an
 
 ## D038 — Explicit application of reconciliation corrections
 
+Ordering update: D070 supersedes the original sign-off-before-application sequence below. Explicit authorization, preview, audit and action-specific prerequisites remain applicable.
+
 Phase 1 round 11: after sign-off, an authorized Asset Manager explicitly reviews and applies proposed register corrections with a change preview and audit history. Upload/comparison alone does not automatically create/dispose assets or alter ownership/scope. Existing registration, disposal, transfer and field-edit authority requirements still apply. Approval and successful correction application are separate outcomes; preserve traceability of accepted versus actually applied changes.
 
 
@@ -183,6 +185,8 @@ Phase 1 round 12: the project owner will personally conduct testing rather than 
 
 
 ## D042 — Microsoft Approvals for workflow decisions
+
+Ordering update: D070 supersedes the reconciliation application-after-sign-off summary below. Transfer approvals still precede those transactions; final reconciliation sign-off follows actual application.
 
 Owner direction, 2026-10-27: approvals will use Microsoft Approvals. Design the retained workflow decision steps around Microsoft approval services, with Power Automate orchestrating the LAM integration. This selects the approval platform; it does not introduce approvals into direct disposal or lightweight inventory transfers, change required approval capacities, or settle routing order, deadlines, delegation or reassignment policies.
 
@@ -359,3 +363,10 @@ Owner response, 2026-10-28: the revised assigned-assets list and separate correc
 Owner accepted, 2026-10-28: Asset Manager reviews evidence, records review outcomes/exceptions, previews relevant owner-specific results and requests Business Owner sign-off through Microsoft Approvals. Accept the shown manager-review/sign-off visuals as the working design. Master corrections remain separate authorized operations; approval requests do not silently update master data. Each owner receives only relevant results, and unresolved assets remain unverified even when acknowledged for closure under D035.
 
 Detailed review-state vocabulary, verification criteria, change/reapproval rules, exact submission/closure gates, persistence, permission enforcement and production components remain implementation/design tasks, not runtime acceptance. The illustrative data, checkbox and controls do not prove deployed behavior. See `../architecture/STOCK-VERIFICATION-REVIEW-DESIGN.md` and its visual links.
+
+
+## D070 — Apply reconciliation corrections before final sign-offs
+
+Owner confirmed, 2026-10-28: upload → compare/review → authorized Asset Manager explicitly previews and applies eligible corrections → configured Accounting and Governance final sign-offs through Microsoft Approvals. Final sign-off reviews the actual applied results and retained evidence, rather than authorizing a future reconciliation apply step. This supersedes only the ordering in D038 and subsequent summaries, including D042; retain D036 provenance, D037 configured assignments and D038 explicit application/audit requirements.
+
+Business Owner approvals required for owner/scope transfers still precede those specific transactions. Reconciliation does not bypass registration, direct-disposal, field-edit or financial controls. Book Value remains governed by D046's deferred monthly formula, with no automatic ledger overwrite. Keep application outcomes separate from final certification; an applied run awaiting final sign-off must be shown honestly. Final rejection/rework/rollback handling and eligibility with unresolved follow-ups remain open policy decisions. The revised visuals illustrate this ordering, not approval of every field or readiness rule.
