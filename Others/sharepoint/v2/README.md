@@ -13,3 +13,7 @@ Company observations: [ENVIRONMENT-FACTS.md](../../handover/ENVIRONMENT-FACTS.md
 ## Application-controlled mandatory fields
 
 D044 supersedes the original Required=Yes storage flags. FOUNDATION-COLUMNS.csv now separates SharePointRequired from BusinessRequired. Configure editable business fields as optional in SharePoint; the later application requires valid names/codes/parent organization. Keep the unique constraints, lookup relationship and indexes. Empty list creation does not implement any application validation; keep these lists empty until master-data entry is delivered.
+
+## Operational architecture — design contract
+
+The [operational data model](../../architecture/OPERATIONAL-DATA-MODEL.md) and [machine-readable field contract](OPERATIONAL-DATA-CONTRACT.json) now cover the proposed logical reference/register, operation/history, stock, reconciliation, approval, valuation and supporting records. These are architecture resources, not import/provisioning artifacts or a one-list-per-entity instruction. Only the original Organizations/Functions guide is currently creation-ready. D072 keeps connector/permission configuration with the owner at implementation time; no setup report is needed to continue design.

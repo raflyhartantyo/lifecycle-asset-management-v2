@@ -1,0 +1,1736 @@
+{
+  "contractVersion": "0.1-design",
+  "status": "Proposed logical data contract; not a provisioning or import artifact",
+  "creationReady": false,
+  "decisionBasis": "Confirmed decisions through D072; unresolved business details remain deferred",
+  "storagePolicy": {
+    "editableBusinessSharePointRequired": false,
+    "businessValidation": "Power Apps and authorized mutation path",
+    "logicalTypesArePhysicalSharePointTypes": false,
+    "oneEntityRequiresOneList": false,
+    "existingFoundationContractPreserved": true
+  },
+  "commonEvidence": {
+    "recordVersions": "Use concrete backend version/concurrency bindings at implementation; not assumed cross-record atomic",
+    "createdModifiedMetadata": "Retain actor/time and operation references appropriate to each entity",
+    "snapshots": "Versioned typed evidence with explicit fields; physical inline/file/child layout follows feature contract",
+    "money": "IDR; precision/range/initial financial behavior deferred",
+    "references": "Logical target entity/key, not a claim that business code is a physical SharePoint numeric lookup ID",
+    "queryKeys": "Proposed access paths; validated scalar projections/index/partition design follows physical mapping, not a guarantee of delegation/performance"
+  },
+  "entities": [
+    {
+      "name": "Organization",
+      "key": "Organization_ID",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "Organization_ID",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "",
+      "existingContract": "FOUNDATION-COLUMNS.csv"
+    },
+    {
+      "name": "Function",
+      "key": "Function_ID",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "Function_ID",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "",
+      "existingContract": "FOUNDATION-COLUMNS.csv"
+    },
+    {
+      "name": "Principal",
+      "key": "PrincipalKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "PrincipalKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "TenantID",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "UserObjectID",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "ContactEmail",
+          "logicalType": "Text",
+          "businessRequired": "No"
+        }
+      ],
+      "notes": "Actual directory identity can exist without an operational grant; pending custodian is not a principal.",
+      "existingContract": "ACCESS-GRANT-COLUMNS-DRAFT.csv"
+    },
+    {
+      "name": "AccessGrant",
+      "key": "GrantKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "GrantKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "PrincipalRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Principal"
+        },
+        {
+          "name": "RoleCode",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "Viewer",
+            "AssetOperator",
+            "InventoryOperator",
+            "AssetManager",
+            "BusinessOwner",
+            "GlobalUser",
+            "SuperUser"
+          ]
+        },
+        {
+          "name": "ScopeKind",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "Pair",
+            "Entity",
+            "Application"
+          ]
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "Organization"
+        },
+        {
+          "name": "FunctionRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "Function"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Pair/Entity/Application shapes follow access contract; workflow participation is separate.",
+      "existingContract": "ACCESS-GRANT-COLUMNS-DRAFT.csv"
+    },
+    {
+      "name": "Category",
+      "key": "CategoryKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "CategoryKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "CategoryCode",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "KO",
+            "NK",
+            "PL"
+          ]
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "AccountingMapping",
+          "logicalType": "Text",
+          "businessRequired": "Deferred",
+          "notes": "No Accounting mapping is inferred from KO/NK/PL"
+        }
+      ],
+      "notes": "Fixed values Komputer, Non-Komputer, Perangkat Lunak; controlled reference, not ordinary type-maintainer taxonomy."
+    },
+    {
+      "name": "AssetType",
+      "key": "AssetTypeKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "AssetTypeKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "CategoryRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Category"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Entity-specific; same label in another Entity is a different record. Duplicate-label/deactivation rules deferred.",
+      "queryKeys": [
+        "OrganizationRef",
+        "CategoryRef"
+      ]
+    },
+    {
+      "name": "Building",
+      "key": "BuildingKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "BuildingKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Shared globally; no Organization/Function parent, floor or room. Catalogue maintainer/duplicate policies deferred."
+    },
+    {
+      "name": "Asset",
+      "key": "AssetKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "AssetKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "AssetTag",
+          "logicalType": "Text",
+          "businessRequired": "System",
+          "notes": "Generated by LAM; format/allocation deferred; not the internal immutable key"
+        },
+        {
+          "name": "AccountingAssetCode",
+          "logicalType": "Text",
+          "businessRequired": "Yes",
+          "notes": "Company-wide unique at registration; retain supplied display value"
+        },
+        {
+          "name": "AccountingCodeMatchKey",
+          "logicalType": "Text",
+          "businessRequired": "System",
+          "notes": "Proposed unique canonical key; case/whitespace/leading-zero and disposed-code reuse rules deferred; never silently truncate or merge"
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "FunctionRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Function",
+          "notes": "Must belong to OrganizationRef"
+        },
+        {
+          "name": "AssetTypeRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "AssetType"
+        },
+        {
+          "name": "AssetName",
+          "logicalType": "Text",
+          "businessRequired": "ProvisionalYes"
+        },
+        {
+          "name": "SerialNumber",
+          "logicalType": "Text",
+          "businessRequired": "No",
+          "unique": false
+        },
+        {
+          "name": "ManufacturerModel",
+          "logicalType": "Text",
+          "businessRequired": "No"
+        },
+        {
+          "name": "BuildingRef",
+          "logicalType": "Reference",
+          "businessRequired": "ProvisionalYes",
+          "references": "Building"
+        },
+        {
+          "name": "BusinessOwnerRef",
+          "logicalType": "Reference",
+          "businessRequired": "ProvisionalYes",
+          "references": "Principal",
+          "notes": "Actual directory account; never pending placeholder"
+        },
+        {
+          "name": "CustodianState",
+          "logicalType": "Choice",
+          "businessRequired": "Conditional",
+          "values": [
+            "None",
+            "Directory",
+            "PendingDirectory"
+          ],
+          "notes": "Proposed representation; In Use needs Directory or explicit pending fallback; Available may have none"
+        },
+        {
+          "name": "CustodianRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "Principal",
+          "notes": "Present only for Directory; pending is not a fake identity"
+        },
+        {
+          "name": "AssetStatus",
+          "logicalType": "Choice",
+          "businessRequired": "System",
+          "values": [
+            "Available",
+            "In Use",
+            "Disposed"
+          ],
+          "initialValue": "Available",
+          "notes": "Working lifecycle labels; final transition guards pending; registration cannot start In Use"
+        },
+        {
+          "name": "Condition",
+          "logicalType": "Choice",
+          "businessRequired": "ProvisionalYes",
+          "values": [
+            "Good",
+            "Broken",
+            "Ready to Auction"
+          ],
+          "default": "Good",
+          "notes": "Preserve deliberate valid choice; no separate auction-readiness field"
+        },
+        {
+          "name": "PurchaseDate",
+          "logicalType": "DateOnly",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "PurchaseCost",
+          "logicalType": "Money",
+          "businessRequired": "Yes",
+          "notes": "IDR; range/precision rules deferred"
+        },
+        {
+          "name": "CurrencyCode",
+          "logicalType": "Text",
+          "businessRequired": "System",
+          "fixedValue": "IDR"
+        },
+        {
+          "name": "LatestBookValue",
+          "logicalType": "Money",
+          "businessRequired": "Deferred",
+          "notes": "Unavailable until defined by financial contract; never default to zero/purchase cost or ledger value"
+        },
+        {
+          "name": "LatestBookValueResultRef",
+          "logicalType": "Reference",
+          "businessRequired": "No",
+          "references": "BookValueResult"
+        },
+        {
+          "name": "CreatedOperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Operation"
+        },
+        {
+          "name": "LastChangeOperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Operation"
+        }
+      ],
+      "notes": "Current authoritative row; proposed retained lifecycle row after disposal; references/history remain stable. Financial and registration gates do not block independent design.",
+      "queryKeys": [
+        "OrganizationRef",
+        "FunctionRef",
+        "AssetTypeRef",
+        "AssetStatus",
+        "BusinessOwnerRef",
+        "AccountingCodeMatchKey"
+      ]
+    },
+    {
+      "name": "InventoryItem",
+      "key": "InventoryItemKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "InventoryItemKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Title",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "UnitCode",
+          "logicalType": "Text",
+          "businessRequired": "Deferred"
+        },
+        {
+          "name": "IsActive",
+          "logicalType": "Boolean",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Catalogue scope, unit representation and duplication rules deferred; not AssetType and not a row per unit."
+    },
+    {
+      "name": "InventoryBalance",
+      "key": "InventoryBalanceKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "InventoryBalanceKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "InventoryItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "InventoryItem"
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "FunctionRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Function",
+          "notes": "Must belong to OrganizationRef"
+        },
+        {
+          "name": "Quantity",
+          "logicalType": "Quantity",
+          "businessRequired": "Yes",
+          "notes": "No negative available stock; units/fractions and adjustment policy deferred"
+        },
+        {
+          "name": "BuildingRef",
+          "logicalType": "Reference",
+          "businessRequired": "Deferred",
+          "references": "Building"
+        },
+        {
+          "name": "LastChangeOperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Operation"
+        }
+      ],
+      "notes": "Unique approved item/scope/dimension tuple; building dimension is not selected by this proposal.",
+      "queryKeys": [
+        "OrganizationRef",
+        "FunctionRef",
+        "InventoryItemRef"
+      ]
+    },
+    {
+      "name": "Operation",
+      "key": "OperationKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "OperationKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "OperationKind",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "notes": "Typed contract per feature; not a generic unrestricted write endpoint"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        },
+        {
+          "name": "InitiatingContext",
+          "logicalType": "ScopeSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "SubmissionKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "notes": "Idempotency binding includes authenticated actor and operation kind; reject same key with different payload"
+        },
+        {
+          "name": "Outcome",
+          "logicalType": "OperationOutcome",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ContractVersion",
+          "logicalType": "Text",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Batch correlation is not authorization to all rows or a cross-row transaction.",
+      "queryKeys": [
+        "ActorRef",
+        "RecordedAt",
+        "OperationKind"
+      ]
+    },
+    {
+      "name": "OperationItem",
+      "key": "OperationItemKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "OperationItemKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "OperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Operation"
+        },
+        {
+          "name": "AssetRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "Asset"
+        },
+        {
+          "name": "SourceBalanceRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "InventoryBalance"
+        },
+        {
+          "name": "DestinationBalanceRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "InventoryBalance"
+        },
+        {
+          "name": "ExpectedRecordVersions",
+          "logicalType": "VersionEvidence",
+          "businessRequired": "System"
+        },
+        {
+          "name": "BeforeSnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ProposedChanges",
+          "logicalType": "TypedChangeSet",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "AppliedSnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ProcessingRoute",
+          "logicalType": "Route",
+          "businessRequired": "System"
+        },
+        {
+          "name": "Outcome",
+          "logicalType": "OperationOutcome",
+          "businessRequired": "System"
+        },
+        {
+          "name": "RecoveryEvidence",
+          "logicalType": "TypedEvidence",
+          "businessRequired": "Conditional"
+        }
+      ],
+      "notes": "One subject per typed item contract; inventory transfer can contain its source/destination effects. Disposal date/mode/buyer/per-asset sale price are typed fields of its disposal change set, not an approval request.",
+      "queryKeys": [
+        "OperationRef",
+        "AssetRef",
+        "SourceBalanceRef",
+        "DestinationBalanceRef"
+      ]
+    },
+    {
+      "name": "AssetEvent",
+      "key": "AssetEventKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "AssetEventKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "AssetRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Asset"
+        },
+        {
+          "name": "OperationItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "OperationItem"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        },
+        {
+          "name": "BeforeSnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "AfterSnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "EventKind",
+          "logicalType": "Text",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Append-preserved business history; not a mandate for event-sourced architecture.",
+      "queryKeys": [
+        "AssetRef",
+        "OperationItemRef",
+        "RecordedAt"
+      ]
+    },
+    {
+      "name": "InventoryEvent",
+      "key": "InventoryEventKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "InventoryEventKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "BalanceRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "InventoryBalance"
+        },
+        {
+          "name": "OperationItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "OperationItem"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        },
+        {
+          "name": "PriorQuantity",
+          "logicalType": "Quantity",
+          "businessRequired": "System"
+        },
+        {
+          "name": "NewQuantity",
+          "logicalType": "Quantity",
+          "businessRequired": "System"
+        },
+        {
+          "name": "CounterpartEvidence",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Conditional"
+        }
+      ],
+      "notes": "",
+      "queryKeys": [
+        "BalanceRef",
+        "OperationItemRef",
+        "RecordedAt"
+      ]
+    },
+    {
+      "name": "StockCycle",
+      "key": "StockCycleKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "StockCycleKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "FunctionRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Function",
+          "notes": "Must belong to OrganizationRef"
+        },
+        {
+          "name": "SelectionContract",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "DueDate",
+          "logicalType": "DateOnly",
+          "businessRequired": "Yes",
+          "notes": "Configured default and explicit cycle due date"
+        },
+        {
+          "name": "CycleState",
+          "logicalType": "WorkflowState",
+          "businessRequired": "System"
+        },
+        {
+          "name": "CreatedOperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Operation"
+        }
+      ],
+      "notes": "Selection/filter completeness and version retained; closure policy under D035.",
+      "queryKeys": [
+        "OrganizationRef",
+        "FunctionRef",
+        "DueDate"
+      ]
+    },
+    {
+      "name": "StockAssignment",
+      "key": "StockAssignmentKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "StockAssignmentKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "StockCycleRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "StockCycle"
+        },
+        {
+          "name": "AssetRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Asset"
+        },
+        {
+          "name": "RespondentRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Principal"
+        },
+        {
+          "name": "AssignedSnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "AssignmentVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "AssignmentState",
+          "logicalType": "AssignmentState",
+          "businessRequired": "System"
+        },
+        {
+          "name": "SupersedesAssignmentRef",
+          "logicalType": "Reference",
+          "businessRequired": "No",
+          "references": "StockAssignment"
+        }
+      ],
+      "notes": "Snapshot and participant history survive reassignment; final per-cycle assignment uniqueness/overlap rule pending.",
+      "queryKeys": [
+        "StockCycleRef",
+        "RespondentRef",
+        "AssetRef"
+      ]
+    },
+    {
+      "name": "StockResponse",
+      "key": "StockResponseKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "StockResponseKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "StockAssignmentRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "StockAssignment"
+        },
+        {
+          "name": "ResponseVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ResponseKind",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "Correct",
+            "NeedsCorrection"
+          ],
+          "notes": "Proposed stored labels for accepted list-first behavior"
+        },
+        {
+          "name": "ObservedChanges",
+          "logicalType": "TypedObservation",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        }
+      ],
+      "notes": "Versioned assigned evidence only; field allow-list and save/cancel/final submission contract pending; never master mutation.",
+      "queryKeys": [
+        "StockAssignmentRef",
+        "ResponseVersion"
+      ]
+    },
+    {
+      "name": "StockReview",
+      "key": "StockReviewKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "StockReviewKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "StockAssignmentRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "StockAssignment"
+        },
+        {
+          "name": "ReviewedResponseRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "StockResponse"
+        },
+        {
+          "name": "ReviewVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ReviewOutcome",
+          "logicalType": "ReviewOutcome",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "ExceptionEvidence",
+          "logicalType": "TypedEvidence",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        }
+      ],
+      "notes": "Reviewed, Verified and unresolved acknowledged are distinct outcomes; exact criteria/labels pending.",
+      "queryKeys": [
+        "StockAssignmentRef",
+        "ReviewedResponseRef"
+      ]
+    },
+    {
+      "name": "ReconciliationRun",
+      "key": "ReconciliationRunKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "ReconciliationRunKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "OrganizationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Organization"
+        },
+        {
+          "name": "FunctionRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Function",
+          "notes": "Must belong to OrganizationRef"
+        },
+        {
+          "name": "SourceDocumentRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "DocumentReference"
+        },
+        {
+          "name": "AccountingPeriod",
+          "logicalType": "AccountingPeriod",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "ComparisonVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "MatchingContractVersion",
+          "logicalType": "Text",
+          "businessRequired": "System"
+        },
+        {
+          "name": "RegisterEvidence",
+          "logicalType": "SnapshotReference",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ActualResultSnapshot",
+          "logicalType": "SnapshotReference",
+          "businessRequired": "Conditional"
+        }
+      ],
+      "notes": "Source/register/calculation period provenance; final readiness/rejection policy pending.",
+      "queryKeys": [
+        "OrganizationRef",
+        "FunctionRef",
+        "AccountingPeriod"
+      ]
+    },
+    {
+      "name": "LedgerRow",
+      "key": "LedgerRowKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "LedgerRowKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "ReconciliationRunRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "ReconciliationRun"
+        },
+        {
+          "name": "SourceRowIdentity",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "SourceValues",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "NormalizedValues",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ValidationOutcome",
+          "logicalType": "ValidationOutcome",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Preserve invalid/duplicate input evidence; never silently merge rows.",
+      "queryKeys": [
+        "ReconciliationRunRef",
+        "SourceRowIdentity"
+      ]
+    },
+    {
+      "name": "ReconciliationFinding",
+      "key": "FindingKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "FindingKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "ReconciliationRunRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "ReconciliationRun"
+        },
+        {
+          "name": "LedgerEvidence",
+          "logicalType": "ReferenceSet",
+          "businessRequired": "Conditional",
+          "targetEntity": "LedgerRow"
+        },
+        {
+          "name": "RegisterEvidence",
+          "logicalType": "SnapshotReference",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "AssetRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "Asset"
+        },
+        {
+          "name": "FindingKind",
+          "logicalType": "FindingKind",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ComparisonEvidence",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Can link multiple source rows for a finally defined grouping contract; final finding classes/count semantics pending.",
+      "queryKeys": [
+        "ReconciliationRunRef",
+        "AssetRef",
+        "FindingKind"
+      ]
+    },
+    {
+      "name": "CorrectionPlanItem",
+      "key": "CorrectionPlanItemKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "CorrectionPlanItemKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "FindingRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "ReconciliationFinding"
+        },
+        {
+          "name": "PlanVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ReviewedDisposition",
+          "logicalType": "Disposition",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "ProposedChanges",
+          "logicalType": "TypedChangeSet",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ExpectedVersions",
+          "logicalType": "VersionEvidence",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "AppliedOperationItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "OperationItem"
+        }
+      ],
+      "notes": "Disposition may be follow-up/registration/disposal-history review; field eligibility not inferred. Actual applications recorded before final sign-off.",
+      "queryKeys": [
+        "FindingRef",
+        "AppliedOperationItemRef"
+      ]
+    },
+    {
+      "name": "ApprovalAttempt",
+      "key": "ApprovalAttemptKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "ApprovalAttemptKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "WorkflowSubject",
+          "logicalType": "TypedSubjectReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "WorkflowKind",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "AssetTransfer",
+            "StockOwnerSignoff",
+            "ReconciliationFinalSignoff"
+          ]
+        },
+        {
+          "name": "ReviewedSnapshot",
+          "logicalType": "SnapshotReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "AttemptVersion",
+          "logicalType": "Version",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ServiceApprovalIds",
+          "logicalType": "ServiceReferenceSet",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "AttemptState",
+          "logicalType": "WorkflowState",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "No disposal/inventory approval kind; workflow subject/snapshot scope validated; order under D070.",
+      "queryKeys": [
+        "WorkflowKind",
+        "AttemptState"
+      ]
+    },
+    {
+      "name": "ApprovalObligation",
+      "key": "ApprovalObligationKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "ApprovalObligationKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "ApprovalAttemptRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "ApprovalAttempt"
+        },
+        {
+          "name": "AssignedPrincipalRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Principal"
+        },
+        {
+          "name": "Capacity",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "RelevantSubset",
+          "logicalType": "SnapshotReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "SatisfiedByResponseRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "ApprovalResponse"
+        }
+      ],
+      "notes": "Two owner capacities may link to one explicit response by the same authorized person.",
+      "queryKeys": [
+        "ApprovalAttemptRef",
+        "AssignedPrincipalRef"
+      ]
+    },
+    {
+      "name": "ApprovalResponse",
+      "key": "ApprovalResponseKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "ApprovalResponseKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "ApprovalAttemptRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "ApprovalAttempt"
+        },
+        {
+          "name": "ActualResponderRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Principal"
+        },
+        {
+          "name": "ServiceResponseId",
+          "logicalType": "Text",
+          "businessRequired": "System"
+        },
+        {
+          "name": "Decision",
+          "logicalType": "Decision",
+          "businessRequired": "System"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        },
+        {
+          "name": "ValidityEvidence",
+          "logicalType": "TypedEvidence",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Actual decision is distinct from authority validation and successful transaction application.",
+      "queryKeys": [
+        "ApprovalAttemptRef",
+        "ActualResponderRef"
+      ]
+    },
+    {
+      "name": "BookValueRun",
+      "key": "BookValueRunKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "BookValueRunKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "AccountingPeriod",
+          "logicalType": "AccountingPeriod",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "FormulaVersion",
+          "logicalType": "Text",
+          "businessRequired": "Deferred"
+        },
+        {
+          "name": "ScheduleContext",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Deferred"
+        },
+        {
+          "name": "OperationRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Operation"
+        },
+        {
+          "name": "Outcome",
+          "logicalType": "OperationOutcome",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Formula, time zone, initial value, precision, eligibility and backfill deferred.",
+      "queryKeys": [
+        "AccountingPeriod",
+        "FormulaVersion"
+      ]
+    },
+    {
+      "name": "BookValueResult",
+      "key": "BookValueResultKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "BookValueResultKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "BookValueRunRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "BookValueRun"
+        },
+        {
+          "name": "AssetRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "Asset"
+        },
+        {
+          "name": "CalculationIdentity",
+          "logicalType": "StableKey",
+          "businessRequired": "System"
+        },
+        {
+          "name": "InputEvidence",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "System"
+        },
+        {
+          "name": "PreviousBookValue",
+          "logicalType": "Money",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "CalculatedBookValue",
+          "logicalType": "Money",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "ApplicationOperationItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "OperationItem"
+        },
+        {
+          "name": "Outcome",
+          "logicalType": "OperationOutcome",
+          "businessRequired": "System"
+        }
+      ],
+      "notes": "Identity includes asset/period and explicit recalculation version; uncertain application reconciled before retry.",
+      "queryKeys": [
+        "BookValueRunRef",
+        "AssetRef",
+        "CalculationIdentity"
+      ]
+    },
+    {
+      "name": "DocumentReference",
+      "key": "DocumentKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "DocumentKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Subject",
+          "logicalType": "TypedSubjectReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "StorageReference",
+          "logicalType": "FileReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "FileVersion",
+          "logicalType": "Text",
+          "businessRequired": "System"
+        },
+        {
+          "name": "VisibilityBasis",
+          "logicalType": "AccessEvidence",
+          "businessRequired": "System"
+        },
+        {
+          "name": "DocumentKind",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        }
+      ],
+      "notes": "Approved immutable/versioned source; attachments and exports obey subject-specific scope, not merely shared parent access."
+    },
+    {
+      "name": "NotificationDelivery",
+      "key": "NotificationDeliveryKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "NotificationDeliveryKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "Subject",
+          "logicalType": "TypedSubjectReference",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "RecipientEvidence",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "TemplateVersion",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "Channel",
+          "logicalType": "NotificationChannel",
+          "businessRequired": "Deferred"
+        },
+        {
+          "name": "DeliveryOutcome",
+          "logicalType": "DeliveryOutcome",
+          "businessRequired": "System"
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        }
+      ],
+      "notes": "Reminder delivery state is separate from task/response status; channel/rate/deduplication rules pending."
+    },
+    {
+      "name": "ExportJob",
+      "key": "ExportJobKey",
+      "status": "Proposed architecture; not creation-ready",
+      "fields": [
+        {
+          "name": "ExportJobKey",
+          "logicalType": "StableKey",
+          "businessRequired": "System",
+          "immutable": true
+        },
+        {
+          "name": "ActorRef",
+          "logicalType": "Reference",
+          "businessRequired": "System",
+          "references": "Principal",
+          "notes": "Resolved authenticated end-user actor; retain execution connection separately"
+        },
+        {
+          "name": "AuthorizedQuerySnapshot",
+          "logicalType": "TypedSnapshot",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "FieldPolicyVersion",
+          "logicalType": "Text",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "Format",
+          "logicalType": "ExportFormat",
+          "businessRequired": "Deferred"
+        },
+        {
+          "name": "Outcome",
+          "logicalType": "OperationOutcome",
+          "businessRequired": "System"
+        },
+        {
+          "name": "OutputDocumentRef",
+          "logicalType": "Reference",
+          "businessRequired": "Conditional",
+          "references": "DocumentReference"
+        },
+        {
+          "name": "DownloadAccessEvidence",
+          "logicalType": "AccessEvidence",
+          "businessRequired": "Conditional"
+        },
+        {
+          "name": "RecordedAt",
+          "logicalType": "Timestamp",
+          "businessRequired": "System",
+          "notes": "Preserve business date separately; storage/time-zone mapping specified at implementation"
+        }
+      ],
+      "notes": "Full authorized filtered result, not current rendered page; final format/expiry/retention pending."
+    }
+  ],
+  "typedChangeContracts": {
+    "DirectDisposal": {
+      "subject": "One Asset per OperationItem; one or many selected items per Operation",
+      "fields": [
+        {
+          "name": "DisposalMode",
+          "logicalType": "Choice",
+          "businessRequired": "Yes",
+          "values": [
+            "Sale",
+            "NonSale"
+          ]
+        },
+        {
+          "name": "DisposalDate",
+          "logicalType": "DateOnly",
+          "businessRequired": "Yes"
+        },
+        {
+          "name": "Buyer",
+          "logicalType": "BuyerRepresentation",
+          "businessRequired": "Conditional",
+          "notes": "Required for Sale; representation deferred; not required for NonSale"
+        },
+        {
+          "name": "SellingPrice",
+          "logicalType": "Money",
+          "businessRequired": "Conditional",
+          "notes": "Required for each Sale asset independently; no batch-total allocation; range/precision deferred"
+        },
+        {
+          "name": "CurrencyCode",
+          "logicalType": "Text",
+          "businessRequired": "System",
+          "fixedValue": "IDR"
+        }
+      ],
+      "sharedValueShortcut": "Explicit chosen draft rows may receive shared date/buyer then be individually edited; no operation executes until reviewed confirmation",
+      "approvalRequired": false,
+      "deferred": [
+        "Mixed Sale/NonSale batch behavior",
+        "Shortcut overwrite interaction",
+        "Eligibility and backdating",
+        "Partial-failure policy"
+      ]
+    },
+    "Movement": {
+      "subject": "One Asset with independent before/proposed-after values per OperationItem",
+      "fieldContract": "Deliver typed allowed changed fields per operation; preserve explicit keep/clear distinction",
+      "routeRule": "Entity/Function/BusinessOwner change requires existing owner capacities before that transaction; other eligible changes follow BAU authority",
+      "destinationTypeRule": "Receiving Entity AssetType in same Category on cross-entity transfers; preserve identity and AccountingAssetCode",
+      "deferred": [
+        "Mixed source scopes",
+        "Batch grouping",
+        "Invalid subset confirmation",
+        "Partial application/retry policy",
+        "Exact field-edit/state transition rules"
+      ]
+    },
+    "InventoryTransfer": {
+      "subject": "One logical quantity transfer links both balance effects under the same OperationItem",
+      "fields": [
+        {
+          "name": "InventoryItemRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "InventoryItem"
+        },
+        {
+          "name": "SourceBalanceRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "InventoryBalance"
+        },
+        {
+          "name": "DestinationBalanceRef",
+          "logicalType": "Reference",
+          "businessRequired": "Yes",
+          "references": "InventoryBalance"
+        },
+        {
+          "name": "TransferQuantity",
+          "logicalType": "Quantity",
+          "businessRequired": "Yes"
+        }
+      ],
+      "constraints": [
+        "Valid positive transfer amount under final unit/precision contract",
+        "Sufficient source balance",
+        "Authorized source/destination rules",
+        "Versioned effects and recovery for uncertain partial writes"
+      ],
+      "assetStyleDualOwnerApprovalRequired": false
+    }
+  },
+  "crossEntityConstraints": [
+    "Function belongs to Organization; operational scope/query projections must agree with authoritative parent relationships",
+    "AssetType belongs to Asset Organization and references one fixed Category",
+    "Building is shared; it has no exclusive Organization/Function parent and no floor/room fields",
+    "Asset AccountingAssetCode company uniqueness must be enforced under concurrent creation after canonicalization policy is defined; no duplicate serial prohibition",
+    "BusinessOwner is a real directory principal; PendingDirectory Custodian creates no principal, grant or routing identity",
+    "Approval capacities and response identity/attempt/snapshot are validated separately from operational roles",
+    "StockResponse modifies assigned evidence only; review, verification, master correction and sign-off remain separate",
+    "Reconciliation final review snapshot follows actual correction application; transfer-specific approvals still precede those transactions",
+    "Lifecycle and outcome/history references survive disposal; no ordinary cascade-delete of business evidence",
+    "All read/export/history projections enforce row and field visibility; snapshot existence is not general visibility"
+  ]
+}
