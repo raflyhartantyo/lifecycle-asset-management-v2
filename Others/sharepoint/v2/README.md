@@ -1,6 +1,6 @@
 # V2 SharePoint foundation — delivery 001
 
-Status: manual creation guidance ready for the first two reference lists; implementation NOT RUN. This is a new V2 contract, not a reproduction of the untyped baseline schema. Operational data and access-control contracts are still being designed.
+Status: manual creation guidance ready for the first two reference lists; implementation NOT RUN. This is a new V2 contract, not a reproduction of the untyped baseline schema. Operational data and access-control contracts are being delivered incrementally. [Reference foundation 002](reference-foundation-002/README.md) now adds physical Category/Asset Type/Building definitions and manual read-only app resources.
 
 Start with [CREATION-GUIDE.md](CREATION-GUIDE.md). Exact fields/settings are in [FOUNDATION-COLUMNS.csv](FOUNDATION-COLUMNS.csv); future stages are in [CREATION-ORDER.md](CREATION-ORDER.md). These CSVs are documentation, not files to import as list data.
 
@@ -16,4 +16,4 @@ D044 supersedes the original Required=Yes storage flags. FOUNDATION-COLUMNS.csv 
 
 ## Operational architecture — design contract
 
-The [operational data model](../../architecture/OPERATIONAL-DATA-MODEL.md) and [machine-readable field contract](OPERATIONAL-DATA-CONTRACT.json) now cover the proposed logical reference/register, operation/history, stock, reconciliation, approval, valuation and supporting records. These are architecture resources, not import/provisioning artifacts or a one-list-per-entity instruction. Only the original Organizations/Functions guide is currently creation-ready. D072 keeps connector/permission configuration with the owner at implementation time; no setup report is needed to continue design.
+The [operational data model](../../architecture/OPERATIONAL-DATA-MODEL.md) and [machine-readable field contract](OPERATIONAL-DATA-CONTRACT.json) now cover the proposed logical reference/register, operation/history, stock, reconciliation, approval, valuation and supporting records. These are architecture resources, not import/provisioning artifacts or a one-list-per-entity instruction. Organizations/Functions retain their original creation guide; [reference foundation 002](reference-foundation-002/README.md) now supplies the next three physical reference-list contracts. Other operational entities remain design-only. D072 keeps connector/permission configuration with the owner at implementation time; no setup report is needed to continue design.

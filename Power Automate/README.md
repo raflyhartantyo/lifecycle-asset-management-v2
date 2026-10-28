@@ -23,3 +23,5 @@
 ## Target V2 operation interfaces
 
 [Flow/operation contracts](../Others/architecture/FLOW-OPERATION-CONTRACTS.md) and [request/output resources](../Others/architecture/interfaces/README.md) define proposed logical operations, input/output responsibilities, result handling and connector dependencies. They are architecture documents, not new deployed flows or import packages. Logical operation count does not prescribe physical flow count. Existing per-flow baseline sources above remain intact; feature deliveries will provide concrete affected flow resources and manual guidance.
+
+The first [reference-foundation-002 slice](../Others/releases/reference-foundation-002/RELEASE.md) uses direct read-only SharePoint reference queries and supplies no additional flow. Operational/maintenance writers will have their own concrete per-flow resources; no placeholder flow folder is created for this slice.

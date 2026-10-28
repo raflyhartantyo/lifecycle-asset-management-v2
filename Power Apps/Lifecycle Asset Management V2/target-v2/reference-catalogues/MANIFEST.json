@@ -1,0 +1,125 @@
+{
+  "delivery": "reference-foundation-002",
+  "status": "Manual implementation resources; not compiled or deployed",
+  "appScreen": "Screen1",
+  "scope": "Read-only reference browser; no maintenance writers or flows",
+  "controls": [
+    {
+      "name": "Screen1",
+      "kind": "Existing blank Screen",
+      "parent": "App"
+    },
+    {
+      "name": "lblLAMRefTitle",
+      "kind": "Classic Label",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefContext",
+      "kind": "Classic Label",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefFreshness",
+      "kind": "Classic Label",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefError",
+      "kind": "Classic Label",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefFooter",
+      "kind": "Classic Label",
+      "parent": "Screen1"
+    },
+    {
+      "name": "btnLAMRefRefresh",
+      "kind": "Classic Button",
+      "parent": "Screen1"
+    },
+    {
+      "name": "btnLAMRefTabCategories",
+      "kind": "Classic Button",
+      "parent": "Screen1"
+    },
+    {
+      "name": "galLAMRefCategories",
+      "kind": "Classic blank vertical Gallery",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefRowCategories",
+      "kind": "Classic Label",
+      "parent": "galLAMRefCategories"
+    },
+    {
+      "name": "btnLAMRefTabAssetTypes",
+      "kind": "Classic Button",
+      "parent": "Screen1"
+    },
+    {
+      "name": "galLAMRefAssetTypes",
+      "kind": "Classic blank vertical Gallery",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefRowAssetTypes",
+      "kind": "Classic Label",
+      "parent": "galLAMRefAssetTypes"
+    },
+    {
+      "name": "lblLAMRefRowCategory",
+      "kind": "Classic Label",
+      "parent": "galLAMRefAssetTypes"
+    },
+    {
+      "name": "btnLAMRefTabBuildings",
+      "kind": "Classic Button",
+      "parent": "Screen1"
+    },
+    {
+      "name": "galLAMRefBuildings",
+      "kind": "Classic blank vertical Gallery",
+      "parent": "Screen1"
+    },
+    {
+      "name": "lblLAMRefRowBuildings",
+      "kind": "Classic Label",
+      "parent": "galLAMRefBuildings"
+    }
+  ],
+  "appProperties": [
+    {
+      "property": "OnStart",
+      "formulaFile": "formulas/App.OnStart.additions.powerfx",
+      "mergeNotReplace": true
+    },
+    {
+      "property": "OnError",
+      "formulaFile": "formulas/App.OnError.additions.powerfx",
+      "mergeNotReplace": true
+    }
+  ],
+  "sourceAliases": [
+    "LAM2_Categories",
+    "LAM2_AssetTypes",
+    "LAM2_Buildings"
+  ],
+  "contextInput": {
+    "variable": "gblLAMReferenceContext",
+    "fields": {
+      "OrganizationItemId": "Numeric SharePoint Organization list item ID, not Organization_ID code",
+      "OrganizationCode": "Readable stable organization code",
+      "IsResolved": "Trusted session adapter display state; not backend authorization"
+    }
+  },
+  "unresolvedContextBehavior": "Zero rows and disabled refresh; no First(Organizations) fallback",
+  "connector": "SharePoint",
+  "bindingMode": "Direct connector reference reads under configured end-user source permissions; this is not the operational-master writer architecture",
+  "formulaLocale": "English comma argument separators and semicolon chaining; adapt through Studio locale",
+  "powerFxCompiled": false,
+  "runtimeTests": "NOT RUN",
+  "physicalListContract": "Others/sharepoint/v2/reference-foundation-002/COLUMNS.csv"
+}

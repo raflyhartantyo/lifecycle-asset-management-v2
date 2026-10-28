@@ -1,0 +1,20 @@
+If(
+    gblLAMReferenceContext.IsResolved && gblLAMReferenceContext.OrganizationItemId > 0,
+    Set(gblLAMRefBusy, true);
+    Set(gblLAMRefError, "");
+    Set(gblLAMRefRefreshingOrgId, gblLAMReferenceContext.OrganizationItemId);
+    Set(gblLAMRefCategoriesOK, IfError(Refresh(LAM2_Categories); true, false));
+    Set(gblLAMRefTypesOK, IfError(Refresh(LAM2_AssetTypes); true, false));
+    Set(gblLAMRefBuildingsOK, IfError(Refresh(LAM2_Buildings); true, false));
+    If(
+        gblLAMRefCategoriesOK && gblLAMRefTypesOK && gblLAMRefBuildingsOK,
+        If(
+            gblLAMRefRefreshingOrgId = gblLAMReferenceContext.OrganizationItemId,
+            Set(gblLAMRefLastRefresh, Now());
+            Set(gblLAMRefLastRefreshOrgId, gblLAMRefRefreshingOrgId)
+        ),
+        Set(gblLAMRefError, "Reference data could not be refreshed. Try again.")
+    );
+    Set(gblLAMRefBusy, false),
+    Set(gblLAMRefError, "Select an authorized entity before refreshing.")
+)

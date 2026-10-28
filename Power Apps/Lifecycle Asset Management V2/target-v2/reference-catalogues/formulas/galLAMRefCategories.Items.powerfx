@@ -1,0 +1,5 @@
+If(
+    gblLAMReferenceContext.IsResolved && gblLAMReferenceContext.OrganizationItemId > 0,
+    SortByColumns(LAM2_Categories, "CategoryCode", SortOrder.Ascending),
+    Filter(LAM2_Categories, ID = 0)
+)

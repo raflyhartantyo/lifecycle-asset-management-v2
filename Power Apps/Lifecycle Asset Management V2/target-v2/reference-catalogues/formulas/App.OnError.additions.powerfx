@@ -1,0 +1,3 @@
+// Merge with the application's error handler. Do not display raw connector errors.
+Set(gblLAMRefError, "Reference data is unavailable. Try refreshing.");
+Set(gblLAMRefBusy, false)

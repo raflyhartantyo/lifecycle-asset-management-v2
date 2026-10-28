@@ -1,0 +1,5 @@
+If(
+    gblLAMReferenceContext.IsResolved && gblLAMReferenceContext.OrganizationItemId > 0,
+    SortByColumns(Filter(LAM2_Buildings, IsActive = true), "Title", SortOrder.Ascending),
+    Filter(LAM2_Buildings, ID = 0)
+)

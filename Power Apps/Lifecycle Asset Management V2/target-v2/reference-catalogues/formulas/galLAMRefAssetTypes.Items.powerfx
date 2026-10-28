@@ -1,0 +1,13 @@
+If(
+    gblLAMReferenceContext.IsResolved && gblLAMReferenceContext.OrganizationItemId > 0,
+    SortByColumns(
+        Filter(
+            LAM2_AssetTypes,
+            OrganizationRef.Id = gblLAMReferenceContext.OrganizationItemId,
+            IsActive = true
+        ),
+        "Title",
+        SortOrder.Ascending
+    ),
+    Filter(LAM2_AssetTypes, ID = 0)
+)

@@ -1,0 +1,19 @@
+// Merge into the blank/new app initialization; do not erase existing logic.
+Set(gblLAMBrand, {
+    Ink: ColorValue("#23366F"),
+    Primary: ColorValue("#2167AE"),
+    Canvas: ColorValue("#ECEEEF"),
+    Surface: Color.White,
+    Border: ColorValue("#DDE4E3"),
+    Header: ColorValue("#E4E9EC")
+});
+Set(gblLAMReferenceContext, {
+    OrganizationItemId: 0,
+    OrganizationCode: "",
+    IsResolved: false
+});
+Set(gblLAMRefTab, "Categories");
+Set(gblLAMRefBusy, false);
+Set(gblLAMRefError, "");
+Set(gblLAMRefLastRefresh, Blank());
+Set(gblLAMRefLastRefreshOrgId, 0)
