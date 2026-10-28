@@ -1,8 +1,8 @@
 # Stock-verification manager review and owner sign-off
 
-Status: visual/process proposal following the accepted respondent direction. Existing D034/D035/D042 requirements apply; detailed review outcomes, controls and completion gates need owner review. No company resources changed and no runtime tests run.
+Status: review/sign-off sequence and visuals accepted as the working design under D069. Existing D034/D035/D042 requirements apply; detailed review outcomes, controls and completion gates still need specification and implementation. No company resources changed and no runtime tests run.
 
-## Proposed sequence
+## Accepted sequence — D069
 
 Collect assigned responses → Asset Manager compares evidence → Record review outcome → Resolve through separate authorized operations or record unresolved exception → Prepare owner-specific summaries → Request Microsoft Approvals → Track required decisions and acknowledged exceptions → Close only when the agreed completion conditions are met.
 

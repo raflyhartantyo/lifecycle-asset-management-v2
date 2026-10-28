@@ -352,3 +352,10 @@ This supersedes the questionnaire-first respondent storyboard as the primary pat
 ## D068 — List-first respondent concept accepted as working direction
 
 Owner response, 2026-10-28: the revised assigned-assets list and separate correction screen are good enough; continue. Retain D067's list-first interaction and assignment-only corrections as the working respondent design. This accepts the direction, not runtime testing or every unresolved save/cancel/submission/component detail. Two deliberate activations remain the proposed timing-independent interpretation; preserve keyboard/mobile usability and visible states. Manager review and Business Owner sign-off visuals are subsequent proposals, not approved by this acceptance.
+
+
+## D069 — Manager review and owner sign-off sequence accepted
+
+Owner accepted, 2026-10-28: Asset Manager reviews evidence, records review outcomes/exceptions, previews relevant owner-specific results and requests Business Owner sign-off through Microsoft Approvals. Accept the shown manager-review/sign-off visuals as the working design. Master corrections remain separate authorized operations; approval requests do not silently update master data. Each owner receives only relevant results, and unresolved assets remain unverified even when acknowledged for closure under D035.
+
+Detailed review-state vocabulary, verification criteria, change/reapproval rules, exact submission/closure gates, persistence, permission enforcement and production components remain implementation/design tasks, not runtime acceptance. The illustrative data, checkbox and controls do not prove deployed behavior. See `../architecture/STOCK-VERIFICATION-REVIEW-DESIGN.md` and its visual links.

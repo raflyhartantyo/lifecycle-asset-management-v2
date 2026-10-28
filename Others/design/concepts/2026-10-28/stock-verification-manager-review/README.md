@@ -1,6 +1,6 @@
-# Manager review and Business Owner sign-off — visual proposal
+# Manager review and Business Owner sign-off — agreed working design
 
-Date: 2026-10-28. Status: proposal for owner review; no implemented app/flow or runtime results. Samples illustrate the next stages after the accepted respondent list experience.
+Date: 2026-10-28. Status: accepted working sequence and visual design under D069; no implemented app/flow or runtime results. Samples illustrate the next stages after the accepted respondent list experience.
 
 ## 1. Review evidence and record outcomes
 
