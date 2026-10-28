@@ -12,3 +12,5 @@
 - `testing/`: individual UAT setup, approved persona bindings, logical fixtures, concrete cases/results/defect templates and unit mapping.
 
 - `prompts/`: ready-to-copy company Claude prompts with explicit handover status.
+
+Start target implementation planning with the [implementation blueprint](architecture/IMPLEMENTATION-BLUEPRINT.md), [logical screen contracts](architecture/SCREEN-IMPLEMENTATION-MAP.md) and [build/evidence gates](architecture/BUILD-SEQUENCE-AND-GATES.md). These consolidate accepted working designs through D071 without changing preserved baseline sources.

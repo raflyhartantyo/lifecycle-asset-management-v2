@@ -1,17 +1,17 @@
 # Lifecycle Asset Management V2
 
-Reference implementation and versioned implementation handovers for the company LAM redesign. The main developer/designer supplies complete files; company Claude helps apply them and returns validation evidence.
+Reference implementation and versioned implementation handovers for the company LAM redesign. Codex supplies design, implementation resources and test cases. The project owner manually implements and tests in company systems; company Claude provides Q&A using supplied files and observations.
 
 ## Start
 
 1. Read [baseline-001](Others/releases/baseline-001/RELEASE.md) and [confirmed decisions](Others/decisions/DECISIONS.md).
-2. Follow the [implementation order](Others/releases/IMPLEMENTATION-ORDER.md).
+2. Read the [implementation blueprint](Others/architecture/IMPLEMENTATION-BLUEPRINT.md), [screen map](Others/architecture/SCREEN-IMPLEMENTATION-MAP.md) and [build sequence](Others/architecture/BUILD-SEQUENCE-AND-GATES.md), then follow the [implementation order](Others/releases/IMPLEMENTATION-ORDER.md).
 3. Give company Claude [START-HERE](Others/handover/START-HERE.md), then the selected app/flow handover.
 4. Return the completed [implementation result](Others/handover/IMPLEMENTATION-RESULT-TEMPLATE.md) for the next delivery.
 
 ## Current planning and testing
 
-The twelve-round requirements interview is complete. Review the [Phase 1 package](Others/requirements/PHASE-1-REVIEW-PACKAGE.md), [implementation backlog](Others/requirements/IMPLEMENTATION-BACKLOG.md) and [single-operator UAT kit](Others/testing/README.md). These are specifications/test plans, not rebuilt or deployed V2 features.
+The twelve-round requirements interview is complete. Review the [Phase 1 package](Others/requirements/PHASE-1-REVIEW-PACKAGE.md), [implementation backlog](Others/requirements/IMPLEMENTATION-BACKLOG.md) and [single-operator UAT kit](Others/testing/README.md). Accepted working designs now extend through D071, including selected-assets movement/disposal, list-first stock responses, manager/owner review, apply-before-final-sign-off reconciliation and scoped reporting. The blueprint consolidates them into feature deliveries. These are specifications/test plans, not rebuilt or deployed V2 features.
 
 ## Three main folders
 
