@@ -1,6 +1,6 @@
-# Stock-verification respondent flow — proposed visual
+# Stock-verification respondent flow — earlier proposal
 
-Date: 2026-10-28. Status: proposal for owner review, not a confirmed response-field/state contract. No company app, list, flow or runtime test changed.
+Date: 2026-10-28. Status: superseded as the primary interaction by D067's list-first response design. See [the revised list and correction screens](../stock-verification-respondent-list/README.md). Retained as historical proposal, not a confirmed response-field/state contract. No company app, list, flow or runtime test changed.
 
 ![Mobile respondent flow](respondent-flow.png)
 

@@ -338,3 +338,12 @@ This accepts the visual direction, not runtime outcomes or every interaction imp
 ## D066 — Visuals accompany flow proposals
 
 Owner instruction, 2026-10-28: give a visual when proposing a flow. Future user-flow proposals should include a relevant screen mockup, storyboard or flowchart alongside concise explanation rather than text-only proposals followed by a separate offer to draw them. Keep visual proposals distinct from accepted business requirements and runtime implementation. The first stock-verification respondent storyboard is a proposal for review, not approved response-field/state policy.
+
+
+## D067 — List-first stock responses with correction-only detail entry
+
+Owner direction, 2026-10-28: stock-verification assignments may contain many assets. Use a movement-like assigned-assets list; one click marks an asset correct and a second click marks it not correct and prompts a separate screen to enter corrected observations. Correct assets do not require completing a separate per-asset questionnaire.
+
+The corrections change only the respondent's assigned verification data/response, never the master asset register. Preserve the original assigned context and evidence history. Ordinary master updates remain a separate authorized process, including applicable transfer approvals. The proposed click interpretation is two successive activations of a visible state control (first Correct, second Needs correction/open correction form), without a timing-dependent double-click. Reversal/cancel, persistence and final submission details remain interaction design proposals for review.
+
+This supersedes the questionnaire-first respondent storyboard as the primary path. Keep mobile-friendly access, assigned-only authorization, open-response editing and read-only historic assignments. Correct is a respondent assertion, not automatic cycle verification, master correction or Business Owner sign-off. See `../architecture/STOCK-RESPONDENT-LIST-DESIGN.md` and the linked visual proposal.
