@@ -17,6 +17,8 @@ All sections below branch directly from Home. The lower row of the example image
 | Reports | Relevant request progress, authorized dashboards and scoped exports |
 | Administration | Authorized reference data, role administration, routing/default configuration |
 
+Proposed reporting drill-down: Reports → Request progress → Scoped process detail → Review outcomes/activity, export authorized data or send an eligible standard respondent reminder. See [reporting progress design and visuals](REPORTING-PROGRESS-DESIGN.md). This supplies no new permission or approval surface.
+
 My Tasks has two experiences: respondents enter asset-verification evidence in LAM; approvers make workflow decisions through Microsoft Approvals. Propose an Open approval action rather than a competing custom Approve/Reject implementation in LAM. Link format, environment visibility, mobile behavior and permissions require tenant validation; do not invent a hardcoded deep-link contract.
 
 LAM displays last-synchronized state and distinguishes pending, rejected/canceled/expired, approved and applied/failed application outcomes. These are proposed display concepts, not final physical choice labels. Applied status requires a durable successful write. Final reconciliation certification is tracked separately after application under D070; an applied run awaiting final sign-off is not certified. Transfer approval alone does not mean the transfer applied.
