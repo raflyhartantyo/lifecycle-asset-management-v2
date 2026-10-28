@@ -294,3 +294,10 @@ Provisionally required: Asset Name, Asset Type, Business Owner, Building and Con
 Owner feedback, 2026-10-28: asset movements/transfers are frequent, so opening each asset detail and starting a movement separately is too burdensome. Adopt the proposed path: search item → add to list → view selected list → start movement. Interpret View as a batch-selection review, not a requirement to visit every asset detail. Keep direct detail-page actions as optional alternate entry points, not the only path.
 
 Support collecting multiple authorized assets for a movement operation. This usability direction does not change BAU permissions, owner/scope-transfer approvals, same-person capacity handling, destination-type mapping, individual asset identity/history or required exception reasons. Common destination versus per-row changes, permitted mixed-scope selections, grouping and partial-failure application policy remain to be settled. This does not approve bulk disposal. See `../architecture/ASSET-MOVEMENT-WORKSPACE.md` for the proposed screen interaction and open questions.
+
+
+## D060 — Different movement changes per selected asset
+
+Owner confirmed, 2026-10-28: selected assets can have different movement changes/destinations within the same movement workspace. Do not constrain the list to a single common destination or require separate detail-page movement sessions for every asset. D059's search → add to list → view selection → start movement path remains the entry flow.
+
+The proposed screen sequence is Select assets → Enter per-asset changes → Review and submit. That detailed layout, execution grouping, mixed-approval handling, partial-failure policy and final display labels remain proposals for owner review, not additional confirmed business decisions. Per-asset scope/identity/history, destination-type mapping and Microsoft approval obligations continue. See `../design/concepts/2026-10-28/asset-movement/README.md` for the visual flow proposal.

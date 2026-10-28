@@ -26,12 +26,38 @@ Revalidate authenticated authority, asset/version/state and destination referenc
 
 Assignment to In Use must obey the custodian rule, including the Custodian-only pending-directory fallback. No approval is routed to that placeholder. Existing audited reopen/reassignment reasons remain exceptions; routine movement still requires none. Record actor/time and prior/new values automatically for each affected asset, with batch correlation for traceability.
 
-## Open design choice to settle next
+## Per-asset changes — confirmed D060
 
-Does one movement apply the same destination/building/custodian/status changes to every selected asset, or can individual selected assets have different destination values? This determines the change-entry layout and approval grouping. Until confirmed, treat a common-change batch as a proposal, not an owner decision.
+Each selected asset can have different changes and destination values. The workspace must not be common-destination-only. Propose a readable editable list for building/custodian/status, with additional owner/entity/function/type fields expanded inline for the relevant row. Review each asset's prior/new values before final confirmation; no separate detail-page session is required.
 
-Also pending: mixed entity/function source scope, batch limits, status/condition transition guards, optional per-row overrides if needed, full-result selection versus current-page selection, stale/unauthorized selection handling, partial execution confirmation, retry/cancellation rules and owner-specific approval grouping.
+Initialize controls with the current values; distinguish an explicit clear action from keeping an existing value. Proposed validation shows row/field errors plus a summary, retains input and returns the user to the relevant row. Exact component behavior remains under visual review.
+
+Proposed illustrated sequence: Select assets → Enter changes → Review and submit → Individual results. See [visual flow](../design/concepts/2026-10-28/asset-movement/README.md). The sample has three valid assets: two routine movements and one owner-change request. The printer's combined changes stay together pending its owner approvals; this is a proposed per-asset grouping policy to review, not evidence of implemented transactional behavior.
+
+Also pending: mixed entity/function source scope, batch limits, status/condition transition guards, per-row change semantics and review of any optional apply-to-multiple shortcut, full-result selection versus current-page selection, stale/unauthorized selection handling, partial execution confirmation, retry/cancellation rules and owner-specific approval grouping.
 
 ## Tests to supply with implementation
 
 Repeated searches preserve selection; no duplicate asset rows; add/remove and single-asset entry; selections across paging where supported; visible selected count; unauthorized/stale rows; mixed approval obligations; same-person capacities; valid destination-type mapping; required custodians; no duplicate application after retry; per-asset history and partial failure recovery. All NOT RUN. This selected-assets movement direction does not authorize bulk disposal or modify the already agreed register/import creation rules.
+
+## Proposed processing flow
+
+```mermaid
+flowchart TD
+    A[Search assets and add to movement list] --> B[View the selected list]
+    B --> C[Enter different changes for each asset]
+    C --> D[Validate scope, references, required values and versions]
+    D -->|Needs correction| C
+    D -->|Valid| E[Review old and new values and per-asset route]
+    E -->|Edit| C
+    E -->|Confirm| F{Processing route for each asset}
+    F -->|Routine movement| G[Revalidate and apply authorized row]
+    F -->|Owner or scope change| H[Create Microsoft approval request for reviewed row]
+    H -->|Required capacities approve| I[Revalidate row and apply transfer]
+    H -->|Rejected| J[Leave asset unchanged and retain request history]
+    G --> K[Show individual results and history]
+    I --> K
+    J --> K
+```
+
+The diagram omits error paths for readability: creation/application failures, changed versions, cancellation and expiry require explicit per-row failure/recovery states and must not be shown as successful. Mixed batches do not imply all-or-nothing execution. The screenshot's Confirm and submit previews the routine-versus-approval route before any execution; handling an invalid subset or a runtime partial failure is still an open policy/implementation detail.
