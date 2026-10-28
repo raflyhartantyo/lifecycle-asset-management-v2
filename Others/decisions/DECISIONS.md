@@ -312,3 +312,10 @@ Owner response, 2026-10-28: the selected-assets/per-row movement design is close
 Owner accepted the proposed interaction, 2026-10-28: select asset(s) → choose Sale or Non-sale → enter disposal details → review → confirm. Disposal date is required in both modes. Sale requires buyer and selling price. Completion removes the disposed asset from the active register and preserves history. No disposal approval workflow is introduced. Business-required fields follow D044's application validation policy; no mandatory BAU remarks/reason is added.
 
 The preceding question offered multiple assets versus one asset at a time, and the acceptance did not explicitly choose between those options. Keep disposal selection cardinality open; do not infer approved bulk-disposal behavior solely from this concept acceptance. Mixed sale/non-sale batches, price allocation, buyer cardinality, recovery and disposal authority remain to be specified where relevant. See `../architecture/DIRECT-DISPOSAL-DESIGN.md`.
+
+
+## D063 — Single and multiple-asset direct disposal
+
+Owner confirmed, 2026-10-28: support both single-asset and multiple-asset disposal using the same selected-assets list. This settles selection cardinality left open in D062; selection can contain one or more authorized assets without repeating separate asset-detail disposal sessions.
+
+Retain the accepted Sale/Non-sale, required disposal date, required buyer/selling price for Sale, final review/confirmation, history and no-approval rules. Per-asset versus common batch values, selling-price representation/allocation, mixed Sale/Non-sale handling and partial-failure/recovery behavior remain open; support for multiple selection alone does not choose these policies or imply whole-batch atomicity. Validate authority/state and preserve results/history for every asset.
