@@ -287,3 +287,10 @@ The transfer preserves asset identity and the company-wide Accounting Asset Code
 Owner response, 2026-10-27: agreed for now, to check later. Treat the following as a provisional working field contract for design, not a permanently finalized mandatory-field policy. Revisit during screen review and representative registration testing.
 
 Provisionally required: Asset Name, Asset Type, Business Owner, Building and Condition (default Good). Provisionally optional: Serial Number, Manufacturer/Model, supporting documents/photos and Custodian while Available. Existing confirmed Accounting Asset Code, Purchase Date/Purchase Cost, authorized entity/function, IDR and Available-only initial registration rules remain in force. Business-required fields are application-validated under D044, not SharePoint Required flags. Include a visible field-review checkpoint before accepting the registration implementation; record any changes against this decision and update the screen/data contract together.
+
+
+## D059 — Movement through a selected-assets list
+
+Owner feedback, 2026-10-28: asset movements/transfers are frequent, so opening each asset detail and starting a movement separately is too burdensome. Adopt the proposed path: search item → add to list → view selected list → start movement. Interpret View as a batch-selection review, not a requirement to visit every asset detail. Keep direct detail-page actions as optional alternate entry points, not the only path.
+
+Support collecting multiple authorized assets for a movement operation. This usability direction does not change BAU permissions, owner/scope-transfer approvals, same-person capacity handling, destination-type mapping, individual asset identity/history or required exception reasons. Common destination versus per-row changes, permitted mixed-scope selections, grouping and partial-failure application policy remain to be settled. This does not approve bulk disposal. See `../architecture/ASSET-MOVEMENT-WORKSPACE.md` for the proposed screen interaction and open questions.

@@ -9,7 +9,7 @@ All sections below branch directly from Home. The lower row of the example image
 | Navigation | Screens / purpose |
 | --- | --- |
 | Home | Relevant actions, overdue work, scope-aware statistics and authorized context switching |
-| Assets | Browse/detail, registration/import, BAU edits, transfer requests and direct disposal |
+| Assets | Browse/detail, registration/import, selected-assets movement workspace, transfer requests and direct disposal |
 | Inventory | Quantity register, registration, authorized transfers and history |
 | My Tasks | Assigned evidence/response tasks, status of Microsoft approval steps, authorized link to open the relevant Microsoft approval, historical task context |
 | Stock Verification | Cycle setup, due dates, assignments, evidence review, owner sign-off progress and exceptions |
@@ -20,3 +20,7 @@ All sections below branch directly from Home. The lower row of the example image
 My Tasks has two experiences: respondents enter asset-verification evidence in LAM; approvers make workflow decisions through Microsoft Approvals. Propose an Open approval action rather than a competing custom Approve/Reject implementation in LAM. Link format, environment visibility, mobile behavior and permissions require tenant validation; do not invent a hardcoded deep-link contract.
 
 LAM displays last-synchronized state and distinguishes pending, rejected/canceled/expired, approved and applied/failed application outcomes. These are proposed display concepts, not final physical choice labels. No transfer or reconciliation correction is shown as completed merely because approval was granted.
+
+## Frequent movements — D059
+
+Primary movement path: search assets → add one or many to a movement selection → review selected assets → enter/confirm movement details. View means the selected list, not opening every asset detail. Propose visible row Add to movement and multi-select controls with a persistent selected count. A detail-page Move action may prefill the same workspace for one asset. Mixed-batch destination/grouping and failure semantics remain under design. No new bulk-disposal behavior is implied.
