@@ -1,6 +1,6 @@
 # Direct disposal — working design
 
-Status: interaction accepted D062; single and multiple selection confirmed D063. Physical/flow implementation pending. No company resources changed or tests run.
+Status: interaction accepted D062; single and multiple selection confirmed D063; per-asset details/shared-value shortcut confirmed D064. Physical/flow implementation pending. No company resources changed or tests run.
 
 ## Accepted user flow
 
@@ -19,7 +19,7 @@ On successful completion, remove the asset from the active register while preser
 
 Support one or multiple selected assets through the same selected-assets list. Search/add/review selection without requiring separate disposal sessions for every asset. The same single-asset path is a one-item selection. Validate each asset's authority, current state/version and disposal inputs; preserve per-asset outcomes/history.
 
-Batch data-entry semantics remain open: a common disposal date/mode/buyer, per-asset values or optional common defaults must be explicitly specified. No batch-total selling price allocation or mixed Sale/Non-sale behavior is inferred from multiple selection.
+Per-asset disposal details and an optional Apply to selected shortcut for shared values such as date/buyer are confirmed by D064. Selling price remains per asset; no batch-total price allocation is introduced. Mixed Sale/Non-sale behavior and exact shortcut/overwrite interactions remain to be specified.
 
 ## Proposed safeguards
 
@@ -29,8 +29,14 @@ Ready to Auction remains an allowed Condition value. It does not prove disposal 
 
 ## Remaining details
 
-Authorized direct-disposal field edits; relevant sale amount precision/range/currency rules (IDR remains fixed); buyer representation; attachments/evidence requirements; date/backdating rules; active/pending asset eligibility; interaction with transfers/monthly financial calculation; archive/state transitions; retry/failure recovery. For future batch disposal, confirm common versus per-asset mode/date/buyer and selling-price representation explicitly.
+Authorized direct-disposal field edits; relevant sale amount precision/range/currency rules (IDR remains fixed); buyer representation; attachments/evidence requirements; date/backdating rules; active/pending asset eligibility; interaction with transfers/monthly financial calculation; archive/state transitions; retry/failure recovery. For batch disposal, retain D064's per-asset inputs and optional shared date/buyer shortcut. Confirm mixed Sale/Non-sale handling, exact shortcut/overwrite behavior and execution/failure semantics.
 
 ## Planned checks
 
-Sale required fields; non-sale path; optional SharePoint fields still validated by the application; unauthorized scope; stale/already-disposed assets; failed/retried application; active-register exclusion only after success; retained identity/history and report visibility. All NOT RUN. Include single-item and multi-item selection, duplicate selection prevention, selection persistence, per-asset validation/results/history, and retry/failure recovery. Final mixed-input and price-allocation checks depend on the remaining batch-entry decisions.
+Sale required fields; non-sale path; optional SharePoint fields still validated by the application; unauthorized scope; stale/already-disposed assets; failed/retried application; active-register exclusion only after success; retained identity/history and report visibility. All NOT RUN. Include single-item and multi-item selection, duplicate selection prevention, selection persistence, per-asset validation/results/history, and retry/failure recovery. Include per-asset sale price, optional shared date/buyer application, later row-specific edits and no unintended buyer requirement for Non-sale. No batch-total price allocation is implemented. Final mixed-mode/overwrite checks depend on the remaining interaction decisions.
+
+## Per-asset entry and Apply to selected — D064
+
+Keep each asset's disposal details independently reviewable. A user can enter a date/buyer once and deliberately apply it to a chosen subset, then adjust individual rows. This action only fills the form; execution still waits for final review and confirmation. Exact overwrite affordance remains a UI proposal to review; avoid silently changing unrelated rows or clearing deliberate values.
+
+Each Sale asset must have its own selling price and required buyer/date. Non-sale requires disposal date, with no buyer/selling-price requirement introduced by a shared shortcut. Display per-asset validation and old/new/disposal values in the review. Do not auto-allocate a total price across rows, treat a shared buyer as approval authority, or infer an asset's completed disposal from its selected condition.

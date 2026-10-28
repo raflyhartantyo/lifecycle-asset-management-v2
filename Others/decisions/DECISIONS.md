@@ -319,3 +319,10 @@ The preceding question offered multiple assets versus one asset at a time, and t
 Owner confirmed, 2026-10-28: support both single-asset and multiple-asset disposal using the same selected-assets list. This settles selection cardinality left open in D062; selection can contain one or more authorized assets without repeating separate asset-detail disposal sessions.
 
 Retain the accepted Sale/Non-sale, required disposal date, required buyer/selling price for Sale, final review/confirmation, history and no-approval rules. Per-asset versus common batch values, selling-price representation/allocation, mixed Sale/Non-sale handling and partial-failure/recovery behavior remain open; support for multiple selection alone does not choose these policies or imply whole-batch atomicity. Validate authority/state and preserve results/history for every asset.
+
+
+## D064 — Per-asset disposal details and shared-value shortcut
+
+Owner agreed, 2026-10-28: disposal details are entered per asset. Provide an optional Apply to selected shortcut for shared values such as disposal date or buyer. Selling price remains a per-asset entry; do not infer or distribute a batch-total selling price.
+
+Shared-value application is form preparation, not transaction execution. Show resulting per-asset values for review, allow subsequent per-asset correction, and enforce the applicable Sale/Non-sale inputs for each asset under D062. A buyer shortcut does not add a buyer requirement to Non-sale rows. Asset selection, direct-disposal authority, final confirmation, preserved history and absence of disposal approvals remain unchanged. Exact shortcut fields, overwrite interaction, mixed Sale/Non-sale support and partial-failure execution policy still require design review.
