@@ -1,6 +1,6 @@
 # Asset movement workspace
 
-Status: owner-selected interaction direction D059; detailed layout and batch execution contract proposed. Supersedes the detail-first-only navigation described in the conversation. No app code or company resources changed.
+Status: owner-selected interaction direction D059/D060; visual flow accepted as a working direction under D061. Detailed layout refinements and unresolved batch execution policies remain proposed. Supersedes the detail-first-only navigation described in the conversation. No app code or company resources changed.
 
 ## Intended path
 

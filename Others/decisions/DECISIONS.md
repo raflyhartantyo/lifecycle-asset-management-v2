@@ -301,3 +301,14 @@ Support collecting multiple authorized assets for a movement operation. This usa
 Owner confirmed, 2026-10-28: selected assets can have different movement changes/destinations within the same movement workspace. Do not constrain the list to a single common destination or require separate detail-page movement sessions for every asset. D059's search → add to list → view selection → start movement path remains the entry flow.
 
 The proposed screen sequence is Select assets → Enter per-asset changes → Review and submit. That detailed layout, execution grouping, mixed-approval handling, partial-failure policy and final display labels remain proposals for owner review, not additional confirmed business decisions. Per-asset scope/identity/history, destination-type mapping and Microsoft approval obligations continue. See `../design/concepts/2026-10-28/asset-movement/README.md` for the visual flow proposal.
+
+
+## D061 — Movement visual flow accepted as working direction
+
+Owner response, 2026-10-28: the selected-assets/per-row movement design is close enough. Retain the Select assets → Enter changes → Review and submit visual direction for detailed implementation refinement. This is working concept acceptance, not runtime acceptance or resolution of every execution/partial-failure policy left open under D059/D060. Preserve different changes per asset, optional detail-page entry, existing permissions and Microsoft approval obligations.
+
+## D062 — Direct-disposal interaction accepted
+
+Owner accepted the proposed interaction, 2026-10-28: select asset(s) → choose Sale or Non-sale → enter disposal details → review → confirm. Disposal date is required in both modes. Sale requires buyer and selling price. Completion removes the disposed asset from the active register and preserves history. No disposal approval workflow is introduced. Business-required fields follow D044's application validation policy; no mandatory BAU remarks/reason is added.
+
+The preceding question offered multiple assets versus one asset at a time, and the acceptance did not explicitly choose between those options. Keep disposal selection cardinality open; do not infer approved bulk-disposal behavior solely from this concept acceptance. Mixed sale/non-sale batches, price allocation, buyer cardinality, recovery and disposal authority remain to be specified where relevant. See `../architecture/DIRECT-DISPOSAL-DESIGN.md`.
