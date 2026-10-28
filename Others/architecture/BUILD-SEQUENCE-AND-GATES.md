@@ -1,12 +1,14 @@
 # Build sequence and evidence gates
 
-Status: proposed engineering delivery sequence following confirmed target scope through D071. This does not create a dated rollout commitment or authorize company configuration changes. Existing backlog IDs remain stable; slice IDs below group the work for implementation.
+Status: proposed engineering delivery sequence following confirmed target scope through D072. This does not create a dated rollout commitment or authorize company configuration changes. Existing backlog IDs remain stable; slice IDs below group the work for implementation.
+
+D072: the tables describe design dependencies and prerequisites before executing/testing a feature. They do not require tenant observations before architecture/resource preparation. The owner handles actual access/connector setup at implementation time. Continue with [the solution/connector architecture](SOLUTION-AND-CONNECTOR-ARCHITECTURE.md), schemas and operation contracts now; general capability prompts are deferred.
 
 ## Proposed delivery slices
 
 | Slice | Deliver together | Entry gate | Exit evidence / existing test mapping |
 | --- | --- | --- | --- |
-| S0 — contracts and setup | Environment facts, access strategy, list contracts, identity/persona bindings, first query/mutation/evidence contract | User observations; approved company information; no inferred system access | Concrete schema/permissions/configuration and company-approved synthetic setup; AUTH and setup checklist prepared, not claimed passed; BL-01/02/03 |
+| S0 — architecture contracts | Connector/access requirements, list contracts, identity/persona binding placeholders, first query/mutation/evidence contract | Accepted business scope; record unknown bindings as implementation dependencies | Reviewable architecture/schema/operation specifications; actual configuration and test identities bound during implementation; BL-01/02/03 |
 | S1 — app shell and reference reads | Brand tokens/components, entry/context, safe navigation, scoped reference queries, loading/error/freshness | Enough access/reference schema and backend isolation to test real reads; disconnected UI can precede this | Company-run ordinary/Global/Super/no-access and context-change checks; applicable AUTH/UX; BL-04 and reference part of BL-05 |
 | S2 — first asset slice | Reference maintenance within authority, guided registration, asset search/detail/history; then create-only import | Completed SITE-A and bindings; tag allocation, field review, unique-code enforcement and initial financial-value behavior defined | Real authorized single create/read/history and denied direct-call tests; import preview/error/retry checks; REG/AUTH/UX; BL-05 |
 | S3 — movement | Selected-assets workspace, per-row changes/review, BAU writer, transfer requests/Microsoft Approvals, results/history | Asset slice; approval provisioning/configuration; batch/grouping/version/retry policy | Routine and dual-owner/same-person/rejected/failed-apply paths; destination type mapping; MOV-01..08 plus new implementation-specific batch checks; BL-06 |
@@ -22,7 +24,7 @@ The monthly calculation is explicitly retained by D046. The formula is deferred,
 
 ## First contract package to prepare
 
-1. Resolve backend identity and access enforcement: how each read/write is authenticated; ordinary pair, Global entity, Super and task/history subsets; direct SharePoint/flow access; service-connection boundaries and revocation.
+1. Specify backend identity and access enforcement requirements: how each read/write is authenticated; ordinary pair, Global entity, Super and task/history subsets; direct SharePoint/flow access; service-connection boundaries and revocation.
 2. Define the exact Access/Approver configuration and required reference contracts. Organizations/Functions already have a [creation guide](../sharepoint/v2/CREATION-GUIDE.md); do not recreate baseline lists blindly.
 3. Define registration/read/history operation contracts: company-wide unique Accounting Asset Code under concurrent submissions; LAM tag allocation; D058 field review; Available/Good defaults; directory/pending Custodian; field/provenance/audit and initial finance behavior.
 4. Define the app shell's actual query/operation bindings, shared components, error/result model and authorized context-switch behavior. Test chosen contracts with synthetic scopes before broader writers.
@@ -34,7 +36,7 @@ No new business questions are inferred as settled by this checklist. Use the acc
 
 - Its accepted requirements and unresolved gates are identified; required business policy for the delivered actions is settled.
 - Exact data/internal names, caller identity, row/field scope, operation validation and relevant state transitions are specified.
-- Current source/replacement commit, company aliases/connections and approved test identities/sinks are documented, with unknowns explicit.
+- Current source/replacement commit and logical resource/connection aliases are documented. Actual company bindings and approved test identities/sinks are configured when implementing/testing the affected feature, with unknowns explicit.
 - Old/new preview, mandatory application validation, failures/conflicts, duplicate/uncertain requests and recovery behavior are concrete.
 - Screens/formulas/flow resources and manual steps are reviewable, with expected outcomes and rollback boundaries. A mockup alone is not an implementation package.
 
@@ -59,8 +61,8 @@ For every new prompt include Q&A-only context, the user's manual actions, expect
 
 Keep baseline files intact. A plain flow definition or concept YAML is not evidence of a genuine importable package. Identify each file's actual use and compatibility in its handover; tested company export/import packages are separate release evidence.
 
-## Current external gates
+## Implementation setup dependencies — owner handled
 
 SITE-A is not yet confirmed ready. Only Member permission and reported list/permission-management capabilities are known. ENV-A has the blank new app; no isolated test environment is confirmed. ENV-B exists but its suitability/access is unknown. Approvals availability/provisioning, connection identities, licenses/policies and notification recipients require company evidence already described in the [Approvals integration design](APPROVALS-INTEGRATION-DESIGN.md). Do not create production-like notifications or assume isolation from a development label.
 
-Continue site-independent specification and UI preparation now. The existing [PENDING foundation prompt](../prompts/PENDING-002-sharepoint-foundation.md) is used once SITE-A is complete; this blueprint does not instruct the user to execute it early. No additional implementation prompt is issued until its concrete resources/prerequisites are ready.
+Continue site-independent specification and UI preparation now. The existing [PENDING foundation prompt](../prompts/PENDING-002-sharepoint-foundation.md) is used once SITE-A is complete; this blueprint does not instruct the user to execute it early. General inventory/access prompts 001 and 003 are DEFERRED under D072; no report is requested. Future prompts support concrete delivered implementation work when useful. Setup dependencies do not block preparing the architecture, schema and app/flow contracts.

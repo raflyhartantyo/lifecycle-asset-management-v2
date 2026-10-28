@@ -1,6 +1,6 @@
 # PENDING-001 — Company environment inventory
 
-Status: **PENDING**
+Status: **DEFERRED** — D072: optional reference only. No report is required to continue architecture; the owner handles access/connector setup at the relevant implementation stage. The historical filename is retained to preserve links.
 
 Use now for read-only preparation. Copy the prompt below into company Claude and supply the referenced document excerpts as needed.
 
@@ -33,6 +33,6 @@ Stop after reporting. Fixture creation and test execution require a later implem
 
 ## Tracking
 
-This prompt remains PENDING until the returned report is reviewed by the user/main developer. Publishing this file does not mean the inventory or any testing has been performed.
+This prompt is DEFERRED under D072; no further general inventory report is requested. Publishing this file does not mean the inventory or any testing has been performed.
 
-Response received and reviewed for limitations: see `responses/001-environment-inventory-review.md`. Environment confirmation remains PENDING; this revised prompt supports manual collection.
+Response received and reviewed for limitations: see `responses/001-environment-inventory-review.md`. Existing observations remain reference; the owner handles further confirmation during the affected implementation stage.

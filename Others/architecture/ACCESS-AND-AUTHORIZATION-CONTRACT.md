@@ -1,6 +1,6 @@
 # Access matrix and authorization contract
 
-Status: proposed technical contract implementing confirmed permissions through D071. Business permissions come from [PERMISSION-MATRIX.md](../requirements/PERMISSION-MATRIX.md); this document specifies how to evaluate them without adding roles or privileges. Storage/backend selection, caller identity proof and historical/offboarding detail remain open. No permission changes or runtime checks have been performed.
+Status: proposed technical contract implementing confirmed permissions through D071. Business permissions come from [PERMISSION-MATRIX.md](../requirements/PERMISSION-MATRIX.md); this document specifies how to evaluate them without adding roles or privileges. Storage/backend binding, caller identity proof and historical/offboarding detail remain open implementation/design details. D072 directs architecture/resource design to continue; the owner handles tenant access/connectors when implementing each feature. No permission changes or runtime checks have been performed.
 
 ## Identity, role and participation
 
@@ -93,7 +93,7 @@ The leading candidate is a controlled read/write service boundary over protected
 
 An alternative uses native SharePoint permissions for direct reads plus controlled writes, but it must cover owned/assigned subsets, field projections, transfers, historical snapshots and growing permission scopes. It is not selected by default. App filtering with site-wide Read/Edit does not satisfy the accepted scope model.
 
-Do not create operational authorization lists or enable privileged flows until the caller identity, protection and mutation paths are concrete. The role/record evaluation and field proposals can be reviewed now. [Capability evidence prompt](../prompts/PENDING-003-access-capability-check.md) gathers the missing company facts without provisioning or changing permissions.
+Do not create operational authorization lists or enable privileged flows until the caller identity, protection and mutation paths are concrete. The role/record evaluation and field proposals can be reviewed now. [SOLUTION-AND-CONNECTOR-ARCHITECTURE.md](SOLUTION-AND-CONNECTOR-ARCHITECTURE.md) documents the connector/access dependencies for later owner configuration. The [capability evidence prompt](../prompts/PENDING-003-access-capability-check.md) is DEFERRED under D072; no observation report is required to continue operational data and app/flow-contract design.
 
 ## Planned checks
 

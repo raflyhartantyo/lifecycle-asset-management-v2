@@ -1,14 +1,14 @@
 # Transfer prompts
 
-Copy the linked prompt into company Claude when indicated. Status tracks handover completion, not application test results.
+D072: general access/capability questionnaires are deferred. No observation report is required to continue design. Use [the solution/connector architecture](../architecture/SOLUTION-AND-CONNECTOR-ARCHITECTURE.md) as the dependency reference; the owner handles setup when implementing each feature. Prompts are optional aids for concrete implementation work, and status is not a runtime test result.
 
 | ID | Status | When to use | Prompt |
 | --- | --- | --- | --- |
-| 003 | **PENDING** | Read-only capability observations for the access mechanism; SITE-A can remain unfinished | [Access capability check](PENDING-003-access-capability-check.md) |
+| 003 | **DEFERRED** | Optional reference only; no response requested under D072 | [Access capability check](PENDING-003-access-capability-check.md) |
 | 002 | **PENDING** | Once SITE-A is complete: create two empty foundation lists | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
-| 001 | **PENDING** | Now: read-only preparation | [Company environment inventory](PENDING-001-environment-inventory.md) |
+| 001 | **DEFERRED** | Optional historical reference; no new report requested under D072 | [Company environment inventory](PENDING-001-environment-inventory.md) |
 
-Mark a prompt complete only after its returned output has been reviewed by the user/main developer.
+Mark an executed prompt complete only after its returned output has been reviewed by the user/main developer. DEFERRED means no action or response is currently requested. Historical filenames may still include PENDING; the status in this index and the file takes precedence.
 
 ## Creating future prompts
 
@@ -20,7 +20,7 @@ To return output manually: open this folder on GitHub, choose **Add file → Cre
 
 The user implements and inspects company systems. Claude provides Q&A using supplied materials and has no direct company-system visibility. Every future prompt must carry this context and manual evidence-collection steps from the template.
 
-Response 001 received; [review and corrections](responses/001-environment-inventory-review.md). Inventory remains PENDING until company evidence is supplied.
+Response 001 received; [review and corrections](responses/001-environment-inventory-review.md). Further general inventory collection is DEFERRED under D072; existing observations remain available as reference.
 
 ## Visual flow proposals
 

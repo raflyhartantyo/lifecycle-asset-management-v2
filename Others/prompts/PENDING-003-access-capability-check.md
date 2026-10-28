@@ -1,6 +1,6 @@
 # 003 — Read-only access implementation capability check
 
-Status: **PENDING**
+Status: **DEFERRED** — D072: optional reference only. No report is required to continue architecture; the owner handles access/connector setup at the relevant implementation stage. The historical filename is retained to preserve links.
 
 Use when: the owner is ready to collect company capability observations. SITE-A need not be finished; unavailable items remain UNKNOWN. This is a read-only check, not permission to create lists, prototype flows, change sharing or provision services.
 
@@ -50,4 +50,4 @@ Return the completed report as one Markdown document I can paste into `Others/pr
 
 ## Tracking
 
-Keep PENDING until the owner/main developer reviews the returned report. This prompt gathers feasibility facts; it does not authorize an implementation or permission change. No company checks have been performed by its publication.
+Keep DEFERRED under D072; no report is requested to advance the design. Retain as optional reference if the owner later wants it. This prompt does not authorize an implementation or permission change. No company checks have been performed by its publication.
