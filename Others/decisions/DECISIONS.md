@@ -347,3 +347,8 @@ Owner direction, 2026-10-28: stock-verification assignments may contain many ass
 The corrections change only the respondent's assigned verification data/response, never the master asset register. Preserve the original assigned context and evidence history. Ordinary master updates remain a separate authorized process, including applicable transfer approvals. The proposed click interpretation is two successive activations of a visible state control (first Correct, second Needs correction/open correction form), without a timing-dependent double-click. Reversal/cancel, persistence and final submission details remain interaction design proposals for review.
 
 This supersedes the questionnaire-first respondent storyboard as the primary path. Keep mobile-friendly access, assigned-only authorization, open-response editing and read-only historic assignments. Correct is a respondent assertion, not automatic cycle verification, master correction or Business Owner sign-off. See `../architecture/STOCK-RESPONDENT-LIST-DESIGN.md` and the linked visual proposal.
+
+
+## D068 — List-first respondent concept accepted as working direction
+
+Owner response, 2026-10-28: the revised assigned-assets list and separate correction screen are good enough; continue. Retain D067's list-first interaction and assignment-only corrections as the working respondent design. This accepts the direction, not runtime testing or every unresolved save/cancel/submission/component detail. Two deliberate activations remain the proposed timing-independent interpretation; preserve keyboard/mobile usability and visible states. Manager review and Business Owner sign-off visuals are subsequent proposals, not approved by this acceptance.

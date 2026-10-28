@@ -1,6 +1,6 @@
 # Stock-verification respondent — revised list flow
 
-Date: 2026-10-28. Status: D067 confirms the list-first/correction-only direction; exact components, save/cancel and submission mechanics remain proposals. Samples are illustrative; no company resources or runtime tests changed.
+Date: 2026-10-28. Status: list-first/correction-only direction confirmed D067 and visual concept accepted as a working direction under D068; exact components, save/cancel and submission mechanics remain proposals. Samples are illustrative; no company resources or runtime tests changed.
 
 ## 1. Check assigned assets in a list
 
