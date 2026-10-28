@@ -94,3 +94,7 @@ These are requirement-level acceptance examples. Detailed test data, status name
 | Select an existing Asset Type | Existing authorized registration/edit roles | Valid type for the asset's entity; no new mutation authority |
 
 Other roles alone do not grant type-catalogue maintenance. Check explicit role combinations without granting entity-wide rights from a pair-scoped role. Every type retains its entity and Category parent. D056 does not grant editing of Accounting categories or global buildings. Backend enforcement and reclassification/deactivation rules still require implementation and verification.
+
+## Technical evaluation contract
+
+[ACCESS-AND-AUTHORIZATION-CONTRACT.md](../architecture/ACCESS-AND-AUTHORIZATION-CONTRACT.md) defines proposed identity, grant scope shapes, role-versus-assignment evaluation, action checks and historical boundaries derived from these permissions. [Backend feasibility](../architecture/BACKEND-ACCESS-FEASIBILITY.md) separates verified Microsoft limits from candidate mechanisms. No operational authorization list or service is creation-ready yet; company caller identity, permission/connection evidence and unresolved historical/Viewer policies remain explicit gates. This pointer does not add business rights.

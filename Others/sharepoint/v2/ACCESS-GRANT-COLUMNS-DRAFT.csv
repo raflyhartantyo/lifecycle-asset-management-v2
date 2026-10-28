@@ -1,0 +1,14 @@
+ContractStatus,List,InternalName,Type,SharePointRequired,BusinessRequired,Unique,IndexProposal,LookupList,LookupDisplayField,AllowedValues,Notes
+Draft not creation-ready,LAM2_Principals,Title,Single line of text,No,Yes,No,No,,,,Display label only; not caller proof
+Draft not creation-ready,LAM2_Principals,PrincipalKey,Single line of text,No,Yes,Yes,Unique index,,,,Canonical tenant-ID/object-ID composite; immutable; validate length at mutation boundary
+Draft not creation-ready,LAM2_Principals,TenantID,Single line of text,No,Yes,No,No,,,,Proposed tenant directory ID; actual identity binding must be proven
+Draft not creation-ready,LAM2_Principals,UserObjectID,Single line of text,No,Yes,No,Yes,,,,Proposed immutable directory user object ID; not submitted caller proof
+Draft not creation-ready,LAM2_Principals,ContactEmail,Single line of text,No,No,No,No,,,,Contact/display only; changes do not transfer grants
+Draft not creation-ready,LAM2_AccessGrants,Title,Single line of text,No,No,No,No,,,,Human-readable grant description
+Draft not creation-ready,LAM2_AccessGrants,GrantKey,Single line of text,No,Yes,Yes,Unique index,,,,Canonical principal-role-scope-parent tuple; unique across retained active/revoked record; reactivation audited
+Draft not creation-ready,LAM2_AccessGrants,PrincipalRef,Lookup,No,Yes,No,Yes,LAM2_Principals,PrincipalKey,,Single principal; protect deletion while referenced
+Draft not creation-ready,LAM2_AccessGrants,RoleCode,Choice,No,Yes,No,Query-dependent,,,Viewer|AssetOperator|InventoryOperator|AssetManager|BusinessOwner|GlobalUser|SuperUser,Single choice; Respondent and Accounting/Governance capacities use workflow assignments
+Draft not creation-ready,LAM2_AccessGrants,ScopeKind,Choice,No,Yes,No,Query-dependent,,,Pair|Entity|Application,Validate scope shape against role; no wildcard records
+Draft not creation-ready,LAM2_AccessGrants,OrganizationRef,Lookup,No,Conditional,No,Yes,LAM2_Organizations,Organization_ID,,Present for Pair/Entity; absent for Application
+Draft not creation-ready,LAM2_AccessGrants,FunctionRef,Lookup,No,Conditional,No,Yes,LAM2_Functions,Function_ID,,Present only for Pair; parent must match OrganizationRef
+Draft not creation-ready,LAM2_AccessGrants,IsActive,Yes/No,N/A,System default,No,Query-dependent,,,Yes|No,Default Yes proposed; backend must validate complete grant before activating; no direct end-user writes

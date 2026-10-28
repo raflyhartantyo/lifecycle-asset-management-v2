@@ -1,6 +1,6 @@
 # V2 creation order
 
-Only stage 1 has creation-ready field contracts in delivery 001. Stages 2–7 name planned responsibilities rather than final physical list names/counts. Do not create operational lists from the baseline column inventories.
+Only stage 1 has creation-ready field contracts in delivery 001. Stage 2 now has a [draft principal/grant field proposal](ACCESS-GRANT-COLUMNS-DRAFT.csv) and [authorization evaluation contract](../../architecture/ACCESS-AND-AUTHORIZATION-CONTRACT.md); these are not creation instructions. Resolve [backend feasibility](../../architecture/BACKEND-ACCESS-FEASIBILITY.md) before creating or populating authorization data. Stages 2–7 name planned responsibilities rather than final physical list names/counts. Do not create operational lists from the baseline column inventories.
 
 | Stage | Data responsibility | Prerequisite / status |
 | --- | --- | --- |
