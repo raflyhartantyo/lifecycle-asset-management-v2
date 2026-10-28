@@ -1,6 +1,6 @@
 # Disposal workspace and Asset Details/History concepts
 
-Date: 2026-10-28. Status: proposed visuals for owner review, not implemented screens. Both use sample data and the approved palette/spacing direction. No business decisions are inferred solely from an illustrated control.
+Date: 2026-10-28. Status: agreed working visual designs under D065 (owner confirmation 2026-10-28); not implemented screens. Both use sample data and the approved palette/spacing direction. Visual acceptance does not settle every interaction or implied sample control; remaining business/implementation gates are recorded below and in D065.
 
 ## Disposal workspace
 

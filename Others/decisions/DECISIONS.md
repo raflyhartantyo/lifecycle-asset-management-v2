@@ -326,3 +326,10 @@ Retain the accepted Sale/Non-sale, required disposal date, required buyer/sellin
 Owner agreed, 2026-10-28: disposal details are entered per asset. Provide an optional Apply to selected shortcut for shared values such as disposal date or buyer. Selling price remains a per-asset entry; do not infer or distribute a batch-total selling price.
 
 Shared-value application is form preparation, not transaction execution. Show resulting per-asset values for review, allow subsequent per-asset correction, and enforce the applicable Sale/Non-sale inputs for each asset under D062. A buyer shortcut does not add a buyer requirement to Non-sale rows. Asset selection, direct-disposal authority, final confirmation, preserved history and absence of disposal approvals remain unchanged. Exact shortcut fields, overwrite interaction, mixed Sale/Non-sale support and partial-failure execution policy still require design review.
+
+
+## D065 — Disposal workspace and Asset Details/History visuals agreed
+
+Owner agreed, 2026-10-28: retain the displayed disposal workspace and Asset Details/History concepts as working visual designs. Disposal shows per-asset details, a shared date/buyer shortcut and separate selling prices. Asset Details/History shows current context, Overview/Financials/History/Documents navigation and chronological business/approval/application events. Optional single-asset Move/Dispose entry points coexist with the faster selected-assets paths.
+
+This accepts the visual direction, not runtime outcomes or every interaction implied by generated sample controls. Unresolved buyer representation, mixed-mode/overwrite behavior, partial failures, exact permissions/history detail visibility, financial formula/initial value and production component contracts remain under their existing design gates. Generated data and actor labels remain illustrative. See `../design/concepts/2026-10-28/asset-details-disposal/README.md`.
