@@ -1,6 +1,6 @@
 # Reporting and process progress — proposed detailed flow
 
-Status: proposal for owner review, extending confirmed D014/D016/D018–D020, D035, D039, D042 and D070. No new permissions, field contracts or company resources are established by these screens. No runtime tests have run.
+Status: reporting flow and two-screen visual direction accepted as the working design under D071, extending confirmed D014/D016/D018–D020, D035, D039, D042 and D070. Detailed controls and unresolved contracts below remain proposals. No new permissions, field contracts or company resources are established by these screens. No runtime tests have run.
 
 ## Proposed sequence
 

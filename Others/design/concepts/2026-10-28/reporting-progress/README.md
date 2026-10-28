@@ -1,6 +1,6 @@
 # Reporting and request progress — visual proposal
 
-Status: proposed for owner review, extending the accepted palette and confirmed reporting/export/reminder scope. No implementation or runtime test is claimed.
+Status: flow and visual direction accepted as the working design under D071, extending the accepted palette and confirmed reporting/export/reminder scope. Detailed controls and open contracts remain proposals. No implementation or runtime test is claimed.
 
 Reports → Request progress → Open a relevant process → Review outcomes and activity → Export authorized data or send an eligible standard reminder to pending respondents.
 
