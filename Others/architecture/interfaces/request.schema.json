@@ -1,0 +1,2012 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LAM V2 proposed operation request",
+  "description": "Design payload shape only. Domain rules, trusted identity and handlers are not implemented.",
+  "type": "object",
+  "properties": {
+    "contractVersion": {
+      "const": "0.1-design"
+    },
+    "requestKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "Session.Resolve",
+        "References.Query",
+        "Assets.Query",
+        "Assets.Get",
+        "Registration.Preview",
+        "Registration.Commit",
+        "Import.Validate",
+        "Import.Commit",
+        "Movement.Preview",
+        "Movement.Submit",
+        "Disposal.Preview",
+        "Disposal.Commit",
+        "Inventory.Query",
+        "Inventory.Preview",
+        "Inventory.Commit",
+        "StockCycle.Preview",
+        "StockCycle.Create",
+        "Assignments.Query",
+        "StockResponse.Save",
+        "StockReview.Save",
+        "StockSignoff.Prepare",
+        "StockSignoff.Request",
+        "Reconciliation.Compare",
+        "Reconciliation.PlanSave",
+        "Reconciliation.ApplyPreview",
+        "Reconciliation.Apply",
+        "ReconciliationSignoff.Prepare",
+        "ReconciliationSignoff.Request",
+        "Reports.Query",
+        "Reports.GetProcess",
+        "Reminder.Preview",
+        "Reminder.Send",
+        "Export.Request",
+        "ReportRefresh.Request",
+        "Approvals.OpenContext",
+        "Grants.Preview",
+        "Grants.Commit",
+        "ReferenceChange.Preview",
+        "ReferenceChange.Commit",
+        "Operations.Get",
+        "Operations.FindSubmission"
+      ]
+    },
+    "contextHint": {
+      "$ref": "#/$defs/PairScope"
+    },
+    "submissionKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "contractVersion",
+    "requestKey",
+    "operation",
+    "payload"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "PairScope": {
+      "type": "object",
+      "properties": {
+        "organizationKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "functionKey": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "organizationKey",
+        "functionKey"
+      ],
+      "additionalProperties": false
+    },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "FieldIntent": {
+      "type": "object",
+      "properties": {
+        "fieldKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intent": {
+          "type": "string",
+          "enum": [
+            "set",
+            "clear"
+          ]
+        },
+        "value": {}
+      },
+      "required": [
+        "fieldKey",
+        "intent"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "intent": {
+                "const": "set"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "intent": {
+                "const": "clear"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "Empty": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    },
+    "Query": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "searchText": {
+          "type": "string"
+        },
+        "filters": {
+          "type": "object",
+          "properties": {
+            "statusCodes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "typeKeys": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "buildingKeys": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "processKinds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "dueFilter": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "CommitPreview": {
+      "type": "object",
+      "properties": {
+        "previewRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "previewVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "itemKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "previewRef",
+        "previewVersion",
+        "itemKeys"
+      ],
+      "additionalProperties": false
+    },
+    "PreviewItems": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expectedVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/FieldIntent"
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "itemKey",
+              "assetKey",
+              "expectedVersion",
+              "changes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "GrantScope": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "Pair"
+            },
+            "organizationKey": {
+              "type": "string",
+              "minLength": 1
+            },
+            "functionKey": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "organizationKey",
+            "functionKey"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "Entity"
+            },
+            "organizationKey": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "organizationKey"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "Application"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "RegistrationDraft": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "accountingAssetCode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assetName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assetTypeKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "buildingKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "businessOwnerKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "custodianState": {
+          "type": "string",
+          "enum": [
+            "None",
+            "Directory",
+            "PendingDirectory"
+          ]
+        },
+        "custodianKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "condition": {
+          "type": "string",
+          "enum": [
+            "Good",
+            "Broken",
+            "Ready to Auction"
+          ]
+        },
+        "purchaseDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "purchaseCost": {
+          "$ref": "#/$defs/Decimal"
+        }
+      },
+      "required": [
+        "scope",
+        "accountingAssetCode",
+        "purchaseDate",
+        "purchaseCost"
+      ],
+      "additionalProperties": false
+    },
+    "Decimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+    },
+    "SessionResolvePayload": {
+      "$ref": "#/$defs/Empty"
+    },
+    "ReferencesQueryPayload": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "Organizations",
+            "Functions",
+            "Categories",
+            "AssetTypes",
+            "Buildings"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "AssetsQueryPayload": {
+      "$ref": "#/$defs/Query"
+    },
+    "AssetsGetPayload": {
+      "type": "object",
+      "properties": {
+        "assetKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "string",
+          "enum": [
+            "Overview",
+            "Financials",
+            "History",
+            "Documents"
+          ]
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [
+        "assetKey",
+        "section"
+      ],
+      "additionalProperties": false
+    },
+    "RegistrationPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "draft": {
+          "$ref": "#/$defs/RegistrationDraft"
+        }
+      },
+      "required": [
+        "draft"
+      ],
+      "additionalProperties": false
+    },
+    "RegistrationCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ImportValidatePayload": {
+      "type": "object",
+      "properties": {
+        "sourceDocumentKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "templateVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        }
+      },
+      "required": [
+        "sourceDocumentKey",
+        "templateVersion",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "ImportCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "MovementPreviewPayload": {
+      "$ref": "#/$defs/PreviewItems"
+    },
+    "MovementSubmitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "DisposalPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assetKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expectedVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "Sale",
+                  "NonSale"
+                ]
+              },
+              "disposalDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "buyer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sellingPrice": {
+                "$ref": "#/$defs/Decimal"
+              }
+            },
+            "required": [
+              "itemKey",
+              "assetKey",
+              "expectedVersion",
+              "mode",
+              "disposalDate"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "mode": {
+                      "const": "Sale"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "buyer",
+                    "sellingPrice"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "mode": {
+                      "const": "NonSale"
+                    }
+                  }
+                },
+                "then": {
+                  "not": {
+                    "anyOf": [
+                      {
+                        "required": [
+                          "buyer"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "sellingPrice"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "DisposalCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "InventoryQueryPayload": {
+      "$ref": "#/$defs/Query"
+    },
+    "InventoryPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "Register",
+            "Transfer"
+          ]
+        },
+        "itemKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventoryItemKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceBalanceKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "destinationScope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "quantity": {
+          "$ref": "#/$defs/Decimal"
+        },
+        "expectedVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "action",
+        "itemKey",
+        "inventoryItemKey",
+        "destinationScope",
+        "quantity"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "Transfer"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sourceBalanceKey",
+              "expectedVersion"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "Register"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "sourceBalanceKey"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "InventoryCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "StockCyclePreviewPayload": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "assetStatusFilter": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Available",
+              "In Use"
+            ]
+          },
+          "minItems": 1
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "scope",
+        "assetStatusFilter",
+        "dueDate"
+      ],
+      "additionalProperties": false
+    },
+    "StockCycleCreatePayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "AssignmentsQueryPayload": {
+      "type": "object",
+      "properties": {
+        "participationView": {
+          "type": "string",
+          "enum": [
+            "Current",
+            "History"
+          ]
+        },
+        "processKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [
+        "participationView"
+      ],
+      "additionalProperties": false
+    },
+    "StockResponseSavePayload": {
+      "type": "object",
+      "properties": {
+        "assignmentKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedAssignmentVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responseKind": {
+          "type": "string",
+          "enum": [
+            "Correct",
+            "NeedsCorrection"
+          ]
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldIntent"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "assignmentKey",
+        "expectedAssignmentVersion",
+        "responseKind"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "responseKind": {
+                "const": "Correct"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "observations": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "responseKind": {
+                "const": "NeedsCorrection"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "observations"
+            ],
+            "properties": {
+              "observations": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "StockReviewSavePayload": {
+      "type": "object",
+      "properties": {
+        "assignmentKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedReviewVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewedResponseKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcomeCode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exceptionEvidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "assignmentKey",
+        "expectedReviewVersion",
+        "outcomeCode"
+      ],
+      "additionalProperties": false
+    },
+    "StockSignoffPreparePayload": {
+      "type": "object",
+      "properties": {
+        "cycleKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewSnapshotRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewSnapshotVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "cycleKey",
+        "reviewSnapshotRef",
+        "reviewSnapshotVersion"
+      ],
+      "additionalProperties": false
+    },
+    "StockSignoffRequestPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ReconciliationComparePayload": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "sourceDocumentKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accountingPeriod": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mappingVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "scope",
+        "sourceDocumentKey",
+        "accountingPeriod",
+        "mappingVersion"
+      ],
+      "additionalProperties": false
+    },
+    "ReconciliationPlanSavePayload": {
+      "type": "object",
+      "properties": {
+        "runKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedPlanVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "findingKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dispositionCode": {
+                "type": "string",
+                "minLength": 1
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/FieldIntent"
+                },
+                "minItems": 0
+              }
+            },
+            "required": [
+              "findingKey",
+              "dispositionCode"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "runKey",
+        "expectedPlanVersion",
+        "items"
+      ],
+      "additionalProperties": false
+    },
+    "ReconciliationApplyPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "runKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "planVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "planItemKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "runKey",
+        "planVersion",
+        "planItemKeys"
+      ],
+      "additionalProperties": false
+    },
+    "ReconciliationApplyPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ReconciliationSignoffPreparePayload": {
+      "type": "object",
+      "properties": {
+        "runKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actualResultSnapshotRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actualResultSnapshotVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "runKey",
+        "actualResultSnapshotRef",
+        "actualResultSnapshotVersion"
+      ],
+      "additionalProperties": false
+    },
+    "ReconciliationSignoffRequestPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ReportsQueryPayload": {
+      "$ref": "#/$defs/Query"
+    },
+    "ReportsGetProcessPayload": {
+      "type": "object",
+      "properties": {
+        "processKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "string",
+          "enum": [
+            "Results",
+            "Activity"
+          ]
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [
+        "processKey",
+        "section"
+      ],
+      "additionalProperties": false
+    },
+    "ReminderPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "processKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assignmentKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "processKey",
+        "assignmentKeys"
+      ],
+      "additionalProperties": false
+    },
+    "ReminderSendPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ExportRequestPayload": {
+      "type": "object",
+      "properties": {
+        "resourceKind": {
+          "type": "string",
+          "enum": [
+            "Assets",
+            "Inventory",
+            "Assignments",
+            "ProcessResults",
+            "History"
+          ]
+        },
+        "query": {
+          "$ref": "#/$defs/Query"
+        },
+        "fieldPolicyVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formatCode": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "resourceKind",
+        "query",
+        "fieldPolicyVersion",
+        "formatCode"
+      ],
+      "additionalProperties": false
+    },
+    "ReportRefreshRequestPayload": {
+      "type": "object",
+      "properties": {
+        "reportBindingAlias": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reportBindingAlias"
+      ],
+      "additionalProperties": false
+    },
+    "ApprovalsOpenContextPayload": {
+      "type": "object",
+      "properties": {
+        "attemptKey": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "attemptKey"
+      ],
+      "additionalProperties": false
+    },
+    "GrantsPreviewPayload": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "Grant",
+            "Revoke"
+          ]
+        },
+        "targetPrincipalKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "targetRoleCode": {
+          "type": "string",
+          "enum": [
+            "Viewer",
+            "AssetOperator",
+            "InventoryOperator",
+            "AssetManager",
+            "BusinessOwner",
+            "GlobalUser",
+            "SuperUser"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/GrantScope"
+        },
+        "expectedGrantVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "action",
+        "targetPrincipalKey",
+        "targetRoleCode",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "GrantsCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "ReferenceChangePreviewPayload": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "AssetType",
+            "Building",
+            "Category"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "Create",
+            "Update",
+            "Deactivate"
+          ]
+        },
+        "targetKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "$ref": "#/$defs/PairScope"
+        },
+        "expectedVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldIntent"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "kind",
+        "action",
+        "changes"
+      ],
+      "additionalProperties": false
+    },
+    "ReferenceChangeCommitPayload": {
+      "$ref": "#/$defs/CommitPreview"
+    },
+    "OperationsGetPayload": {
+      "type": "object",
+      "properties": {
+        "operationKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "$ref": "#/$defs/Page"
+        }
+      },
+      "required": [
+        "operationKey"
+      ],
+      "additionalProperties": false
+    },
+    "OperationsFindSubmissionPayload": {
+      "type": "object",
+      "properties": {
+        "submittedOperation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "submissionKey": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "submittedOperation",
+        "submissionKey"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Session.Resolve"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/SessionResolvePayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "References.Query"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReferencesQueryPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Assets.Query"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/AssetsQueryPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Assets.Get"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/AssetsGetPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Registration.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/RegistrationPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Registration.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/RegistrationCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Import.Validate"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ImportValidatePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Import.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ImportCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Movement.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/MovementPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Movement.Submit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/MovementSubmitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Disposal.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/DisposalPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Disposal.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/DisposalCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Inventory.Query"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/InventoryQueryPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Inventory.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/InventoryPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Inventory.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/InventoryCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockCycle.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockCyclePreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockCycle.Create"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockCycleCreatePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Assignments.Query"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/AssignmentsQueryPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockResponse.Save"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockResponseSavePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockReview.Save"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockReviewSavePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockSignoff.Prepare"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockSignoffPreparePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "StockSignoff.Request"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/StockSignoffRequestPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reconciliation.Compare"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationComparePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reconciliation.PlanSave"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationPlanSavePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reconciliation.ApplyPreview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationApplyPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reconciliation.Apply"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationApplyPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "ReconciliationSignoff.Prepare"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationSignoffPreparePayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "ReconciliationSignoff.Request"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReconciliationSignoffRequestPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reports.Query"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReportsQueryPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reports.GetProcess"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReportsGetProcessPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reminder.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReminderPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Reminder.Send"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReminderSendPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Export.Request"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ExportRequestPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "ReportRefresh.Request"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReportRefreshRequestPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Approvals.OpenContext"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ApprovalsOpenContextPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Grants.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/GrantsPreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Grants.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/GrantsCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "ReferenceChange.Preview"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReferenceChangePreviewPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "ReferenceChange.Commit"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/ReferenceChangeCommitPayload"
+          }
+        },
+        "required": [
+          "submissionKey"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Operations.Get"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/OperationsGetPayload"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "Operations.FindSubmission"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "$ref": "#/$defs/OperationsFindSubmissionPayload"
+          }
+        }
+      }
+    }
+  ]
+}

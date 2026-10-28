@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LAM V2 proposed operation response",
+  "type": "object",
+  "properties": {
+    "contractVersion": {
+      "const": "0.1-design"
+    },
+    "requestKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "Session.Resolve",
+        "References.Query",
+        "Assets.Query",
+        "Assets.Get",
+        "Registration.Preview",
+        "Registration.Commit",
+        "Import.Validate",
+        "Import.Commit",
+        "Movement.Preview",
+        "Movement.Submit",
+        "Disposal.Preview",
+        "Disposal.Commit",
+        "Inventory.Query",
+        "Inventory.Preview",
+        "Inventory.Commit",
+        "StockCycle.Preview",
+        "StockCycle.Create",
+        "Assignments.Query",
+        "StockResponse.Save",
+        "StockReview.Save",
+        "StockSignoff.Prepare",
+        "StockSignoff.Request",
+        "Reconciliation.Compare",
+        "Reconciliation.PlanSave",
+        "Reconciliation.ApplyPreview",
+        "Reconciliation.Apply",
+        "ReconciliationSignoff.Prepare",
+        "ReconciliationSignoff.Request",
+        "Reports.Query",
+        "Reports.GetProcess",
+        "Reminder.Preview",
+        "Reminder.Send",
+        "Export.Request",
+        "ReportRefresh.Request",
+        "Approvals.OpenContext",
+        "Grants.Preview",
+        "Grants.Commit",
+        "ReferenceChange.Preview",
+        "ReferenceChange.Commit",
+        "Operations.Get",
+        "Operations.FindSubmission"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "accepted",
+        "completed",
+        "validationFailed",
+        "denied",
+        "conflict",
+        "failed",
+        "indeterminate"
+      ]
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "operationRef": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": "object"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "itemKey": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fieldKey": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "contractVersion",
+    "requestKey",
+    "operation",
+    "result",
+    "observedAt",
+    "data",
+    "errors"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "const": "accepted"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "operationRef"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "enum": [
+              "validationFailed",
+              "denied",
+              "conflict",
+              "failed",
+              "indeterminate"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "errors": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

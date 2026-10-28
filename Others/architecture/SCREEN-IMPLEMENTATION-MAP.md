@@ -57,6 +57,8 @@ Status: proposed implementation decomposition of accepted working flows through 
 
 ## Contract required for each delivered screen
 
+The [shared component contracts](APP-COMPONENT-CONTRACTS.md) and [operation interface catalogue](interfaces/README.md) now define the target data/event boundary for these screens. Logical names are not existing Canvas properties or exported YAML; map them to supported controls and flow adapters in each implementation delivery.
+
 Each future screen handover must identify the source commit, entry parameters, authorized data subset, visible fields/actions, shared component inputs/events, draft persistence and cancel/back behavior, validation/error/focus behavior, operation inputs/results and status/freshness handling. Include exact control/formula resources, connection/data prerequisites, numbered manual implementation steps, unit checks, mapped company-run cases and rollback resources.
 
 Layout acceptance is not authority to enable unresolved writes. Supply disconnected previews only when clearly labeled; replace them with concrete bindings after the relevant contract gate closes. Use authorized backend checks even when UI choices are filtered. Keep general component state separate from business operation state.

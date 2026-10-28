@@ -1,0 +1,233 @@
+{
+  "status": "Synthetic shape examples; no operations executed; deferred business policies still apply",
+  "examples": [
+    {
+      "name": "Authorized browse shape",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-001",
+        "operation": "Assets.Query",
+        "payload": {
+          "scope": {
+            "organizationKey": "ORG-A",
+            "functionKey": "FN-A1"
+          },
+          "page": {
+            "pageSize": 50
+          }
+        }
+      }
+    },
+    {
+      "name": "Per-asset movement preview",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-002",
+        "operation": "Movement.Preview",
+        "payload": {
+          "items": [
+            {
+              "itemKey": "ROW-1",
+              "assetKey": "ASSET-A",
+              "expectedVersion": "VERSION-A1",
+              "changes": [
+                {
+                  "fieldKey": "BuildingRef",
+                  "intent": "set",
+                  "value": "BUILDING-B"
+                }
+              ]
+            },
+            {
+              "itemKey": "ROW-2",
+              "assetKey": "ASSET-B",
+              "expectedVersion": "VERSION-B1",
+              "changes": [
+                {
+                  "fieldKey": "CustodianRef",
+                  "intent": "clear"
+                }
+              ]
+            }
+          ]
+        },
+        "submissionKey": "SUB-MOVEMENT-001"
+      }
+    },
+    {
+      "name": "Single sale preview shape",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-003",
+        "operation": "Disposal.Preview",
+        "payload": {
+          "items": [
+            {
+              "itemKey": "ROW-1",
+              "assetKey": "ASSET-A",
+              "expectedVersion": "VERSION-A1",
+              "mode": "Sale",
+              "disposalDate": "2026-10-28",
+              "buyer": "BUYER-ALIAS",
+              "sellingPrice": "1000000"
+            }
+          ]
+        },
+        "submissionKey": "SUB-DISPOSAL-001"
+      }
+    },
+    {
+      "name": "Single non-sale preview shape",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-004",
+        "operation": "Disposal.Preview",
+        "payload": {
+          "items": [
+            {
+              "itemKey": "ROW-2",
+              "assetKey": "ASSET-B",
+              "expectedVersion": "VERSION-B1",
+              "mode": "NonSale",
+              "disposalDate": "2026-10-28"
+            }
+          ]
+        },
+        "submissionKey": "SUB-DISPOSAL-002"
+      }
+    },
+    {
+      "name": "Assigned correction only",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-005",
+        "operation": "StockResponse.Save",
+        "payload": {
+          "assignmentKey": "ASSIGNMENT-A",
+          "expectedAssignmentVersion": "VERSION-1",
+          "responseKind": "NeedsCorrection",
+          "observations": [
+            {
+              "fieldKey": "ObservedBuilding",
+              "intent": "set",
+              "value": "BUILDING-B"
+            }
+          ]
+        },
+        "submissionKey": "SUB-RESPONSE-001"
+      }
+    },
+    {
+      "name": "Explicit reconciliation application",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-006",
+        "operation": "Reconciliation.Apply",
+        "payload": {
+          "previewRef": "PREVIEW-REC-A",
+          "previewVersion": "VERSION-1",
+          "itemKeys": [
+            "PLAN-ITEM-1"
+          ]
+        },
+        "submissionKey": "SUB-REC-APPLY-001"
+      }
+    },
+    {
+      "name": "Final sign-off on actual results",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-007",
+        "operation": "ReconciliationSignoff.Prepare",
+        "payload": {
+          "runKey": "RECON-A",
+          "actualResultSnapshotRef": "ACTUAL-RESULTS-A",
+          "actualResultSnapshotVersion": "VERSION-1"
+        },
+        "submissionKey": "SUB-REC-FINAL-001"
+      }
+    },
+    {
+      "name": "Recover own prior submission",
+      "kind": "request",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-008",
+        "operation": "Operations.FindSubmission",
+        "payload": {
+          "submittedOperation": "Movement.Submit",
+          "submissionKey": "SUB-MOVE-CONFIRM-001"
+        }
+      }
+    },
+    {
+      "name": "Accepted movement is not applied",
+      "kind": "response",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-101",
+        "operation": "Movement.Submit",
+        "result": "accepted",
+        "observedAt": "2026-10-28T10:00:00Z",
+        "operationRef": "OP-MOVE-A",
+        "data": {
+          "applicationState": "NotApplied",
+          "approvalState": "Pending",
+          "itemResultsComplete": true,
+          "items": [
+            {
+              "itemKey": "ROW-1",
+              "applicationState": "NotApplied",
+              "approvalState": "Pending"
+            }
+          ]
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "Applied reconciliation is not finally certified",
+      "kind": "response",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-102",
+        "operation": "Reconciliation.Apply",
+        "result": "completed",
+        "observedAt": "2026-10-28T10:00:00Z",
+        "operationRef": "OP-REC-A",
+        "data": {
+          "applicationState": "Applied",
+          "finalSignoffState": "NotRequested",
+          "actualResultSnapshotRef": "ACTUAL-RESULTS-A",
+          "actualResultSnapshotVersion": "VERSION-1"
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "Safe denial",
+      "kind": "response",
+      "document": {
+        "contractVersion": "0.1-design",
+        "requestKey": "REQ-DEMO-103",
+        "operation": "Assets.Get",
+        "result": "denied",
+        "observedAt": "2026-10-28T10:00:00Z",
+        "data": {},
+        "errors": [
+          {
+            "code": "ACCESS_DENIED",
+            "message": "This record is not available to you."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -19,3 +19,7 @@
 | Stock_Opname_Available_Trigger | Reference baseline. Preserve the current contract and behavior until a specific V2 delivery replaces it. | ALM - StockOpname - Available | 13 | shared_office365, shared_sharepointonline |
 | Stock_Opname_In_Use_Match | Reference baseline. Preserve the current contract and behavior until a specific V2 delivery replaces it. | ALM - StockOpname - In Use | 27 | shared_excelonlinebusiness, shared_sharepointonline, shared_teams |
 | Stock_Opname_In_Use_Trigger | Review embedded campaign dates and recipient placeholders before testing; dates in a message are not a recurrence trigger. | ALM - StockOpname - In Use | 24 | shared_office365, shared_sharepointonline |
+
+## Target V2 operation interfaces
+
+[Flow/operation contracts](../Others/architecture/FLOW-OPERATION-CONTRACTS.md) and [request/output resources](../Others/architecture/interfaces/README.md) define proposed logical operations, input/output responsibilities, result handling and connector dependencies. They are architecture documents, not new deployed flows or import packages. Logical operation count does not prescribe physical flow count. Existing per-flow baseline sources above remain intact; feature deliveries will provide concrete affected flow resources and manual guidance.

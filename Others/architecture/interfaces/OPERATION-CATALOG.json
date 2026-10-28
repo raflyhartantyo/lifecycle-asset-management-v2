@@ -1,0 +1,1128 @@
+{
+  "contractVersion": "0.1-design",
+  "status": "Architecture only; no handlers or flows deployed",
+  "physicalFlowCountSpecified": false,
+  "requestSchema": "request.schema.json",
+  "responseSchema": "response.schema.json",
+  "projectionNote": "Named output responsibilities are semantic draft contracts; response envelope schema does not validate operation-specific data. Exact nested projections and conditional fields follow feature resources.",
+  "operations": [
+    {
+      "operation": "Session.Resolve",
+      "mode": "query",
+      "payloadDefinition": "SessionResolvePayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Return authorized context/route/task-participation projection; caller proven outside payload.",
+      "modelEntities": [
+        "Principal",
+        "AccessGrant"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "contexts": "Authorized context projections",
+        "routes": "Authorized navigation hints",
+        "taskOnly": "Boolean participation projection; not caller proof"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "References.Query",
+      "mode": "query",
+      "payloadDefinition": "ReferencesQueryPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Only reference projections relevant to authorized work.",
+      "modelEntities": [
+        "Organization",
+        "Function",
+        "Category",
+        "AssetType",
+        "Building"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "items": "Authorized typed row projections with stable keys and permitted versions/fields",
+        "page": "Opaque next cursor, returned count and complete-result count metadata where available"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Assets.Query",
+      "mode": "query",
+      "payloadDefinition": "AssetsQueryPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Page authorized active/historical rows under permitted filters and field projection.",
+      "modelEntities": [
+        "Asset"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "items": "Authorized typed row projections with stable keys and permitted versions/fields",
+        "page": "Opaque next cursor, returned count and complete-result count metadata where available"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Assets.Get",
+      "mode": "query",
+      "payloadDefinition": "AssetsGetPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Read permitted detail section; history participation does not authorize current master.",
+      "modelEntities": [
+        "Asset",
+        "AssetEvent",
+        "DocumentReference"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "assetKey": "Authorized stable subject key",
+        "section": "Requested permitted section",
+        "recordVersion": "Opaque current/evidence version as applicable",
+        "projection": "Section-specific permitted fields and evidence"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Registration.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "RegistrationPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Validate new asset and generate reviewed preview; does not create asset.",
+      "modelEntities": [
+        "Asset",
+        "AssetType",
+        "Principal",
+        "Building"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "Office365Users"
+      ],
+      "deferredPolicies": [
+        "D058 field review",
+        "Tag allocation",
+        "Code canonicalization",
+        "Initial financial value"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Registration.Commit",
+      "mode": "command",
+      "payloadDefinition": "RegistrationCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Create only reviewed new asset; generated tag, Available initial state, Good default and IDR; record durable outcome.",
+      "modelEntities": [
+        "Asset",
+        "Operation",
+        "OperationItem",
+        "AssetEvent"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Tag allocation and initial financial contract"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Import.Validate",
+      "mode": "prepare",
+      "payloadDefinition": "ImportValidatePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Retain row validation preview/provenance; no register overwrite or silent default page.",
+      "modelEntities": [
+        "DocumentReference",
+        "Operation",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "ExcelOnlineBusiness"
+      ],
+      "deferredPolicies": [
+        "Template/format and matching policy"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Import.Commit",
+      "mode": "command",
+      "payloadDefinition": "ImportCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Create only explicitly confirmed valid new rows; retain rejected/duplicate/unselected outcomes.",
+      "modelEntities": [
+        "Asset",
+        "OperationItem",
+        "AssetEvent"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Movement.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "MovementPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Validate independent per-asset changes and classify BAU versus required owner/scope-transfer route.",
+      "modelEntities": [
+        "Asset",
+        "AssetType",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Mixed source selection",
+        "Field/state rules",
+        "Batch invalid-subset/grouping policy"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Movement.Submit",
+      "mode": "command",
+      "payloadDefinition": "MovementSubmitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Apply eligible BAU rows or create reviewed transfer work; approval and actual application remain separate.",
+      "modelEntities": [
+        "Asset",
+        "Operation",
+        "OperationItem",
+        "ApprovalAttempt",
+        "AssetEvent"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "StandardApprovals"
+      ],
+      "deferredPolicies": [
+        "Partial application and recovery policy"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Disposal.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "DisposalPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Review per-asset date/mode and applicable buyer/selling price; no disposal approval.",
+      "modelEntities": [
+        "Asset",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Buyer representation uses text placeholder here",
+        "Mixed modes and eligibility",
+        "Shared shortcut overwrite and partial outcomes"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Disposal.Commit",
+      "mode": "command",
+      "payloadDefinition": "DisposalCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Direct authorized disposal with per-asset outcomes and retained identity/history.",
+      "modelEntities": [
+        "Asset",
+        "OperationItem",
+        "AssetEvent"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Inventory.Query",
+      "mode": "query",
+      "payloadDefinition": "InventoryQueryPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Read authorized item balances and history projections.",
+      "modelEntities": [
+        "InventoryItem",
+        "InventoryBalance",
+        "InventoryEvent"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "items": "Authorized typed row projections with stable keys and permitted versions/fields",
+        "page": "Opaque next cursor, returned count and complete-result count metadata where available"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Inventory.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "InventoryPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Review defined register/transfer action; no dual-owner asset approval.",
+      "modelEntities": [
+        "InventoryItem",
+        "InventoryBalance",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Units/fractions/dimensions",
+        "Action-specific fields and scope authority"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Inventory.Commit",
+      "mode": "command",
+      "payloadDefinition": "InventoryCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Apply approved-in-form quantity action with current versions and recoverable paired effects.",
+      "modelEntities": [
+        "InventoryBalance",
+        "InventoryEvent",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "StockCycle.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "StockCyclePreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Preview complete authorized cycle population and proposed assignments; access matrix controls scope.",
+      "modelEntities": [
+        "StockCycle",
+        "Asset",
+        "StockAssignment"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Assignment and default-due contract"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "StockCycle.Create",
+      "mode": "command",
+      "payloadDefinition": "StockCycleCreatePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Create reviewed cycle/assignments without inferred responses or verification.",
+      "modelEntities": [
+        "StockCycle",
+        "StockAssignment",
+        "Operation"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "cycleKey": "Created cycle reference",
+        "assignmentOutcome": "Actual complete/partial/failed assignment creation evidence; never inferred verification"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Assignments.Query",
+      "mode": "query",
+      "payloadDefinition": "AssignmentsQueryPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Read own assigned snapshot/allowed historical projection; no general master route.",
+      "modelEntities": [
+        "StockAssignment",
+        "StockResponse"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Historical field visibility"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "items": "Authorized typed row projections with stable keys and permitted versions/fields",
+        "page": "Opaque next cursor, returned count and complete-result count metadata where available"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "StockResponse.Save",
+      "mode": "command",
+      "payloadDefinition": "StockResponseSavePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Record only own open assigned evidence; does not verify, submit a final cycle or update master.",
+      "modelEntities": [
+        "StockAssignment",
+        "StockResponse"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Save/cancel/final submission semantics",
+        "Observation field allow-list"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "assignmentKey": "Own authorized assignment",
+        "savedResponseKey": "Durable response evidence reference",
+        "responseVersion": "Opaque version",
+        "persistenceState": "Exact saved/draft/submitted policy still deferred; not Verified"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "StockReview.Save",
+      "mode": "command",
+      "payloadDefinition": "StockReviewSavePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Authorized manager records review outcome separately from response and master data.",
+      "modelEntities": [
+        "StockReview",
+        "StockResponse",
+        "StockAssignment"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Verification criteria and review-state vocabulary"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "reviewKey": "Durable manager review reference",
+        "reviewVersion": "Opaque version",
+        "reviewOutcome": "Defined review/verification/exception outcome; criteria deferred"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "StockSignoff.Prepare",
+      "mode": "prepare",
+      "payloadDefinition": "StockSignoffPreparePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Prepare only eligible owner-specific reviewed subsets; unresolved outcomes remain visible.",
+      "modelEntities": [
+        "StockCycle",
+        "StockReview",
+        "ApprovalAttempt"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Readiness, owner routing and closure details"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "StockSignoff.Request",
+      "mode": "command",
+      "payloadDefinition": "StockSignoffRequestPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Request configured Microsoft approvals; request is not itself sign-off or closure.",
+      "modelEntities": [
+        "ApprovalAttempt",
+        "ApprovalObligation",
+        "StockCycle"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "StandardApprovals"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reconciliation.Compare",
+      "mode": "command",
+      "payloadDefinition": "ReconciliationComparePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Retain source/register provenance and findings; comparison creates no master correction.",
+      "modelEntities": [
+        "ReconciliationRun",
+        "LedgerRow",
+        "ReconciliationFinding"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "ExcelOnlineBusiness"
+      ],
+      "deferredPolicies": [
+        "Ledger/template/grouping and period alignment"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "runKey": "Run/provenance reference",
+        "comparisonVersion": "Versioned source/register/rule evidence",
+        "findingPage": "Authorized finding projections with complete-result metadata"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reconciliation.PlanSave",
+      "mode": "command",
+      "payloadDefinition": "ReconciliationPlanSavePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Version reviewed dispositions and eligible proposed changes, not master writes.",
+      "modelEntities": [
+        "CorrectionPlanItem",
+        "ReconciliationFinding"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Disposition and editable-field allow-list"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "runKey": "Authorized run",
+        "planVersion": "Saved reviewed-disposition version",
+        "itemResults": "Actual saved/failed plan-item evidence"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reconciliation.ApplyPreview",
+      "mode": "prepare",
+      "payloadDefinition": "ReconciliationApplyPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Preview explicit eligible application against current records and prerequisites.",
+      "modelEntities": [
+        "CorrectionPlanItem",
+        "Asset",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Financial correction policy and version conflicts"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reconciliation.Apply",
+      "mode": "command",
+      "payloadDefinition": "ReconciliationApplyPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Apply explicitly reviewed authorized changes before final reconciliation sign-off; keep pre-transfer approval requirements.",
+      "modelEntities": [
+        "OperationItem",
+        "Asset",
+        "AssetEvent",
+        "CorrectionPlanItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Partial failures and follow-up policy"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "applicationState": "Actual application outcome",
+        "actualResultSnapshotRef": "Versioned actual applied/failed/conflicted/follow-up evidence reference",
+        "actualResultSnapshotVersion": "Opaque version",
+        "finalSignoffState": "Separate current final decision state; application does not certify"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "ReconciliationSignoff.Prepare",
+      "mode": "prepare",
+      "payloadDefinition": "ReconciliationSignoffPreparePayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Prepare final Accounting/Governance review of actual results after explicit application.",
+      "modelEntities": [
+        "ReconciliationRun",
+        "OperationItem",
+        "ApprovalAttempt"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Unresolved-follow-up readiness",
+        "Rejection/rework/rollback"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "ReconciliationSignoff.Request",
+      "mode": "command",
+      "payloadDefinition": "ReconciliationSignoffRequestPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Request final configured decisions; no mutation or automatic rollback from sign-off result.",
+      "modelEntities": [
+        "ApprovalAttempt",
+        "ApprovalObligation",
+        "ReconciliationRun"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "StandardApprovals"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reports.Query",
+      "mode": "query",
+      "payloadDefinition": "ReportsQueryPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Authorized process/asset reporting projection, counts and freshness; counts label subset and completeness.",
+      "modelEntities": [
+        "Asset",
+        "Operation",
+        "StockCycle",
+        "ReconciliationRun"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "items": "Authorized process/report rows",
+        "page": "Cursor and returned-row metadata",
+        "measures": "Named scoped measures with completeness/freshness; unavailable totals remain explicit"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Reports.GetProcess",
+      "mode": "query",
+      "payloadDefinition": "ReportsGetProcessPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Only relevant owned/assigned/operational subset, including work initiated by others.",
+      "modelEntities": [
+        "OperationItem",
+        "StockReview",
+        "ReconciliationFinding"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "processKey": "Permitted process reference",
+        "items": "Only relevant results/activity subset",
+        "page": "Continuation and completeness metadata",
+        "outcomeDimensions": "Separate process, response, review, application and sign-off where applicable"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Reminder.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "ReminderPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Resolve relevant pending respondent recipients and standard message; client supplies no arbitrary recipient emails.",
+      "modelEntities": [
+        "StockAssignment",
+        "NotificationDelivery"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Channel, rate limits and deduplication"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Reminder.Send",
+      "mode": "command",
+      "payloadDefinition": "ReminderSendPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Send the reviewed standard reminder; record delivery independently of task/response status.",
+      "modelEntities": [
+        "NotificationDelivery",
+        "StockAssignment"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "ChosenNotificationChannel"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "deliveryResults": "Relevant authorized recipients and actual queued/sent/failed evidence",
+        "businessStateChanged": "False for response/workflow status"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Export.Request",
+      "mode": "command",
+      "payloadDefinition": "ExportRequestPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Produce protected full authorized filtered result; field policy is validated, not client permission.",
+      "modelEntities": [
+        "ExportJob",
+        "DocumentReference"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Format, expiry, download authorization and retention"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "exportJobKey": "Protected result job",
+        "outputReference": "Conditional authorized output reference; download access must be revalidated",
+        "completeness": "Actual full-filtered-result versus partial/failure evidence"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "ReportRefresh.Request",
+      "mode": "command",
+      "payloadDefinition": "ReportRefreshRequestPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Request refresh for an allowed configured reporting binding; does not claim refresh completed.",
+      "modelEntities": [
+        "Operation"
+      ],
+      "connectorResponsibilities": [
+        "PowerBI",
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Report architecture and refresh completion contract"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "refreshJobReference": "Configured reporting refresh correlation",
+        "refreshState": "Actual accepted/in-progress/completed/failed evidence; acceptance is not completion"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Approvals.OpenContext",
+      "mode": "query",
+      "payloadDefinition": "ApprovalsOpenContextPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Return permitted context and validated Microsoft opening link for actual assigned capacity; no decision endpoint.",
+      "modelEntities": [
+        "ApprovalAttempt",
+        "ApprovalObligation"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint",
+        "StandardApprovals"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "attemptKey": "Authorized attempt reference",
+        "projection": "Permitted review context and last-synchronized service state",
+        "openUrl": "Conditional validated Microsoft opening link; no fabricated URL when unavailable"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Grants.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "GrantsPreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Validate administrative actor separately from target; Global ordinary-role/entity boundary and Super privileged-grant boundary.",
+      "modelEntities": [
+        "Principal",
+        "AccessGrant"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Bootstrap and revocation implementation"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Grants.Commit",
+      "mode": "command",
+      "payloadDefinition": "GrantsCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Apply reviewed allowed grant/revoke with attributable evidence and current authority.",
+      "modelEntities": [
+        "AccessGrant",
+        "Operation"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "ReferenceChange.Preview",
+      "mode": "prepare",
+      "payloadDefinition": "ReferenceChangePreviewPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Validate exact reference maintenance authority; Category/Building authority is not inferred from type maintenance.",
+      "modelEntities": [
+        "AssetType",
+        "Building",
+        "Category"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [
+        "Shared-reference maintenance authority",
+        "Deactivation/reclassification safeguards"
+      ],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "previewRef": "Opaque durable reviewed preview reference",
+        "previewVersion": "Opaque reviewed input/record version binding",
+        "itemPreviews": "Authorized old/proposed values, route and safe row/field findings",
+        "readiness": "Explicit complete-selection and commit eligibility under the feature policy"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "ReferenceChange.Commit",
+      "mode": "command",
+      "payloadDefinition": "ReferenceChangeCommitPayload",
+      "requiresSubmissionKey": true,
+      "contractMeaning": "Apply reviewed allowed reference change without cascading changes to historic evidence.",
+      "modelEntities": [
+        "AssetType",
+        "Building",
+        "Category",
+        "Operation"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "itemResults": "Actual authorized per-item results and relevant created/request references",
+        "outcomeDimensions": "Application, approval, verification/final certification stay distinct; only applicable dimensions returned"
+      },
+      "acceptedDataProjection": {
+        "operationRefLocation": "Common response envelope",
+        "data": "Only known authorized acceptance/progress facts; completed projection may not be available yet"
+      }
+    },
+    {
+      "operation": "Operations.Get",
+      "mode": "query",
+      "payloadDefinition": "OperationsGetPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Read authorized durable status/item outcomes; reference alone is not access.",
+      "modelEntities": [
+        "Operation",
+        "OperationItem"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "operationKey": "Permitted durable reference",
+        "itemResults": "Authorized per-item outcomes",
+        "page": "Continuation and item-result completeness",
+        "outcomeDimensions": "Transport/application/approval/certification separately where applicable"
+      },
+      "acceptedDataProjection": null
+    },
+    {
+      "operation": "Operations.FindSubmission",
+      "mode": "query",
+      "payloadDefinition": "OperationsFindSubmissionPayload",
+      "requiresSubmissionKey": false,
+      "contractMeaning": "Resolve own prior durable action after response loss; no arbitrary actor lookup.",
+      "modelEntities": [
+        "Operation"
+      ],
+      "connectorResponsibilities": [
+        "SharePoint"
+      ],
+      "deferredPolicies": [],
+      "availability": "Design only; not implemented",
+      "completedDataProjection": {
+        "found": "Boolean; false is not proof that an uncertain write never happened",
+        "operationRef": "Present only for an authorized resolved existing submission",
+        "projection": "Available durable status or explicit unresolved result"
+      },
+      "acceptedDataProjection": null
+    }
+  ],
+  "systemOnlyOperations": [
+    {
+      "operation": "ApprovalDecision.Process",
+      "entry": "Trusted Microsoft approval orchestration"
+    },
+    {
+      "operation": "BookValue.CalculatePeriod",
+      "entry": "Configured monthly schedule; approved formula still deferred"
+    },
+    {
+      "operation": "Operation.Reconcile",
+      "entry": "Explicit controlled recovery procedure"
+    },
+    {
+      "operation": "ReportRefresh.Observe",
+      "entry": "Trusted reporting orchestration"
+    }
+  ],
+  "criticalSemantics": [
+    "No client-supplied actor or role as identity proof",
+    "No app approval-response endpoint",
+    "Preview is not a master write or approval",
+    "Stock observations modify assignments only",
+    "Reconciliation application precedes final sign-off",
+    "Transfer-specific owner approvals precede that transfer",
+    "An accepted operation requires durable reference",
+    "Submission-key reuse with changed inputs conflicts",
+    "Decimal strings specify transport only, not precision or financial policy"
+  ]
+}
