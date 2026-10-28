@@ -20,3 +20,7 @@ To return output manually: open this folder on GitHub, choose **Add file → Cre
 The user implements and inspects company systems. Claude provides Q&A using supplied materials and has no direct company-system visibility. Every future prompt must carry this context and manual evidence-collection steps from the template.
 
 Response 001 received; [review and corrections](responses/001-environment-inventory-review.md). Inventory remains PENDING until company evidence is supplied.
+
+## Visual flow proposals
+
+D066: accompany proposed user flows with a mockup/storyboard/flowchart and concise explanation. The main developer supplies image concepts; text-only Claude Q&A may reference those images or provide a Mermaid flowchart. Link the relevant visual in task-specific prompts so company transfer includes its context. A generated visual is a proposal until reviewed.

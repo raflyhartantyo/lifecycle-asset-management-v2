@@ -333,3 +333,8 @@ Shared-value application is form preparation, not transaction execution. Show re
 Owner agreed, 2026-10-28: retain the displayed disposal workspace and Asset Details/History concepts as working visual designs. Disposal shows per-asset details, a shared date/buyer shortcut and separate selling prices. Asset Details/History shows current context, Overview/Financials/History/Documents navigation and chronological business/approval/application events. Optional single-asset Move/Dispose entry points coexist with the faster selected-assets paths.
 
 This accepts the visual direction, not runtime outcomes or every interaction implied by generated sample controls. Unresolved buyer representation, mixed-mode/overwrite behavior, partial failures, exact permissions/history detail visibility, financial formula/initial value and production component contracts remain under their existing design gates. Generated data and actor labels remain illustrative. See `../design/concepts/2026-10-28/asset-details-disposal/README.md`.
+
+
+## D066 — Visuals accompany flow proposals
+
+Owner instruction, 2026-10-28: give a visual when proposing a flow. Future user-flow proposals should include a relevant screen mockup, storyboard or flowchart alongside concise explanation rather than text-only proposals followed by a separate offer to draw them. Keep visual proposals distinct from accepted business requirements and runtime implementation. The first stock-verification respondent storyboard is a proposal for review, not approved response-field/state policy.
