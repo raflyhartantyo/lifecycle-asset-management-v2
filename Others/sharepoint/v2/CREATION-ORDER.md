@@ -4,7 +4,7 @@ Stage 1 has its original creation-ready field contracts; [reference foundation 0
 
 | Stage | Data responsibility | Prerequisite / status |
 | --- | --- | --- |
-| 1 | Organizations, then Functions | Ready to create empty on completed SITE-A using this guide |
+| 1 | Organizations, then Functions | Create dedicated empty lists inside SITE-F, the existing Function site; use [shared-site layout/permissions](SHARED-FUNCTION-SITE-SETUP.md), then the foundation guide |
 | 2 | Access grants, privileged administration and workflow approver configuration | Design after confirming available backend identity/permission mechanisms; enforce ordinary pair, entity Global User and application Super User scopes |
 | 3 | Categories, asset types, locations and needed people references | Categories/AssetTypes/Buildings now have [physical contracts and manual setup](reference-foundation-002/README.md); people/access binding follows the relevant slice. Reference browsing has separate manual app resources. |
 | 4 | Asset register, quantity inventory and their movement/disposal history | References and server-side mutation/access enforcement; no separate disposal request/approval list |

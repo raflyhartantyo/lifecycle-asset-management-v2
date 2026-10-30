@@ -2,6 +2,8 @@
 
 Status: architecture design under owner direction D072. Continue designing schemas, screens, components and flows now. The owner handles tenant access, connector setup and bindings when implementing each feature; access/capability questionnaires are not design prerequisites. This document is the implementation dependency reference, not a request to configure anything now.
 
+D073 changes the SharePoint host to SITE-F, the existing Function site. Dedicated LAM lists/libraries remain separate from host content; see [shared-site layout and permission setup](../sharepoint/v2/SHARED-FUNCTION-SITE-SETUP.md). The host Function does not restrict LAM's multi-entity business scope.
+
 ## Solution structure
 
 ```mermaid
@@ -29,7 +31,7 @@ Required/planned below describes the design, not a claim that a company connecti
 
 | Connector / platform capability | Design need | Where it is used | Access/binding to document for implementation |
 | --- | --- | --- | --- |
-| [SharePoint](https://learn.microsoft.com/en-us/connectors/sharepoint/) | Core | Reference data, assets, inventory, requests/assignments, operation outcomes/history; proposed document libraries for uploads/evidence/exports | SITE-A, list/library identifiers, permitted reads/writes and reference relationships; separate ordinary-user authority from controlled operation identity |
+| [SharePoint](https://learn.microsoft.com/en-us/connectors/sharepoint/) | Core | Reference data, assets, inventory, requests/assignments, operation outcomes/history; proposed document libraries for uploads/evidence/exports | SITE-F, dedicated LAM list/library identifiers, permitted reads/writes and reference relationships; separate ordinary-user authority from controlled operation identity |
 | [Office 365 Users](https://learn.microsoft.com/en-us/connectors/office365users/) | Core for chosen directory-backed people selection | Custodian and other actual employee identity lookups in the app; profiles needed by routing | User-directory connection and only needed profile fields; profile-read operations, no profile administration; pending-directory placeholder allowed only for Custodian |
 | [Standard approvals](https://learn.microsoft.com/en-us/connectors/approvals/) | Core retained workflows | Asset owner/scope transfers; stock Business Owner sign-off; reconciliation final Accounting/Governance sign-off | Flow connection/environment and named workflow capacities; durable approval ID/attempt/snapshot/response evidence in LAM |
 | [Excel Online (Business)](https://learn.microsoft.com/en-us/connectors/excelonlinebusiness/) | Planned spreadsheet integration | Bulk registration and accounting-ledger ingestion when the final template uses Excel workbooks/tables | Approved SharePoint file location, workbook/table/schema mapping, complete row paging and per-file operation identity; not an operational database |

@@ -2,11 +2,11 @@
 
 Status: manual creation guidance ready for the first two reference lists; implementation NOT RUN. This is a new V2 contract, not a reproduction of the untyped baseline schema. Operational data and access-control contracts are being delivered incrementally. [Reference foundation 002](reference-foundation-002/README.md) now adds physical Category/Asset Type/Building definitions and manual read-only app resources.
 
-Start with [CREATION-GUIDE.md](CREATION-GUIDE.md). Exact fields/settings are in [FOUNDATION-COLUMNS.csv](FOUNDATION-COLUMNS.csv); future stages are in [CREATION-ORDER.md](CREATION-ORDER.md). These CSVs are documentation, not files to import as list data.
+Start with [the shared Function-site layout and permissions](SHARED-FUNCTION-SITE-SETUP.md), then [CREATION-GUIDE.md](CREATION-GUIDE.md). Exact fields/settings are in [FOUNDATION-COLUMNS.csv](FOUNDATION-COLUMNS.csv); future stages are in [CREATION-ORDER.md](CREATION-ORDER.md). These CSVs are documentation, not files to import as list data.
 
-Scope: SITE-A; dedicated empty V2 lists named LAM2_Organizations and LAM2_Functions. Existing baseline lists remain untouched. Entity means Organization; no duplicate Entity column is introduced. A function belongs to exactly one organization (D002). Scope identifiers and reference relationships are not access grants.
+Scope: SITE-F, the existing Function site under D073; dedicated empty V2 lists named LAM2_Organizations and LAM2_Functions. Existing baseline lists remain untouched. Entity means Organization; no duplicate Entity column is introduced. A function belongs to exactly one organization (D002). Scope identifiers and reference relationships are not access grants.
 
-Only approved site maintainers should write these reference lists during setup. Operational role assignments, task history, exports and data access will be implemented separately. Confirm permissions on the completed SITE-A before adding records or connecting the app. Creation of these lists alone does not enforce entity/function isolation.
+Only approved site maintainers should write these reference lists during setup. Operational role assignments, task history, exports and data access will be implemented separately. Configure the new LAM resources' list-level permissions before adding records or connecting the app, following [the shared-site setup](SHARED-FUNCTION-SITE-SETUP.md). Preserve the host site's existing content and membership. Creation of these lists alone does not enforce entity/function isolation.
 
 Company observations: [ENVIRONMENT-FACTS.md](../../handover/ENVIRONMENT-FACTS.md).
 

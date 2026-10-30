@@ -42,16 +42,16 @@ The Microsoft approval is the authoritative decision event; LAM's business ledge
 - Native request cancellation and flow-run cancellation are separate operations to validate. Define an operator-supported cleanup/reconciliation route for abandoned approvals; no blanket connector cancellation capability is assumed.
 - Store durable business evidence under approved access and retention controls. Neither transient run history nor a Teams notification card is the business audit ledger. Retention duration remains a company dependency.
 
-## Read-only readiness checks, independent of SITE-A
+## Implementation-time checks, independent of new site creation
 
-The user can report these facts; Claude explains using supplied screenshots/observations:
+D072 defers general capability questionnaires; these remain optional checks for the relevant implementation step. The owner handles setup, with Claude explaining supplied observations if needed:
 
 1. Is Approvals available in company Teams? Open the app and inspect only; no request creation required.
 2. Can the user open Power Automate in ENV-A and view existing owned/shared flows? ENV-A's type/default status and Dataverse/Approvals provisioning are UNKNOWN unless an authorized administrator confirms them.
 3. Ask the relevant administrator/flow owner whether Approvals is already provisioned in ENV-A, what creator/responder licenses apply, whether SharePoint/Approvals/Teams connectors can be combined under company policy, and whether an approved flow owner/connection identity exists.
 4. Confirm approved test identities and notification destinations before a later integration test. Do not provision Dataverse or trigger first-use approval setup during this read-only check.
 
-These are preparation checks, not requests to change company settings. SITE-A completion is needed for SharePoint implementation but not for discussing the approval design.
+These are implementation references, not a requested general report or permission to change company settings. D073 hosts dedicated LAM resources on SITE-F, the existing Function site; no dedicated-site creation is required. SharePoint lists/connections are configured with their affected feature, and architecture design continues independently.
 
 ## Company tests required before acceptance
 

@@ -6,7 +6,7 @@ D072: general access/capability questionnaires are deferred. No observation repo
 | --- | --- | --- | --- |
 | 004 | **PENDING — OPTIONAL** | When choosing to implement the delivered reference-list/browser resources; no action requested now | [Reference catalogue implementation Q&A](PENDING-004-reference-catalogues.md) |
 | 003 | **DEFERRED** | Optional reference only; no response requested under D072 | [Access capability check](PENDING-003-access-capability-check.md) |
-| 002 | **PENDING** | Once SITE-A is complete: create two empty foundation lists | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
+| 002 | **PENDING** | Optional: create two dedicated empty LAM lists on the existing Function site SITE-F (D073) | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
 | 001 | **DEFERRED** | Optional historical reference; no new report requested under D072 | [Company environment inventory](PENDING-001-environment-inventory.md) |
 
 Mark an executed prompt complete only after its returned output has been reviewed by the user/main developer. DEFERRED means no action or response is currently requested. Historical filenames may still include PENDING; the status in this index and the file takes precedence.

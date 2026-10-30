@@ -1,10 +1,10 @@
 # Create the V2 organization/function foundation
 
-Prerequisite: SITE-A creation is complete and the owner confirms the user can create/configure dedicated V2 lists. Keep this step to empty list/column setup. Per D044, SharePoint business fields remain optional; business-requiredness is validated by the later Power Apps forms and recommended flow/import validation. Leave the blank app unchanged.
+Target: SITE-F, the existing Function site selected under D073. Create only dedicated new LAM resources there; no new site is required. Follow [SHARED-FUNCTION-SITE-SETUP.md](SHARED-FUNCTION-SITE-SETUP.md) to isolate each new list's permissions while empty and preserve the host site's other content/access. Keep this step to empty list/column setup. Per D044, SharePoint business fields remain optional; business-requiredness is validated by the later Power Apps forms and recommended flow/import validation. Leave the blank app unchanged.
 
 ## 1. Create LAM2_Organizations
 
-1. In SITE-A, open Settings → Site contents → New → List → Blank list. Use the exact name LAM2_Organizations. If it already exists, inspect it and report differences rather than replacing it.
+1. In SITE-F, open Settings → Site contents → New → List → Blank list. Use the exact name LAM2_Organizations. If it already exists, inspect it and report differences rather than replacing it.
 2. Open List settings. Keep the built-in Title column's name as Title; use it for the human-readable organization name. Set Require that this column contains information to No; keep single-line text, maximum 255 characters, non-unique.
 3. Add Organization_ID as Single line of text, Required No, maximum 50 characters, enforce unique values Yes, no default. Create with that exact name. This stable code identifies an entity; do not reuse it for another entity. For future data, use uppercase codes without surrounding whitespace.
 4. Add IsActive as Yes/No with default Yes. Leave all other optional user columns absent.
@@ -14,7 +14,7 @@ Prerequisite: SITE-A creation is complete and the owner confirms the user can cr
 
 ## 2. Create LAM2_Functions
 
-1. Create another blank list named LAM2_Functions in the same SITE-A. Keep Title for the human-readable function name, Required No, single-line text, maximum 255 characters, non-unique. Names may repeat between entities.
+1. Create another blank list named LAM2_Functions in the same SITE-F. Keep Title for the human-readable function name, Required No, single-line text, maximum 255 characters, non-unique. Names may repeat between entities.
 2. Add Function_ID as Single line of text, Required No, maximum 50 characters, enforce unique values Yes, no default. Codes must be globally unique across this list, including where function names repeat. Use an entity-prefixed stable code when actual data is loaded later.
 3. Through List settings → Create column, create OrganizationRef as a Lookup to LAM2_Organizations, displaying Organization_ID. Set Required No, allow multiple values No, enforce unique values No. Multiple functions must be allowed to share an organization.
 4. Enable relationship behavior on OrganizationRef and select Restrict delete. This prevents deleting an organization referenced by a function. If this setting is unavailable or rejected, stop that configuration step and report it; do not substitute Cascade delete. Verify lookup target and relationship settings.
@@ -27,12 +27,12 @@ Report PASS/FAIL/NOT RUN for each, supported by settings screenshots or transcri
 
 | Check | Expected result |
 | --- | --- |
-| FND-01 Lists | Both exact names exist in SITE-A; zero business rows |
+| FND-01 Lists | Both exact names exist in SITE-F; zero business rows |
 | FND-02 Organization columns | Title optional; Organization_ID optional/text/50/unique; IsActive defaults Yes |
 | FND-03 Function columns | Title optional; Function_ID optional/text/50/unique; IsActive defaults Yes |
 | FND-04 Relationship | OrganizationRef optional/single lookup to Organizations.Organization_ID; non-unique; Restrict delete |
 | FND-05 Versioning | Enabled on both lists; retention setting recorded |
-| FND-06 Permissions | Actual maintainers/readers/groups and inheritance recorded by aliases; ability to manage permissions verified on SITE-A |
+| FND-06 Permissions | New LAM lists have the intended unique permissions; copied broad host access reviewed/removed on those lists only; approved administrative/read access retained; unrelated site content/membership unchanged |
 | FND-07 Scope | No production rows, flows, app connections, or baseline changes introduced |
 
 This checks configuration only. Duplicate rejection, parent deletion protection, role authorization and runtime behavior are NOT RUN until a later synthetic-data test instruction. Do not interpret list creation as UAT completion.
