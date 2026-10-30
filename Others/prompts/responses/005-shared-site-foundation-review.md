@@ -2,11 +2,11 @@
 
 Reviewed response commit `13fbebdb9b73c849d03d9577f81a82c221f256ba` on 2026-10-30, with the owner's subsequent D074 clarification.
 
-Status: **IN PROGRESS — reported setup largely complete; targeted settings remain unconfirmed**. All five lists are reported created. The omission of AssetTypes.OrganizationRef is now correct under the revised shared-catalogue contract. No runtime/security acceptance is claimed.
+Status: **COMPLETE — OWNER-CONFIRMED CONFIGURATION**, 2026-10-30. All five lists are reported created. The omission of AssetTypes.OrganizationRef is now correct under the revised shared-catalogue contract. No runtime/security acceptance is claimed.
 
 ## Evidence boundary
 
-The [submitted report](005-shared-site-foundation-response.md) is the evidence available to Codex. It says screenshots were used for Functions lookup/index settings and Category seeds, but the images are not attached to this response. Codex has not independently inspected those screenshots or company systems. Other settings remain user-reported. The original report is preserved unchanged.
+The [submitted report](005-shared-site-foundation-response.md) is the evidence available to Codex. It says screenshots were used for Functions lookup/index settings and Category seeds, but the images are not attached to this response. Codex has not independently inspected those screenshots or company systems. The owner subsequently confirmed all remaining settings correct. Configuration completion is accepted on that confirmation, not independent tenant inspection. The original report is preserved unchanged.
 
 ## Owner clarification resolves the model discrepancy
 
@@ -25,19 +25,17 @@ The report's original “NOT PASSED because OrganizationRef is missing” findin
 | --- | --- | --- |
 | LAM2_Organizations | Reported configuration consistent with foundation contract | Runtime uniqueness/authorization not tested |
 | LAM2_Functions | Reported configuration consistent | Extra OrganizationRef index does not conflict; retain the required OrganizationRef on Functions |
-| LAM2_Categories | Three reported fixed code/label rows match KO/NK/PL | Exact numeric version-retention setting not recorded |
-| LAM2_AssetTypes | Missing OrganizationRef is correct under D074; other core settings reported configured | CategoryRef full settings/index, AssetTypeKey index, row count and numeric retention not fully evidenced |
+| LAM2_Categories | Three reported fixed code/label rows match KO/NK/PL | Owner confirmed retention correct; no further confirmation requested |
+| LAM2_AssetTypes | Missing OrganizationRef is correct under D074; other core settings reported configured | Owner confirmed these settings correct; no further confirmation requested |
 | LAM2_Buildings | Reported configuration consistent with shared building-only contract | Runtime/source access behavior not tested |
 
-Organizations, Functions and Buildings report retention 50 aligned with company policy. Do not assume that value was applied to Categories/AssetTypes without recording their actual settings.
+## Owner confirmation closes the former open items
 
-## Resume only these specific checks
+The owner stated that all remaining settings were already correct and confirmed. Accept the CategoryRef relationship/index, AssetTypeKey unique/index state, AssetTypes row-count check and Categories/AssetTypes retention configuration as owner-confirmed complete. No additional settings report or screenshots are required to close 005.
 
-1. In AssetTypes, confirm CategoryRef is Lookup → LAM2_Categories.CategoryCode; Required No; single-valued; non-unique; Restrict delete; indexed.
-2. Confirm AssetTypeKey's unique/index state and the actual AssetTypes row count.
-3. Record the exact numeric version-retention settings for Categories and AssetTypes.
+The earlier response explicitly records retention 50 for Organizations/Functions/Buildings. Categories/AssetTypes numerical values were not separately transcribed; do not invent them or reopen this completed task solely for transcription. The owner confirmed their configuration correct under the applicable policy.
 
-No list recreation, general capability questionnaire or new screenshot package is requested. The owner can supply concise actual settings. No AssetTypes.OrganizationRef is required; Functions.OrganizationRef remains required by its separate parent relationship.
+Keep OrganizationRef on Functions; omit it on shared AssetTypes under D074. The five-list setup is complete. Next use the [manual reference-screen implementation](../../../Power%20Apps/Lifecycle%20Asset%20Management%20V2/target-v2/reference-catalogues/README.md), with optional prompt 004 for Q&A assistance.
 
 ## Reader and transfer resource changes
 
@@ -51,4 +49,4 @@ The label “Contribute from PowerApps” does not establish app-only write enfo
 
 ## Test/status handling
 
-No UAT case has run. CAT/TYP/BLD labels in Claude's report are session-specific checks, not automatic PASS results for REF2 or the 78-case target/baseline kit. Keep 005 IN PROGRESS until the targeted remaining settings are recorded. Source/schema checks do not compile the app or prove company runtime/security behavior.
+No UAT case has run. CAT/TYP/BLD labels in Claude's report are session-specific checks, not automatic PASS results for REF2 or the 78-case target/baseline kit. 005 is complete for configuration based on the owner's explicit confirmation. Unexecuted runtime/security cases stay NOT RUN; no new settings confirmation is requested. Source/schema checks do not compile the app or prove company runtime/security behavior.

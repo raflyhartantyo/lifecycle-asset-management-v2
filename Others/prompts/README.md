@@ -4,10 +4,10 @@ D072: general access/capability questionnaires are deferred. No observation repo
 
 | ID | Status | When to use | Prompt |
 | --- | --- | --- | --- |
-| 005 | **IN PROGRESS — REVIEWED PARTIAL** | Five lists created by report; D074 resolves shared Asset Types/no OrganizationRef; targeted lookup/index, row-count and retention settings remain | [Shared-site foundation setup](PENDING-005-shared-site-foundation.md) |
+| 005 | **COMPLETE — OWNER-CONFIRMED CONFIGURATION** | All five reference lists/settings confirmed correct by owner; runtime tests remain separate | [Shared-site foundation setup](PENDING-005-shared-site-foundation.md) |
 | 004 | **PENDING — OPTIONAL** | When choosing to implement the delivered reference-list/browser resources; no action requested now | [Reference catalogue implementation Q&A](PENDING-004-reference-catalogues.md) |
 | 003 | **DEFERRED** | Optional reference only; no response requested under D072 | [Access capability check](PENDING-003-access-capability-check.md) |
-| 002 | **PENDING** | Optional: create two dedicated empty LAM lists on the existing Function site SITE-F (D073) | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
+| 002 | **COVERED BY 005** | Organizations/Functions setup completed through 005; retain as reference, do not repeat | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
 | 001 | **DEFERRED** | Optional historical reference; no new report requested under D072 | [Company environment inventory](PENDING-001-environment-inventory.md) |
 
 Mark an executed prompt complete only after its returned output has been reviewed by the user/main developer. DEFERRED means no action or response is currently requested. Historical filenames may still include PENDING; the status in this index and the file takes precedence.
@@ -28,4 +28,4 @@ Response 001 received; [review and corrections](responses/001-environment-invent
 
 D066: accompany proposed user flows with a mockup/storyboard/flowchart and concise explanation. The main developer supplies image concepts; text-only Claude Q&A may reference those images or provide a Mermaid flowchart. Link the relevant visual in task-specific prompts so company transfer includes its context. A generated visual is a proposal until reviewed.
 
-Response 005 received and [reviewed](responses/005-shared-site-foundation-review.md). Configuration is partially complete; no runtime/security cases have run. Preserve the [original response](responses/005-shared-site-foundation-response.md); resume only the specific open items rather than repeating completed setup.
+Response 005 received and [reviewed](responses/005-shared-site-foundation-review.md). The owner confirmed all remaining configuration correct; 005 is complete for configuration. No runtime/security cases are marked passed. Preserve the [original response](responses/005-shared-site-foundation-response.md); proceed to the reference screen rather than repeating setup.

@@ -1,6 +1,6 @@
 # PENDING-002 — Create empty SharePoint foundation lists
 
-Status: **PENDING**
+Status: **COVERED BY COMPLETED 005** — owner-confirmed configuration, 2026-10-30. Retain this earlier guide as reference; no repeat setup/report is requested.
 
 Optional implementation aid for the selected existing Function site SITE-F (D073); no new dedicated site is required. This is manual setup; no operational data or app connections yet.
 
@@ -16,4 +16,4 @@ Return your report as one Markdown document that I can paste into Others/prompts
 
 ## Tracking
 
-Keep PENDING until the user/main developer reviews the returned report.
+Organizations/Functions setup is covered by completed 005 configuration confirmation. Runtime tests remain separate.

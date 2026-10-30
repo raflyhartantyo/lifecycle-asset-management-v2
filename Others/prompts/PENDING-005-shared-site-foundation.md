@@ -1,10 +1,10 @@
 # 005 — Shared Function-site foundation setup
 
-Status: **IN PROGRESS — REVIEWED PARTIAL**
+Status: **COMPLETE — OWNER-CONFIRMED CONFIGURATION**, 2026-10-30
 
-Response received: [original report](responses/005-shared-site-foundation-response.md). See [review and remaining items](responses/005-shared-site-foundation-review.md). Five lists are reported created. D074 now confirms shared Asset Types, so OrganizationRef must not be added to AssetTypes. Resume only the CategoryRef/index, row-count and retention confirmations in the review.
+Response received: [original report](responses/005-shared-site-foundation-response.md). See [completed review](responses/005-shared-site-foundation-review.md). The owner confirmed all remaining settings correct. D074 keeps shared Asset Types without OrganizationRef. Setup is complete; retain the instructions below as reference and do not repeat completed work.
 
-Use now when implementing the five LAM reference lists on SITE-F. This is a concrete setup guide, not a general access questionnaire. Source guides were checked at commit `2176bbcc5e0a65e1cfb4b5675779d801c98b30c9`; links below follow main for the current guidance. No company action or runtime test is completed by publishing this prompt.
+Historical implementation prompt for the five LAM reference lists on SITE-F; completed by owner confirmation. This is a concrete setup guide, not a general access questionnaire. Source guides were checked at commit `2176bbcc5e0a65e1cfb4b5675779d801c98b30c9`; links below follow main for the current guidance. No company action or runtime test is completed by publishing this prompt.
 
 ## Prompt to copy
 
@@ -77,4 +77,4 @@ I will create/update that file on GitHub and send Codex its link. You do not nee
 
 ## Tracking
 
-Review completed with unresolved items; keep IN PROGRESS until the specific remaining index/lookup, row-count and retention settings are recorded. The shared-catalogue scope and Global/Super maintenance are confirmed in D074. This prompt covers SharePoint foundation setup only; the app package and operational writers are later steps.
+Owner confirmed all remaining configuration correct on 2026-10-30. Mark COMPLETE for configuration; no further settings confirmation is requested. Shared-catalogue scope and Global/Super maintenance are confirmed in D074; runtime/security acceptance remains separate. This prompt covers SharePoint foundation setup only; the app package and operational writers are later steps.
