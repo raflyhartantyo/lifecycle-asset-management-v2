@@ -4,6 +4,7 @@ D072: general access/capability questionnaires are deferred. No observation repo
 
 | ID | Status | When to use | Prompt |
 | --- | --- | --- | --- |
+| 005 | **PENDING** | Implement five dedicated LAM reference lists and their permissions on existing SITE-F, with direct guide links | [Shared-site foundation setup](PENDING-005-shared-site-foundation.md) |
 | 004 | **PENDING — OPTIONAL** | When choosing to implement the delivered reference-list/browser resources; no action requested now | [Reference catalogue implementation Q&A](PENDING-004-reference-catalogues.md) |
 | 003 | **DEFERRED** | Optional reference only; no response requested under D072 | [Access capability check](PENDING-003-access-capability-check.md) |
 | 002 | **PENDING** | Optional: create two dedicated empty LAM lists on the existing Function site SITE-F (D073) | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
