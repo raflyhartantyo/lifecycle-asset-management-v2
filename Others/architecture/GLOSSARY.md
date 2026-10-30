@@ -43,7 +43,7 @@ One of Accounting's fixed classifications: Komputer (KO), Non-Komputer (NK) or P
 _Avoid_: Asset Type, accounting account mapping
 
 **Asset Type**:
-An Entity's catalogue classification linked to one Category.
+A shared catalogue classification linked to one Category and usable by assets across Entities.
 _Avoid_: Category, inventory item
 
 **Asset Status**:

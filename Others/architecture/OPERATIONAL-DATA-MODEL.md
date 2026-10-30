@@ -7,7 +7,6 @@ Status: proposed engineering design derived from confirmed decisions through D07
 ```mermaid
 erDiagram
     ORGANIZATION ||--o{ FUNCTION : contains
-    ORGANIZATION ||--o{ ASSET_TYPE : maintains
     CATEGORY ||--o{ ASSET_TYPE : classifies
     FUNCTION ||--o{ ASSET : scopes
     ASSET_TYPE ||--o{ ASSET : classifies
@@ -39,7 +38,7 @@ The diagram omits secondary references for readability. Ownership, custody, phys
 | Group | Logical entities | Purpose / relationship |
 | --- | --- | --- |
 | Reference | Organization, Function | One Organization per Function; existing foundation contracts retained |
-| Reference | Category, AssetType, Building | Fixed KO/NK/PL; entity-specific types with Category parent; shared building-only locations |
+| Reference | Category, AssetType, Building | Fixed KO/NK/PL; shared types with Category parent (D074); shared building-only locations |
 | Identity/access | Principal, AccessGrant | Actual directory-backed identities and scoped roles; see existing access contract |
 | Asset register | Asset | One stable asset identity and authoritative current state; history remains linked after transfer/disposal |
 | Quantity inventory | InventoryItem, InventoryBalance, InventoryEvent | Item kind separate from scoped quantity and transfer history; not a row per physical unit |
@@ -58,7 +57,7 @@ Propose a generated immutable AssetKey independent of the visible Asset Tag and 
 
 A proposed Asset row retains current scope, type, building, owner, custody, condition, lifecycle and financial-result references. Prefer retaining the stable asset row after disposal and excluding Disposed records from the active register. This is a proposed physical design choice, not a newly confirmed business requirement; a linked retained-identity/archive implementation must preserve equivalent identity/history if later selected. No ordinary disposal physically deletes evidence.
 
-Category is derived through AssetType, not independently editable on Asset. Preserve Category/type labels and keys in historical snapshots so later catalogue edits cannot rewrite prior evidence. Propose preventing re-parenting an in-use type's Entity/Category through ordinary catalogue editing until a reviewed reclassification contract exists. Shared buildings have no exclusive Entity/Function parent and contain no floor/room fields.
+Category is derived through AssetType, not independently editable on Asset. Preserve Category/type labels and keys in historical snapshots so later catalogue edits cannot rewrite prior evidence. Propose preventing re-parenting an in-use type's Category through ordinary catalogue editing until a reviewed reclassification contract exists. Shared buildings have no exclusive Entity/Function parent and contain no floor/room fields.
 
 ## Asset field rules
 
@@ -66,7 +65,7 @@ Category is derived through AssetType, not independently editable on Asset. Pres
 | --- | --- | --- |
 | Identity | AssetKey, AssetTag, AccountingAssetCode and canonical matching key | Immutable internal identity; generated tag; code required and company-unique; canonicalization/tag details deferred |
 | Scope | OrganizationRef, FunctionRef and validated scalar scope keys | Function parent and acting user's scope must match; scalar query keys are maintained by the operation, not freely edited |
-| Classification | AssetTypeRef | Type belongs to Entity and has valid fixed Category parent; same-category destination mapping on cross-entity transfer |
+| Classification | AssetTypeRef | Shared type has valid fixed Category parent; cross-entity transfer retains it unless an authorized classification change is explicitly reviewed (D074) |
 | Description | AssetName, optional SerialNumber and ManufacturerModel | Name required provisionally under D058; serial duplicates permitted; no separate PL form |
 | Assignment | BuildingRef, BusinessOwnerRef, CustodianState and optional CustodianRef | Building/owner provisional required fields; owner actual directory identity; pending fallback only for Custodian |
 | State | AssetStatus and Condition | Available at create; Good default without overwriting deliberate valid choice; Condition exactly Good/Broken/Ready to Auction |
@@ -137,7 +136,7 @@ The model targets approximately 5,000 assets and growing history, not a client-s
 | Scenario | Required separation/outcome |
 | --- | --- |
 | Same shared building, different Entities | Common Building reference; separate scope/ownership and no access expansion |
-| Cross-entity movement | Same AssetKey/tag/accounting code; receiving type in same Category; old/new scope evidence; required owners approve before application |
+| Cross-entity movement | Same AssetKey/tag/accounting code; same shared type retained absent an explicit authorized classification change; old/new scope evidence; required owners approve before application |
 | Custodian pending for two assets | Two independent pending assignments, not one invented employee identity; later explicit resolution per asset |
 | Respondent corrects building | Versioned observation only; master changes only through a separate authorized operation |
 | One row fails in a batch | Successful/failed/uncertain rows retained separately; no invented atomicity or duplicate retry |

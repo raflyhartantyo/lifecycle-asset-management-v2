@@ -1,6 +1,8 @@
 # 005 — Shared Function-site foundation setup
 
-Status: **PENDING**
+Status: **IN PROGRESS — REVIEWED PARTIAL**
+
+Response received: [original report](responses/005-shared-site-foundation-response.md). See [review and remaining items](responses/005-shared-site-foundation-review.md). Five lists are reported created. D074 now confirms shared Asset Types, so OrganizationRef must not be added to AssetTypes. Resume only the CategoryRef/index, row-count and retention confirmations in the review.
 
 Use now when implementing the five LAM reference lists on SITE-F. This is a concrete setup guide, not a general access questionnaire. Source guides were checked at commit `2176bbcc5e0a65e1cfb4b5675779d801c98b30c9`; links below follow main for the current guidance. No company action or runtime test is completed by publishing this prompt.
 
@@ -55,7 +57,7 @@ Guide me through:
 Permission boundaries:
 Use List settings → Permissions for this list → Stop Inheriting Permissions on each new LAM list where available. Review the copied entries; breaking inheritance alone does not remove broad access. Remove unintended host Members/Visitors access from the LAM list only, retain approved administrative access, and grant intended LAM readers/maintainers. Do not delete host groups, change site-wide membership or permissions, or modify unrelated Function-site content. If I cannot perform a needed permission change, explain the specific action the site owner must perform and continue independent setup steps.
 
-Keep editable business fields optional in SharePoint; the later app/controlled operations enforce business requiredness. Preserve the supplied uniqueness and Restrict delete settings. Asset Types belong to an entity and look up Category. Buildings are shared, with no entity/function parent, floor or room. Do not introduce accounting mappings, sample company catalogues, operational asset lists, flows or Power Apps changes in this task.
+Keep editable business fields optional in SharePoint; the later app/controlled operations enforce business requiredness. Preserve the supplied uniqueness and Restrict delete settings. D074: Asset Types are shared across entities and look up Category; Global Users and Super Users can maintain them. Do not create OrganizationRef or FunctionRef on LAM2_AssetTypes. Buildings are shared, with no entity/function parent, floor or room. Do not introduce accounting mappings, sample company catalogues, operational asset lists, flows or Power Apps changes in this task.
 
 For each step:
 1. Tell me exactly where to click and what to enter.
@@ -75,4 +77,4 @@ I will create/update that file on GitHub and send Codex its link. You do not nee
 
 ## Tracking
 
-Keep PENDING until the returned implementation evidence has been reviewed. This prompt covers SharePoint foundation setup only; the app package and operational writers are later steps.
+Review completed with unresolved items; keep IN PROGRESS until the specific remaining index/lookup, row-count and retention settings are recorded. The shared-catalogue scope and Global/Super maintenance are confirmed in D074. This prompt covers SharePoint foundation setup only; the app package and operational writers are later steps.

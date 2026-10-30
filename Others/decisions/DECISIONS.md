@@ -267,6 +267,8 @@ Moving a registered asset to In Use is a separate authorized update under existi
 
 ## D055 — Entity-specific Asset Type catalogues
 
+Update: D074 supersedes the entity-specific catalogue/maintenance/destination-type mapping rules below. Keep this text as decision history; use the shared-catalogue contract in D074.
+
 Owner confirmed, 2026-10-27: maintain Asset Types separately for each entity. Each type belongs to an entity and retains the Category lookup from D048. The same display label may describe separate records in different entity catalogues; do not merge them into a single global type merely because their labels match. Registration must validate that the selected type belongs to the asset's entity.
 
 Accounting categories remain the fixed KO/NK/PL classification from D047; this decision does not make categories independently editable by entity. Locations remain shared across entities/functions under D049/D050. Type-maintainer roles, duplicate rules within one entity, availability across functions, and transfer handling where the destination entity uses a different type record remain to be designed. Entity-scoped maintenance must be enforced at the mutation boundary, not only by a filtered picker.
@@ -274,12 +276,16 @@ Accounting categories remain the fixed KO/NK/PL classification from D047; this d
 
 ## D056 — Asset Type catalogue maintainers
 
+Update: D074 supersedes the entity-specific catalogue/maintenance/destination-type mapping rules below. Keep this text as decision history; use the shared-catalogue contract in D074.
+
 Owner agreed, 2026-10-27: Global User maintains Asset Types within its assigned entity; Super User maintains Asset Types across entities. Other roles select existing types during registration and do not independently grant type-catalogue maintenance. Role combinations retain their explicit authorized privileges; a pair-scoped Asset Manager role does not implicitly grant entity-wide reference maintenance.
 
 Maintain the entity parent and valid Category lookup on every type. This decision settles the type-maintainer question in D055, not the authority to change Accounting's fixed categories or global shared buildings. Deactivation/reclassification safeguards and destination-type mapping for cross-entity transfers remain design details. Enforce maintenance scope in the backend as well as in the UI.
 
 
 ## D057 — Cross-entity destination Asset Type mapping
+
+Update: D074 supersedes the entity-specific catalogue/maintenance/destination-type mapping rules below. Keep this text as decision history; use the shared-catalogue contract in D074.
 
 Owner agreed, 2026-10-27: a cross-entity asset transfer specifies a valid receiving-entity Asset Type before requesting approval. The destination type must use the same Accounting Category (KO/NK/PL) as the source. If no suitable type exists, the receiving entity's Global User creates it first; Super User's cross-entity catalogue maintenance authority under D056 remains available.
 
@@ -391,3 +397,14 @@ Defer general setup/capability prompts 001 and 003; no response is required to p
 Owner reported, 2026-10-30: a dedicated LAM SharePoint site cannot be obtained; use the owner's existing Function site. Refer to that current target as SITE-F, preserving SITE-A as the earlier unavailable dedicated-site plan. Keep dedicated LAM2_ lists and planned LAM libraries within the shared host, rather than repurposing its existing content. This changes hosting, not LAM's multi-entity/function scope, roles, data model or workflow rules.
 
 The recommended implementation isolates new LAM resources from broad inherited host access and retains existing Function content/site membership. List-level separation is a hosting boundary, not proof of operational row/field isolation. Actual SITE-F permissions/URL/list creation are not supplied or verified. Existing assumptions about the planned site's permissions do not establish rights on the shared target. The owner handles configuration with each feature under D072; no general setup questionnaire is reintroduced. See `../sharepoint/v2/SHARED-FUNCTION-SITE-SETUP.md`.
+
+
+## D074 — Shared Asset Types maintained by Global and Super Users
+
+Owner confirmed, 2026-10-30, while reviewing response 005: Asset Types are shared across entities, and both Global Users and Super Users may maintain the shared catalogue. This supersedes D055's per-entity catalogue, D056's entity restriction on type maintenance and D057's need to map to a separate receiving-entity type solely because an asset changes entity.
+
+LAM2_AssetTypes has no OrganizationRef or FunctionRef. Keep the CategoryRef foreign key to the fixed KO/NK/PL categories, stable AssetTypeKey, name and active flag. Assets retain their own Organization/Function and permissions. Shared type maintenance is a specific Global User exception; it grants no broader operational, role-administration or workflow-approval authority and does not settle maintainers of Categories or Buildings.
+
+Cross-entity transfer retains the same shared Asset Type reference unless a separate authorized classification change is explicitly included and reviewed. Required owner approvals, stable asset identity/accounting code, Category consistency and change history remain. Existing type reclassification/deactivation safeguards and naming rules remain design details.
+
+The missing AssetTypes.OrganizationRef in response 005 is now intentional and should not be added under the revised contract. Physical columns, gallery query, logical model, permissions and guidance are updated together. Configuration details still unconfirmed in the response remain open; no runtime/security test is inferred from this decision.

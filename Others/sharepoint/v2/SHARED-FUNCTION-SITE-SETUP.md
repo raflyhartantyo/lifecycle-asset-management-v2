@@ -18,7 +18,7 @@ flowchart TD
 
 Keep the existing names and field contracts. Lists are separate site resources; a LAM folder in the site's existing Documents library is not a container for these lists or a replacement for their permissions. A navigation heading may group links for convenience, but does not provide access control.
 
-The site is hosting infrastructure, not the business data's Entity/Function owner. LAM still uses Organization → Function scope, entity-specific types, shared buildings and the accepted roles across all relevant entities. Do not force every asset into the hosting Function or add host-site membership as an application role.
+The site is hosting infrastructure, not the business data's Entity/Function owner. LAM still uses Organization → Function scope, shared Asset Types (D074), shared buildings and the accepted roles across all relevant entities. Do not force every asset into the hosting Function or add host-site membership as an application role.
 
 ## Set up the first five lists
 

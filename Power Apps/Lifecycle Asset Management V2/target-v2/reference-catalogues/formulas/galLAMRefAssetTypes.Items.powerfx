@@ -3,7 +3,6 @@ If(
     SortByColumns(
         Filter(
             LAM2_AssetTypes,
-            OrganizationRef.Id = gblLAMReferenceContext.OrganizationItemId,
             IsActive = true
         ),
         "Title",

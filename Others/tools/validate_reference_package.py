@@ -36,12 +36,13 @@ assert all(alias in formula_text for alias in manifest['sourceAliases'])
 assert not manifest['powerFxCompiled'] and manifest['runtimeTests'] == 'NOT RUN'
 with (data / 'COLUMNS.csv').open(newline='') as f:
     columns = list(csv.DictReader(f))
-assert len(columns) == 10
+assert len(columns) == 9
 assert all(None not in c and all(v is not None for v in c.values()) for c in columns)
 assert len({(c['List'], c['InternalName']) for c in columns}) == len(columns)
 assert all(c['SharePointRequired'] in ('No', 'N/A') for c in columns)
 lookup = {c['InternalName']: c for c in columns if c['Type'] == 'Lookup'}
-assert lookup['OrganizationRef']['LookupList'] == 'LAM2_Organizations'
+assert 'OrganizationRef' not in lookup
+assert 'OrganizationRef.Id' not in (app / 'formulas/galLAMRefAssetTypes.Items.powerfx').read_text()
 assert lookup['CategoryRef']['LookupList'] == 'LAM2_Categories'
 assert all(c['AllowMultiple'] == 'No' and c['Unique'] == 'No' and c['DeleteBehavior'] == 'Restrict delete' for c in lookup.values())
 assert not any(c['InternalName'] in ('OrganizationRef', 'FunctionRef', 'Floor', 'Room') for c in columns if c['List'] == 'LAM2_Buildings')

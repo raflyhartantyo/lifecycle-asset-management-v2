@@ -20,7 +20,7 @@ View opens the selected-assets list as a whole. It is not a requirement to open 
 
 Location/custodian/status updates that leave entity/function and Business Owner unchanged remain BAU under ordinary authority. Changes of entity/function or Business Owner follow existing outgoing/receiving Business Owner approvals in Microsoft Approvals. A movement list never converts those changes into immediate BAU updates.
 
-For cross-entity transfers, select a valid receiving type within the same Accounting Category before approval, preserve identity/accounting code, and retain old/new references (D057). If different assets involve different owners or routes, keep the correct per-asset approval obligations and restrict each approver's payload to relevant records. Batch-level Approved is not proof that every asset's approvals/application succeeded.
+Under D074, cross-entity transfers retain the same shared Asset Type; no receiving-entity type mapping is needed merely because scope changes. Preserve identity/accounting code and relevant old/new evidence; any explicit classification change follows its own authorized field/Category rules. If different assets involve different owners or routes, keep the correct per-asset approval obligations and restrict each approver's payload to relevant records. Batch-level Approved is not proof that every asset's approvals/application succeeded.
 
 Revalidate authenticated authority, asset/version/state and destination references at submission and application. Existing grants decide selectable/processable records; a global search or destination selector must not reveal unrelated assets. Entity/function session boundaries, Global/Super exceptions and assigned-task visibility remain intact. Mixed-source-scope batch behavior is not yet approved.
 
@@ -38,7 +38,7 @@ Also pending: mixed entity/function source scope, batch limits, status/condition
 
 ## Tests to supply with implementation
 
-Repeated searches preserve selection; no duplicate asset rows; add/remove and single-asset entry; selections across paging where supported; visible selected count; unauthorized/stale rows; mixed approval obligations; same-person capacities; valid destination-type mapping; required custodians; no duplicate application after retry; per-asset history and partial failure recovery. All NOT RUN. This selected-assets movement direction does not authorize bulk disposal or modify the already agreed register/import creation rules.
+Repeated searches preserve selection; no duplicate asset rows; add/remove and single-asset entry; selections across paging where supported; visible selected count; unauthorized/stale rows; mixed approval obligations; same-person capacities; shared type retained across entity transfers and authorized classification-change validation; required custodians; no duplicate application after retry; per-asset history and partial failure recovery. All NOT RUN. This selected-assets movement direction does not authorize bulk disposal or modify the already agreed register/import creation rules.
 
 ## Proposed processing flow
 

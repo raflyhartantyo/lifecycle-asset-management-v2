@@ -20,7 +20,7 @@ Status: proposed implementation decomposition of accepted working flows through 
 | SCR-REGISTER | Guided create-only entry and review | D058 field review; generated tag; company-unique Accounting Asset Code; Available; Good default; IDR; application-required fields | Tag allocation, field/people/reference contracts, initial financial behavior |
 | SCR-IMPORT | Template, validate/preview, confirm valid selected new rows, results | No silent existing-record overwrite; retain per-row invalid/duplicate/applied outcomes | Final template, duplicate rules, source evidence, retry contract |
 | SCR-MOVE-SELECT | Search/add → view selected list → start movement | Repeated searches preserve draft; one/many selected; no duplicates; alternate detail entry | Scope/eligibility, paging and source-batch policy |
-| SCR-MOVE-EDIT | Different changes for each asset | Prior/new values; required custodian for In Use; destination entity type/category mapping | Per-row field validation and explicit keep/clear semantics |
+| SCR-MOVE-EDIT | Different changes for each asset | Prior/new values; required custodian for In Use; shared type/Category consistency | Per-row field validation and explicit keep/clear semantics |
 | SCR-MOVE-REVIEW | Review/submit → individual outcomes | BAU versus required owner/scope approval route visible; approval is not application | Owner capacities, version/retry/grouping/partial-failure policy |
 | SCR-DISPOSE | Selected list → per-asset Sale/Non-sale details → review/confirm → results | Required date; buyer/price for Sale; optional shared date/buyer; individual prices; retained history; no approval | Eligibility, buyer model, mixed modes, overwrite/archive/recovery |
 | SCR-INVENTORY | Quantity register, entry/detail, transfer and history | Authorized quantities/scopes; no asset-style dual-owner approval; no asset-level condition/custodian assumptions | Inventory item/quantity/unit/validation and concurrency contract |
@@ -51,7 +51,7 @@ Status: proposed implementation decomposition of accepted working flows through 
 
 | ID | Purpose | Required boundary | Contract gate |
 | --- | --- | --- | --- |
-| SCR-ADMIN-REF | Approved reference maintenance | Entity Asset Types: Global within entity, Super across all; fixed Categories and shared buildings have separate policies | Authority for other references, deactivation and integrity |
+| SCR-ADMIN-REF | Approved reference maintenance | Shared Asset Types: Global Users and Super Users (D074); fixed Categories and shared buildings have separate policies | Authority for other references, deactivation and integrity |
 | SCR-ADMIN-ACCESS | Ordinary and privileged grants | Global grants ordinary roles within entity; Super administers Global/Super; backend enforcement and audit | Identity mapping, revocation, history and least-privilege service design |
 | SCR-ADMIN-CONFIG | Permitted routing/default configuration | Explicit configured approvers/due defaults; no generic permission to reassign any approval | Configuration authority, versioning, substitutions and notification rules |
 

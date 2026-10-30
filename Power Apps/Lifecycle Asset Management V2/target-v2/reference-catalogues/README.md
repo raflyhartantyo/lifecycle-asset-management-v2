@@ -18,12 +18,12 @@ These are manual Studio resources, not a .msapp, solution ZIP, control YAML snip
 flowchart TD
     A[Existing authorized entity context] --> B[Reference catalogues screen]
     B --> C[Categories: KO, NK, PL]
-    B --> D[Active Asset Types in current entity]
+    B --> D[Shared active Asset Types]
     B --> E[Shared active Buildings]
     B --> F[Refresh with visible error and timestamp]
 ```
 
-This is a limited implementation of reference browsing, not the complete Administration module or role/session resolution. It has no Add/Edit/Delete/Approve action. Asset Type maintenance remains Global-in-entity/Super-across-entities under D056 and needs its later controlled writer; the reader does not grant that authority.
+This is a limited implementation of reference browsing, not the complete Administration module or role/session resolution. It has no Add/Edit/Delete/Approve action. Asset Type maintenance is shared-catalogue maintenance by Global Users and Super Users under D074 and needs its later controlled writer; the reader does not grant that authority.
 
 ## Implement manually when ready
 
@@ -35,14 +35,14 @@ This is a limited implementation of reference browsing, not the complete Adminis
 6. Apply each CONTROL-PROPERTIES.csv row to the named control/property. Paste the Formula value, or the contents of FormulaFile where provided. Do not paste the CSV as YAML. Formulas use English comma argument separators and semicolon chaining; let Studio's locale determine equivalent syntax if different.
 7. Bind `gblLAMReferenceContext` through the eventual authorized session adapter: OrganizationItemId is the numeric LAM2_Organizations.ID; OrganizationCode is the display code; IsResolved is the adapter's display state. Default zero/unresolved deliberately returns no rows and disables Refresh. Never replace it with First(Organizations), a freely selectable arbitrary numeric ID or a hardcoded production entity.
 8. For a maker-only synthetic UAT later, a known approved Organization numeric ID/code can be used as a temporary context binding. Remove the temporary binding before promotion and test the real session/source-permission path. IsResolved is not caller authentication or a backend permission.
-9. Check Studio formulas and App Checker. Confirm CategoryRef.Value/OrganizationRef.Id match the actual connector schema; these correspond to the configured single lookup display value/ID. Adapt only the binding if the observed schema differs, retaining the physical/source contract. No successful compile is asserted by local file checks.
+9. Check Studio formulas and App Checker. Confirm CategoryRef.Value matches the actual connector schema; this corresponds to the configured single Category lookup display value; the context OrganizationItemId remains an input for the wider session, not an Asset Type parent. Adapt only the binding if the observed schema differs, retaining the physical/source contract. No successful compile is asserted by local file checks.
 10. Execute the feature cases when ready. Do not publish the screen as a full operational module or report a runtime PASS from file validation alone.
 
 This guide is sufficient to start from the files directly. An [optional implementation Q&A prompt](../../../../Others/prompts/PENDING-004-reference-catalogues.md) is available when useful; no general access report is requested.
 
 ## Query, refresh and layout behavior
 
-Categories sort by CategoryCode. Buildings show shared active records. Asset Types filter active rows by the current OrganizationRef.Id and sort by Title. Each uses its native source query rather than collecting the whole register. No app-wide row counts or guaranteed full-result export are inferred from Gallery.AllItems. Test delegation, scrolling, source ACLs and data completeness when binding the actual lists.
+Categories sort by CategoryCode. Buildings show shared active records. Asset Types show all active shared catalogue rows and sort by Title under D074; Entity context does not filter their ownership. Each uses its native source query rather than collecting the whole register. No app-wide row counts or guaranteed full-result export are inferred from Gallery.AllItems. Test delegation, scrolling, source ACLs and data completeness when binding the actual lists.
 
 Refresh attempts all three data-source refreshes with explicit error handling. Only all successful calls in the same context update the last-refresh timestamp; a failure preserves the prior timestamp and displays an error. A context change makes the prior context's timestamp inapplicable. A successful refresh call is not proof that every lazy-loaded row/page has rendered or that source permissions satisfy the role model.
 

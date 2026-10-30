@@ -85,15 +85,14 @@ Final-approver reassignment/delegation and per-workflow reapproval/cancellation 
 
 These are requirement-level acceptance examples. Detailed test data, status names, API contracts, audit fields and deployment evidence are specified in later phases.
 
-## Asset Type catalogue maintenance — confirmed D056
+## Shared Asset Type maintenance — confirmed D074
 
 | Action | Authorized roles | Scope |
 | --- | --- | --- |
-| Maintain Asset Types | Global User | Assigned entity only |
-| Maintain Asset Types | Super User | Across entities |
-| Select an existing Asset Type | Existing authorized registration/edit roles | Valid type for the asset's entity; no new mutation authority |
+| Maintain Asset Types | Global User; Super User | Shared catalogue across entities |
+| Select an existing Asset Type | Existing authorized registration/edit roles | Valid shared type/Category; no new maintenance or asset access |
 
-Other roles alone do not grant type-catalogue maintenance. Check explicit role combinations without granting entity-wide rights from a pair-scoped role. Every type retains its entity and Category parent. D056 does not grant editing of Accounting categories or global buildings. Backend enforcement and reclassification/deactivation rules still require implementation and verification.
+Every type retains its Category parent and has no Entity/Function parent. Shared type maintenance is a specific exception for Global Users; operational asset/inventory and ordinary role administration remain within their existing entity scope. Category/Building maintenance is not granted by analogy. Reclassification/deactivation safeguards and backend checks follow the delivered writer contract.
 
 ## Technical evaluation contract
 

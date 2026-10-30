@@ -121,5 +121,6 @@
   "formulaLocale": "English comma argument separators and semicolon chaining; adapt through Studio locale",
   "powerFxCompiled": false,
   "runtimeTests": "NOT RUN",
-  "physicalListContract": "Others/sharepoint/v2/reference-foundation-002/COLUMNS.csv"
+  "physicalListContract": "Others/sharepoint/v2/reference-foundation-002/COLUMNS.csv",
+  "assetTypeScope": "Shared across entities; no OrganizationRef or FunctionRef; Global Users and Super Users maintain under D074"
 }

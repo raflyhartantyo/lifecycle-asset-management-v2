@@ -1,8 +1,8 @@
 {
-  "contractVersion": "0.1-design",
+  "contractVersion": "0.2-design",
   "status": "Proposed logical data contract; not a provisioning or import artifact",
   "creationReady": false,
-  "decisionBasis": "Confirmed decisions through D072; unresolved business details remain deferred",
+  "decisionBasis": "Confirmed decisions through D074; shared Asset Types maintained by Global/Super Users",
   "storagePolicy": {
     "editableBusinessSharePointRequired": false,
     "businessValidation": "Power Apps and authorized mutation path",
@@ -219,12 +219,6 @@
           "businessRequired": "Yes"
         },
         {
-          "name": "OrganizationRef",
-          "logicalType": "Reference",
-          "businessRequired": "Yes",
-          "references": "Organization"
-        },
-        {
           "name": "CategoryRef",
           "logicalType": "Reference",
           "businessRequired": "Yes",
@@ -236,9 +230,8 @@
           "businessRequired": "System"
         }
       ],
-      "notes": "Entity-specific; same label in another Entity is a different record. Duplicate-label/deactivation rules deferred.",
+      "notes": "Shared across entities under D074; valid fixed Category parent; Global Users and Super Users maintain. Naming/deactivation/reclassification safeguards deferred.",
       "queryKeys": [
-        "OrganizationRef",
         "CategoryRef"
       ]
     },
@@ -1676,7 +1669,7 @@
       "subject": "One Asset with independent before/proposed-after values per OperationItem",
       "fieldContract": "Deliver typed allowed changed fields per operation; preserve explicit keep/clear distinction",
       "routeRule": "Entity/Function/BusinessOwner change requires existing owner capacities before that transaction; other eligible changes follow BAU authority",
-      "destinationTypeRule": "Receiving Entity AssetType in same Category on cross-entity transfers; preserve identity and AccountingAssetCode",
+      "destinationTypeRule": "Retain same shared AssetType across entities unless an authorized classification change is explicitly reviewed; preserve Category consistency, identity and AccountingAssetCode",
       "deferred": [
         "Mixed source scopes",
         "Batch grouping",
@@ -1723,7 +1716,7 @@
   },
   "crossEntityConstraints": [
     "Function belongs to Organization; operational scope/query projections must agree with authoritative parent relationships",
-    "AssetType belongs to Asset Organization and references one fixed Category",
+    "AssetType is shared across Organizations and references one fixed Category; Global/Super maintenance is a catalogue-specific exception",
     "Building is shared; it has no exclusive Organization/Function parent and no floor/room fields",
     "Asset AccountingAssetCode company uniqueness must be enforced under concurrent creation after canonicalization policy is defined; no duplicate serial prohibition",
     "BusinessOwner is a real directory principal; PendingDirectory Custodian creates no principal, grant or routing identity",

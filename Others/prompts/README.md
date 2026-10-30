@@ -4,7 +4,7 @@ D072: general access/capability questionnaires are deferred. No observation repo
 
 | ID | Status | When to use | Prompt |
 | --- | --- | --- | --- |
-| 005 | **PENDING** | Implement five dedicated LAM reference lists and their permissions on existing SITE-F, with direct guide links | [Shared-site foundation setup](PENDING-005-shared-site-foundation.md) |
+| 005 | **IN PROGRESS — REVIEWED PARTIAL** | Five lists created by report; D074 resolves shared Asset Types/no OrganizationRef; targeted lookup/index, row-count and retention settings remain | [Shared-site foundation setup](PENDING-005-shared-site-foundation.md) |
 | 004 | **PENDING — OPTIONAL** | When choosing to implement the delivered reference-list/browser resources; no action requested now | [Reference catalogue implementation Q&A](PENDING-004-reference-catalogues.md) |
 | 003 | **DEFERRED** | Optional reference only; no response requested under D072 | [Access capability check](PENDING-003-access-capability-check.md) |
 | 002 | **PENDING** | Optional: create two dedicated empty LAM lists on the existing Function site SITE-F (D073) | [SharePoint foundation](PENDING-002-sharepoint-foundation.md) |
@@ -27,3 +27,5 @@ Response 001 received; [review and corrections](responses/001-environment-invent
 ## Visual flow proposals
 
 D066: accompany proposed user flows with a mockup/storyboard/flowchart and concise explanation. The main developer supplies image concepts; text-only Claude Q&A may reference those images or provide a Mermaid flowchart. Link the relevant visual in task-specific prompts so company transfer includes its context. A generated visual is a proposal until reviewed.
+
+Response 005 received and [reviewed](responses/005-shared-site-foundation-review.md). Configuration is partially complete; no runtime/security cases have run. Preserve the [original response](responses/005-shared-site-foundation-response.md); resume only the specific open items rather than repeating completed setup.

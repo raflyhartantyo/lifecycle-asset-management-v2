@@ -50,8 +50,8 @@ Using the Teams Approvals surface does not, by itself, select a separate custom 
 | Resource or responsibility | Runtime authority required by design | Who configures it / when |
 | --- | --- | --- |
 | App execution | Assigned operational role or explicit task participation; authorized routes only | Owner configures app sharing and bindings during app setup |
-| Reference reads | Only references needed for authorized work; destination type selection does not expose destination assets | Owner configures chosen backend permissions when binding references |
-| Reference maintenance | Global User for own-entity Asset Types; Super User across entities; other reference-maintenance rules remain explicit contracts | Delivered admin operations plus owner-configured storage/service permissions |
+| Reference reads | Only references needed for authorized work; shared type selection does not expose another entity’s assets | Owner configures chosen backend permissions when binding references |
+| Reference maintenance | Global Users and Super Users for shared Asset Types (D074); Category/Building maintenance remains separately specified | Delivered admin operations plus owner-configured storage/service permissions |
 | Access grants | Global administers ordinary roles inside own entity; Super administers Global/Super; attributable changes | Owner configures protected authorization storage and initial admin binding during access implementation |
 | Asset/inventory operations | Action-specific role and source/destination rules; field/state/version checks | Per-app/per-flow operation guidance plus chosen controlled connection model |
 | Assigned evidence/history | Current assignee may edit open response; historical assignment has restricted read/export; no master access created | Assignment/record access mechanism configured with that workflow |
@@ -67,7 +67,7 @@ Business roles are not SharePoint/Power Platform administrator roles. SharePoint
 
 | Feature slice | Data dependency | Connector/capability dependency |
 | --- | --- | --- |
-| Shell and references | Organizations, Functions, identity/grants, Categories, entity Asset Types and shared buildings | SharePoint; Office 365 Users where employee lookup is displayed |
+| Shell and references | Organizations, Functions, identity/grants, Categories, shared Asset Types and shared buildings | SharePoint; Office 365 Users where employee lookup is displayed |
 | Register, import and asset details | Asset/register identity, unique Accounting Asset Code, tag allocation, attachments and history | SharePoint; Office 365 Users; Excel Online Business for chosen workbook import |
 | Movement | Selected per-asset changes, versions, transfer capacities and history | SharePoint; Standard approvals only for owner/scope changes; chosen notification channel |
 | Direct disposal | Per-asset sale/non-sale data, outcomes and retained history | SharePoint; no disposal approval integration |

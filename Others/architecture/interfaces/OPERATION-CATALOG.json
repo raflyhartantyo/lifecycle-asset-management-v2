@@ -218,7 +218,7 @@
       "mode": "prepare",
       "payloadDefinition": "MovementPreviewPayload",
       "requiresSubmissionKey": true,
-      "contractMeaning": "Validate independent per-asset changes and classify BAU versus required owner/scope-transfer route.",
+      "contractMeaning": "Validate independent per-asset changes/routes; retain shared AssetType on Entity change unless authorized classification change is explicitly reviewed.",
       "modelEntities": [
         "Asset",
         "AssetType",
@@ -1000,7 +1000,7 @@
       "mode": "prepare",
       "payloadDefinition": "ReferenceChangePreviewPayload",
       "requiresSubmissionKey": true,
-      "contractMeaning": "Validate exact reference maintenance authority; Category/Building authority is not inferred from type maintenance.",
+      "contractMeaning": "Global Users and Super Users may maintain shared Asset Types under D074; Category/Building maintenance remains separately authorized.",
       "modelEntities": [
         "AssetType",
         "Building",
@@ -1124,5 +1124,6 @@
     "An accepted operation requires durable reference",
     "Submission-key reuse with changed inputs conflicts",
     "Decimal strings specify transport only, not precision or financial policy"
-  ]
+  ],
+  "decisionBasis": "D074 shared Asset Types; request wire shapes unchanged"
 }

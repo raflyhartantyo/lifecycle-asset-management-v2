@@ -8,7 +8,7 @@ Status: consolidated working review, 2026-10-27. Owner provisionally agreed to t
 - Accounting Asset Code is company-wide unique and available at registration (D043). Purchase date/cost are mandatory (D044). Currency is always IDR (D046).
 - Entity/function comes from the authorized session; writes remain scope-validated (D002/D007/D013).
 - LAM generates Asset Tags; the format/allocation scheme is deferred. Preserve asset identity and accounting code through transfers.
-- Types are entity-specific with a Category parent lookup; KO/NK/PL are fixed Accounting categories. Global User maintains its entity's types; Super User maintains across entities (D047/D048/D055/D056).
+- Types are shared across entities with a Category parent lookup; KO/NK/PL remain fixed. Global Users and Super Users maintain the shared type catalogue (D074).
 - Locations are shared buildings only; no floor/room fields (D049/D050).
 - Custodian is an individual employee, optional for Available and required for In Use. Use company directory selection and a Custodian-only Awaiting employee registration option. Business Owner requires a real directory identity; directory presence alone grants no approval authority (D051/D052).
 - PL describes capitalized internal enhancements, using the same registration fields (D048).
@@ -25,7 +25,7 @@ Status: consolidated working review, 2026-10-27. Owner provisionally agreed to t
 | Asset Name | Human-readable asset description/name | Provisionally mandatory under D058; revisit in screen review |
 | Entity | Authorized session context | Scope confirmed; system-resolved |
 | Function | Authorized session context, valid under Entity | Scope confirmed; system-resolved |
-| Asset Type | Select from current entity's valid type catalogue | Provisionally mandatory under D058; revisit in screen review |
+| Asset Type | Select a valid active type from the shared catalogue | Provisionally mandatory under D058; revisit in screen review |
 | Category | Derive/read-only from selected type; never inconsistent with its parent | Hierarchy confirmed; derived UI is engineering proposal |
 | Business Owner | Real company-directory employee | Real identity confirmed; provisionally mandatory under D058 |
 | Location | Select from shared building catalogue | Building-only confirmed; proposed mandatory, owner confirmation pending |
@@ -46,13 +46,13 @@ D058 provisionally accepts Asset Name, Asset Type, Business Owner, Building and 
 
 Show field-level messages for missing/invalid business inputs before submission, preserve the user's entered values on a failed save, and indicate successful creation only after a durable result is known. Mutations/imports should validate the same business rules. Use reliable duplicate prevention and operation identities to protect simultaneous submissions/retries; a front-end pre-check alone is not the complete duplicate/concurrency mechanism. The exact normalization and uniqueness contract must be specified before final provisioning.
 
-Default Good only initializes the form; it must not overwrite a deliberate permitted choice. Choose a type from the asset's entity and derive its Category, clearing an incompatible selection if context changes. Reference controls do not grant cross-entity access. SharePoint optional fields mean incomplete administrative records can exist; recognize/report them rather than silently treating them as valid registered assets.
+Default Good only initializes the form; it must not overwrite a deliberate permitted choice. Choose a shared type and derive its Category. Entity change alone does not make that shared type incompatible; validate its current state/Category under the operation contract. Reference controls do not grant cross-entity access. SharePoint optional fields mean incomplete administrative records can exist; recognize/report them rather than silently treating them as valid registered assets.
 
 Book Value calculation uses the deferred formula and scheduled monthly flow, not an automatic ledger overwrite. Do not initialize Book Value to zero or purchase cost without an explicit rule. Registration can be designed while the formula is pending, but financial implementation/acceptance needs the initial-value and monthly formula contracts.
 
 ## Transfer consistency
 
-D057 requires a cross-entity request to specify a valid receiving type in the same Accounting Category before approvals. Create a missing suitable type through authorized catalogue maintenance first. Preserve asset identity and Accounting Asset Code and capture old/new references in history. A same-category mapping is not a new disposal approval or permission to modify unrelated destination assets.
+D074 supersedes the receiving-entity type mapping in D057. Keep the same shared type across Entity changes unless a separate authorized classification change is explicitly reviewed. Preserve asset identity, Accounting Asset Code, Category consistency and history. Required owner approvals and unrelated-record access boundaries remain unchanged.
 
 ## Remaining implementation gates
 

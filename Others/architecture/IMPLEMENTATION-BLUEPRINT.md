@@ -25,7 +25,7 @@ The three delivery roots remain Power Apps, Power Automate and Others. The 88 su
 | Reconciliation | Compare/review → explicit authorized apply → final Accounting/Governance sign-off on actual results (D070) | Ledger/matching/correction fields; unresolved-follow-up eligibility; final rejection/rework/rollback |
 | Reports | Accepted scoped progress/detail flow; authorized exports and eligible respondent reminders (D071) | Metrics/deadlines, fields/formats, refresh architecture, reminder delivery/rate limits |
 
-Categories stay KO/NK/PL; Asset Types are entity-specific with Category lookup; buildings are shared and building-only. Custodian is an individual directory employee with the Custodian-only pending-registration option. Do not apply that placeholder to owners/approvers. Condition remains Good/Broken/Ready to Auction, distinct from lifecycle and process states.
+Categories stay KO/NK/PL; Asset Types are shared with Category lookup and maintained by Global/Super Users (D074); buildings are shared and building-only. Custodian is an individual directory employee with the Custodian-only pending-registration option. Do not apply that placeholder to owners/approvers. Condition remains Good/Broken/Ready to Auction, distinct from lifecycle and process states.
 
 ## Target screen map
 
@@ -101,7 +101,7 @@ The [operational data model](OPERATIONAL-DATA-MODEL.md), [logical field contract
 ```mermaid
 flowchart LR
     ORG[Organizations and Functions] --> ACCESS[Access and routing configuration]
-    ORG --> REFS[Categories, entity types, shared buildings, people references]
+    ORG --> REFS[Categories, shared types, shared buildings, people references]
     ACCESS --> AUTH[Authorized read and mutation contracts]
     REFS --> REG[Asset and quantity registers]
     AUTH --> REG

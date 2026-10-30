@@ -64,7 +64,7 @@ For writes, action capability, authority, field requiredness and references are 
 | --- | --- | --- |
 | Asset create/import | Asset Operator/Asset Manager within pair, or valid Global/Super maintenance capability | Create-only, unique Accounting Asset Code, generated tag, confirmed registration fields/state; initial finance contract |
 | Asset BAU movement | Authorized asset-operation capability in source scope | No entity/function/owner change; valid values/version and per-asset history |
-| Asset owner/scope transfer | Authorized submission/application path and source-scope authority | Required outgoing/receiving owner capacities; one explicit decision if same authorized person; approved snapshot/version; destination type/category consistency |
+| Asset owner/scope transfer | Authorized submission/application path and source-scope authority | Required outgoing/receiving owner capacities; one explicit decision if same authorized person; approved snapshot/version; shared type/Category consistency under D074 |
 | Direct disposal | Asset Manager or applicable Global/Super maintenance capability in scope | Valid per-asset Sale/Non-sale inputs/eligibility and history; no disposal approval added |
 | Inventory operation | Inventory Operator or applicable Global/Super maintenance capability in scope | Quantity/scope/concurrency/history rules; no asset-style dual-owner approval |
 | Stock respondent save/submit | Exact current assignment to authenticated principal | Open editable response and permitted fields only; never master register |
@@ -98,3 +98,5 @@ Do not create operational authorization lists or enable privileged flows until t
 ## Planned checks
 
 Use AUTH-01..09, RPT-01..05, SO assigned/historical cases and workflow approval cases in the existing [UAT kit](../testing/README.md). Add implementation-specific evidence for forged identity/scope inputs; conflicting grants; invalid scope shapes; direct list/flow access; copied file/download links; mixed-owner counts/activity; former assignments versus current master; same-person explicit approval; Super without step assignment; in-flight revocation; grant-update races and controlled bootstrap. These additions are test requirements, not recorded runtime passes or a change to the existing 78-case count.
+
+D074 exception: Global Users and Super Users can maintain the shared Asset Type catalogue. No type has an Entity parent. This exception does not expand Global Users’ asset/inventory/grant administration scope, other shared-reference maintenance, or assigned workflow capacities.
